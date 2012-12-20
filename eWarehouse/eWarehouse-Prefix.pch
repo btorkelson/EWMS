@@ -12,3 +12,13 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define EWHLog if(0); else NSLog
+
+//#define degreesToRadian(x) (M_PI * (x) / 180.0)
+
+#define SCROLLVIEW_HEIGHT 460
+#define SCROLLVIEW_WIDTH  320
+
+#define CONTENT_HEIGHT 380
+#define CONTENT_WIDTH 320

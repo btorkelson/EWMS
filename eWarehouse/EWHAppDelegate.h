@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class EWHStartViewController;
+
 @interface EWHAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

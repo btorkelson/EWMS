@@ -8,9 +8,17 @@
 
 #import "EWHAppDelegate.h"
 
+@interface EWHAppDelegate ()
+
+//@property (nonatomic, strong) EWHViewController *rootViewController;
+
+@end
+
 @implementation EWHAppDelegate
 
-@synthesize window = _window;
+//@synthesize window = _window, rootViewController=_rootViewController;
+
+//EWHMainController* lc = nil;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

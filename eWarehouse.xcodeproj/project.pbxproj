@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B325572160E08F800125BC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B325571160E08F800125BC1 /* CoreData.framework */; };
+		6B35252C1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B35252B1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m */; };
+		6B3525341610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3525331610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m */; };
+		6B3525371610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3525361610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m */; };
+		6B35253A1610B7860092FDAD /* EWHLoadShipmentScanContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3525391610B7850092FDAD /* EWHLoadShipmentScanContainerController.m */; };
+		6B35253D1610B7BB0092FDAD /* EWHLoadShipmentSelectLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B35253C1610B7BA0092FDAD /* EWHLoadShipmentSelectLocationController.m */; };
+		6B3525401610B7E90092FDAD /* EWHLoadShipmentShipmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B35253F1610B7E80092FDAD /* EWHLoadShipmentShipmentDetailsController.m */; };
+		6B3525431610B8150092FDAD /* EWHLoadShipmentSelectShipmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3525421610B8150092FDAD /* EWHLoadShipmentSelectShipmentController.m */; };
+		6B3525481610D76A0092FDAD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B3525471610D7690092FDAD /* Default-568h@2x.png */; };
+		6B6EE5C615E57E730028B3A4 /* EWHScanItemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B6EE5C515E57E730028B3A4 /* EWHScanItemController.m */; };
+		6B92064E15DD55E100605D7F /* EWHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B92064D15DD55E100605D7F /* EWHUtils.m */; };
+		6B92065215DD593700605D7F /* EWHScanLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B92065115DD593700605D7F /* EWHScanLocationController.m */; };
 		6B960D2815B712F000064CC0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B960D2715B712F000064CC0 /* UIKit.framework */; };
 		6B960D2A15B712F000064CC0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B960D2915B712F000064CC0 /* Foundation.framework */; };
 		6B960D2C15B712F000064CC0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B960D2B15B712F000064CC0 /* CoreGraphics.framework */; };
@@ -14,23 +26,285 @@
 		6B960D3415B712F000064CC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B960D3315B712F000064CC0 /* main.m */; };
 		6B960D3815B712F000064CC0 /* EWHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B960D3715B712F000064CC0 /* EWHAppDelegate.m */; };
 		6B960D3B15B712F000064CC0 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B960D3915B712F000064CC0 /* MainStoryboard.storyboard */; };
-		6B960D3E15B712F000064CC0 /* EWHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B960D3D15B712F000064CC0 /* EWHViewController.m */; };
+		6B960D4815B7142200064CC0 /* EWHLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B960D4715B7142200064CC0 /* EWHLoginController.m */; };
+		6B96712715BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B96712615BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m */; };
+		6B96712A15BE4BD40081B46F /* EWHWarehouse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B96712915BE4BD40081B46F /* EWHWarehouse.m */; };
+		6B9695911613501700C35494 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6B9695901613501700C35494 /* Localizable.strings */; };
+		6B97135B15EBB5160071BEE2 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B97135615EBB5160071BEE2 /* 0.png */; };
+		6B97135C15EBB5160071BEE2 /* 25.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B97135715EBB5160071BEE2 /* 25.png */; };
+		6B97135D15EBB5160071BEE2 /* 50.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B97135815EBB5160071BEE2 /* 50.png */; };
+		6B97135E15EBB5160071BEE2 /* 75.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B97135915EBB5160071BEE2 /* 75.png */; };
+		6B97135F15EBB5160071BEE2 /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B97135A15EBB5160071BEE2 /* 100.png */; };
+		6B97A2FF160CD3FE00E2BC08 /* EWHGetPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B97A2FE160CD3FE00E2BC08 /* EWHGetPartDetailsController.m */; };
+		6B97A302160CE3E700E2BC08 /* EWHGetSerializedPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B97A301160CE3E600E2BC08 /* EWHGetSerializedPartDetailsController.m */; };
+		6B97A305160CE7BC00E2BC08 /* EWHPickSerializedItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B97A304160CE7BC00E2BC08 /* EWHPickSerializedItemRequest.m */; };
+		6B98150E15DC97BB00BE1330 /* EWHSelectReceiptController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98150D15DC97BB00BE1330 /* EWHSelectReceiptController.m */; };
+		6B98151415DC9AE200BE1330 /* EWHGetWarehouseReceiptListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98151315DC9AE200BE1330 /* EWHGetWarehouseReceiptListRequest.m */; };
+		6B98151615DCA1E800BE1330 /* EWHReceipt.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98151515DCA1E800BE1330 /* EWHReceipt.m */; };
+		6B98480B15B9C27C00A1E2EB /* EWHRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98480A15B9C27C00A1E2EB /* EWHRequest.m */; };
+		6B98480E15B9C47A00A1E2EB /* EWHLoginRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98480D15B9C47A00A1E2EB /* EWHLoginRequest.m */; };
+		6B98481115B9C4EC00A1E2EB /* EWHUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98481015B9C4EC00A1E2EB /* EWHUser.m */; };
+		6B9848BF15B9EAE000A1E2EB /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98481715B9C9EF00A1E2EB /* NSObject+SBJson.m */; };
+		6B9848C215B9EAE000A1E2EB /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98481A15B9C9EF00A1E2EB /* SBJsonParser.m */; };
+		6B9848C415B9EAE000A1E2EB /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98481C15B9C9EF00A1E2EB /* SBJsonStreamParser.m */; };
+		6B9848C615B9EAE000A1E2EB /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98481E15B9C9EF00A1E2EB /* SBJsonStreamParserAccumulator.m */; };
+		6B9848C815B9EAE000A1E2EB /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482015B9C9EF00A1E2EB /* SBJsonStreamParserAdapter.m */; };
+		6B9848CA15B9EAE000A1E2EB /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482215B9C9EF00A1E2EB /* SBJsonStreamParserState.m */; };
+		6B9848CC15B9EAE000A1E2EB /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482415B9C9EF00A1E2EB /* SBJsonStreamWriter.m */; };
+		6B9848CE15B9EAE000A1E2EB /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482615B9C9EF00A1E2EB /* SBJsonStreamWriterAccumulator.m */; };
+		6B9848D015B9EAE000A1E2EB /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482815B9C9EF00A1E2EB /* SBJsonStreamWriterState.m */; };
+		6B9848D215B9EAE000A1E2EB /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482A15B9C9EF00A1E2EB /* SBJsonTokeniser.m */; };
+		6B9848D415B9EAE000A1E2EB /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482C15B9C9EF00A1E2EB /* SBJsonUTF8Stream.m */; };
+		6B9848D615B9EAE000A1E2EB /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B98482E15B9C9EF00A1E2EB /* SBJsonWriter.m */; };
+		6B9848FE15B9F4E900A1E2EB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848FD15B9F4E900A1E2EB /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490115B9F51400A1E2EB /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848E815B9F4DB00A1E2EB /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490415B9F51400A1E2EB /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848EB15B9F4DB00A1E2EB /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490615B9F51400A1E2EB /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848ED15B9F4DB00A1E2EB /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490815B9F51400A1E2EB /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848EF15B9F4DB00A1E2EB /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490A15B9F51400A1E2EB /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848F115B9F4DB00A1E2EB /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98490C15B9F51400A1E2EB /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848F315B9F4DB00A1E2EB /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98491015B9F51400A1E2EB /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848F715B9F4DB00A1E2EB /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98491215B9F51400A1E2EB /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9848F915B9F4DB00A1E2EB /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6B98491515B9F55600A1E2EB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98491415B9F55600A1E2EB /* CFNetwork.framework */; };
+		6B98491715B9F56300A1E2EB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98491615B9F56200A1E2EB /* SystemConfiguration.framework */; };
+		6B98491915B9F56D00A1E2EB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98491815B9F56D00A1E2EB /* MobileCoreServices.framework */; };
+		6B98491B15B9F58300A1E2EB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B98491A15B9F58300A1E2EB /* libz.dylib */; };
+		6B9A91B515ED662500F20EEF /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9A91B415ED662500F20EEF /* logo.png */; };
+		6B9B1E7F15F8E1E0003A8236 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B1E7E15F8E1E0003A8236 /* icon@2x.png */; };
+		6B9B1E8215F92E60003A8236 /* EWHResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1E8115F92E60003A8236 /* EWHResponse.m */; };
+		6B9B1E8515F94208003A8236 /* EWHQuantityTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B1E8415F94207003A8236 /* EWHQuantityTextField.m */; };
+		6B9C03FC1610AF0100C9AD0B /* EWHGetShipmentsForLoadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C03FB1610AF0100C9AD0B /* EWHGetShipmentsForLoadingRequest.m */; };
+		6B9C03FF1610AF4600C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C03FE1610AF4600C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.m */; };
+		6B9C04021610AF7B00C9AD0B /* EWHGetLocationsForLoadingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C04011610AF7B00C9AD0B /* EWHGetLocationsForLoadingRequest.m */; };
+		6B9C04051610AFB100C9AD0B /* EWHLoadContainerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C04041610AFB100C9AD0B /* EWHLoadContainerRequest.m */; };
+		6B9C04081610AFF200C9AD0B /* EWHLoadItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C04071610AFF200C9AD0B /* EWHLoadItemRequest.m */; };
+		6B9C214615B84E72005CACD0 /* connected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9C214415B84E72005CACD0 /* connected.png */; };
+		6B9C214715B84E72005CACD0 /* disconnected.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9C214515B84E72005CACD0 /* disconnected.png */; };
+		6B9C214915B85436005CACD0 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9C214815B85436005CACD0 /* icon.png */; };
+		6B9C214B15B854A6005CACD0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9C214A15B854A6005CACD0 /* Default.png */; };
+		6B9C214D15B854B4005CACD0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B9C214C15B854B4005CACD0 /* Default@2x.png */; };
+		6B9C9FF815D49E7F001E1924 /* EWHRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9C9FF715D49E7F001E1924 /* EWHRootViewController.m */; };
+		6B9DF879160B9E2F00529769 /* EWHPickShipmentScanLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DF878160B9E2F00529769 /* EWHPickShipmentScanLocationController.m */; };
+		6B9DF87C160BA51000529769 /* EWHPickContainerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DF87B160BA51000529769 /* EWHPickContainerRequest.m */; };
+		6B9DF87F160BAC1700529769 /* EWHPickItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DF87E160BAC1700529769 /* EWHPickItemRequest.m */; };
+		6B9E5D7415E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E5D7315E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m */; };
+		6B9E5D7B15E684F900065029 /* EWHGetReceiptDetailsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E5D7A15E684F900065029 /* EWHGetReceiptDetailsRequest.m */; };
+		6B9E5D7E15E68F2E00065029 /* EWHReceiptDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E5D7D15E68F2D00065029 /* EWHReceiptDetail.m */; };
+		6B9E5D8415E6B1E900065029 /* EWHGetReceiptDetailByPartNumberRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9E5D8315E6B1E800065029 /* EWHGetReceiptDetailByPartNumberRequest.m */; };
+		6B9F859116021FA800547AE2 /* EWHGetShipmentsForPickingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F859016021FA700547AE2 /* EWHGetShipmentsForPickingRequest.m */; };
+		6B9F85941602223300547AE2 /* EWHSelectShipmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F85931602223300547AE2 /* EWHSelectShipmentController.m */; };
+		6B9F8597160223B100547AE2 /* EWHShipment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B9F8596160223B100547AE2 /* EWHShipment.m */; };
+		6BA0320715DC0A6A008A7095 /* EWHSelectActionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA0320615DC0A6A008A7095 /* EWHSelectActionController.m */; };
+		6BA1C013160A72F300874564 /* EWHScanContainerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA1C012160A72F300874564 /* EWHScanContainerController.m */; };
+		6BA7A95D15B8F24600953C6D /* EWHSelectWarehouseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BA7A95C15B8F24600953C6D /* EWHSelectWarehouseController.m */; };
+		6BAA7A3C15E7EFAE001B66EB /* EWHPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA7A3B15E7EFAE001B66EB /* EWHPartDetailsController.m */; };
+		6BAA7A3F15E7EFDB001B66EB /* EWHSerializedPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BAA7A3E15E7EFDA001B66EB /* EWHSerializedPartDetailsController.m */; };
+		6BB01F491608BFDE0069213E /* EWHShipmentDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F481608BFDE0069213E /* EWHShipmentDetailsController.m */; };
+		6BB01F4D1608C3AA0069213E /* EWHShipmentDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F4C1608C3AA0069213E /* EWHShipmentDetail.m */; };
+		6BB01F501608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F4F1608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m */; };
+		6BB01F531608D79D0069213E /* EWHSelectLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F521608D79D0069213E /* EWHSelectLocationController.m */; };
+		6BB01F561608D90D0069213E /* EWHLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F551608D90D0069213E /* EWHLocation.m */; };
+		6BB01F591608DB1A0069213E /* EWHGetLocationsForPickingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BB01F581608DB1A0069213E /* EWHGetLocationsForPickingRequest.m */; };
+		6BEC926715DD91D70071B9F7 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEC926415DD91D70071B9F7 /* libdtdev.a */; };
+		6BEC926915DD99C70071B9F7 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BEC926815DD99C70071B9F7 /* ExternalAccessory.framework */; };
+		6BF6FC2915E81AF90096521A /* EWHPutAwayContainerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2815E81AF90096521A /* EWHPutAwayContainerRequest.m */; };
+		6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */; };
+		6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */; };
+		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6B960D2315B712F000064CC0 /* eWarehouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eWarehouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B325571160E08F800125BC1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6B35252B1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadSerializedItemRequest.m; sourceTree = "<group>"; };
+		6B3525331610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentGetSerializedPartDetailsController.m; sourceTree = "<group>"; };
+		6B3525351610B6BC0092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentGetSerializedPartDetailsController.h; sourceTree = "<group>"; };
+		6B3525361610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentGetPartDetailsController.m; sourceTree = "<group>"; };
+		6B3525381610B76B0092FDAD /* EWHLoadShipmentGetPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentGetPartDetailsController.h; sourceTree = "<group>"; };
+		6B3525391610B7850092FDAD /* EWHLoadShipmentScanContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentScanContainerController.m; sourceTree = "<group>"; };
+		6B35253B1610B79D0092FDAD /* EWHLoadShipmentScanContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentScanContainerController.h; sourceTree = "<group>"; };
+		6B35253C1610B7BA0092FDAD /* EWHLoadShipmentSelectLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentSelectLocationController.m; sourceTree = "<group>"; };
+		6B35253E1610B7D30092FDAD /* EWHLoadShipmentSelectLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentSelectLocationController.h; sourceTree = "<group>"; };
+		6B35253F1610B7E80092FDAD /* EWHLoadShipmentShipmentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentShipmentDetailsController.m; sourceTree = "<group>"; };
+		6B3525411610B7FE0092FDAD /* EWHLoadShipmentShipmentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentShipmentDetailsController.h; sourceTree = "<group>"; };
+		6B3525421610B8150092FDAD /* EWHLoadShipmentSelectShipmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadShipmentSelectShipmentController.m; sourceTree = "<group>"; };
+		6B3525441610B8330092FDAD /* EWHLoadShipmentSelectShipmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadShipmentSelectShipmentController.h; sourceTree = "<group>"; };
+		6B3525471610D7690092FDAD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		6B6EE5C315E57E610028B3A4 /* EWHScanItemController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHScanItemController.h; sourceTree = "<group>"; };
+		6B6EE5C515E57E730028B3A4 /* EWHScanItemController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHScanItemController.m; sourceTree = "<group>"; };
+		6B92064C15DD55E100605D7F /* EWHUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHUtils.h; sourceTree = "<group>"; };
+		6B92064D15DD55E100605D7F /* EWHUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHUtils.m; sourceTree = "<group>"; };
+		6B92065015DD592200605D7F /* EWHScanLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHScanLocationController.h; sourceTree = "<group>"; };
+		6B92065115DD593700605D7F /* EWHScanLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHScanLocationController.m; sourceTree = "<group>"; };
+		6B960D2315B712F000064CC0 /* eWarehouseApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eWarehouseApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B960D2715B712F000064CC0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6B960D2915B712F000064CC0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6B960D2B15B712F000064CC0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6B960D2F15B712F000064CC0 /* eWarehouse-Info.plist */ = {isa = PBXFileReference; path = "eWarehouse-Info.plist"; sourceTree = "<group>"; };
+		6B960D2F15B712F000064CC0 /* eWarehouse-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "eWarehouse-Info.plist"; sourceTree = "<group>"; };
 		6B960D3115B712F000064CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6B960D3315B712F000064CC0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6B960D3515B712F000064CC0 /* eWarehouse-Prefix.pch */ = {isa = PBXFileReference; path = "eWarehouse-Prefix.pch"; sourceTree = "<group>"; };
-		6B960D3615B712F000064CC0 /* EWHAppDelegate.h */ = {isa = PBXFileReference; path = EWHAppDelegate.h; sourceTree = "<group>"; };
+		6B960D3515B712F000064CC0 /* eWarehouse-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "eWarehouse-Prefix.pch"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6B960D3615B712F000064CC0 /* EWHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAppDelegate.h; sourceTree = "<group>"; };
 		6B960D3715B712F000064CC0 /* EWHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAppDelegate.m; sourceTree = "<group>"; };
 		6B960D3A15B712F000064CC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		6B960D3C15B712F000064CC0 /* EWHViewController.h */ = {isa = PBXFileReference; path = EWHViewController.h; sourceTree = "<group>"; };
-		6B960D3D15B712F000064CC0 /* EWHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHViewController.m; sourceTree = "<group>"; };
+		6B960D4615B7142200064CC0 /* EWHLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoginController.h; sourceTree = "<group>"; };
+		6B960D4715B7142200064CC0 /* EWHLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoginController.m; sourceTree = "<group>"; };
+		6B96712415BE4A5C0081B46F /* EWHGetUserWarehouseListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetUserWarehouseListRequest.h; sourceTree = "<group>"; };
+		6B96712615BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetUserWarehouseListRequest.m; sourceTree = "<group>"; };
+		6B96712815BE4BC20081B46F /* EWHWarehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHWarehouse.h; sourceTree = "<group>"; };
+		6B96712915BE4BD40081B46F /* EWHWarehouse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHWarehouse.m; sourceTree = "<group>"; };
+		6B9695901613501700C35494 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		6B97135615EBB5160071BEE2 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		6B97135715EBB5160071BEE2 /* 25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 25.png; sourceTree = "<group>"; };
+		6B97135815EBB5160071BEE2 /* 50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 50.png; sourceTree = "<group>"; };
+		6B97135915EBB5160071BEE2 /* 75.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 75.png; sourceTree = "<group>"; };
+		6B97135A15EBB5160071BEE2 /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
+		6B97A2FD160CD3E400E2BC08 /* EWHGetPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetPartDetailsController.h; sourceTree = "<group>"; };
+		6B97A2FE160CD3FE00E2BC08 /* EWHGetPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetPartDetailsController.m; sourceTree = "<group>"; };
+		6B97A300160CE3D300E2BC08 /* EWHGetSerializedPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetSerializedPartDetailsController.h; sourceTree = "<group>"; };
+		6B97A301160CE3E600E2BC08 /* EWHGetSerializedPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetSerializedPartDetailsController.m; sourceTree = "<group>"; };
+		6B97A303160CE7AA00E2BC08 /* EWHPickSerializedItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPickSerializedItemRequest.h; sourceTree = "<group>"; };
+		6B97A304160CE7BC00E2BC08 /* EWHPickSerializedItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPickSerializedItemRequest.m; sourceTree = "<group>"; };
+		6B98150B15DC97A300BE1330 /* EWHSelectReceiptController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSelectReceiptController.h; sourceTree = "<group>"; };
+		6B98150D15DC97BB00BE1330 /* EWHSelectReceiptController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSelectReceiptController.m; sourceTree = "<group>"; };
+		6B98151115DC9A6200BE1330 /* EWHReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHReceipt.h; sourceTree = "<group>"; };
+		6B98151215DC9ACC00BE1330 /* EWHGetWarehouseReceiptListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetWarehouseReceiptListRequest.h; sourceTree = "<group>"; };
+		6B98151315DC9AE200BE1330 /* EWHGetWarehouseReceiptListRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = EWHGetWarehouseReceiptListRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		6B98151515DCA1E800BE1330 /* EWHReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHReceipt.m; sourceTree = "<group>"; };
+		6B98480915B9C27C00A1E2EB /* EWHRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHRequest.h; sourceTree = "<group>"; };
+		6B98480A15B9C27C00A1E2EB /* EWHRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHRequest.m; sourceTree = "<group>"; };
+		6B98480C15B9C47A00A1E2EB /* EWHLoginRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoginRequest.h; sourceTree = "<group>"; };
+		6B98480D15B9C47A00A1E2EB /* EWHLoginRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoginRequest.m; sourceTree = "<group>"; };
+		6B98480F15B9C4EC00A1E2EB /* EWHUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHUser.h; sourceTree = "<group>"; };
+		6B98481015B9C4EC00A1E2EB /* EWHUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHUser.m; sourceTree = "<group>"; };
+		6B98481615B9C9EF00A1E2EB /* NSObject+SBJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		6B98481715B9C9EF00A1E2EB /* NSObject+SBJson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		6B98481815B9C9EF00A1E2EB /* SBJson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		6B98481915B9C9EF00A1E2EB /* SBJsonParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		6B98481A15B9C9EF00A1E2EB /* SBJsonParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		6B98481B15B9C9EF00A1E2EB /* SBJsonStreamParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		6B98481C15B9C9EF00A1E2EB /* SBJsonStreamParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		6B98481D15B9C9EF00A1E2EB /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		6B98481E15B9C9EF00A1E2EB /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		6B98481F15B9C9EF00A1E2EB /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		6B98482015B9C9EF00A1E2EB /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		6B98482115B9C9EF00A1E2EB /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		6B98482215B9C9EF00A1E2EB /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		6B98482315B9C9EF00A1E2EB /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		6B98482415B9C9EF00A1E2EB /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		6B98482515B9C9EF00A1E2EB /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		6B98482615B9C9EF00A1E2EB /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		6B98482715B9C9EF00A1E2EB /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		6B98482815B9C9EF00A1E2EB /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		6B98482915B9C9EF00A1E2EB /* SBJsonTokeniser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		6B98482A15B9C9EF00A1E2EB /* SBJsonTokeniser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		6B98482B15B9C9EF00A1E2EB /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		6B98482C15B9C9EF00A1E2EB /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		6B98482D15B9C9EF00A1E2EB /* SBJsonWriter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		6B98482E15B9C9EF00A1E2EB /* SBJsonWriter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		6B9848E715B9F4DB00A1E2EB /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		6B9848E815B9F4DB00A1E2EB /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		6B9848E915B9F4DB00A1E2EB /* ASICacheDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		6B9848EA15B9F4DB00A1E2EB /* ASIDataCompressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		6B9848EB15B9F4DB00A1E2EB /* ASIDataCompressor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		6B9848EC15B9F4DB00A1E2EB /* ASIDataDecompressor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		6B9848ED15B9F4DB00A1E2EB /* ASIDataDecompressor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		6B9848EE15B9F4DB00A1E2EB /* ASIDownloadCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		6B9848EF15B9F4DB00A1E2EB /* ASIDownloadCache.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		6B9848F015B9F4DB00A1E2EB /* ASIFormDataRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		6B9848F115B9F4DB00A1E2EB /* ASIFormDataRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		6B9848F215B9F4DB00A1E2EB /* ASIHTTPRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		6B9848F315B9F4DB00A1E2EB /* ASIHTTPRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		6B9848F415B9F4DB00A1E2EB /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		6B9848F515B9F4DB00A1E2EB /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		6B9848F615B9F4DB00A1E2EB /* ASIInputStream.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		6B9848F715B9F4DB00A1E2EB /* ASIInputStream.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		6B9848F815B9F4DB00A1E2EB /* ASINetworkQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		6B9848F915B9F4DB00A1E2EB /* ASINetworkQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		6B9848FA15B9F4DB00A1E2EB /* ASIProgressDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		6B9848FC15B9F4E900A1E2EB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6B9848FD15B9F4E900A1E2EB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		6B98491415B9F55600A1E2EB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		6B98491615B9F56200A1E2EB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		6B98491815B9F56D00A1E2EB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		6B98491A15B9F58300A1E2EB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		6B9A91B415ED662500F20EEF /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		6B9B1E7E15F8E1E0003A8236 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		6B9B1E8015F92E4B003A8236 /* EWHResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHResponse.h; sourceTree = "<group>"; };
+		6B9B1E8115F92E60003A8236 /* EWHResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHResponse.m; sourceTree = "<group>"; };
+		6B9B1E8315F941F0003A8236 /* EWHQuantityTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHQuantityTextField.h; sourceTree = "<group>"; };
+		6B9B1E8415F94207003A8236 /* EWHQuantityTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHQuantityTextField.m; sourceTree = "<group>"; };
+		6B9C03FA1610AEEE00C9AD0B /* EWHGetShipmentsForLoadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetShipmentsForLoadingRequest.h; sourceTree = "<group>"; };
+		6B9C03FB1610AF0100C9AD0B /* EWHGetShipmentsForLoadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetShipmentsForLoadingRequest.m; sourceTree = "<group>"; };
+		6B9C03FD1610AF2500C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetShipmentDetailsForLoadingRequest.h; sourceTree = "<group>"; };
+		6B9C03FE1610AF4600C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetShipmentDetailsForLoadingRequest.m; sourceTree = "<group>"; };
+		6B9C04001610AF6300C9AD0B /* EWHGetLocationsForLoadingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetLocationsForLoadingRequest.h; sourceTree = "<group>"; };
+		6B9C04011610AF7B00C9AD0B /* EWHGetLocationsForLoadingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetLocationsForLoadingRequest.m; sourceTree = "<group>"; };
+		6B9C04031610AF9E00C9AD0B /* EWHLoadContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadContainerRequest.h; sourceTree = "<group>"; };
+		6B9C04041610AFB100C9AD0B /* EWHLoadContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadContainerRequest.m; sourceTree = "<group>"; };
+		6B9C04061610AFD200C9AD0B /* EWHLoadItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadItemRequest.h; sourceTree = "<group>"; };
+		6B9C04071610AFF200C9AD0B /* EWHLoadItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLoadItemRequest.m; sourceTree = "<group>"; };
+		6B9C040B1610B05800C9AD0B /* EWHLoadSerializedItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLoadSerializedItemRequest.h; sourceTree = "<group>"; };
+		6B9C214415B84E72005CACD0 /* connected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connected.png; sourceTree = "<group>"; };
+		6B9C214515B84E72005CACD0 /* disconnected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = disconnected.png; sourceTree = "<group>"; };
+		6B9C214815B85436005CACD0 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		6B9C214A15B854A6005CACD0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		6B9C214C15B854B4005CACD0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		6B9C9FF615D49E7F001E1924 /* EWHRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHRootViewController.h; sourceTree = "<group>"; };
+		6B9C9FF715D49E7F001E1924 /* EWHRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHRootViewController.m; sourceTree = "<group>"; };
+		6B9DF876160B9E1900529769 /* EWHPickShipmentScanLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPickShipmentScanLocationController.h; sourceTree = "<group>"; };
+		6B9DF878160B9E2F00529769 /* EWHPickShipmentScanLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPickShipmentScanLocationController.m; sourceTree = "<group>"; };
+		6B9DF87A160BA4F200529769 /* EWHPickContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPickContainerRequest.h; sourceTree = "<group>"; };
+		6B9DF87B160BA51000529769 /* EWHPickContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPickContainerRequest.m; sourceTree = "<group>"; };
+		6B9DF87D160BABFD00529769 /* EWHPickItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPickItemRequest.h; sourceTree = "<group>"; };
+		6B9DF87E160BAC1700529769 /* EWHPickItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPickItemRequest.m; sourceTree = "<group>"; };
+		6B9E5D7115E66DEA00065029 /* EWHIsWarehouseLocationValidRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHIsWarehouseLocationValidRequest.h; sourceTree = "<group>"; };
+		6B9E5D7315E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHIsWarehouseLocationValidRequest.m; sourceTree = "<group>"; };
+		6B9E5D7915E684D400065029 /* EWHGetReceiptDetailsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetReceiptDetailsRequest.h; sourceTree = "<group>"; };
+		6B9E5D7A15E684F900065029 /* EWHGetReceiptDetailsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetReceiptDetailsRequest.m; sourceTree = "<group>"; };
+		6B9E5D7C15E68F2100065029 /* EWHReceiptDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHReceiptDetail.h; sourceTree = "<group>"; };
+		6B9E5D7D15E68F2D00065029 /* EWHReceiptDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHReceiptDetail.m; sourceTree = "<group>"; };
+		6B9E5D8215E6B1AF00065029 /* EWHGetReceiptDetailByPartNumberRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetReceiptDetailByPartNumberRequest.h; sourceTree = "<group>"; };
+		6B9E5D8315E6B1E800065029 /* EWHGetReceiptDetailByPartNumberRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetReceiptDetailByPartNumberRequest.m; sourceTree = "<group>"; };
+		6B9F858E16021F7B00547AE2 /* EWHGetShipmentsForPickingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetShipmentsForPickingRequest.h; sourceTree = "<group>"; };
+		6B9F859016021FA700547AE2 /* EWHGetShipmentsForPickingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetShipmentsForPickingRequest.m; sourceTree = "<group>"; };
+		6B9F85921602220E00547AE2 /* EWHSelectShipmentController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSelectShipmentController.h; sourceTree = "<group>"; };
+		6B9F85931602223300547AE2 /* EWHSelectShipmentController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSelectShipmentController.m; sourceTree = "<group>"; };
+		6B9F8595160223A100547AE2 /* EWHShipment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHShipment.h; sourceTree = "<group>"; };
+		6B9F8596160223B100547AE2 /* EWHShipment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHShipment.m; sourceTree = "<group>"; };
+		6BA0320515DC0A55008A7095 /* EWHSelectActionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSelectActionController.h; sourceTree = "<group>"; };
+		6BA0320615DC0A6A008A7095 /* EWHSelectActionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSelectActionController.m; sourceTree = "<group>"; };
+		6BA1C00E160A72BB00874564 /* EWHScanContainerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHScanContainerController.h; sourceTree = "<group>"; };
+		6BA1C012160A72F300874564 /* EWHScanContainerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHScanContainerController.m; sourceTree = "<group>"; };
+		6BA7A95B15B8F23200953C6D /* EWHSelectWarehouseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSelectWarehouseController.h; sourceTree = "<group>"; };
+		6BA7A95C15B8F24600953C6D /* EWHSelectWarehouseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSelectWarehouseController.m; sourceTree = "<group>"; };
+		6BAA7A3A15E7EF97001B66EB /* EWHPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPartDetailsController.h; sourceTree = "<group>"; };
+		6BAA7A3B15E7EFAE001B66EB /* EWHPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPartDetailsController.m; sourceTree = "<group>"; };
+		6BAA7A3D15E7EFCA001B66EB /* EWHSerializedPartDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSerializedPartDetailsController.h; sourceTree = "<group>"; };
+		6BAA7A3E15E7EFDA001B66EB /* EWHSerializedPartDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSerializedPartDetailsController.m; sourceTree = "<group>"; };
+		6BB01F481608BFDE0069213E /* EWHShipmentDetailsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHShipmentDetailsController.m; sourceTree = "<group>"; };
+		6BB01F4A1608C0100069213E /* EWHShipmentDetailsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHShipmentDetailsController.h; sourceTree = "<group>"; };
+		6BB01F4B1608C39E0069213E /* EWHShipmentDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHShipmentDetail.h; sourceTree = "<group>"; };
+		6BB01F4C1608C3AA0069213E /* EWHShipmentDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHShipmentDetail.m; sourceTree = "<group>"; };
+		6BB01F4E1608C6EE0069213E /* EWHGetShipmentDetailsForPickingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetShipmentDetailsForPickingRequest.h; sourceTree = "<group>"; };
+		6BB01F4F1608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetShipmentDetailsForPickingRequest.m; sourceTree = "<group>"; };
+		6BB01F511608D7880069213E /* EWHSelectLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHSelectLocationController.h; sourceTree = "<group>"; };
+		6BB01F521608D79D0069213E /* EWHSelectLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHSelectLocationController.m; sourceTree = "<group>"; };
+		6BB01F541608D8FC0069213E /* EWHLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLocation.h; sourceTree = "<group>"; };
+		6BB01F551608D90D0069213E /* EWHLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHLocation.m; sourceTree = "<group>"; };
+		6BB01F571608DB0A0069213E /* EWHGetLocationsForPickingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetLocationsForPickingRequest.h; sourceTree = "<group>"; };
+		6BB01F581608DB1A0069213E /* EWHGetLocationsForPickingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetLocationsForPickingRequest.m; sourceTree = "<group>"; };
+		6BEC926415DD91D70071B9F7 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
+		6BEC926515DD91D70071B9F7 /* LineaSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineaSDK.h; sourceTree = "<group>"; };
+		6BEC926615DD91D70071B9F7 /* PrinterSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterSDK.h; sourceTree = "<group>"; };
+		6BEC926815DD99C70071B9F7 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		6BF6FC2715E81AE40096521A /* EWHPutAwayContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwayContainerRequest.h; sourceTree = "<group>"; };
+		6BF6FC2815E81AF90096521A /* EWHPutAwayContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayContainerRequest.m; sourceTree = "<group>"; };
+		6BF6FC2A15E820350096521A /* EWHGetReceiptDetailByContainerScanRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetReceiptDetailByContainerScanRequest.h; sourceTree = "<group>"; };
+		6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetReceiptDetailByContainerScanRequest.m; sourceTree = "<group>"; };
+		6BF6FC2D15E827E20096521A /* EWHPutAwayPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwayPartRequest.h; sourceTree = "<group>"; };
+		6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayPartRequest.m; sourceTree = "<group>"; };
+		6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwaySerializedPartRequest.h; sourceTree = "<group>"; };
+		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,18 +312,53 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B325572160E08F800125BC1 /* CoreData.framework in Frameworks */,
+				6BEC926915DD99C70071B9F7 /* ExternalAccessory.framework in Frameworks */,
+				6B98491B15B9F58300A1E2EB /* libz.dylib in Frameworks */,
+				6B960D2C15B712F000064CC0 /* CoreGraphics.framework in Frameworks */,
+				6B98491915B9F56D00A1E2EB /* MobileCoreServices.framework in Frameworks */,
+				6B98491715B9F56300A1E2EB /* SystemConfiguration.framework in Frameworks */,
+				6B98491515B9F55600A1E2EB /* CFNetwork.framework in Frameworks */,
 				6B960D2815B712F000064CC0 /* UIKit.framework in Frameworks */,
 				6B960D2A15B712F000064CC0 /* Foundation.framework in Frameworks */,
-				6B960D2C15B712F000064CC0 /* CoreGraphics.framework in Frameworks */,
+				6BEC926715DD91D70071B9F7 /* libdtdev.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B35252E1610B5F20092FDAD /* LoadShipment */ = {
+			isa = PBXGroup;
+			children = (
+				6B3525441610B8330092FDAD /* EWHLoadShipmentSelectShipmentController.h */,
+				6B3525421610B8150092FDAD /* EWHLoadShipmentSelectShipmentController.m */,
+				6B3525411610B7FE0092FDAD /* EWHLoadShipmentShipmentDetailsController.h */,
+				6B35253F1610B7E80092FDAD /* EWHLoadShipmentShipmentDetailsController.m */,
+				6B35253E1610B7D30092FDAD /* EWHLoadShipmentSelectLocationController.h */,
+				6B35253C1610B7BA0092FDAD /* EWHLoadShipmentSelectLocationController.m */,
+				6B35253B1610B79D0092FDAD /* EWHLoadShipmentScanContainerController.h */,
+				6B3525391610B7850092FDAD /* EWHLoadShipmentScanContainerController.m */,
+				6B3525381610B76B0092FDAD /* EWHLoadShipmentGetPartDetailsController.h */,
+				6B3525361610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m */,
+				6B3525351610B6BC0092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.h */,
+				6B3525331610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m */,
+			);
+			name = LoadShipment;
+			sourceTree = "<group>";
+		};
 		6B960D1815B712F000064CC0 = {
 			isa = PBXGroup;
 			children = (
+				6B325571160E08F800125BC1 /* CoreData.framework */,
+				6BEC926815DD99C70071B9F7 /* ExternalAccessory.framework */,
+				6BEC926215DD91B20071B9F7 /* Linea */,
+				6B98491A15B9F58300A1E2EB /* libz.dylib */,
+				6B98491815B9F56D00A1E2EB /* MobileCoreServices.framework */,
+				6B98491615B9F56200A1E2EB /* SystemConfiguration.framework */,
+				6B98491415B9F55600A1E2EB /* CFNetwork.framework */,
+				6B9848E615B9F4A700A1E2EB /* ASIHTTPRequest */,
+				6B98481515B9C9C200A1E2EB /* SBJson */,
 				6B960D2D15B712F000064CC0 /* eWarehouse */,
 				6B960D2615B712F000064CC0 /* Frameworks */,
 				6B960D2415B712F000064CC0 /* Products */,
@@ -59,7 +368,7 @@
 		6B960D2415B712F000064CC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B960D2315B712F000064CC0 /* eWarehouse.app */,
+				6B960D2315B712F000064CC0 /* eWarehouseApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -77,12 +386,16 @@
 		6B960D2D15B712F000064CC0 /* eWarehouse */ = {
 			isa = PBXGroup;
 			children = (
+				6BB01F461608B9940069213E /* Utils */,
+				6BB01F451608B9840069213E /* UI */,
+				6BB01F441608B9450069213E /* Classes */,
+				6BB01F411608B8E20069213E /* Controllers */,
+				6BB01F3E1608B7F50069213E /* Requests */,
+				6B9C214215B84DEC005CACD0 /* Resources */,
+				6B960D3915B712F000064CC0 /* MainStoryboard.storyboard */,
+				6B960D2E15B712F000064CC0 /* Supporting Files */,
 				6B960D3615B712F000064CC0 /* EWHAppDelegate.h */,
 				6B960D3715B712F000064CC0 /* EWHAppDelegate.m */,
-				6B960D3915B712F000064CC0 /* MainStoryboard.storyboard */,
-				6B960D3C15B712F000064CC0 /* EWHViewController.h */,
-				6B960D3D15B712F000064CC0 /* EWHViewController.m */,
-				6B960D2E15B712F000064CC0 /* Supporting Files */,
 			);
 			path = eWarehouse;
 			sourceTree = "<group>";
@@ -96,6 +409,280 @@
 				6B960D3515B712F000064CC0 /* eWarehouse-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6B98481515B9C9C200A1E2EB /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				6B98481615B9C9EF00A1E2EB /* NSObject+SBJson.h */,
+				6B98481715B9C9EF00A1E2EB /* NSObject+SBJson.m */,
+				6B98481815B9C9EF00A1E2EB /* SBJson.h */,
+				6B98481915B9C9EF00A1E2EB /* SBJsonParser.h */,
+				6B98481A15B9C9EF00A1E2EB /* SBJsonParser.m */,
+				6B98481B15B9C9EF00A1E2EB /* SBJsonStreamParser.h */,
+				6B98481C15B9C9EF00A1E2EB /* SBJsonStreamParser.m */,
+				6B98481D15B9C9EF00A1E2EB /* SBJsonStreamParserAccumulator.h */,
+				6B98481E15B9C9EF00A1E2EB /* SBJsonStreamParserAccumulator.m */,
+				6B98481F15B9C9EF00A1E2EB /* SBJsonStreamParserAdapter.h */,
+				6B98482015B9C9EF00A1E2EB /* SBJsonStreamParserAdapter.m */,
+				6B98482115B9C9EF00A1E2EB /* SBJsonStreamParserState.h */,
+				6B98482215B9C9EF00A1E2EB /* SBJsonStreamParserState.m */,
+				6B98482315B9C9EF00A1E2EB /* SBJsonStreamWriter.h */,
+				6B98482415B9C9EF00A1E2EB /* SBJsonStreamWriter.m */,
+				6B98482515B9C9EF00A1E2EB /* SBJsonStreamWriterAccumulator.h */,
+				6B98482615B9C9EF00A1E2EB /* SBJsonStreamWriterAccumulator.m */,
+				6B98482715B9C9EF00A1E2EB /* SBJsonStreamWriterState.h */,
+				6B98482815B9C9EF00A1E2EB /* SBJsonStreamWriterState.m */,
+				6B98482915B9C9EF00A1E2EB /* SBJsonTokeniser.h */,
+				6B98482A15B9C9EF00A1E2EB /* SBJsonTokeniser.m */,
+				6B98482B15B9C9EF00A1E2EB /* SBJsonUTF8Stream.h */,
+				6B98482C15B9C9EF00A1E2EB /* SBJsonUTF8Stream.m */,
+				6B98482D15B9C9EF00A1E2EB /* SBJsonWriter.h */,
+				6B98482E15B9C9EF00A1E2EB /* SBJsonWriter.m */,
+			);
+			name = SBJson;
+			sourceTree = "<group>";
+		};
+		6B9848E615B9F4A700A1E2EB /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				6B9848FB15B9F4E900A1E2EB /* Reachability */,
+				6B9848E715B9F4DB00A1E2EB /* ASIAuthenticationDialog.h */,
+				6B9848E815B9F4DB00A1E2EB /* ASIAuthenticationDialog.m */,
+				6B9848E915B9F4DB00A1E2EB /* ASICacheDelegate.h */,
+				6B9848EA15B9F4DB00A1E2EB /* ASIDataCompressor.h */,
+				6B9848EB15B9F4DB00A1E2EB /* ASIDataCompressor.m */,
+				6B9848EC15B9F4DB00A1E2EB /* ASIDataDecompressor.h */,
+				6B9848ED15B9F4DB00A1E2EB /* ASIDataDecompressor.m */,
+				6B9848EE15B9F4DB00A1E2EB /* ASIDownloadCache.h */,
+				6B9848EF15B9F4DB00A1E2EB /* ASIDownloadCache.m */,
+				6B9848F015B9F4DB00A1E2EB /* ASIFormDataRequest.h */,
+				6B9848F115B9F4DB00A1E2EB /* ASIFormDataRequest.m */,
+				6B9848F215B9F4DB00A1E2EB /* ASIHTTPRequest.h */,
+				6B9848F315B9F4DB00A1E2EB /* ASIHTTPRequest.m */,
+				6B9848F415B9F4DB00A1E2EB /* ASIHTTPRequestConfig.h */,
+				6B9848F515B9F4DB00A1E2EB /* ASIHTTPRequestDelegate.h */,
+				6B9848F615B9F4DB00A1E2EB /* ASIInputStream.h */,
+				6B9848F715B9F4DB00A1E2EB /* ASIInputStream.m */,
+				6B9848F815B9F4DB00A1E2EB /* ASINetworkQueue.h */,
+				6B9848F915B9F4DB00A1E2EB /* ASINetworkQueue.m */,
+				6B9848FA15B9F4DB00A1E2EB /* ASIProgressDelegate.h */,
+			);
+			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		6B9848FB15B9F4E900A1E2EB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				6B9848FC15B9F4E900A1E2EB /* Reachability.h */,
+				6B9848FD15B9F4E900A1E2EB /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		6B9C03F81610AE5D00C9AD0B /* LoadShipment */ = {
+			isa = PBXGroup;
+			children = (
+				6B9C03FA1610AEEE00C9AD0B /* EWHGetShipmentsForLoadingRequest.h */,
+				6B9C03FB1610AF0100C9AD0B /* EWHGetShipmentsForLoadingRequest.m */,
+				6B9C03FD1610AF2500C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.h */,
+				6B9C03FE1610AF4600C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.m */,
+				6B9C04001610AF6300C9AD0B /* EWHGetLocationsForLoadingRequest.h */,
+				6B9C04011610AF7B00C9AD0B /* EWHGetLocationsForLoadingRequest.m */,
+				6B9C04031610AF9E00C9AD0B /* EWHLoadContainerRequest.h */,
+				6B9C04041610AFB100C9AD0B /* EWHLoadContainerRequest.m */,
+				6B9C04061610AFD200C9AD0B /* EWHLoadItemRequest.h */,
+				6B9C04071610AFF200C9AD0B /* EWHLoadItemRequest.m */,
+				6B9C040B1610B05800C9AD0B /* EWHLoadSerializedItemRequest.h */,
+				6B35252B1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m */,
+			);
+			name = LoadShipment;
+			sourceTree = "<group>";
+		};
+		6B9C214215B84DEC005CACD0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6B9C214A15B854A6005CACD0 /* Default.png */,
+				6B9C214C15B854B4005CACD0 /* Default@2x.png */,
+				6B3525471610D7690092FDAD /* Default-568h@2x.png */,
+				6B9A91B415ED662500F20EEF /* logo.png */,
+				6B97135615EBB5160071BEE2 /* 0.png */,
+				6B97135715EBB5160071BEE2 /* 25.png */,
+				6B97135815EBB5160071BEE2 /* 50.png */,
+				6B97135915EBB5160071BEE2 /* 75.png */,
+				6B97135A15EBB5160071BEE2 /* 100.png */,
+				6B9C214815B85436005CACD0 /* icon.png */,
+				6B9B1E7E15F8E1E0003A8236 /* icon@2x.png */,
+				6B9C214415B84E72005CACD0 /* connected.png */,
+				6B9C214515B84E72005CACD0 /* disconnected.png */,
+				6B9695901613501700C35494 /* Localizable.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		6BB01F3E1608B7F50069213E /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				6B98480915B9C27C00A1E2EB /* EWHRequest.h */,
+				6B98480A15B9C27C00A1E2EB /* EWHRequest.m */,
+				6B98480C15B9C47A00A1E2EB /* EWHLoginRequest.h */,
+				6B98480D15B9C47A00A1E2EB /* EWHLoginRequest.m */,
+				6B96712415BE4A5C0081B46F /* EWHGetUserWarehouseListRequest.h */,
+				6B96712615BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m */,
+				6B9E5D7115E66DEA00065029 /* EWHIsWarehouseLocationValidRequest.h */,
+				6B9E5D7315E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m */,
+				6BB01F3F1608B8050069213E /* PutAway */,
+				6BB01F401608B8A00069213E /* PickShipment */,
+				6B9C03F81610AE5D00C9AD0B /* LoadShipment */,
+			);
+			name = Requests;
+			sourceTree = "<group>";
+		};
+		6BB01F3F1608B8050069213E /* PutAway */ = {
+			isa = PBXGroup;
+			children = (
+				6B98151215DC9ACC00BE1330 /* EWHGetWarehouseReceiptListRequest.h */,
+				6B98151315DC9AE200BE1330 /* EWHGetWarehouseReceiptListRequest.m */,
+				6B9E5D7915E684D400065029 /* EWHGetReceiptDetailsRequest.h */,
+				6B9E5D7A15E684F900065029 /* EWHGetReceiptDetailsRequest.m */,
+				6B9E5D8215E6B1AF00065029 /* EWHGetReceiptDetailByPartNumberRequest.h */,
+				6B9E5D8315E6B1E800065029 /* EWHGetReceiptDetailByPartNumberRequest.m */,
+				6BF6FC2A15E820350096521A /* EWHGetReceiptDetailByContainerScanRequest.h */,
+				6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */,
+				6BF6FC2715E81AE40096521A /* EWHPutAwayContainerRequest.h */,
+				6BF6FC2815E81AF90096521A /* EWHPutAwayContainerRequest.m */,
+				6BF6FC2D15E827E20096521A /* EWHPutAwayPartRequest.h */,
+				6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */,
+				6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */,
+				6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */,
+			);
+			name = PutAway;
+			sourceTree = "<group>";
+		};
+		6BB01F401608B8A00069213E /* PickShipment */ = {
+			isa = PBXGroup;
+			children = (
+				6B9F858E16021F7B00547AE2 /* EWHGetShipmentsForPickingRequest.h */,
+				6B9F859016021FA700547AE2 /* EWHGetShipmentsForPickingRequest.m */,
+				6BB01F4E1608C6EE0069213E /* EWHGetShipmentDetailsForPickingRequest.h */,
+				6BB01F4F1608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m */,
+				6BB01F571608DB0A0069213E /* EWHGetLocationsForPickingRequest.h */,
+				6BB01F581608DB1A0069213E /* EWHGetLocationsForPickingRequest.m */,
+				6B9DF87A160BA4F200529769 /* EWHPickContainerRequest.h */,
+				6B9DF87B160BA51000529769 /* EWHPickContainerRequest.m */,
+				6B9DF87D160BABFD00529769 /* EWHPickItemRequest.h */,
+				6B9DF87E160BAC1700529769 /* EWHPickItemRequest.m */,
+				6B97A303160CE7AA00E2BC08 /* EWHPickSerializedItemRequest.h */,
+				6B97A304160CE7BC00E2BC08 /* EWHPickSerializedItemRequest.m */,
+			);
+			name = PickShipment;
+			sourceTree = "<group>";
+		};
+		6BB01F411608B8E20069213E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B9C9FF615D49E7F001E1924 /* EWHRootViewController.h */,
+				6B9C9FF715D49E7F001E1924 /* EWHRootViewController.m */,
+				6B960D4615B7142200064CC0 /* EWHLoginController.h */,
+				6B960D4715B7142200064CC0 /* EWHLoginController.m */,
+				6BA7A95B15B8F23200953C6D /* EWHSelectWarehouseController.h */,
+				6BA7A95C15B8F24600953C6D /* EWHSelectWarehouseController.m */,
+				6BA0320515DC0A55008A7095 /* EWHSelectActionController.h */,
+				6BA0320615DC0A6A008A7095 /* EWHSelectActionController.m */,
+				6BB01F421608B8ED0069213E /* PutAway */,
+				6BB01F431608B9210069213E /* PickShipment */,
+				6B35252E1610B5F20092FDAD /* LoadShipment */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		6BB01F421608B8ED0069213E /* PutAway */ = {
+			isa = PBXGroup;
+			children = (
+				6B98150B15DC97A300BE1330 /* EWHSelectReceiptController.h */,
+				6B98150D15DC97BB00BE1330 /* EWHSelectReceiptController.m */,
+				6B6EE5C315E57E610028B3A4 /* EWHScanItemController.h */,
+				6B6EE5C515E57E730028B3A4 /* EWHScanItemController.m */,
+				6BAA7A3A15E7EF97001B66EB /* EWHPartDetailsController.h */,
+				6BAA7A3B15E7EFAE001B66EB /* EWHPartDetailsController.m */,
+				6BAA7A3D15E7EFCA001B66EB /* EWHSerializedPartDetailsController.h */,
+				6BAA7A3E15E7EFDA001B66EB /* EWHSerializedPartDetailsController.m */,
+				6B92065015DD592200605D7F /* EWHScanLocationController.h */,
+				6B92065115DD593700605D7F /* EWHScanLocationController.m */,
+			);
+			name = PutAway;
+			sourceTree = "<group>";
+		};
+		6BB01F431608B9210069213E /* PickShipment */ = {
+			isa = PBXGroup;
+			children = (
+				6B9F85921602220E00547AE2 /* EWHSelectShipmentController.h */,
+				6B9F85931602223300547AE2 /* EWHSelectShipmentController.m */,
+				6BB01F4A1608C0100069213E /* EWHShipmentDetailsController.h */,
+				6BB01F481608BFDE0069213E /* EWHShipmentDetailsController.m */,
+				6BB01F511608D7880069213E /* EWHSelectLocationController.h */,
+				6BB01F521608D79D0069213E /* EWHSelectLocationController.m */,
+				6BA1C00E160A72BB00874564 /* EWHScanContainerController.h */,
+				6BA1C012160A72F300874564 /* EWHScanContainerController.m */,
+				6B97A2FD160CD3E400E2BC08 /* EWHGetPartDetailsController.h */,
+				6B97A2FE160CD3FE00E2BC08 /* EWHGetPartDetailsController.m */,
+				6B97A300160CE3D300E2BC08 /* EWHGetSerializedPartDetailsController.h */,
+				6B97A301160CE3E600E2BC08 /* EWHGetSerializedPartDetailsController.m */,
+				6B9DF876160B9E1900529769 /* EWHPickShipmentScanLocationController.h */,
+				6B9DF878160B9E2F00529769 /* EWHPickShipmentScanLocationController.m */,
+			);
+			name = PickShipment;
+			sourceTree = "<group>";
+		};
+		6BB01F441608B9450069213E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6B98480F15B9C4EC00A1E2EB /* EWHUser.h */,
+				6B98481015B9C4EC00A1E2EB /* EWHUser.m */,
+				6B9B1E8015F92E4B003A8236 /* EWHResponse.h */,
+				6B9B1E8115F92E60003A8236 /* EWHResponse.m */,
+				6B96712815BE4BC20081B46F /* EWHWarehouse.h */,
+				6B96712915BE4BD40081B46F /* EWHWarehouse.m */,
+				6BB01F541608D8FC0069213E /* EWHLocation.h */,
+				6BB01F551608D90D0069213E /* EWHLocation.m */,
+				6B98151115DC9A6200BE1330 /* EWHReceipt.h */,
+				6B98151515DCA1E800BE1330 /* EWHReceipt.m */,
+				6B9E5D7C15E68F2100065029 /* EWHReceiptDetail.h */,
+				6B9E5D7D15E68F2D00065029 /* EWHReceiptDetail.m */,
+				6B9F8595160223A100547AE2 /* EWHShipment.h */,
+				6B9F8596160223B100547AE2 /* EWHShipment.m */,
+				6BB01F4B1608C39E0069213E /* EWHShipmentDetail.h */,
+				6BB01F4C1608C3AA0069213E /* EWHShipmentDetail.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		6BB01F451608B9840069213E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				6B9B1E8315F941F0003A8236 /* EWHQuantityTextField.h */,
+				6B9B1E8415F94207003A8236 /* EWHQuantityTextField.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		6BB01F461608B9940069213E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6B92064C15DD55E100605D7F /* EWHUtils.h */,
+				6B92064D15DD55E100605D7F /* EWHUtils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		6BEC926215DD91B20071B9F7 /* Linea */ = {
+			isa = PBXGroup;
+			children = (
+				6BEC926415DD91D70071B9F7 /* libdtdev.a */,
+				6BEC926515DD91D70071B9F7 /* LineaSDK.h */,
+				6BEC926615DD91D70071B9F7 /* PrinterSDK.h */,
+			);
+			name = Linea;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,7 +702,7 @@
 			);
 			name = eWarehouse;
 			productName = eWarehouse;
-			productReference = 6B960D2315B712F000064CC0 /* eWarehouse.app */;
+			productReference = 6B960D2315B712F000064CC0 /* eWarehouseApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -151,6 +738,20 @@
 			files = (
 				6B960D3215B712F000064CC0 /* InfoPlist.strings in Resources */,
 				6B960D3B15B712F000064CC0 /* MainStoryboard.storyboard in Resources */,
+				6B9C214615B84E72005CACD0 /* connected.png in Resources */,
+				6B9C214715B84E72005CACD0 /* disconnected.png in Resources */,
+				6B9C214915B85436005CACD0 /* icon.png in Resources */,
+				6B9C214B15B854A6005CACD0 /* Default.png in Resources */,
+				6B9C214D15B854B4005CACD0 /* Default@2x.png in Resources */,
+				6B97135B15EBB5160071BEE2 /* 0.png in Resources */,
+				6B97135C15EBB5160071BEE2 /* 25.png in Resources */,
+				6B97135D15EBB5160071BEE2 /* 50.png in Resources */,
+				6B97135E15EBB5160071BEE2 /* 75.png in Resources */,
+				6B97135F15EBB5160071BEE2 /* 100.png in Resources */,
+				6B9A91B515ED662500F20EEF /* logo.png in Resources */,
+				6B9B1E7F15F8E1E0003A8236 /* icon@2x.png in Resources */,
+				6B3525481610D76A0092FDAD /* Default-568h@2x.png in Resources */,
+				6B9695911613501700C35494 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,9 +762,84 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B98490115B9F51400A1E2EB /* ASIAuthenticationDialog.m in Sources */,
+				6B98490415B9F51400A1E2EB /* ASIDataCompressor.m in Sources */,
+				6B98490615B9F51400A1E2EB /* ASIDataDecompressor.m in Sources */,
+				6B98490815B9F51400A1E2EB /* ASIDownloadCache.m in Sources */,
+				6B98490A15B9F51400A1E2EB /* ASIFormDataRequest.m in Sources */,
+				6B98490C15B9F51400A1E2EB /* ASIHTTPRequest.m in Sources */,
+				6B98491015B9F51400A1E2EB /* ASIInputStream.m in Sources */,
+				6B98491215B9F51400A1E2EB /* ASINetworkQueue.m in Sources */,
+				6B9848BF15B9EAE000A1E2EB /* NSObject+SBJson.m in Sources */,
+				6B9848C215B9EAE000A1E2EB /* SBJsonParser.m in Sources */,
+				6B9848C415B9EAE000A1E2EB /* SBJsonStreamParser.m in Sources */,
+				6B9848C615B9EAE000A1E2EB /* SBJsonStreamParserAccumulator.m in Sources */,
+				6B9848C815B9EAE000A1E2EB /* SBJsonStreamParserAdapter.m in Sources */,
+				6B9848CA15B9EAE000A1E2EB /* SBJsonStreamParserState.m in Sources */,
+				6B9848CC15B9EAE000A1E2EB /* SBJsonStreamWriter.m in Sources */,
+				6B9848CE15B9EAE000A1E2EB /* SBJsonStreamWriterAccumulator.m in Sources */,
+				6B9848D015B9EAE000A1E2EB /* SBJsonStreamWriterState.m in Sources */,
+				6B9848D215B9EAE000A1E2EB /* SBJsonTokeniser.m in Sources */,
+				6B9848D415B9EAE000A1E2EB /* SBJsonUTF8Stream.m in Sources */,
+				6B9848D615B9EAE000A1E2EB /* SBJsonWriter.m in Sources */,
 				6B960D3415B712F000064CC0 /* main.m in Sources */,
 				6B960D3815B712F000064CC0 /* EWHAppDelegate.m in Sources */,
-				6B960D3E15B712F000064CC0 /* EWHViewController.m in Sources */,
+				6B98480E15B9C47A00A1E2EB /* EWHLoginRequest.m in Sources */,
+				6B960D4815B7142200064CC0 /* EWHLoginController.m in Sources */,
+				6BA7A95D15B8F24600953C6D /* EWHSelectWarehouseController.m in Sources */,
+				6B98480B15B9C27C00A1E2EB /* EWHRequest.m in Sources */,
+				6B98481115B9C4EC00A1E2EB /* EWHUser.m in Sources */,
+				6B9848FE15B9F4E900A1E2EB /* Reachability.m in Sources */,
+				6B96712715BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m in Sources */,
+				6B96712A15BE4BD40081B46F /* EWHWarehouse.m in Sources */,
+				6B9C9FF815D49E7F001E1924 /* EWHRootViewController.m in Sources */,
+				6BA0320715DC0A6A008A7095 /* EWHSelectActionController.m in Sources */,
+				6B98150E15DC97BB00BE1330 /* EWHSelectReceiptController.m in Sources */,
+				6B98151415DC9AE200BE1330 /* EWHGetWarehouseReceiptListRequest.m in Sources */,
+				6B98151615DCA1E800BE1330 /* EWHReceipt.m in Sources */,
+				6B92064E15DD55E100605D7F /* EWHUtils.m in Sources */,
+				6B92065215DD593700605D7F /* EWHScanLocationController.m in Sources */,
+				6B6EE5C615E57E730028B3A4 /* EWHScanItemController.m in Sources */,
+				6B9E5D7415E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m in Sources */,
+				6B9E5D7B15E684F900065029 /* EWHGetReceiptDetailsRequest.m in Sources */,
+				6B9E5D7E15E68F2E00065029 /* EWHReceiptDetail.m in Sources */,
+				6B9E5D8415E6B1E900065029 /* EWHGetReceiptDetailByPartNumberRequest.m in Sources */,
+				6BAA7A3C15E7EFAE001B66EB /* EWHPartDetailsController.m in Sources */,
+				6BAA7A3F15E7EFDB001B66EB /* EWHSerializedPartDetailsController.m in Sources */,
+				6BF6FC2915E81AF90096521A /* EWHPutAwayContainerRequest.m in Sources */,
+				6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */,
+				6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */,
+				6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */,
+				6B9B1E8215F92E60003A8236 /* EWHResponse.m in Sources */,
+				6B9B1E8515F94208003A8236 /* EWHQuantityTextField.m in Sources */,
+				6B9F859116021FA800547AE2 /* EWHGetShipmentsForPickingRequest.m in Sources */,
+				6B9F85941602223300547AE2 /* EWHSelectShipmentController.m in Sources */,
+				6B9F8597160223B100547AE2 /* EWHShipment.m in Sources */,
+				6BB01F491608BFDE0069213E /* EWHShipmentDetailsController.m in Sources */,
+				6BB01F4D1608C3AA0069213E /* EWHShipmentDetail.m in Sources */,
+				6BB01F501608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m in Sources */,
+				6BB01F531608D79D0069213E /* EWHSelectLocationController.m in Sources */,
+				6BB01F561608D90D0069213E /* EWHLocation.m in Sources */,
+				6BB01F591608DB1A0069213E /* EWHGetLocationsForPickingRequest.m in Sources */,
+				6BA1C013160A72F300874564 /* EWHScanContainerController.m in Sources */,
+				6B9DF879160B9E2F00529769 /* EWHPickShipmentScanLocationController.m in Sources */,
+				6B9DF87C160BA51000529769 /* EWHPickContainerRequest.m in Sources */,
+				6B9DF87F160BAC1700529769 /* EWHPickItemRequest.m in Sources */,
+				6B97A2FF160CD3FE00E2BC08 /* EWHGetPartDetailsController.m in Sources */,
+				6B97A302160CE3E700E2BC08 /* EWHGetSerializedPartDetailsController.m in Sources */,
+				6B97A305160CE7BC00E2BC08 /* EWHPickSerializedItemRequest.m in Sources */,
+				6B9C03FC1610AF0100C9AD0B /* EWHGetShipmentsForLoadingRequest.m in Sources */,
+				6B9C03FF1610AF4600C9AD0B /* EWHGetShipmentDetailsForLoadingRequest.m in Sources */,
+				6B9C04021610AF7B00C9AD0B /* EWHGetLocationsForLoadingRequest.m in Sources */,
+				6B9C04051610AFB100C9AD0B /* EWHLoadContainerRequest.m in Sources */,
+				6B9C04081610AFF200C9AD0B /* EWHLoadItemRequest.m in Sources */,
+				6B35252C1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m in Sources */,
+				6B3525341610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m in Sources */,
+				6B3525371610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m in Sources */,
+				6B35253A1610B7860092FDAD /* EWHLoadShipmentScanContainerController.m in Sources */,
+				6B35253D1610B7BB0092FDAD /* EWHLoadShipmentSelectLocationController.m in Sources */,
+				6B3525401610B7E90092FDAD /* EWHLoadShipmentShipmentDetailsController.m in Sources */,
+				6B3525431610B8150092FDAD /* EWHLoadShipmentSelectShipmentController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +871,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Torkelson (927GXW362P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Torkelson (927GXW362P)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -210,6 +887,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				PROVISIONING_PROFILE = "976440D7-24D2-4EF2-9B69-A45397720337";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "976440D7-24D2-4EF2-9B69-A45397720337";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -220,7 +899,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Torkelson (927GXW362P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Torkelson (927GXW362P)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -229,6 +909,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "976440D7-24D2-4EF2-9B69-A45397720337";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "976440D7-24D2-4EF2-9B69-A45397720337";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -237,10 +919,23 @@
 		6B960D4215B712F000064CC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Torkelson (927GXW362P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Torkelson (927GXW362P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = eWarehouseApp;
+				PROVISIONING_PROFILE = "976440D7-24D2-4EF2-9B69-A45397720337";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "976440D7-24D2-4EF2-9B69-A45397720337";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -248,10 +943,22 @@
 		6B960D4315B712F000064CC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Brian Torkelson (927GXW362P)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Brian Torkelson (927GXW362P)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				PRODUCT_NAME = eWarehouseApp;
+				PROVISIONING_PROFILE = "976440D7-24D2-4EF2-9B69-A45397720337";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "976440D7-24D2-4EF2-9B69-A45397720337";
+				TARGETED_DEVICE_FAMILY = 1;
+				VALID_ARCHS = armv7;
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -275,6 +982,7 @@
 				6B960D4315B712F000064CC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
