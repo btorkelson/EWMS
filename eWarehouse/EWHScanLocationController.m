@@ -19,6 +19,12 @@
 @synthesize quantity;
 @synthesize warehouse;
 
+
+
+
+
+
+
 EWHRootViewController *rootController;
 Linea *linea;
 NSString *location;

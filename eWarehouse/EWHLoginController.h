@@ -11,9 +11,9 @@
 #import "EWHLoginRequest.h"
 #import "EWHGetUserWarehouseListRequest.h"
 #import "EWHSelectWarehouseController.h"
+#import "LineaSDK.h"
 
-@interface EWHLoginController : UIViewController
-{
+@interface EWHLoginController : UIViewController <LineaDelegate>{
    
 }
 - (void) clearForm;

@@ -111,6 +111,8 @@
 		6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */; };
 		6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */; };
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
+		D395D10316C56C7900C6F750 /* LineaSDK.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D395D10116C56C7800C6F750 /* LineaSDK.h */; };
+		D395D10416C56C7900C6F750 /* PrinterSDK.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D395D10216C56C7800C6F750 /* PrinterSDK.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,8 +296,6 @@
 		6BB01F571608DB0A0069213E /* EWHGetLocationsForPickingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetLocationsForPickingRequest.h; sourceTree = "<group>"; };
 		6BB01F581608DB1A0069213E /* EWHGetLocationsForPickingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetLocationsForPickingRequest.m; sourceTree = "<group>"; };
 		6BEC926415DD91D70071B9F7 /* libdtdev.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libdtdev.a; sourceTree = "<group>"; };
-		6BEC926515DD91D70071B9F7 /* LineaSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineaSDK.h; sourceTree = "<group>"; };
-		6BEC926615DD91D70071B9F7 /* PrinterSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrinterSDK.h; sourceTree = "<group>"; };
 		6BEC926815DD99C70071B9F7 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		6BF6FC2715E81AE40096521A /* EWHPutAwayContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwayContainerRequest.h; sourceTree = "<group>"; };
 		6BF6FC2815E81AF90096521A /* EWHPutAwayContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayContainerRequest.m; sourceTree = "<group>"; };
@@ -305,6 +305,8 @@
 		6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayPartRequest.m; sourceTree = "<group>"; };
 		6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwaySerializedPartRequest.h; sourceTree = "<group>"; };
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
+		D395D10116C56C7800C6F750 /* LineaSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LineaSDK.h; path = "../../../brian/Downloads/DTDevices-iOS_2012-11-08_v1-1.73_XCode45/Library/LineaSDK.h"; sourceTree = "<group>"; };
+		D395D10216C56C7800C6F750 /* PrinterSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrinterSDK.h; path = "../../../brian/Downloads/DTDevices-iOS_2012-11-08_v1-1.73_XCode45/Library/PrinterSDK.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D395D10316C56C7900C6F750 /* LineaSDK.h in Frameworks */,
+				D395D10416C56C7900C6F750 /* PrinterSDK.h in Frameworks */,
 				6B325572160E08F800125BC1 /* CoreData.framework in Frameworks */,
 				6BEC926915DD99C70071B9F7 /* ExternalAccessory.framework in Frameworks */,
 				6B98491B15B9F58300A1E2EB /* libz.dylib in Frameworks */,
@@ -678,9 +682,9 @@
 		6BEC926215DD91B20071B9F7 /* Linea */ = {
 			isa = PBXGroup;
 			children = (
+				D395D10116C56C7800C6F750 /* LineaSDK.h */,
+				D395D10216C56C7800C6F750 /* PrinterSDK.h */,
 				6BEC926415DD91D70071B9F7 /* libdtdev.a */,
-				6BEC926515DD91D70071B9F7 /* LineaSDK.h */,
-				6BEC926615DD91D70071B9F7 /* PrinterSDK.h */,
 			);
 			name = Linea;
 			sourceTree = "<group>";
@@ -924,7 +928,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -948,7 +952,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

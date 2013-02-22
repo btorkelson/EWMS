@@ -14,6 +14,7 @@
     IBOutlet UITextField* username;
     IBOutlet UITextField* password;
     IBOutlet UIButton* btnSignIn;
+    IBOutlet UIButton *btnScanUserName;
 }
 
 EWHRootViewController *rootController;
@@ -21,6 +22,7 @@ EWHRootViewController *rootController;
 BOOL isAuthenticated;
 BOOL keyboardVisible;
 CGPoint offset;
+Linea *linea;
 
 //@synthesize rootController;
 
@@ -55,9 +57,25 @@ CGPoint offset;
 //    [username setText:@"zkisiel@cswsolutions.com"];
 //    [password setText:@"123456"];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    linea=[Linea sharedDevice];
+	[linea connect];
+	[linea addDelegate:self];
+	//update display according to current linea state
+	[self connectionState:linea.connstate];
+
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+	[linea removeDelegate:self];
+    [linea disconnect];
+    linea = nil;
+}
+
+
 - (void)viewDidUnload {
+    btnScanUserName = nil;
     // unregister for keyboard notifications while not visible.
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardDidShowNotification
@@ -193,6 +211,106 @@ CGPoint offset;
         selectWarehouseController.warehouses = sender;
     }
     
+}
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+- (IBAction)scanUserNameDown:(id)sender {
+    NSError *error = nil;
+	[linea startScan:&error];
+    if(error != nil)
+        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+}
+
+- (IBAction)scanUserNameUp:(id)sender {
+     [self stopScan];
+}
+
+
+
+-(void) stopScan{
+    NSError *error = nil;
+    int scanMode;
+    
+    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
+        [linea stopScan:&error];
+    if(error != nil)
+        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+}
+
+-(void)connectionState:(int)state {
+	switch (state) {
+		case CONN_DISCONNECTED:
+		case CONN_CONNECTING:
+            //[btnScanUserName setHidden:true];
+            //[scannerMsg setHidden:false];
+            //[voltageLabel setHidden:true];
+            //[battery setHidden:true];
+			break;
+		case CONN_CONNECTED:
+            //[btnScanUserName setHidden:false];
+            //[scannerMsg setHidden:true];
+            //[self updateBattery];
+            ////Z - remove in production
+            ////            [linea setScanBeep:false volume:0 beepData:nil length:0];
+			break;
+	}
+}
+
+-(void)barcodeData:(NSString *)barcode isotype:(NSString *)isotype
+{
+
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+
+    username.text=barcode;
+        [password becomeFirstResponder];
+    
+}
+    [self updateBattery];
+}
+
+-(void)barcodeData:(NSString *)barcode type:(int)type {
+
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        username.text=barcode;
+        [password becomeFirstResponder];
+    }
+    [self updateBattery];
+}
+
+-(void)updateBattery
+{
+    NSError *error=nil;
+    
+    int percent;
+    float voltage;
+    
+	if([linea getBatteryCapacity:&percent voltage:&voltage error:&error])
+    {
+        //        [voltageLabel setText:[NSString stringWithFormat:@"%d%%,%.1fv",percent,voltage]];
+       /* 
+        [voltageLabel setText:[NSString stringWithFormat:@"%d%%",percent]];
+        [battery setHidden:FALSE];
+        [voltageLabel setHidden:FALSE];
+        if(percent<0.1)
+            [battery setImage:[UIImage imageNamed:@"0.png"]];
+        else if(percent<40)
+            [battery setImage:[UIImage imageNamed:@"25.png"]];
+        else if(percent<60)
+            [battery setImage:[UIImage imageNamed:@"50.png"]];
+        else if(percent<80)
+            [battery setImage:[UIImage imageNamed:@"75.png"]];
+        else
+            [battery setImage:[UIImage imageNamed:@"100.png"]];
+        */
+        }else
+    {
+        /*[battery setHidden:TRUE];
+        [voltageLabel setHidden:TRUE];*/
+    }
 }
 
 @end
