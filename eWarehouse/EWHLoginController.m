@@ -170,9 +170,14 @@ Linea *linea;
 {
     if(user != nil){
         if(user.UserId > 0){
+            if(user.Message) {
+                [rootController hideLoading];
+                [rootController displayAlert:user.Message withTitle:@"Sign In"];
+            } else {
             rootController.user = user;
             EWHGetUserWarehouseListRequest *request = [[EWHGetUserWarehouseListRequest alloc] initWithCallbacks:self callback:@selector(getWarehouseListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
             [request getUserWarehouseListRequest:user.UserId withAuthHash:user.AuthHash];
+            }
         }
         else{
             [rootController hideLoading];

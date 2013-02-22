@@ -23,7 +23,18 @@
 
 - (EWHRequest *)init {
     //baseURL = @"https://66.29.195.53/BOLayer.svc"; //PROD
-    baseURL = @"https://66.29.195.99/BOLayer.svc";//TEST
+//    baseURL = @"https://66.29.195.99/BOLayer.svc";//TEST
+    
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString *stringObject = [defaults objectForKey:@"server"];
+    baseURL = stringObject;
+    
+
+//    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:@"https://66.29.195.44/BOLayer.svc", @"server",                                 nil];
+//    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+    
     
     return [super init];
 }

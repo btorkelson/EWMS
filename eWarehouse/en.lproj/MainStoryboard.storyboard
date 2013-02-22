@@ -1921,12 +1921,6 @@
         <class className="EWHGetPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHGetPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="nextPressed:"/>
-                <relationship kind="action" name="quantityChanged:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="lblProgramName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblQuantity" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblReceivedDate" candidateClass="UILabel"/>
@@ -1939,9 +1933,6 @@
         <class className="EWHGetSerializedPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHGetSerializedPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="nextPressed:"/>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="btnScanSerialNumber" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
             </relationships>
@@ -1949,12 +1940,6 @@
         <class className="EWHLoadShipmentGetPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentGetPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="loadPressed:"/>
-                <relationship kind="action" name="quantityChanged:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="lblProgramName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblQuantity" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblReceivedDate" candidateClass="UILabel"/>
@@ -1967,9 +1952,6 @@
         <class className="EWHLoadShipmentGetSerializedPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentGetSerializedPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="loadPressed:"/>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="btnScanSerialNumber" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
             </relationships>
@@ -1977,8 +1959,6 @@
         <class className="EWHLoadShipmentScanContainerController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentScanContainerController.h"/>
             <relationships>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="battery" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnScanItem" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
@@ -1987,44 +1967,19 @@
         </class>
         <class className="EWHLoadShipmentSelectLocationController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentSelectLocationController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHLoadShipmentSelectShipmentController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentSelectShipmentController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHLoadShipmentShipmentDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoadShipmentShipmentDetailsController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHLoginController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHLoginController.h"/>
-            <relationships>
-                <relationship kind="action" name="scanUserNameDown:"/>
-                <relationship kind="action" name="scanUserNameUp:"/>
-                <relationship kind="action" name="signIn:"/>
-                <relationship kind="outlet" name="btnScanUserName" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="btnSignIn" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
         </class>
         <class className="EWHPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="backgroundTap:"/>
-                <relationship kind="action" name="nextPressed:"/>
-                <relationship kind="action" name="quantityChanged:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidBegin:" candidateClass="UITextField"/>
-                <relationship kind="action" name="quantityEditingDidEnd:" candidateClass="UITextField"/>
-                <relationship kind="action" name="stepperValueChanged:" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="lblPartNumber" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblQuantity" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblReceiptNumber" candidateClass="UILabel"/>
@@ -2035,8 +1990,6 @@
         <class className="EWHPickShipmentScanLocationController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHPickShipmentScanLocationController.h"/>
             <relationships>
-                <relationship kind="action" name="scanLocationDown:"/>
-                <relationship kind="action" name="scanLocationUp:"/>
                 <relationship kind="outlet" name="battery" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnScanLocation" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
@@ -2052,8 +2005,6 @@
         <class className="EWHScanContainerController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHScanContainerController.h"/>
             <relationships>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="battery" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnScanItem" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
@@ -2063,8 +2014,6 @@
         <class className="EWHScanItemController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHScanItemController.h"/>
             <relationships>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="battery" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnScanItem" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
@@ -2085,30 +2034,17 @@
         <class className="EWHSelectActionController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSelectActionController.h"/>
             <relationships>
-                <relationship kind="action" name="cycleCountPressed:"/>
-                <relationship kind="action" name="loadShipmentPressed:"/>
-                <relationship kind="action" name="pickShipmentPressed:"/>
-                <relationship kind="action" name="putAwayPressed:"/>
                 <relationship kind="action" name="signOut:"/>
             </relationships>
         </class>
         <class className="EWHSelectLocationController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSelectLocationController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHSelectReceiptController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSelectReceiptController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHSelectShipmentController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSelectShipmentController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
         <class className="EWHSelectWarehouseController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSelectWarehouseController.h"/>
@@ -2119,18 +2055,12 @@
         <class className="EWHSerializedPartDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHSerializedPartDetailsController.h"/>
             <relationships>
-                <relationship kind="action" name="nextPressed:"/>
-                <relationship kind="action" name="scanItemDown:"/>
-                <relationship kind="action" name="scanItemUp:"/>
                 <relationship kind="outlet" name="btnScanSerialNumber" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="scannerMsg" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="EWHShipmentDetailsController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/EWHShipmentDetailsController.h"/>
-            <relationships>
-                <relationship kind="action" name="refreshPressed:"/>
-            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -111,6 +111,7 @@
 		6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */; };
 		6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */; };
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
+		D345BDC716D7FA1C006B12B9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D345BDC616D7FA1C006B12B9 /* Settings.bundle */; };
 		D395D10316C56C7900C6F750 /* LineaSDK.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D395D10116C56C7800C6F750 /* LineaSDK.h */; };
 		D395D10416C56C7900C6F750 /* PrinterSDK.h in Frameworks */ = {isa = PBXBuildFile; fileRef = D395D10216C56C7800C6F750 /* PrinterSDK.h */; };
 /* End PBXBuildFile section */
@@ -305,6 +306,7 @@
 		6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayPartRequest.m; sourceTree = "<group>"; };
 		6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwaySerializedPartRequest.h; sourceTree = "<group>"; };
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
+		D345BDC616D7FA1C006B12B9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		D395D10116C56C7800C6F750 /* LineaSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LineaSDK.h; path = "../../../brian/Downloads/DTDevices-iOS_2012-11-08_v1-1.73_XCode45/Library/LineaSDK.h"; sourceTree = "<group>"; };
 		D395D10216C56C7800C6F750 /* PrinterSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrinterSDK.h; path = "../../../brian/Downloads/DTDevices-iOS_2012-11-08_v1-1.73_XCode45/Library/PrinterSDK.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -407,6 +409,7 @@
 		6B960D2E15B712F000064CC0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D345BDC616D7FA1C006B12B9 /* Settings.bundle */,
 				6B960D2F15B712F000064CC0 /* eWarehouse-Info.plist */,
 				6B960D3015B712F000064CC0 /* InfoPlist.strings */,
 				6B960D3315B712F000064CC0 /* main.m */,
@@ -756,6 +759,7 @@
 				6B9B1E7F15F8E1E0003A8236 /* icon@2x.png in Resources */,
 				6B3525481610D76A0092FDAD /* Default-568h@2x.png in Resources */,
 				6B9695911613501700C35494 /* Localizable.strings in Resources */,
+				D345BDC716D7FA1C006B12B9 /* Settings.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
