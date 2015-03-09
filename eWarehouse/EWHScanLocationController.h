@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LineaSDK.h"
+#import "DTDevices.h"
 #import "EWHRootViewController.h"
 #import "EWHReceipt.h"
 #import "EWHReceiptDetail.h"
@@ -15,7 +15,7 @@
 #import "EWHScanItemController.h"
 #import "EWHIsWarehouseLocationValidRequest.h"
 
-@interface EWHScanLocationController : UITableViewController <LineaDelegate>
+@interface EWHScanLocationController : UITableViewController <DTDeviceDelegate>
 {
     IBOutlet UIButton* btnScanLocation;
     IBOutlet UILabel *scannerMsg;

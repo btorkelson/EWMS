@@ -23,8 +23,7 @@ EWHRootViewController *rootController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    [self.navigationItem setHidesBackButton:YES];
-    rootController = (EWHRootViewController *)self.navigationController;
+    [self.navigationItem setHidesBackButton:YES];	
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation

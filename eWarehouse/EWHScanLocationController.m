@@ -26,7 +26,7 @@
 
 
 EWHRootViewController *rootController;
-Linea *linea;
+DTDevices *linea;
 NSString *location;
 
 - (void)viewDidLoad {
@@ -40,7 +40,7 @@ NSString *location;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    linea=[Linea sharedDevice];
+    linea=[DTDevices sharedDevice];
 	[linea connect];
 	[linea addDelegate:self];
 	//update display according to current linea state

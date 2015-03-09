@@ -16,17 +16,75 @@
 @synthesize Message;
 @synthesize ReceivedDate;
 @synthesize isContainer;
+@synthesize WarehouseId;
+@synthesize ProgramId;
+@synthesize ProjectId;
+@synthesize ProjectNumber;
+@synthesize ProjectSequenceNumber;
+@synthesize CarrierInfoId;
+@synthesize CarrierId;
+@synthesize CarrierTrackingNumber;
+@synthesize VendorInfoId;
+@synthesize VendorId;
+@synthesize VendorInvoiceNumber;
+@synthesize OriginId;
+@synthesize DestinationId;
+@synthesize ShippingMethod;
+@synthesize VendorName;
+@synthesize CarrierName;
+@synthesize OriginName;
+@synthesize DestinationName;
+@synthesize ShipMethodName;
+@synthesize InventoryTypeId;
+@synthesize PromptInventoryType;
+@synthesize ScanPartNumber;
+
+
+
 
 - (EWHReceipt *)initWithDictionary:(NSDictionary *)dictionary {
+    if (self = [self init]) {
     ReceiptId = [[dictionary objectForKey:@"ReceiptId"] intValue];
-    ReceiptNumber = [[NSString alloc] initWithString:[dictionary objectForKey:@"ReceiptNumber"]];
-    ProgramName = [[NSString alloc] initWithString:[dictionary objectForKey:@"ProgramName"]];
-    ReceivedDate = [EWHUtils mfDateFromDotNetJSONString:[dictionary objectForKey:@"ReceivedDate"]];
+    ReceiptNumber = [dictionary objectForKey:@"ReceiptNumber"];
+        ProgramName =[dictionary objectForKey:@"ProgramName"];
+//        ReceivedDate = [EWHUtils mfDateFromDotNetJSONString:[dictionary objectForKey:@"ReceivedDate"]];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        formatter.dateFormat = @"MM/dd/yyyy hh:mm:ss a";
+        
+//        ReceivedDate = [formatter dateFromString:@"1/23/2015 4:22:33"];
+        ReceivedDate = [formatter dateFromString:[dictionary objectForKey:@"ReceivedDate"]];
     isContainer = [[dictionary objectForKey:@"isContainer"] boolValue];
-//    NSString *msg = [dictionary objectForKey:@"Message"];
-//    if(msg != nil){
-//        Message = [[NSString alloc] initWithString:msg];
-//    }
-    return [super init];
+    WarehouseId = [[dictionary objectForKey:@"WarehouseId"] intValue];
+    ProgramId = [[dictionary objectForKey:@"ProgramId"] intValue];
+    ProjectId = [[dictionary objectForKey:@"ProjectId"] intValue];
+    ProjectNumber =[dictionary objectForKey:@"ProjectNumber"];
+    CarrierInfoId = [[dictionary objectForKey:@"CarrierInfoId"] intValue];
+    CarrierId = [[dictionary objectForKey:@"CarrierId"] intValue];
+    CarrierTrackingNumber = [dictionary objectForKey:@"CarrierTrackingNumber"];
+    VendorInfoId = [[dictionary objectForKey:@"VendorInfoId"] intValue];
+    VendorId = [[dictionary objectForKey:@"VendorId"] intValue];
+    VendorInvoiceNumber = [dictionary objectForKey:@"VendorInvoiceNumber"];
+    OriginId = [[dictionary objectForKey:@"OriginId"] intValue];
+    DestinationId  = [[dictionary objectForKey:@"DestinationId"] intValue];
+    ShippingMethod  = [[dictionary objectForKey:@"ShippingMethod"] intValue];
+    DeliveryDateTime = [EWHUtils mfDateFromDotNetJSONString:[dictionary objectForKey:@"DeliveryDateTime"]];
+    VendorName = [dictionary objectForKey:@"VendorName"];
+    CarrierName = [dictionary objectForKey:@"CarrierName"];
+    OriginName = [dictionary objectForKey:@"OriginName"];
+    DestinationName = [dictionary objectForKey:@"DestinationName"];
+        ShipMethodName = [dictionary objectForKey:@"ShipMethodName"];
+        InventoryTypeId  = [[dictionary objectForKey:@"InventoryTypeId"] intValue];
+        PromptInventoryType = [[dictionary objectForKey:@"PromptInventoryType"] boolValue];
+        ScanPartNumber  = [[dictionary objectForKey:@"ScanPartNumber"] intValue];    }
+return self;
+    //return [super init];
+}
+
+- (EWHReceipt *) init {
+    VendorInvoiceNumber = @"";
+    ProjectNumber = nil;
+    CarrierId = nil;
+    CarrierName = nil;
+    return self;
 }
 @end

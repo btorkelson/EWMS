@@ -8,28 +8,53 @@
  @{
  */
 
-//#define LINEA_NO_EXCEPTIONS
+#define LINEA_NO_EXCEPTIONS
 
+//backward compatibility defines
 #define buttonPressed lineaButtonPressed
 #define buttonReleased lineaButtonReleased
 #define btmSetEnabled btSetEnabled
+
 #define btmGetEnabled btGetEnabled
 #define btmWrite btWrite
 #define btmRead btRead
 #define btmReadLine btReadLine
-#define btGetLocalName btGetLocalName
+#define btmGetLocalName btGetLocalName
 #define prnDiscoverPrinters btDiscoverPrinters
 #define prnDiscoverPrintersInBackground btDiscoverPrintersInBackground
 
 #define barcodeEngineSetInitString barcodeOpticonSetInitString
-#define barcodeEngineGetInitString barcodeOpticonGetInitString
+
+#define msStartScan msEnable
+#define msStopScan msDisable
+#define setMSCardDataMode msSetCardDataMode
+#define getMSCardDataMode msGetCardDataMode
+#define startScan barcodeStartScan
+#define stopScan barcodeStopScan
+#define getScanTimeout barcodeGetScanTimeout
+#define setScanTimeout barcodeSetScanTimeout
+#define getScanButtonMode barcodeGetScanButtonMode
+#define setScanButtonMode barcodeSetScanButtonMode
+#define setScanBeep barcodeSetScanBeep
+#define getScanMode barcodeGetScanMode
+#define setScanMode barcodeSetScanMode
+#define enableBarcode barcodeEnableBarcode
+#define isBarcodeEnabled barcodeIsBarcodeEnabled
+#define isBarcodeSupported barcodeIsBarcodeSupported
+#define getBarcodeTypeMode barcodeGetTypeMode
+#define setBarcodeTypeMode barcodeSetTypeMode
+
+#define cryptoRawAuthenticateLinea cryptoRawAuthenticateDevice
+#define cryptoRawAuthenticateiPod cryptoRawAuthenticateHost
+#define cryptoAuthenticateLinea cryptoAuthenticateDevice
+#define cryptoAuthenticateiPod cryptoAuthenticateHost
 
 #ifndef __has_feature         // Optional of course.
 #define __has_feature(x) 0  // Compatibility with non-clang compilers.
 #endif
 
-#ifndef BARCODES_DEFINED
-#define BARCODES_DEFINED
+#ifndef STRUCTURES_DEFINED
+#define STRUCTURES_DEFINED
 typedef enum {
 	BAR_ALL=0, 
 	BAR_UPC,
@@ -130,100 +155,165 @@ typedef enum {
 	BAR_EX_CCC,
 	BAR_EX_LAST
 }BARCODES_EX;
-#endif
-
-#if !__has_feature(objc_arc)
-#ifndef FINANCIALCARD_DEFINED
-#define FINANCIALCARD_DEFINED
-typedef struct
-{
-    NSString *accountNumber;
-    NSString *cardholderName;
-    int  expirationYear;
-    int  expirationMonth;
-    NSString *serviceCode;
-    NSString *discretionaryData;
-    NSString *firstName;
-    NSString *lastName;
-}financialCard; 
-#endif
-#endif
 
 /**
  * Connection state
  */
-#ifndef CONNSTATES_DEFINED
-#define CONNSTATES_DEFINED
 typedef enum {
+    /**
+     Device is disconnected, no automatic connection attempts will be made
+     */
 	CONN_DISCONNECTED=0,
+    /**
+     The SDK is trying to connect to the device
+     */
 	CONN_CONNECTING,
+    /**
+     Device is connected
+     */
 	CONN_CONNECTED
 }CONN_STATES;
-#endif
 
+/**
+ Filtering bluetooth devices to discover
+ */
 typedef enum {
+    /**
+     Include all supported devices (default)
+     */
+	BLUETOOTH_FILTER_ALL=-1,
+    /**
+     Include supported printers
+     */
+	BLUETOOTH_FILTER_PRINTERS=1,
+    /**
+     Include supported pinpads
+     */
+	BLUETOOTH_FILTER_PINPADS=2,
+    /**
+     Include supported barcode scanners
+     */
+	BLUETOOTH_FILTER_BARCODE_SCANNERS=4,
+}BLUETOOTH_FILTER;
+
+/**
+ Barcode scan modes
+ */
+typedef enum {
+    /**
+     The scan will be terminated after successful barcode recognition (default)
+     */
 	MODE_SINGLE_SCAN=0,
+    /**
+     Scanning will continue unless either scan button is releasd, or stop scan function is called
+     */
 	MODE_MULTI_SCAN,
+    /**
+     For as long as scan button is pressed or stop scan is not called the engine will operate in low power scan mode trying to detect objects entering the area, then will turn on the lights and try to read the barcode. Supported only on Code engine.
+     */
 	MODE_MOTION_DETECT,
+    /**
+     Pressing the button/start scan will enter aim mode, while a barcode scan will actually be performed upon button release/stop scan.
+     */
 	MODE_SINGLE_SCAN_RELEASE,
+    /**
+     Same as multi scan mode, but allowing no duplicate barcodes to be scanned
+     */
 	MODE_MULTI_SCAN_NO_DUPLICATES,
 }SCAN_MODES;
 
+/**
+ Button modes
+ */
 typedef enum {
+    /**
+     Button is disabled
+     */
 	BUTTON_DISABLED=0,
+    /**
+     Button is enabled (default)
+     */
 	BUTTON_ENABLED
 }BUTTON_STATES;
 
+/**
+ Card data mode
+ */
 typedef enum {
+    /**
+     Card data is processed and tracks are extracted (default)
+     */
 	MS_PROCESSED_CARD_DATA=0,
+    /**
+     Card data will be returned as RAW sequence of bits
+     */
 	MS_RAW_CARD_DATA
 }MS_MODES;
 
+/**
+ The way to return barcode types
+ */
 typedef enum {
+    /**
+     Barcode types are returned from the BAR_* list (default)
+     */
 	BARCODE_TYPE_DEFAULT=0,
+    /**
+     Barcode types are returned from the extended barcode list - BAR_EX_*
+     */
 	BARCODE_TYPE_EXTENDED,
+    /**
+     Barcode types are returned as ISO 15424 format
+     */
     BARCODE_TYPE_ISO15424
 }BT_MODES;
 
+/**
+ Firmware update phases
+ */
 typedef enum {
+    /**
+     Initializing update
+     */
 	UPDATE_INIT=0,
+    /**
+     Erasing old firmware/preparing memory
+     */
 	UPDATE_ERASE,
+    /**
+     Writing data
+     */
     UPDATE_WRITE,
+    /**
+     Update complete, this is the final phase
+     */
     UPDATE_FINISH,
+    /**
+     Post-update operations
+     */
     UPDATE_COMPLETING
 }UPDATE_PHASES;
 
-/*******************************************************************************
- * MIFARE STATUS CODES
- *******************************************************************************/ 
-#define MF_STAT_OK				0
-#define MF_STAT_TIMEOUT			-1
-#define MF_STAT_COLLISION		-2
-#define MF_STAT_PARITY_ERROR	-3
-#define MF_STAT_FRAMING_ERROR	-4
-#define MF_STAT_CRC_ERROR		-5 
-#define MF_STAT_FIFO_OVERFLOW	-6
-#define MF_STAT_EEPROM_ERROR	-7
-#define MF_STAT_INVALID_KEY		-8
-#define MF_STAT_UNKNOWN_ERROR	-9
-#define MF_STAT_AUTH_ERROR		-10
-#define MF_STAT_CODE_ERROR		-11
-#define MF_STAT_BITCOUNT_ERROR	-12
-#define MF_STAT_NOT_AUTH		-13
-#define MF_STAT_VALUE_ERROR		-14
-
-/*******************************************************************************
- * MIFARE VALUE OPERATIONS
- *******************************************************************************/ 
-#define MF_OPERATION_INCREMENT	0xC0
-#define MF_OPERATION_DECREMENT	0xC1
-#define MF_OPERATION_RESTORE	0xC2
-
-/* Encryptions */
+/**
+ AES 256 encryption algorithm
+ */
 #define ALG_AES256		0
+/**
+ Encrypted Head ECC encryption algorithm
+ */
 #define ALG_EH_ECC      1
+/**
+ Encrypted Head AES 256 encryption algorithm
+ */
 #define ALG_EH_AES256   2
+/**
+ Encrypted Head IDTECH encryption algorithm
+ */
 #define ALG_EH_IDTECH   3
+/**
+ Encrypted Head MAGTEK encryption algorithm
+ */
+#define ALG_EH_MAGTEK   4
 
 /**
  Authentication key
@@ -252,19 +342,116 @@ typedef enum {
 #define KEY_AUTH_FLAG_LOCK 1
 
 
-static const uint8_t EMPTY_KEY[]={0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
+/**
+ In the case where the AES256 key can be disabled to return the devce to plain text (LP without encrypted head), loading this key will remove it
+ */
+extern const uint8_t KEY_AES256_EMPTY[32];
 
-
-#if !__has_feature(objc_arc)
-#ifndef FIRMWAREINFO_DEFINED
-typedef struct firmwareInfo
+/**
+ RF card types
+ */
+typedef enum
 {
-	NSString *deviceName;
-	NSString *deviceModel;
-	NSString *firmwareRevision;
-	int		  firmwareRevisionNumber;
-}firmwareInfo;
-#endif
+    /**
+     Unknown card
+     */
+	CARD_UNKNOWN=0,
+    /**
+     Mifare Mini
+     */
+	CARD_MIFARE_MINI,
+    /**
+     Mifare Classic 1K
+     */
+	CARD_MIFARE_CLASSIC_1K,
+    /**
+     Mifare Classic 4K
+     */
+	CARD_MIFARE_CLASSIC_4K,
+    /**
+     Mifare Ultralight
+     */
+	CARD_MIFARE_ULTRALIGHT,
+    /**
+     Mifare Ultralight C
+     */
+	CARD_MIFARE_ULTRALIGHT_C,
+    /**
+     ISO 14443
+     */
+	CARD_ISO14443,
+    /**
+     Mifare Plus
+     */
+	CARD_MIFARE_PLUS,
+    /**
+     ISO 15693
+     */
+	CARD_ISO15693,
+    /**
+     Mifare Desfire
+     */
+	CARD_MIFARE_DESFIRE,
+}RF_CARD_TYPES;
+
+/**
+ Device name as string, for example "Linea"
+ */
+extern NSString * const InfoDeviceName;
+/**
+ Device model, if any, for example "XAMBL"
+ */
+extern NSString * const InfoDeviceModel;
+/**
+ Firmware revision as string, for example 2.41
+ */
+extern NSString * const InfoFirmwareRevision;
+/**
+ Firmware revision as number, useful for comparison, for example 241
+ */
+extern NSString * const InfoFirmwareRevisionNumber;
+
+/**
+ Information about RF card
+ */
+@interface DTRFCardInfo : NSObject
+/**
+ RF card type, one of the CARD_* constants
+ */
+@property (assign) int type;
+/**
+ RF card type as string, useful for display purposes
+ */
+@property (assign) NSString *typeStr;
+/**
+ RF card unique identifier, if any
+ */
+@property (assign) NSData *UID;
+/**
+ Mifare card ATQA
+ */
+@property (assign) int ATQA;
+/**
+ Mifare card SAK
+ */
+@property (assign) int SAK;
+/**
+ ISO15693 card AFI
+ */
+@property (assign) int AFI;
+/**
+ ISO15693 card DSFID
+ */
+@property (assign) int DSFID;
+/**
+ ISO15693 card block size
+ */
+@property (assign) int blockSize;
+/**
+ ISO15693 card number of blocks
+ */
+@property (assign) int nBlocks;
+@end
 #endif
 
 
@@ -480,9 +667,15 @@ typedef struct firmwareInfo
  Notification sent when a new supported RFID card enters the field
  @param cardIndex the index of the card, use this index with all subsequent commands to the card
  @param type card type, one of the CARD_* constants
- @param uuid card's unique identifier, if any
+ @param info information about the card
  **/
--(void)rfCardDetected:(int)cardIndex type:(int)type uuid:(NSData *)uuid;
+-(void)rfCardDetected:(int)cardIndex info:(DTRFCardInfo *)info;
+
+/**
+ Notification sent when the card leaves the field
+ @param cardIndex the index of the card, use this index with all subsequent commands to the card
+ */
+-(void)rfCardRemoved:(int)cardIndex;
 
 /**@}*/
 
@@ -584,14 +777,8 @@ typedef struct firmwareInfo
 /**
  Returns information about the specified firmware data. Based on it, and the connected Linea's name, model and firmware version you can chose to update or not the Linea's firmware
  @param data - firmware data
- <table>
- <tr><td>"deviceName"</td><td>Device name, for example "Linea"</td></tr>
- <tr><td>"deviceModel"</td><td>Device model, for example "XBAMBL</td></tr>
- <tr><td>"firmwareRevision"</td><td>Firmware revision as string, for example 2.41</td></tr>
- <tr><td>"firmwareRevisionNumber"</td><td>Firmware revision as number MAJOR*100+MINOR, i.e. 2.41 will be returned as 241</td></tr>
- </table>
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return firmware information if function succeeded, nil otherwise
+ @return firmware information if function succeeded, nil otherwise. See Info* constants for possible keys in the returned dictionary.
  **/
 -(NSDictionary *)getFirmwareFileInformation:(NSData *)data error:(NSError **)error;
 
@@ -629,6 +816,7 @@ typedef struct firmwareInfo
  @return TRUE if function succeeded, FALSE otherwise
  */
 -(BOOL)setSyncButtonMode:(int)mode error:(NSError **)error;
+
 /**@}*/
 
 
@@ -644,14 +832,14 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)msStartScan:(NSError **)error;
+-(BOOL)msEnable:(NSError **)error;
 
 /**
- Disables magnetic card scanning started with msStartScan
+ Disables magnetic card scanning started with msEnable
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)msStopScan:(NSError **)error;
+-(BOOL)msDisable:(NSError **)error;
 
 /**
  Helper function to parse financial card and extract the data - name, number, expiration date. The function will extract as much information as possible.
@@ -683,7 +871,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)getMSCardDataMode:(int *)mode error:(NSError **)error;
+-(BOOL)msGetCardDataMode:(int *)mode error:(NSError **)error;
 
 /**
  Sets Linea's magnetic card data mode. This setting is not persistent and is best to configure it upon connect.
@@ -695,7 +883,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)setMSCardDataMode:(int)mode error:(NSError **)error;
+-(BOOL)msSetCardDataMode:(int)mode error:(NSError **)error;
 /**@}*/
 
 
@@ -715,28 +903,28 @@ typedef struct firmwareInfo
 
 /**
  Starts barcode engine.
- In single scan mode the laser will be on until barcode is successfully read, the timeout elapses (set via call to setScanTimeout) or if stopScan is called.
- In multi scan mode the laser will stay on even if barcode is successfully read allowing series of barcodes to be scanned within a single read session. The scanning will stop if no barcode is scanned in the timeout interval (set via call to setScanTimeout) or if stopScan is called.
+ In single scan mode the laser will be on until barcode is successfully read, the timeout elapses (set via call to barcodeSetScanTimeout) or if barcodeStopScan is called.
+ In multi scan mode the laser will stay on even if barcode is successfully read allowing series of barcodes to be scanned within a single read session. The scanning will stop if no barcode is scanned in the timeout interval (set via call to barcodeSetScanTimeout) or if barcodeStopScan is called.
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)startScan:(NSError **)error;
+-(BOOL)barcodeStartScan:(NSError **)error;
 	
 /**
- Stops ongoing scan started with startScan
+ Stops ongoing scan started with barcodeStartScan
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)stopScan:(NSError **)error;
+-(BOOL)barcodeStopScan:(NSError **)error;
 
 /**
- Returns the current scan timeout. See setScanTimeout for more detailed description.
+ Returns the current scan timeout. See barcodeSetScanTimeout for more detailed description.
  This setting is not persistent and is best to configure it upon connect.
  @param timeout returns scan timeout in seconds
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)getScanTimeout:(int *)timeout error:(NSError **)error;
+-(BOOL)barcodeGetScanTimeout:(int *)timeout error:(NSError **)error;
 
 /**
  Sets the scan timeout. This it the max time that the laser will be on in single scan mode, or the time without scanning that will force the laser off in multi scan mode.
@@ -745,10 +933,10 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)setScanTimeout:(int)timeout error:(NSError **)error;
+-(BOOL)barcodeSetScanTimeout:(int)timeout error:(NSError **)error;
 
 /**
- Returns the current scan button mode. See setScanButtonMode for more detailed description.
+ Returns the current scan button mode. See barcodeSetScanButtonMode for more detailed description.
  This setting is not persistent and is best to configure it upon connect.
  @param mode returns scan button mode, one of the:
  <table>
@@ -758,7 +946,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)getScanButtonMode:(int *)mode error:(NSError **)error;
+-(BOOL)barcodeGetScanButtonMode:(int *)mode error:(NSError **)error;
 
 /**
  Sets Linea's scan button mode.
@@ -771,7 +959,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)setScanButtonMode:(int)mode error:(NSError **)error;
+-(BOOL)barcodeSetScanButtonMode:(int)mode error:(NSError **)error;
 
 /**
  Sets Linea's beep, which is used upon successful barcode scan. This setting is not persistent and is best to configure it upon connect.
@@ -785,33 +973,27 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
 */
--(BOOL)setScanBeep:(BOOL)enabled volume:(int)volume beepData:(int *)data length:(int)length error:(NSError **)error;
+-(BOOL)barcodeSetScanBeep:(BOOL)enabled volume:(int)volume beepData:(int *)data length:(int)length error:(NSError **)error;
+
 
 /**
  Returns the current scan mode.
  This setting is not persistent and is best to configure it upon connect.
- @param mode returns scanning mode, one of the:
- <table>
- <tr><td>MODE_SINGLE_SCAN</td><td>Linea will deactivate the laser after a successful barcode scan</td></tr>
- <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, stopScan command is sent or there is no barcode scaned for several seconds (set via call to setScanTimeout)</td></tr>
- </table>
+ @param mode returns scanning mode, one of the MODE_* constants
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)getScanMode:(int *)mode error:(NSError **)error;
+-(BOOL)barcodeGetScanMode:(int *)mode error:(NSError **)error;
+
 
 /**
- Sets Linea's scan button mode.
+ Sets Linea's barcode engine scan mode.
  This setting is not persistent and is best to configure it upon connect.
- @param mode scanning mode, one of the:
- <table>
- <tr><td>MODE_SINGLE_SCAN</td><td>Linea will deactivate the laser after a successful barcode scan</td></tr>
- <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, stopScan command is sent or there is no barcode scaned for several seconds (set via call to setScanTimeout)</td></tr>
- </table>
+ @param mode scanning mode, one of the MODE_* constants
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)setScanMode:(int)mode error:(NSError **)error;
+-(BOOL)barcodeSetScanMode:(int)mode error:(NSError **)error;
 
 /**
  Enables or disables reading of specific barcode type.
@@ -821,24 +1003,26 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)enableBarcode:(int)barcodeType enabled:(BOOL)enabled error:(NSError **)error;
+-(BOOL)barcodeEnableBarcode:(int)barcodeType enabled:(BOOL)enabled error:(NSError **)error;
 
 /**
  Returns if the the engine is set to read the barcode type or not.
  @param type barcode type, one of the BAR_* constants with the exception of BAR_ALL and BAR_LAST
  @return TRUE if the barcode is enabled
  */
--(BOOL)isBarcodeEnabled:(int)type;
+-(BOOL)barcodeIsBarcodeEnabled:(int)type;
+
 
 /**
  Returns if the the engine can read the barcode type or not.
  @param type barcode type, one of the BAR_* constants with the exception of BAR_ALL and BAR_LAST
  @return TRUE if the barcode is supported
  */
--(BOOL)isBarcodeSupported:(int)type;
+-(BOOL)barcodeIsBarcodeSupported:(int)type;
+
 
 /**
- Returns the current barcode type mode. See setBarcodeTypeMode for more detailed description.
+ Returns the current barcode type mode. See barcodeSetTypeMode for more detailed description.
  This setting will not persists.
  @param mode returns barcode type mode, one of the:
  <table>
@@ -848,7 +1032,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)getBarcodeTypeMode:(int *)mode error:(NSError **)error;
+-(BOOL)barcodeGetTypeMode:(int *)mode error:(NSError **)error;
 
 /**
  Sets barcode type mode. Linea can return barcode type from the default list (listed in BARCODES) or extended one (listed in BARCODES_EX). The extended one is superset to the default, so current programs will be mostly unaffected if they switch from default to extended (with the exception of barcodes like UPC-A and UPC-E, which will be returned as UPC in the default list, but proper types in the extended. This setting will not persists.
@@ -860,35 +1044,8 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)setBarcodeTypeMode:(int)mode error:(NSError **)error;
+-(BOOL)barcodeSetTypeMode:(int)mode error:(NSError **)error;
  
- /**
- Sends data directly to the barcode engine. Use this function with EXTREME care, you can easily render your barcode engine useless. Refer to the barcode engine documentation on supported commands.
- @param data command buffer
- @param length the number of bytes in data buffer
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)barcodeEngineWrite:(void *)data length:(int)length error:(NSError **)error;
-
-/**
- Sends data directly to the barcode engine. Use this function with EXTREME care, you can easily render your barcode engine useless. Refer to the barcode engine documentation on supported commands.
- @param data command string
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)barcodeEngineWrite:(NSString *)data error:(NSError **)error;
-
-/**
- Reads a response from the barcode engine. Refer to the barcode engine documentation on supported commands.
- @param data buffer, where the response will be stored
- @param length the maximum number of bytes to store in length buffer
- @param timeout the number of seconds to wait for response
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return number ot bytes actually read if function succeeded, or 0 otherwise
- */
--(int)barcodeEngineRead:(void *)data length:(int)length timeout:(double)timeout error:(NSError **)error;
-
 /**
  Allows basic control over the power to the barcode engine. By default Linea manages barcode engine by turning it on when scan operation is needed, then turning off after 5 seconds of inactivity. There are situations, where barcode engine should stay on to give better user experience, namely when using 2D barcode engine, which takes 1.7 seconds to start. This function is ignored for 1D barcode engines.
 
@@ -915,23 +1072,12 @@ typedef struct firmwareInfo
 -(BOOL)barcodeEnginePowerControl:(BOOL)engineOn maxTimeMinutes:(int)maxTimeMinutes error:(NSError **)error;
 
 /**
- Allows for a custom initialization string to be sent to the barcode. The string is sent directly, if the barcode is currently powered on, and every time it gets initialized. The setting does not persists, so it is best this command is called upon new connection with Linea.
+ Allows for a custom initialization string to be sent to the Opticon barcode engine. The string is sent directly, if the barcode is currently powered on, and every time it gets initialized. The setting does not persists, so it is best this command is called upon new connection with Linea.
  @param data barcode engine initialization data (consult barcode engine manual)
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  **/
 -(BOOL)barcodeOpticonSetInitString:(NSString *)data error:(NSError **)error;
-
-/**
- Returns the current custom init string, or an empty string if none
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return init string if function succeeded, nil otherwise
- **/
--(NSString *)barcodeOpticonGetInitString:(NSError **)error;
-
-
--(BOOL)barcodeIntermecSetInitData:(NSData *)data error:(NSError **)error;
--(NSData *)barcodeIntermecGetInitData:(NSError **)error;
 
 /**
  Sends configuration parameters directly to the opticon barcode engine. Use this function with EXTREME care, you can easily render your barcode engine useless. Refer to the barcode engine documentation on supported commands.
@@ -966,7 +1112,6 @@ typedef struct firmwareInfo
  */
 -(BOOL)barcodeOpticonUpdateFirmware:(NSData *)firmwareData bootLoader:(BOOL)bootLoader error:(NSError **)error;
 
-
 /**
  Sends configuration parameters directly to the code barcode engine. Use this function with EXTREME care,
  you can easily render your barcode engine useless. Refer to the barcode engine documentation for supported parameters.
@@ -988,146 +1133,28 @@ typedef struct firmwareInfo
  */
 -(BOOL)barcodeCodeGetParam:(int)setting value:(uint64_t *)value error:(NSError **)error;
 
+/**
+ Performs firmware update on the Code 2D barcode engines. Barcode update can take very long time, it is best to call this function from a thread and update
+ the user interface when firmwareUpdateProgress delegate is called
+ @param name the exact name of the firmware file
+ @param firmwareData firmware file data to load
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
 -(BOOL)barcodeCodeUpdateFirmware:(NSString *)name data:(NSData *)data error:(NSError **)error;
+
 -(NSDictionary *)barcodeCodeGetInformation:(NSError **)error;
+
+/**
+ Allows for a custom initialization string to be sent to the Intermec barcode engine. The data is sent directly, if the barcode is currently powered on, and every time it gets initialized. The setting does not persists, so it is best this command is called upon new connection with Linea.
+ @param data barcode engine initialization data (consult barcode engine manual)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ **/
+-(BOOL)barcodeIntermecSetInitData:(NSData *)data error:(NSError **)error;
+
+
 /**@}*/
-
-
-
-/*******************************************************************************
- * MIFARE READER COMMANDS
- *******************************************************************************/
-/** @defgroup G_LNMFREADER Mifare Reader Functions
- Functions to work with the Linea's built-in mifare cards reader
- @ingroup G_LINEA
- @{
- */
-/**
- Returns mifare engine identification. This is a way to query the engine and see it is there.
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return mifare ident string if function succeeded, nil otherwise
- */
--(NSString *)mfIdent:(NSError **)error;
-
-/**
- Initializes and powers on the mifare reader module. Call this function before any other mifare functions.
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfInit:(NSError **)error;
-
-/**
- Powers down mifare reader module. Call this function after you are done with the mifare reader.
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfClose:(NSError **)error;
-
-/**
- Scans for mifare cards in the area
- @param allCards - true if you want all cards to be requested, or false for only not halted cards
- @param rq1 (optional) upon success, the request status RQ1 will be returned here
- @param rq2 (optional) upon success, the request status RQ2 will be returned here
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfRequestCards:(BOOL)allCards rq1:(uint8_t *)rq1 rq2:(uint8_t *)rq2 error:(NSError **)error;
-
-/**
- Returns scanned card serial number
- @param serial upon success, card serial number will be returned here
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfAnticollision:(uint32_t *)serial error:(NSError **)error;
-
-/**
- Select the card to use
- @param serial card serial number, received from {@link #mfAnticollision:(uint32_t *)serial}
- @param sack (optional) SACK parameter is returned upon success
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfSelectCard:(uint32_t)serial sack:(uint8_t *)sack error:(NSError **)error;
-
-/**
- Authenticate card block with direct key data
- @param type key type, either 'A' or 'B'
- @param block block number
- @param key 6 bytes key
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfAuthByKey:(char)type block:(int)block key:(uint8_t[6])key error:(NSError **)error;
-
-/**
- Reads a 16 byte block of data
- @param address the address of the block to read
- @param data data buffer, where returned block will be written
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfRead:(int)block data:(uint8_t[16])data error:(NSError **)error;
-
-/**
- Writes a 16 byte block of data
- @param address the address of where to write
- @param data data to write in the block
- @param length the length of datat to write, that depends on the card, mifare classic for example works with 16 bytes, mifare ultralight - with 4, etc
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfWrite:(int)block data:(uint8_t *)data length:(int)length error:(NSError **)error;
-
-/**
- Performs increment/decrement/restore operations
- @param operation operation type, one if the {@link #MF_OPERATION_INCREMENT}, {@link #MF_OPERATION_DECREMENT} or {@link #MF_OPERATION_RESTORE}
- @param src_block source block number
- @param dst_block destination block number
- @param value value to be incremented/decremented with
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfValueOperation:(int)operation src_block:(int)src_block dst_block:(int)dst_block value:(uint32_t)value error:(NSError **)error;
-
-/**
- Returns mifare reader serial number
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfGetReaderSerial:(uint32_t *)serial error:(NSError **)error;
-
-/**
- Writes a 4 byte value in the card
- @param address address to write to
- @param value the data
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfWriteValue:(int)block value:(uint32_t)value error:(NSError **)error;
-
-/**
- Stores key securely inside the mifare reader. The key can later be used to authenticate blocks
- @param keyID the index of the key (0-31)
- @param key key data
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfLoadKey:(int)keyID key:(uint8_t[6])key error:(NSError **)error;
-
-/**
- Authenticate block by using previously stored key
- @param type key type, either 'A' or 'B'
- @param keyID the index of the key (0-31)
- @param block block to authenticate
- @param keyID the index of the key (0-31)
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return TRUE if function succeeded, FALSE otherwise
- */
--(BOOL)mfAuthByLoadedKey:(char)type block:(int)block keyID:(int)keyID error:(NSError **)error;
-/**@}*/
-
-
 
 
 /** @defgroup G_LNCRYPTO Cryptographic & Security Functions
@@ -1185,8 +1212,8 @@ typedef struct firmwareInfo
  @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys to reside on the device, but all the operations can be execuded with data, sent from a secure server. See cryptoSetKey if you plan to use the key in the mobile device.
  
  <br>Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or magneticCardEncryptedRawData
 
  <br>Generally the key loading process, using "Raw" commands, a program on the iOS device and a server which holds the keys will look similar to:
@@ -1203,7 +1230,7 @@ typedef struct firmwareInfo
  @param keyFlags - optional key flags, supported on ver 2.58 and onward
  - KEY_AUTHENTICATION:
  <table>
- <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateiPod/cryptoRawAuthenticateiPod upon every reinsert of the device</td></tr>
+ <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateHost/cryptoRawAuthenticateHost upon every reinsert of the device</td></tr>
  </table>
  - KEY_ENCRYPTION: No flags are supported
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
@@ -1213,8 +1240,8 @@ typedef struct firmwareInfo
 
 /**
  Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or magneticCardEncryptedRawData
  @param keyID the key type to set - KEY_AUTHENTICATION or KEY_ENCRYPTION
  @param key 32 bytes AES256 key to set
@@ -1223,7 +1250,7 @@ typedef struct firmwareInfo
  @param keyFlags - optional key flags, supported on ver 2.58 and onward
  - KEY_AUTHENTICATION:
  <table>
- <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateiPod/cryptoRawAuthenticateiPod upon every reinsert of the device</td></tr>
+ <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateHost/cryptoRawAuthenticateHost upon every reinsert of the device</td></tr>
  </table>
  - KEY_ENCRYPTION: No flags are supported
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
@@ -1233,8 +1260,8 @@ typedef struct firmwareInfo
 
 /**
  Returns key version. Valid key ID:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or magneticCardEncryptedRawData
  @param keyVersion returns key version or 0 if the key is not present (key versions are available in firmware 2.43 or later)
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
@@ -1243,7 +1270,7 @@ typedef struct firmwareInfo
 -(BOOL)cryptoGetKeyVersion:(int)keyID keyVersion:(uint32_t *)keyVersion error:(NSError **)error;
 
 /**
- @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys to reside on the device, but all the operations can be execuded with data, sent from a secure server. See cryptoAuthenticateLinea if you plan to use the key in the mobile device.
+ @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys to reside on the device, but all the operations can be execuded with data, sent from a secure server. See cryptoAuthenticateDevice if you plan to use the key in the mobile device.
  
  <br>Encrypts a 16 bytes block of random data with the stored authentication key and returns the result.
 
@@ -1252,44 +1279,44 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return random data, encrypted with the Linea authentication key if function succeeded, nil otherwise
  */
--(NSData *)cryptoRawAuthenticateLinea:(NSData *)randomData error:(NSError **)error;
+-(NSData *)cryptoRawAuthenticateDevice:(NSData *)randomData error:(NSError **)error;
 
 /**
- @note Check out the cryptoRawAuthenticateLinea function, if you want to not use the key inside the mobile device.
+ @note Check out the cryptoRawAuthenticateDevice function, if you want to not use the key inside the mobile device.
  
  <br>Generates random data, uses the key to encrypt it, then encrypts the same data with the stored authentication key inside Linea and returns true if both data matches.
 
- <br>The idea: if a program wants to work with specific Linea device, it sets AES256 authentication key once, then on every connect the program uses cryptoAuthenticateLinea with that key. If Linea contains no key, or the key is different, the function will return FALSE. This does not block Linea from operation, what action will be taken if devices mismatch depends on the program.
+ <br>The idea: if a program wants to work with specific Linea device, it sets AES256 authentication key once, then on every connect the program uses cryptoAuthenticateDevice with that key. If Linea contains no key, or the key is different, the function will return FALSE. This does not block Linea from operation, what action will be taken if devices mismatch depends on the program.
  @param key 32 bytes AES256 key
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if if Linea contains the same authentication key, FALSE otherwise
  */
--(BOOL)cryptoAuthenticateLinea:(NSData *)key error:(NSError **)error;
+-(BOOL)cryptoAuthenticateDevice:(NSData *)key error:(NSError **)error;
 
 /**
- @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys to reside on the device, but all the operations can be execuded with data, sent from a secure server. See cryptoAuthenticateiPod if you plan to use the key in the mobile device.
+ @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys to reside on the device, but all the operations can be execuded with data, sent from a secure server. See cryptoAuthenticateHost if you plan to use the key in the mobile device.
  
- <br>Tries to decrypt random data, generated from cryptoRawGenerateRandomData with the stored internal authentication key and returns the result. This function is used so that Linea knows a "real" device is currently connected, before allowing some functionality. Currently firmware update is protected by this function, once authentication key is set, you have to use it or cryptoAuthenticateiPod before you attempt firmware update, or it will error out.
+ <br>Tries to decrypt random data, generated from cryptoRawGenerateRandomData with the stored internal authentication key and returns the result. This function is used so that Linea knows a "real" device is currently connected, before allowing some functionality. Currently firmware update is protected by this function, once authentication key is set, you have to use it or cryptoAuthenticateHost before you attempt firmware update, or it will error out.
 
  <br>The idea (considering the iOS device does not have the keys inside, but depends on server):
  - (iOS program) generates random data using cryptoRawGenerateRandomData and sends to the server
  - (Server) encrypts the random data with the same AES256 key that is in the Linea and sends back to the iOS program
- - (iOS program) uses cryptoRawAuthenticateiPod to authenticate with the data, an exception will be generated if authentication fails.
+ - (iOS program) uses cryptoRawAuthenticateHost to authenticate with the data, an exception will be generated if authentication fails.
  @param encryptedRandomData 16 bytes block of encrypted data
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  */
--(BOOL)cryptoRawAuthenticateiPod:(NSData *)encryptedRandomData error:(NSError **)error;
+-(BOOL)cryptoRawAuthenticateHost:(NSData *)encryptedRandomData error:(NSError **)error;
 
 /**
- @note Check out the cryptoRawAuthenticateiPod function, if you want to not use the key inside the mobile device.
+ @note Check out the cryptoRawAuthenticateHost function, if you want to not use the key inside the mobile device.
  
- Generates random data, uses the key to encrypt it, then sends to Linea to verify against it's internal authentication key. If both keys match, return value is TRUE. This function is used so that Linea knows a "real" device is currently connected, before allowing some functionality. Currently firmware update is protected by this function, once authentication key is set, you have to use it or cryptoRawAuthenticateiPod before you attempt firmware update, or it will error out.
+ Generates random data, uses the key to encrypt it, then sends to Linea to verify against it's internal authentication key. If both keys match, return value is TRUE. This function is used so that Linea knows a "real" device is currently connected, before allowing some functionality. Currently firmware update is protected by this function, once authentication key is set, you have to use it or cryptoRawAuthenticateHost before you attempt firmware update, or it will error out.
  @param key 32 bytes AES256 key
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if Linea contains the same authentication key, FALSE otherwise
  */
--(BOOL)cryptoAuthenticateiPod:(NSData *)key error:(NSError **)error;
+-(BOOL)cryptoAuthenticateHost:(NSData *)key error:(NSError **)error;
 /**@}*/
 
 
@@ -1369,7 +1396,7 @@ typedef struct firmwareInfo
 -(NSString *)btGetLocalName:(NSError **)error;
 
 /**
- Performs discovery of the nearby bluetooth devices.
+ Performs synchronous discovery of the nearby bluetooth devices. This function is not recommended to be called on the main thread, use btDiscoverDevicesInBackground instead.
  @note this function cannot be called once connection to remote device was established
  @param maxDevices the maximum results to return
  @param maxTime the max time to discover, in seconds. Actual time may vary.
@@ -1380,7 +1407,16 @@ typedef struct firmwareInfo
 -(NSArray *)btDiscoverDevices:(int)maxDevices maxTime:(double)maxTime codTypes:(int)codTypes error:(NSError **)error;
 
 /**
- Performs background discovery of the nearby bluetooth devices. The discovery status and devices found will be sent via delegate notifications
+ Queries device name given the address, this function complements the btDiscoverDevices/btDiscoverPrinters and as such is not recommended, use btDiscoverDevicesInBackground instead.
+ @note this function cannot be called once connection to remote device was established
+ @param address bluetooth address returned from btDiscoverDevices/btDiscoverPrinters
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return bluetooth device name if function succeeded, nil otherwise
+ */
+-(NSString *)btGetDeviceName:(NSString *)address error:(NSError **)error;
+
+/**
+ Performs background discovery of nearby bluetooth devices. The discovery status and devices found will be sent via delegate notifications
  @note this function cannot be called once connection to remote device was established
  @param maxDevices the maximum results to return
  @param maxTime the max time to discover, in seconds. Actual time may vary.
@@ -1389,6 +1425,18 @@ typedef struct firmwareInfo
  @return TRUE if function succeeded, FALSE otherwise
  */
 -(BOOL)btDiscoverDevicesInBackground:(int)maxDevices maxTime:(double)maxTime codTypes:(int)codTypes error:(NSError **)error;
+
+/**
+ Performs background discovery of nearby supported bluetooth devices. Supported devices are the ones some of the sdks has built-in support for - printers and pinpads. 
+ The discovery status and devices found will be sent via delegate notifications
+ @note this function cannot be called once connection to remote device was established
+ @param maxDevices the maximum results to return
+ @param maxTime the max time to discover, in seconds. Actual time may vary.
+ @param filter filter of which devices to discover, a combination of one or more of BLUETOOT_FILTER_* constants or BLUETOOTH_FILTER_ALL to get all supported devices
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
+-(BOOL)btDiscoverSupportedDevicesInBackground:(int)maxDevices maxTime:(double)maxTime filter:(int)filter error:(NSError **)error;
 
 /**
  Performs discovery of supported printers. These include PP-60, DPP-250, DPP-350, SM-112, DPP-450.
@@ -1447,15 +1495,6 @@ typedef struct firmwareInfo
 -(BOOL)btDiscoverPinpadsInBackground:(NSError **)error;
 
 /**
- Queries device name given the address
- @note this function cannot be called once connection to remote device was established
- @param address bluetooth address returned from btDiscoverDevices/btDiscoverPrinters
- @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
- @return bluetooth device name if function succeeded, nil otherwise
- */
--(NSString *)btGetDeviceName:(NSString *)address error:(NSError **)error;
-
-/**
  Tries to connect to remote device. Once connection is established, use bluetooth streams to read/write to the remote device.
  @note this function cannot be called once connection to remote device was established
  @param address bluetooth address returned from btDiscoverDevices/btDiscoverPrinters
@@ -1466,14 +1505,93 @@ typedef struct firmwareInfo
 -(BOOL)btConnect:(NSString *)address pin:(NSString *)pin error:(NSError **)error;
 
 /**
+ Disconnects from remote device. Currently, due to bluetooth module limitation disconnect actually performs module power off and on, so the remote device may still hold on connected state for a while
+ @param address bluetooth address returned from btDiscoverDevices/btDiscoverPrinters
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
+-(BOOL)btDisconnect:(NSString *)address error:(NSError **)error;
+
+/**
+ Enables or disables write caching on the bluetooth stream. When enabled the writes gets cached and send on bigger chunks, reducing substantially the time taken, if you are sending lot of data in small parts.
+ Write caching has negative effect on the speed if your bluetooth communication is based on request/response format or packets, in this case every write operation will get delayed, resulting in very poor throughput.
+ @param enable enable or disable write caching, by default it is disabled
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
+-(BOOL)btEnableWriteCaching:(BOOL)enabled error:(NSError **)error;
+
+/**
+ Sets the conditions to fire the NSStreamEventHasBytesAvailable event on bluetooth streams. If all special conditions are disabled, then the notification will be fired the moment data arrives.
+ You can have multiple notifications active at the same time, for example maxBytes and maxTime.
+ @param maxTime notification will be fired 'maxTime' seconds after the last byte arrives, passing 0 disables it. For example 0.1 means that 100ms after the last byte is received the notification will fire.
+ @param maxLength notification will be fired after 'maxLength' data arrives, passing 0 disables it.
+ @param sequenceData notification will be fired if the received data contains 'sequenceData', passing nil disables it.
+ */
+-(BOOL)btSetDataNotificationMaxTime:(double)maxTime maxLength:(int)maxLength sequenceData:(NSData *)sequenceData error:(NSError **)error;
+
+/**
  Bluetooth input stream, you can use it after connecting with btConnect. See NSInputStream documentation.
  **/
-@property(readonly) NSInputStream *btInputStream;
+@property(assign, readonly) NSInputStream *btInputStream;
 
 /**
  Bluetooth output stream, you can use it after connecting with btConnect. See NSOutputStream documentation.
  **/
-@property(readonly) NSOutputStream *btOutputStream;
+@property(assign, readonly) NSOutputStream *btOutputStream;
+
+/**@}*/
+
+/*******************************************************************************
+ * EXTERNAL SERIAL PORT COMMANDS
+ *******************************************************************************/
+/** @defgroup G_LESERIAL External Serial Port Functions
+ Functions to work with Linea Tab's external serial port
+ @ingroup G_LINEA
+ @{
+ */
+
+/**
+ Opens the external serial port with specified settings.
+ @note On Linea Tab opening the serial port disables barcode scanner for the duration
+ @param port the port number, currently only 1 is used
+ @param baudRate serial baud rate
+ @param parity serial parity, one of the PARITY_* constants (currenty only PARITY_NONE is supported)
+ @param dataBits serial data bits, one of the DATABITS_* constants (currently only DATABITS_8 is supported)
+ @param stopBits serial stop bits, one of the STOPBITS_* constants (currently only STOPBITS_1 is supported)
+ @param flowControl serial flow control, one of the FLOW_* constants (currently only FLOW_NONE is supported)
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE upon success, FALSE otherwise
+ **/
+-(BOOL)extOpenSerialPort:(int)port baudRate:(int)baudRate parity:(int)parity dataBits:(int)dataBits stopBits:(int)stopBits flowControl:(int)flowControl error:(NSError **)error;
+
+/**
+ Closes the external serial port opened with extOpenSerialPort
+ @param port the port number, currently only 1 is used
+ @param error returns error information, you can pass nil if you don't want it
+ @return TRUE upon success, FALSE otherwise
+ **/
+-(BOOL)extCloseSerialPort:(int)port error:(NSError **)error;
+
+/**
+ Sends data to the connected remote device via serial port.
+ @param port the port number, currently only 1 is used
+ @param data data bytes to write
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
+-(BOOL)extWriteSerialPort:(int)port data:(NSData *)data error:(NSError **)error;
+
+/**
+ Reads data from the connected remote device via serial port.
+ @param port the port number, currently only 1 is used
+ @param length the maximum amount of data to read
+ @param timeout timeout in seconds, passing 0 reads and returns the bytes currently in the buffer
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return NSData with bytes received if function succeeded, nil otherwise
+ */
+-(NSData *)extReadSerialPort:(int)port length:(int)length timeout:(double)timeout error:(NSError **)error;
+
 /**@}*/
 
 
@@ -1521,7 +1639,7 @@ typedef struct firmwareInfo
  @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
  @return TRUE if function succeeded, FALSE otherwise
  **/
--(NSDictionary *)emsrGetFirmwareInformation:(NSData *)data;
+-(NSDictionary *)emsrGetFirmwareInformation:(NSData *)data error:(NSError **)error;
 
 /**
  Checks if the head was tampered or not. If the head's tamper protection have activated, the device should be sent to service for checks
@@ -1625,80 +1743,154 @@ typedef struct firmwareInfo
  */
 -(BOOL)emsrSetEncryption:(int)encryption params:(NSData *)params error:(NSError **)error;
 
+/**
+ Fine-tunes which part of the card data will be masked, and which will be sent in clear text for display/print purposes
+ @param showExpiration if set to TRUE, expiration date will be shown in clear text, otherwise will be masked
+ @param unmaskedDigitsAtStart the number of digits to show in clear text at the start of the PAN, range from 0 to 6 (default is 4)
+ @param unmaskedDigitsAtEnd the number of digits to show in clear text at the end of the PAN, range from 0, to 4 (default is 4)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
+ */
+-(BOOL)emsrConfigMaskedDataShowExpiration:(BOOL)showExpiration unmaskedDigitsAtStart:(int)unmaskedDigitsAtStart unmaskedDigitsAtEnd:(int)unmaskedDigitsAtEnd error:(NSError **)error;
+
 /**@}*/
 
 /*******************************************************************************
- * EIC/ISO 15693 CARD COMMANDS
+ * RF READER COMMANDS
  *******************************************************************************/
-/** @defgroup G_LISO15693 EIC/ISO 15693 Functions
- Functions to work with Linea's optional EIC/ISO 15693 card reader
+/** @defgroup G_LNRFREADER RF Reader Functions
+ Functions to work with the Linea's built-in RF cards reader
  @ingroup G_LINEA
  @{
  */
 
 /**
- The command completed successfully.
+ Type A (Mifare) cards will be detected
  */
-#define ISO15693_ERR_OK 0x00
+#define CARD_SUPPORT_TYPE_A 0x0001
+/**
+ Type B cards will be detected. Currently unsupported.
+ */
+#define CARD_SUPPORT_TYPE_B 0x0002
+/**
+ Felica cards will be detected. Currently unsupported.
+ */
+#define CARD_SUPPORT_FELICA 0x0004
+/**
+ NFC cards will be detected. Currently unsupported.
+ */
+#define CARD_SUPPORT_NFC 0x0008
+/**
+ Jewel cards will be detected. Currently unsupported.
+ */
+#define CARD_SUPPORT_JEWEL 0x0010
+/**
+ ISO15693 cards will be detected
+ */
+#define CARD_SUPPORT_ISO15 0x0020
 
 /**
-The command is not supported, i.e. the request code is not recognized.
+ Initializes and powers on the RF card reader module. Call this function before any other RF card functions. The module power consumption is highly optimized, so it can be left on for extended periods of time.
+ @param supportedCards any combination of CARD_SUPPORT_* flags to mark which card types to be active. Enable only cards you actually plan to work with, this has high implication on power usage and detection speed.
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_COMMAND_NOT_SUPPORTED 0x01
-
+-(BOOL)rfInit:(int)supportedCards error:(NSError **)error;
 /**
-The command is not recognized, for example: a format error occurred.
+ Powers down RF card reader module. Call this function after you are done with the reader.
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_COMMAND_NOT_RECOGNIZED 0x02
-
+-(BOOL)rfClose:(NSError **)error;
 /**
-The command option is not supported.
+ Call this function once you are done with the card, a delegate call rfCardRemoved will be called when the card leaves the RF field and new card is ready to be detected
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_COMMAND_OPTION_NOT_SUPPORTED 0x03
-
+-(BOOL)rfRemoveCard:(int)cardIndex error:(NSError **)error;
 /**
-Error with no information given or a specific error code is not supported.
+ Authenticate mifare card block with direct key data. This is less secure method, as it requires the key to be present in the program, the prefered way is to store a key once in a secure environment and then authenticate using the stored key.
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param type key type, either 'A' or 'B'
+ @param address the address of the block to authenticate
+ @param key 6 bytes key
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_UNKNOWN 0x0F
-
+-(BOOL)mfAuthByKey:(int)cardIndex type:(char)type address:(int)address key:(NSData *)key error:(NSError **)error;
 /**
- The specified block is not available (doesn’t exist).
+ Store key in the internal module memory for later use
+ @param keyIndex the index of the key, you can have up to 8 keys stored (0-7)
+ @param type key type, either 'A' or 'B'
+ @param key 6 bytes key
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_BLOCK_UNAVAILABLE 0x10
-
+-(BOOL)mfStoreKeyIndex:(int)keyIndex type:(char)type key:(NSData *)key error:(NSError **)error;
 /**
-The specified block is already locked and thus cannot be locked again.
+ Authenticate mifare card block with previously stored key. This the prefered method, as no key needs to reside in application.
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param type key type, either 'A' or 'B'
+ @param address the address of the block to authenticate
+ @param keyIndex the index of the stored key, you can have up to 8 keys stored (0-7)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_BLOCK_ALREADY_LOCKED 0x11
-
+-(BOOL)mfAuthByStoredKey:(int)cardIndex type:(char)type address:(int)address keyIndex:(int)keyIndex error:(NSError **)error;
 /**
-The specified block is locked and its content cannot be changed.
+ Reads one more more blocks of data from Mifare Classic/Ultralight cards. A single read operation gets 16 bytes of data, so you can pass 32 on length to read 2 blocks, etc
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param address the address of the block to read
+ @param length the number of bytes to read, this must be multiple of block size (16 bytes)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return NSData object containing the data received or nil if an error occured
  */
-#define ISO15693_ERR_BLOCK_LOCKED 0x12
-
+-(NSData *)mfRead:(int)cardIndex address:(int)address length:(int)length error:(NSError **)error;
 /**
-The specified block was not successfully programmed.
+ Writes one more more blocks of data to Mifare Classic/Ultralight cards. A single write operation stores 16 bytes of data, so you can pass 32 on length to write 2 blocks, etc
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param address the address of the block to write
+ @param data the data to write, must be multiple of the block size (16 bytes)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return number of bytes actually written or 0 if an error occured
  */
-#define ISO15693_ERR_WRITE_FAILED 0x13
-
+-(int)mfWrite:(int)cardIndex address:(int)address data:(NSData *)data error:(NSError **)error;
 /**
-The specified block was not successfully locked.
+ Sets the 3DES key of Mifare Ultralight C cards
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param key 16 bytes 3DES key to set
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_LOCK_FAILED 0x14
-
+-(BOOL)mfUlcSetKey:(int)cardIndex key:(NSData *)key error:(NSError **)error;
 /**
- Timeout waiting for the card
+ Performs 3DES authentication of Mifare Ultralight C card using the given key
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param key 16 bytes 3DES key to authenticate with
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return TRUE if function succeeded, FALSE otherwise
  */
-#define ISO15693_ERR_TIMEOUT 0xFF
+-(BOOL)mfUlcAuthByKey:(int)cardIndex key:(NSData *)key error:(NSError **)error;
+/**
+ Reads one more more blocks of data from ISO 15693 card.
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param startBlock the starting block to read from
+ @param length the number of bytes to read, this must be multiple of block size (can be taken from the card info that is coming with rfCardDetected call)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return NSData object containing the data received or nil if an error occured
+ */
+-(NSData *)iso15693Read:(int)cardIndex startBlock:(int)startBlock length:(int)length error:(NSError **)error;
+/**
+ Writes one more more blocks of data to ISO 15693 card.
+ @param cardIndex the index of the card as sent by rfCardDetected delegate call
+ @param startBlock the starting block to write to
+ @param data the data to write, it must be multiple of block size (can be taken from the card info that is coming with rfCardDetected call)
+ @param error pointer to NSError object, where error information is stored in case function fails. You can pass nil if you don't want that information
+ @return number of bytes actually written or 0 if an error occured
+ */
+-(int)iso15693Write:(int)cardIndex startBlock:(int)startBlock data:(NSData *)data error:(NSError **)error;
 
--(BOOL)iso15693SetEnabled:(BOOL)enabled error:(NSError **)error;
--(NSArray *)iso15693ScanCards:(NSError **)error;
--(BOOL)iso15693SelectCard:(NSData *)card error:(NSError **)error;
--(BOOL)iso15693HaltCard:(NSData *)card error:(NSError **)error;
--(BOOL)iso15693ResetHalted:(NSData *)card error:(NSError **)error;
--(BOOL)iso15693LockBlock:(uint8_t)block error:(NSError **)error;
--(NSData *)iso15693ReadBlocks:(uint8_t)startBlock nBlocks:(int)nBlocks error:(NSError **)error;
--(int)iso15693WriteBlocks:(uint8_t)startBlock blockSize:(int)blockSize nBlocks:(int)nBlocks data:(NSData *)data error:(NSError **)error;
 
 /**@}*/
 
@@ -1719,23 +1911,23 @@ The specified block was not successfully locked.
 /**
  Returns connected device name
  **/
-@property(readonly) NSString *deviceName;
+@property(assign, readonly) NSString *deviceName;
 /**
  Returns connected device model
  **/
-@property(readonly) NSString *deviceModel;
+@property(assign, readonly) NSString *deviceModel;
 /**
  Returns connected device firmware version
  **/
-@property(readonly) NSString *firmwareRevision;
+@property(assign, readonly) NSString *firmwareRevision;
 /**
  Returns connected device hardware version
  **/
-@property(readonly) NSString *hardwareRevision;
+@property(assign, readonly) NSString *hardwareRevision;
 /**
  Returns connected device serial number
  **/
-@property(readonly) NSString *serialNumber;
+@property(assign, readonly) NSString *serialNumber;
 
 /**
  SDK version number in format MAJOR*100+MINOR, i.e. version 1.15 will be returned as 115
@@ -1750,6 +1942,31 @@ The specified block was not successfully locked.
 #ifndef LINEA_NO_EXCEPTIONS
 
 #pragma mark DEPRECATED
+
+#if !__has_feature(objc_arc)
+#ifndef FINANCIALCARD_DEFINED
+#define FINANCIALCARD_DEFINED
+typedef struct
+{
+    NSString *accountNumber;
+    NSString *cardholderName;
+    int  expirationYear;
+    int  expirationMonth;
+    NSString *serviceCode;
+    NSString *discretionaryData;
+    NSString *firstName;
+    NSString *lastName;
+}financialCard; 
+#endif
+
+typedef struct firmwareInfo
+{
+	NSString *deviceName;
+	NSString *deviceModel;
+	NSString *firmwareRevision;
+	int		  firmwareRevisionNumber;
+}firmwareInfo;
+#endif
 
 /** @defgroup G_DEP_LINEA Deprecated Linea Functions
  Deprecated functions, please check out NSError alternatives
@@ -1842,13 +2059,7 @@ The specified block was not successfully locked.
  Returns information about the specified firmware data. Based on it, and the connected Linea's name, model and firmware version
  you can chose to update or not the Linea's firmware
  @param data - firmware data
- @return dictionary containing extracted data or nil if the data is invalid. Keys contained are:
- <table>
- <tr><td>"deviceName"</td><td>Device name, for example "Linea"</td></tr>
- <tr><td>"deviceModel"</td><td>Device model, for example "XBAMBL</td></tr>
- <tr><td>"firmwareRevision"</td><td>Firmware revision as string, for example 2.41</td></tr>
- <tr><td>"firmwareRevisionNumber"</td><td>Firmware revision as number MAJOR*100+MINOR, i.e. 2.41 will be returned as 241</td></tr>
- </table>
+ @return dictionary containing extracted data or nil if the data is invalid. See Info* constants for possible key values.
  @throw NSPortTimeoutException if there is no connection to Linea
  **/
 -(NSDictionary *)getFirmwareFileInformation:(NSData *)data;
@@ -1917,13 +2128,13 @@ The specified block was not successfully locked.
  scanning enabled all the time.
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(void)msStartScan;
+-(void)msEnable;
 
 /**
- Disables magnetic card scanning started with msStartScan
+ Disables magnetic card scanning started with msEnable
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(void)msStopScan;
+-(void)msDisable;
 
 /**
  Helper function to parse financial card and extract the data - name, number, expiration date.
@@ -1968,7 +2179,7 @@ The specified block was not successfully locked.
  </table>
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(int)getMSCardDataMode;
+-(int)msGetCardDataMode;
 
 /**
  Sets Linea's magnetic card data mode. 
@@ -1981,7 +2192,7 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)setMSCardDataMode:(int)mode;
+-(void)msSetCardDataMode:(int)mode;
 /**@}*/
 
 
@@ -2004,27 +2215,27 @@ The specified block was not successfully locked.
 /**
  Starts barcode engine.
  In single scan mode the laser will be on until barcode is successfully read, the timeout elapses
- (set via call to setScanTimeout) or if stopScan is called.
+ (set via call to barcodeSetScanTimeout) or if barcodeStopScan is called.
  In multi scan mode the laser will stay on even if barcode is successfully read allowing series of
  barcodes to be scanned within a single read session. The scanning will stop if no barcode is scanned
- in the timeout interval (set via call to setScanTimeout) or if stopScan is called.
+ in the timeout interval (set via call to barcodeSetScanTimeout) or if barcodeStopScan is called.
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(void)startScan;
+-(void)barcodeStartScan;
 
 /**
- Stops ongoing scan started with startScan
+ Stops ongoing scan started with barcodeStartScan
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(void)stopScan;
+-(void)barcodeStopScan;
 
 /**
- Returns the current scan timeout. See setScanTimeout for more detailed description.
+ Returns the current scan timeout. See barcodeSetScanTimeout for more detailed description.
  This setting is not persistent and is best to configure it upon connect.
  @return scan timeout in seconds
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(int)getScanTimeout;
+-(int)barcodeGetScanTimeout;
 
 /**
  Sets the scan timeout. This it the max time that the laser will be on in
@@ -2034,10 +2245,10 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)setScanTimeout:(int)timeout;
+-(void)barcodeSetScanTimeout:(int)timeout;
 
 /**
- Returns the current scan button mode. See setScanButtonMode for more detailed description.
+ Returns the current scan button mode. See barcodeSetScanButtonMode for more detailed description.
  This setting is not persistent and is best to configure it upon connect.
  @return scan button mode, one of the:
  <table>
@@ -2046,7 +2257,7 @@ The specified block was not successfully locked.
  </table>
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(int)getScanButtonMode;
+-(int)barcodeGetScanButtonMode;
 
 /**
  Sets Linea's scan button mode.
@@ -2059,7 +2270,7 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)setScanButtonMode:(int)mode;
+-(void)barcodeSetScanButtonMode:(int)mode;
 
 /**
  Sets Linea's beep, which is used upon successful barcode scan
@@ -2072,7 +2283,7 @@ The specified block was not successfully locked.
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  @note  A sample beep containing of 2 tones, each with 400ms duration, first one 2000Hz and second - 5000Hz will look int beepData[]={2000,400,5000,400}
  */
--(void)setScanBeep:(BOOL)enabled volume:(int)volume beepData:(int *)data length:(int)length;
+-(void)barcodeSetScanBeep:(BOOL)enabled volume:(int)volume beepData:(int *)data length:(int)length;
 
 /**
  Returns the current scan mode.
@@ -2080,11 +2291,11 @@ The specified block was not successfully locked.
  @return scanning mode, one of the:
  <table>
  <tr><td>MODE_SINGLE_SCAN</td><td>Linea will deactivate the laser after a successful barcode scan</td></tr>
- <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, stopScan command is sent or there is no barcode scaned for several seconds (set via call to setScanTimeout)</td></tr>
+ <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, barcodeStopScan command is sent or there is no barcode scaned for several seconds (set via call to barcodeSetScanTimeout)</td></tr>
  </table>
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(int)getScanMode;
+-(int)barcodeGetScanMode;
 
 /**
  Sets Linea's scan button mode.
@@ -2092,12 +2303,12 @@ The specified block was not successfully locked.
  @param mode scanning mode, one of the:
  <table>
  <tr><td>MODE_SINGLE_SCAN</td><td>Linea will deactivate the laser after a successful barcode scan</td></tr>
- <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, stopScan command is sent or there is no barcode scaned for several seconds (set via call to setScanTimeout)</td></tr>
+ <tr><td>MODE_MULTI_SCAN</td><td>Linea will continue to scan even after successful barcode scan and will stop when scan button is released, barcodeStopScan command is sent or there is no barcode scaned for several seconds (set via call to barcodeSetScanTimeout)</td></tr>
  </table>
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)setScanMode:(int)mode;
+-(void)barcodeSetScanMode:(int)mode;
 
 /**
  Enables or disables reading of specific barcode type.
@@ -2107,10 +2318,10 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)enableBarcode:(int)barcodeType enabled:(BOOL)enabled;
+-(void)barcodeEnableBarcode:(int)barcodeType enabled:(BOOL)enabled;
 
 /**
- Returns the current barcode type mode. See setBarcodeTypeMode for more detailed description.
+ Returns the current barcode type mode. See barcodeSetTypeMode for more detailed description.
  This setting will not persists.
  @return barcode type mode, one of the:
  <table>
@@ -2120,7 +2331,7 @@ The specified block was not successfully locked.
  @note Although this function was made for Linea 1, that had hardware button to enter sync mode, it still works for enabling/disabling automated sync on Linea 4 and onward
  @throw NSPortTimeoutException if there is no connection to Linea
  */
--(int)getBarcodeTypeMode;
+-(int)barcodeGetTypeMode;
 
 /**
  Sets barcode type mode. Linea can return barcode type from the default list (listed in BARCODES)
@@ -2137,7 +2348,7 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(BOOL)setBarcodeTypeMode:(int)mode;
+-(BOOL)barcodeSetTypeMode:(int)mode;
 
 /**
  Sends data directly to the barcode engine. Use this function with EXTREME care, you can easily render
@@ -2257,157 +2468,6 @@ The specified block was not successfully locked.
 
 
 
-/*******************************************************************************
- * MIFARE READER COMMANDS
- *******************************************************************************/
-/** @defgroup G_DEP_LNMFREADER Deprecated Mifare Reader Functions
- Functions to work with the Linea's built-in mifare cards reader
- @ingroup G_DEP_LINEA
- @{
- */
-/**
- Returns mifare engine identification. This is a way to query the engine and see it is there.
- @return identification string
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(NSString *)mfIdent;
-
-/**
- Initializes and powers on the mifare reader module. Call this function before any other mifare functions.
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfInit;
-
-/**
- Powers down mifare reader module. Call this function after you are done with the mifare reader.
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfClose;
-
-/**
- Scans for mifare cards in the area
- @param allCards - true if you want all cards to be requested, or false for only not halted cards
- @param rq1 (optional) upon success, the request status RQ1 will be returned here
- @param rq2 (optional) upon success, the request status RQ2 will be returned here
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfRequestCards:(BOOL)allCards rq1:(uint8_t *)rq1 rq2:(uint8_t *)rq2;
-
-/**
- Returns scanned card serial number
- @param serial upon success, card serial number will be returned here
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfAnticollision:(uint32_t *)serial;
-
-/**
- Select the card to use
- @param serial card serial number, received from {@link #mfAnticollision:(uint32_t *)serial}
- @param sack (optional) SACK parameter is returned upon success
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfSelectCard:(uint32_t)serial sack:(uint8_t *)sack;
-
-/**
- Authenticate card block with direct key data
- @param type key type, either 'A' or 'B'
- @param block block number
- @param key 6 bytes key
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfAuthByKey:(char)type block:(int)block key:(uint8_t[6])key;
-
-/**
- Reads a 16 byte block of data
- @param address the address of the block to read
- @param data data buffer, where returned block will be written
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfRead:(int)address data:(uint8_t[16])data;
-
-/**
- Writes a 16 byte block of data
- @param address the address of where to write
- @param data data to write in the block
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfWrite:(int)address data:(uint8_t[16])data;
-
-/**
- Writes block of data
- @param address the address of where to write
- @param data data to write in the block
- @param length the length of datat to write, that depends on the card, mifare classic for example works with 16 bytes, mifare ultralight - with 4, etc
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfWrite:(int)block data:(uint8_t *)data length:(int)length;
-
-/**
- Performs increment/decrement/restore operations
- @param operation operation type, one if the {@link #MF_OPERATION_INCREMENT}, {@link #MF_OPERATION_DECREMENT} or {@link #MF_OPERATION_RESTORE}
- @param src_block source block number
- @param dst_block destination block number
- @param value value to be incremented/decremented with
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfValueOperation:(int)operation src_block:(int)src_block dst_block:(int)dst_block value:(uint32_t)value;
-
-/**
- Returns mifare reader serial number
- @return mifare command status, one of the MF_STAT_* values
- @throw NSInvalidArgumentException if some of the input parameters is wrong
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfGetReaderSerial:(uint32_t *)serial;
-
-/**
- Writes a 4 byte value in the card
- @param address address to write to
- @param value the data
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfWriteValue:(int)address value:(uint32_t)value;
-
-/**
- Stores key securely inside the mifare reader. The key can later be used to authenticate blocks
- @param keyID the index of the key (0-31)
- @param key key data
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfLoadKey:(int)keyID key:(uint8_t[6])key;
-
-/**
- Authenticate block by using previously stored key
- @param type key type, either 'A' or 'B'
- @param keyID the index of the key (0-31)
- @param block block to authenticate
- @param keyID the index of the key (0-31)
- @return mifare command status, one of the MF_STAT_* values
- @throw NSPortTimeoutException if there is no connection to Linea
- */
--(int)mfAuthByLoadedKey:(char)type block:(int)block keyID:(int)keyID;
-/**@}*/
-
-
-
-
 /** @defgroup G_DEP_LNCRYPTO Deprecated Cryptographic & Security Functions
  Starting from firmware 2.13, Linea provides strong cryptographic support for magnetic card data. The encryption is supported
  on all Linea devices, from software point of view they are all the same, but provide different levels of hardware/firmware security.
@@ -2478,8 +2538,8 @@ The specified block was not successfully locked.
  cryptoSetKey if you plan to use the key in the mobile device.
  
  <br>Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  
@@ -2502,7 +2562,7 @@ The specified block was not successfully locked.
  @param keyFlags - optional key flags, supported on ver 2.58 and onward
  - KEY_AUTHENTICATION:
  <table>
- <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateiPod/cryptoRawAuthenticateiPod upon every reinsert of the device</td></tr>
+ <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateHost/cryptoRawAuthenticateHost upon every reinsert of the device</td></tr>
  </table>
  - KEY_ENCRYPTION: No flags are supported
  @throw NSPortTimeoutException if there is no connection to Linea
@@ -2516,8 +2576,8 @@ The specified block was not successfully locked.
  cryptoSetKey if you plan to use the key in the mobile device.
  
  <br>Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  
@@ -2548,8 +2608,8 @@ The specified block was not successfully locked.
  cryptoSetKey if you plan to use the key in the mobile device.
  
  <br>Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  
@@ -2574,8 +2634,8 @@ The specified block was not successfully locked.
 
 /**
  Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  @param keyID the key type to set - KEY_AUTHENTICATION or KEY_ENCRYPTION
@@ -2587,7 +2647,7 @@ The specified block was not successfully locked.
  @param keyFlags - optional key flags, supported on ver 2.58 and onward
  - KEY_AUTHENTICATION:
  <table>
- <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateiPod/cryptoRawAuthenticateiPod upon every reinsert of the device</td></tr>
+ <tr><td>BIT 1</td><td>If set to 1, scanning barcodes, reading magnetic card and using the bluetooth module are locked and have to be unlocked with cryptoAuthenticateHost/cryptoRawAuthenticateHost upon every reinsert of the device</td></tr>
  </table>
  - KEY_ENCRYPTION: No flags are supported
  @throw NSPortTimeoutException if there is no connection to Linea
@@ -2597,8 +2657,8 @@ The specified block was not successfully locked.
 
 /**
  Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  @param keyID the key type to set - KEY_AUTHENTICATION or KEY_ENCRYPTION
@@ -2614,8 +2674,8 @@ The specified block was not successfully locked.
 
 /**
  Used to store AES256 keys into Linea internal memory. Valid keys that can be set:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  @param keyID the key type to set - KEY_AUTHENTICATION or KEY_ENCRYPTION
@@ -2629,8 +2689,8 @@ The specified block was not successfully locked.
 
 /**
  Returns key version. Valid key ID:
- - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateLinea
- or cryptoAuthenticateLinea. Firmware updates will require authentication too
+ - KEY_AUTHENTICATION - if set, you can use authentication functions - cryptoRawAuthenticateDevice
+ or cryptoAuthenticateDevice. Firmware updates will require authentication too
  - KEY_ENCRYPTION - if set, magnetic card data will come encrypted via magneticCardEncryptedData or
  magneticCardEncryptedRawData
  @return key version or 0xFFFFFFFF if the key version cannot be read (key versions are available in firmware 2.43 or later)
@@ -2642,7 +2702,7 @@ The specified block was not successfully locked.
 /**
  @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys
  to reside on the device, but all the operations can be execuded with data, sent from a secure server. See
- cryptoAuthenticateLinea if you plan to use the key in the mobile device.
+ cryptoAuthenticateDevice if you plan to use the key in the mobile device.
  
  <br>Encrypts a 16 bytes block of random data with the stored authentication key and returns the result.
  
@@ -2656,17 +2716,17 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(NSData *)cryptoRawAuthenticateLinea:(NSData *)randomData;
+-(NSData *)cryptoRawAuthenticateDevice:(NSData *)randomData;
 
 /**
- @note Check out the cryptoRawAuthenticateLinea function, if you want to not use the key inside the mobile device.
+ @note Check out the cryptoRawAuthenticateDevice function, if you want to not use the key inside the mobile device.
  
  <br>Generates random data, uses the key to encrypt it, then encrypts the same data with the stored authentication key
  inside Linea and returns true if both data matches.
  Encrypts a 16 bytes block of random data with the stored authentication key and returns the result.
  
  <br>The idea: if a program wants to work with specific Linea device, it sets AES256 authentication key once, then
- on every connect the program uses cryptoAuthenticateLinea with that key. If Linea contains no key, or
+ on every connect the program uses cryptoAuthenticateDevice with that key. If Linea contains no key, or
  the key is different, the function will return FALSE.
  This does not block Linea from operation, what action will be taken if devices mismatch depends on the program.
  @param key 32 bytes AES256 key
@@ -2674,41 +2734,41 @@ The specified block was not successfully locked.
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(BOOL)cryptoAuthenticateLinea:(NSData *)key;
+-(BOOL)cryptoAuthenticateDevice:(NSData *)key;
 
 /**
  @note RAW crypto functions are harder to use and require more code, but are created to allow no secret keys
  to reside on the device, but all the operations can be execuded with data, sent from a secure server. See
- cryptoAuthenticateiPod if you plan to use the key in the mobile device.
+ cryptoAuthenticateHost if you plan to use the key in the mobile device.
  
  <br>Tries to decrypt random data, generated from cryptoRawGenerateRandomData with the stored internal authentication
  key and returns the result. This function is used so that Linea knows a "real" device is currently connected, before
  allowing some functionality. Currently firmware update is protected by this function, once authentication key is set,
- you have to use it or cryptoAuthenticateiPod before you attempt firmware update, or it will error out.
+ you have to use it or cryptoAuthenticateHost before you attempt firmware update, or it will error out.
  
  <br>The idea (considering the iOS device does not have the keys inside, but depends on server):
  - (iOS program) generates random data using cryptoRawGenerateRandomData and sends to the server
  - (Server) encrypts the random data with the same AES256 key that is in the Linea and sends back to the iOS program
- - (iOS program) uses cryptoRawAuthenticateiPod to authenticate with the data, an exception will be generated if authentication fails.
+ - (iOS program) uses cryptoRawAuthenticateHost to authenticate with the data, an exception will be generated if authentication fails.
  @param encryptedRandomData 16 bytes block of encrypted data
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(void)cryptoRawAuthenticateiPod:(NSData *)encryptedRandomData;
+-(void)cryptoRawAuthenticateHost:(NSData *)encryptedRandomData;
 
 /**
- @note Check out the cryptoRawAuthenticateiPod function, if you want to not use the key inside the mobile device.
+ @note Check out the cryptoRawAuthenticateHost function, if you want to not use the key inside the mobile device.
  
  Generates random data, uses the key to encrypt it, then sends to Linea to verify against it's internal authentication
  key. If both keys match, return value is TRUE. This function is used so that Linea knows a "real" device is currently connected, before
  allowing some functionality. Currently firmware update is protected by this function, once authentication key is set,
- you have to use it or cryptoRawAuthenticateiPod before you attempt firmware update, or it will error out.
+ you have to use it or cryptoRawAuthenticateHost before you attempt firmware update, or it will error out.
  @param key 32 bytes AES256 key
  @return TRUE if Linea contains the same authentication key
  @throw NSPortTimeoutException if there is no connection to Linea
  @throw NSInvalidArgumentException if some of the input parameters are wrong
  */
--(BOOL)cryptoAuthenticateiPod:(NSData *)key;
+-(BOOL)cryptoAuthenticateHost:(NSData *)key;
 /**@}*/
 
 
@@ -2861,6 +2921,7 @@ The specified block was not successfully locked.
  @throw NSInvalidArgumentException if some of the input parameters is wrong
  */
 -(void)btDiscoverPrintersInBackground:(int)maxDevices maxTime:(double)maxTime;
+
 /**@}*/
 
 @end

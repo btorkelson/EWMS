@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EWHAppDelegateProtocal.h"
 
 @class EWHStartViewController;
+@class EWHNewReceiptDataObject;
 
-@interface EWHAppDelegate : UIResponder <UIApplicationDelegate>
+@interface EWHAppDelegate : UIResponder <UIApplicationDelegate, AppDelegateProtocol>
+{
+    EWHNewReceiptDataObject* theAppDataObject;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain) EWHNewReceiptDataObject* theAppDataObject;
 
 @end

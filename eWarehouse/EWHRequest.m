@@ -11,6 +11,11 @@
 @implementation EWHRequest 
 
 @synthesize baseURL;
+@synthesize urlPILOT;
+@synthesize urlTEST;
+@synthesize urlCTL;
+@synthesize urlEWMS;
+@synthesize defaultURL;
 @synthesize request;
 @synthesize error;
 @synthesize caller;
@@ -22,20 +27,18 @@
 
 
 - (EWHRequest *)init {
-    //baseURL = @"https://66.29.195.53/BOLayer.svc"; //PROD
-//    baseURL = @"https://66.29.195.99/BOLayer.svc";//TEST
-    
+    urlPILOT = @"https://66.29.195.53/BOLayer.svc"; //PROD
+    urlTEST = @"https://66.29.195.99/BOLayer.svc";//TEST
+    urlCTL = @"https://66.29.195.44/BOLayer.svc";//CenturyLink
+    urlEWMS = @"https://66.29.195.40/BOLayer.svc";//EWMS
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    defaultURL = [defaults objectForKey:@"service"];
+    
     
     NSString *stringObject = [defaults objectForKey:@"server"];
     baseURL = stringObject;
-    
-
-//    NSDictionary *userDefaultsDefaults = [NSDictionary dictionaryWithObjectsAndKeys:@"https://66.29.195.44/BOLayer.svc", @"server",                                 nil];
-//    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
-    
-    
+        
     return [super init];
 }
 

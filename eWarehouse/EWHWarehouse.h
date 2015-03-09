@@ -11,8 +11,10 @@
 @interface EWHWarehouse : NSObject {
     NSInteger Id;
     NSString *Name;
+    NSMutableArray *binLocations;
 }
 @property (assign, nonatomic) NSInteger Id;
 @property (nonatomic, retain) NSString *Name;
+@property (strong, nonatomic) NSMutableArray *binLocations;
 - (EWHWarehouse *)initWithDictionary:(NSDictionary *)dictionary;
 @end

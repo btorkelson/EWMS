@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LineaSDK.h"
+#import "DTDevices.h"
 #import "EWHRootViewController.h"
 #import "EWHReceipt.h"
 #import "EWHReceiptDetail.h"
 #import "EWHPutAwaySerializedPartRequest.h"
 #import "EWHGetReceiptDetailsRequest.h"
 
-@interface EWHSerializedPartDetailsController : UITableViewController <LineaDelegate>
+@interface EWHSerializedPartDetailsController : UITableViewController <DTDeviceDelegate>
 {
 //    IBOutlet UITableView *tableView;
     IBOutlet UILabel *scannerMsg;

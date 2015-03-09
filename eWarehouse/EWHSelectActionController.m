@@ -21,6 +21,7 @@ EWHRootViewController *rootController;
     [super viewDidLoad];
     
     rootController = (EWHRootViewController *)self.navigationController;
+    rootController.selectActionView = self;
     [rootController navigationItem].hidesBackButton = NO;
 }
 
@@ -92,9 +93,20 @@ EWHRootViewController *rootController;
     [self performSegueWithIdentifier:@"ShowLoadShipments" sender:nil];
 }
 
--(IBAction) cycleCountPressed: (id) sender 
+-(IBAction) cycleCountPressed: (id) sender
 {
     [rootController displayAlert:@"Not Implemented" withTitle:@"Cycle Count"];
+}
+
+
+-(IBAction) lookupItemPressed: (id) sender
+{
+    [self performSegueWithIdentifier:@"lookup item" sender:nil];
+}
+
+-(IBAction) newReceiptPressed: (id) sender
+{
+    [self performSegueWithIdentifier:@"NewReceipt" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -110,6 +122,11 @@ EWHRootViewController *rootController;
     else if ([[segue identifier] isEqualToString:@"ShowLoadShipments"]) {
         EWHLoadShipmentSelectShipmentController *selectShipmentController = [segue destinationViewController];
         selectShipmentController.warehouse = warehouse;
+    }
+    
+    else if ([[segue identifier] isEqualToString:@"NewReceipt"]) {
+        EWHSelectProgramforReceiptController *selectProgramController = [segue destinationViewController];
+        selectProgramController.warehouse = warehouse;
     }
 }
 

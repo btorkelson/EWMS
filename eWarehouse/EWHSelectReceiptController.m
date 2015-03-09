@@ -18,7 +18,7 @@
 @synthesize receipts;
 
 EWHRootViewController *rootController;
-Linea *linea;
+DTDevices *linea;
 
 #pragma mark -
 #pragma mark Table view data source
@@ -31,7 +31,7 @@ Linea *linea;
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    linea = [Linea sharedDevice];
+    linea = [DTDevices sharedDevice];
 	[linea connect];
     [linea addDelegate:self];
 }

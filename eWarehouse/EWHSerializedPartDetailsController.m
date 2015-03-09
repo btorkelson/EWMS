@@ -18,7 +18,7 @@
 @synthesize warehouse;
 
 EWHRootViewController *rootController;
-Linea *linea;
+DTDevices *linea;
 bool isScannerConnected;
 NSMutableArray *numbers;
 
@@ -37,7 +37,7 @@ NSMutableArray *numbers;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    linea=[Linea sharedDevice];
+    linea=[DTDevices sharedDevice];
 	[linea connect];
 	[linea addDelegate:self];
 	//update display according to current linea state
@@ -154,7 +154,7 @@ NSMutableArray *numbers;
     [numbers removeObjectAtIndex:indexPath.row];
     [self.tableView reloadData];
     if(isScannerConnected){
-        linea=[Linea sharedDevice];
+        linea=[DTDevices sharedDevice];
         [linea connect];
         [linea addDelegate:self];
         [btnScanSerialNumber setHidden:false];

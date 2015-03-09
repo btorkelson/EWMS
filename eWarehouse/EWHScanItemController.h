@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LineaSDK.h"
+#import "DTDevices.h"
 #import "EWHRootViewController.h"
 #import "EWHReceipt.h"
 #import "EWHReceiptDetail.h"
@@ -17,7 +17,7 @@
 #import "EWHPartDetailsController.h"
 #import "EWHSerializedPartDetailsController.h"
 
-@interface EWHScanItemController : UITableViewController <LineaDelegate>
+@interface EWHScanItemController : UITableViewController <DTDeviceDelegate>
 {
     IBOutlet UIButton* btnScanItem;
     IBOutlet UILabel *scannerMsg;

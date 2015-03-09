@@ -7,6 +7,9 @@
 //
 
 #import "EWHAppDelegate.h"
+#import "EWHAppDelegateProtocal.h"
+#import "EWHNewReceiptDataObject.h"
+#import "EWHCreateReceiptController.h"
 
 @interface EWHAppDelegate ()
 
@@ -15,6 +18,9 @@
 @end
 
 @implementation EWHAppDelegate
+
+@synthesize theAppDataObject;
+
 
 //@synthesize window = _window, rootViewController=_rootViewController;
 
@@ -25,7 +31,12 @@
     // Override point for customization after application launch.
     return YES;
 }
-							
+- (id) init;
+{
+	self.theAppDataObject = [[EWHNewReceiptDataObject alloc] init];
+//	[theAppDataObject release];
+	return [super init];
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

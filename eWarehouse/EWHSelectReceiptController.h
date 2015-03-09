@@ -13,7 +13,7 @@
 #import "EWHGetWarehouseReceiptListRequest.h"
 #import "EWHScanLocationController.h"
 
-@interface EWHSelectReceiptController : UITableViewController <LineaDelegate>
+@interface EWHSelectReceiptController : UITableViewController <DTDeviceDelegate>
 {
 }
 

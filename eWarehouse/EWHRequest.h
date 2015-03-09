@@ -21,6 +21,11 @@
     SEL errorCallback;
 }
 @property (nonatomic,retain) NSString *baseURL;
+@property (nonatomic,retain) NSString *urlPILOT;
+@property (nonatomic,retain) NSString *urlTEST;
+@property (nonatomic,retain) NSString *urlCTL;
+@property (nonatomic,retain) NSString *urlEWMS;
+@property (nonatomic,retain) NSString *defaultURL;
 @property (nonatomic,retain) ASIHTTPRequest *request;
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) id caller;

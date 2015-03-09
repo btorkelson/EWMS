@@ -24,13 +24,25 @@
 				<string>https://66.29.195.53/BOLayer.svc</string>
 				<string>https://66.29.195.44/BOLayer.svc</string>
 				<string>https://66.29.195.99/BOLayer.svc</string>
+				<string>https://66.29.195.40/BOLayer.svc</string>
+				<string>https://66.29.195.59/BOLayer.svc</string>
 			</array>
 			<key>Titles</key>
 			<array>
 				<string>P_66.29.195.53</string>
 				<string>C_66.29.195.44</string>
 				<string>T_66.29.195.99</string>
+				<string>E_66.29.195.40</string>
+				<string>M_66.29.195.59</string>
 			</array>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSTextFieldSpecifier</string>
+			<key>Title</key>
+			<string>Service</string>
+			<key>Key</key>
+			<string>service</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>

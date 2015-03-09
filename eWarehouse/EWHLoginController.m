@@ -22,7 +22,8 @@ EWHRootViewController *rootController;
 BOOL isAuthenticated;
 BOOL keyboardVisible;
 CGPoint offset;
-Linea *linea;
+DTDevices *linea;
+NSInteger logintries;
 
 //@synthesize rootController;
 
@@ -33,6 +34,7 @@ Linea *linea;
     rootController.loginView = self;
     
     keyboardVisible = NO;
+    logintries =1 ;
 
     [self setScrollViewContentHight];
     
@@ -58,7 +60,7 @@ Linea *linea;
 //    [password setText:@"123456"];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    linea=[Linea sharedDevice];
+    linea=[DTDevices sharedDevice];
 	[linea connect];
 	[linea addDelegate:self];
 	//update display according to current linea state
@@ -156,7 +158,7 @@ Linea *linea;
 {
     [username setText:@""];
     [password setText:@""];
-    [username becomeFirstResponder];
+//    [username becomeFirstResponder];
 }
 
 -(IBAction) signIn: (id) sender 
@@ -181,7 +183,16 @@ Linea *linea;
         }
         else{
             [rootController hideLoading];
-            [rootController displayAlert:user.Message withTitle:@"Sign In"];
+            if (logintries == 1) {
+                logintries = 2;
+                EWHLoginRequest* loginRequest = [[EWHLoginRequest alloc] initWithCallbacks:self callback:@selector(signInCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+                [loginRequest loginUser:username.text withPassword:password.text];
+            } else {
+                logintries = 1;
+                [rootController displayAlert:user.Message withTitle:@"Sign In"];
+            }
+
+
         }
     }
     else{
@@ -239,7 +250,7 @@ Linea *linea;
     int scanMode;
     
     if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
-        [linea stopScan:&error];
+       [linea stopScan:&error];
     if(error != nil)
         [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
 }
