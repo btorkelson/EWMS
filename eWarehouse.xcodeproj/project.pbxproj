@@ -739,8 +739,8 @@
 		D381628618A2A0B800BA59FA /* EWHAddReceiptHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHAddReceiptHeader.m; sourceTree = "<group>"; };
 		D381628818A2CD2400BA59FA /* EWHGetSavedReceipt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetSavedReceipt.h; sourceTree = "<group>"; };
 		D381628918A2CD2400BA59FA /* EWHGetSavedReceipt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetSavedReceipt.m; sourceTree = "<group>"; };
-		D3AC842517DA5A5E00C61592 /* DTDevices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTDevices.h; path = "../../../brian/Documents/DTDevices-iOS_2013-08-11_v1.79_Universal_STABILITY5_XCode46/Library/DTDevices.h"; sourceTree = "<group>"; };
-		D3AC842617DA5A5E00C61592 /* libdtdev 16-41-24-045.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libdtdev 16-41-24-045.a"; path = "../../../brian/Documents/DTDevices-iOS_2013-08-11_v1.79_Universal_STABILITY5_XCode46/Library/libdtdev 16-41-24-045.a"; sourceTree = "<group>"; };
+		D3AC842517DA5A5E00C61592 /* DTDevices.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DTDevices.h; sourceTree = "<group>"; };
+		D3AC842617DA5A5E00C61592 /* libdtdev 16-41-24-045.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libdtdev 16-41-24-045.a"; sourceTree = "<group>"; };
 		D3B2B31918C63976003AAFE6 /* EWHAddReceiptItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHAddReceiptItem.h; sourceTree = "<group>"; };
 		D3B2B31A18C63976003AAFE6 /* EWHAddReceiptItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHAddReceiptItem.m; sourceTree = "<group>"; };
 		D3B2B31C18C65E70003AAFE6 /* EWHLocationsByType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHLocationsByType.h; sourceTree = "<group>"; };
