@@ -18,6 +18,8 @@ EWHRootViewController *rootController;
 DTDevices *linea;
 @synthesize editingStartTime;
 @synthesize editingStartTimeDelivery;
+@synthesize currentTextField;
+@synthesize visibleCustomAttributes;
 
 	EWHNewReceiptDataObject* theDataObject;
 - (EWHNewReceiptDataObject*) theAppDataObject;
@@ -30,6 +32,7 @@ DTDevices *linea;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
 //    txtComments.delegate = self;
 	// Do any additional setup after loading the view.
@@ -46,35 +49,63 @@ DTDevices *linea;
     dtDeliveryDate.clipsToBounds = true;
     dtReceiptDate.clipsToBounds = true;
     
+    for (id element in theDataObject.CustomControlSettings) {
+        EWHCustomControl* control  = [[EWHCustomControl alloc] initWithDictionary:element];
+        
+        NSString *replacedCaption = [control.LabelCaption stringByReplacingOccurrencesOfString:@":"
+                                                            withString:@""];
+        
+        if ([control.CustomControlName  isEqual: @"txtProjectNumber"]) {
+            txtProjectNumber.placeholder = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"txtProjectSequenceNumber"]) {
+            txtProjectSequence.placeholder = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"cmbVendor"]) {
+            lblVendor.text = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"cmbCarrier"]) {
+            lblCarrier.text = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"txtVendorInvoiceNumber"]) {
+            txtVendorInvoiceNumber.placeholder = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"txtCarrierTrackingNumber"]) {
+            txtCarrierTracking.placeholder = replacedCaption;
+        }
+        if ([control.CustomControlName  isEqual: @"txtComment"]) {
+            txtComments.text = replacedCaption;
+        }
+    }
     if (theDataObject.ProjectName == nil || [theDataObject.ProjectName isEqual:@""]) {
     } else {
         txtProjectNumber.text = theDataObject.ProjectName;
     }
     if (theDataObject.vendor.Name == nil || [theDataObject.vendor.Name isEqual:@""]){
-        lblVendor.text = @"None";
+        lblVendorName.text = @"None";
     } else {
-        lblVendor.text = theDataObject.vendor.Name;
+        lblVendorName.text = theDataObject.vendor.Name;
     }
     
     if (theDataObject.carrier.Name == nil || [theDataObject.carrier.Name  isEqual: @""]){
-        lblCarrier.text = @"None";
+        lblCarrierName.text = @"None";
     } else {
-        lblCarrier.text = theDataObject.carrier.Name;
+        lblCarrierName.text = theDataObject.carrier.Name;
     }
     
     if (theDataObject.origin.Name == nil || [theDataObject.origin.Name isEqual:@""]){
-        lblOrigin.text = @"None";
+        lblOriginName.text = @"None";
     } else {
-        lblOrigin.text = theDataObject.origin.Name;
+        lblOriginName.text = theDataObject.origin.Name;
     }
     
     if (theDataObject.shipmethod.Name == nil || [theDataObject.shipmethod.Name isEqual:@""]){
-        lblShipMethod.text = @"None";
+        lblShipMethodName.text = @"None";
     } else {
-        lblShipMethod.text = theDataObject.shipmethod.Name;
+        lblShipMethodName.text = theDataObject.shipmethod.Name;
     }
     
-    txtComments.text = @"Comments";
+    //txtComments.text = @"Comments";
     txtComments.textColor = [UIColor lightGrayColor];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -135,8 +166,14 @@ DTDevices *linea;
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-	EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
-	theDataObject.ProjectName = txtProjectNumber.text;
+    currentTextField=textField;
+    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+    theDataObject.ProjectName = txtProjectNumber.text;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    currentTextField=textField;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -260,14 +297,14 @@ DTDevices *linea;
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog([NSString stringWithFormat:@"{\"section\":%d,\"row\":%d}", indexPath.section, indexPath.row]);
-    if (indexPath.section == 0 && indexPath.row == 2) { // this is my date cell above the picker cell
+    if (indexPath.section == 0 && indexPath.row == 2) {
         
         editingStartTime = !editingStartTime;
         [UIView animateWithDuration:.4 animations:^{
             [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:3 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
             [self.tableView reloadData];
         }];
-    } else if (indexPath.section == 5 && indexPath.row == 0) { // this is my date cell above the picker cell
+    } else if (indexPath.section == 5 && indexPath.row == 0) {
         
         editingStartTimeDelivery = !editingStartTimeDelivery;
         [UIView animateWithDuration:.4 animations:^{
@@ -310,34 +347,42 @@ DTDevices *linea;
         theDataObject.lastDestination = nil;
         theDataObject.DeliveryDateTime = dtDeliveryDate.date;
         
-        EWHReceipt* receipt = [EWHReceipt alloc];
+//        EWHReceipt* receipt = [EWHReceipt alloc];
         if (theDataObject.program.IsLateReceipt) {
-            receipt.ReceivedDate = dtReceiptDate.date;
+            theDataObject.ReceivedDate = dtReceiptDate.date;
         } else {
-            receipt.ReceivedDate = [NSDate date];
+            theDataObject.ReceivedDate = [NSDate date];
         }
-        receipt.isContainer = false;
-        receipt.WarehouseId = theDataObject.warehouse.Id;
-        receipt.ProgramName = theDataObject.program.Name;
-        receipt.ProgramId = theDataObject.program.ProgramId;
-        receipt.ProjectNumber = txtProjectNumber.text;
-        receipt.ProjectSequenceNumber = txtProjectSequence.text;
-        receipt.CarrierId = theDataObject.carrier.CarrierId;
-        receipt.CarrierTrackingNumber = txtCarrierTracking.text;
-        receipt.VendorId = theDataObject.vendor.VendorId;
-        receipt.OriginId = theDataObject.origin.OriginId;
-        receipt.ShippingMethod = theDataObject.shipmethod.ShipMethodId;
+        theDataObject.isContainer = false;
+//        receipt.WarehouseId = theDataObject.warehouse.Id;
+//        receipt.ProgramName = theDataObject.program.Name;
+//        receipt.ProgramId = theDataObject.program.ProgramId;
+        theDataObject.ProjectNumber = txtProjectNumber.text;
+        theDataObject.ProjectSequenceNumber = txtProjectSequence.text;
+//        receipt.CarrierId = theDataObject.carrier.CarrierId;
+        theDataObject.CarrierTrackingNumber = txtCarrierTracking.text;
+//        receipt.VendorId = theDataObject.vendor.VendorId;
+//        receipt.OriginId = theDataObject.origin.OriginId;
+//        receipt.ShippingMethod = theDataObject.shipmethod.ShipMethodId;
 //        receipt.DeliveryDateTime = [NSDate date];
-        receipt.Comments = txtComments.text;
+        theDataObject.Comments = txtComments.text;
     
 
         if(user != nil){
+            
+            NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Visible == true"];
+            visibleCustomAttributes = [theDataObject.InboundCustomAttributes filteredArrayUsingPredicate:resultPredicate];
+            if ([visibleCustomAttributes count]>0) {
+                [rootController hideLoading];
+                [self performSegueWithIdentifier:@"EnterCustomAttrs" sender:nil];
+            } else {
             
                 EWHAddReceiptHeader
                 *request = [[EWHAddReceiptHeader alloc] initWithCallbacks:self callback:@selector(addReceiptCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
                 //NSLog(hub);
             
-                [request addReceiptHeader:receipt user:user];
+                [request addReceiptHeader:theDataObject user:user];
+            }
         }
     
     }
@@ -354,7 +399,9 @@ DTDevices *linea;
         theDataObject.ReceiptId = result.Id;
         theDataObject.ReceiptNumber = result.Number;
         
-        [self performSegueWithIdentifier:@"ScanPart" sender:nil];
+            [self performSegueWithIdentifier:@"ScanPart" sender:nil];
+        
+        
     } else {
         [rootController displayAlert:result.Message withTitle:@"Error"];
     }
@@ -378,14 +425,17 @@ DTDevices *linea;
 -(IBAction)scanPressed:(id)sender;
 {
     NSError *error = nil;
-	[linea startScan:&error];
+    
+//    currentTextField.text = @"test";
+//    [txtProjectNumber isfirstresponder]
+    [linea startScan:&error];
     if(error != nil)
         [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
 }
 
 -(IBAction)scanItemUp:(id)sender;
 {
-    [self stopScan];
+    	[self stopScan];
 }
 
 -(void) stopScan{
@@ -402,7 +452,7 @@ DTDevices *linea;
 -(void)barcodeData:(NSString *)barcode isotype:(NSString *)isotype {
     if(self.navigationController.visibleViewController == self){
         [self stopScan];
-        txtCarrierTracking.text= barcode;
+        currentTextField.text= barcode;
     }
     //    [self updateBattery];
 }
@@ -410,7 +460,7 @@ DTDevices *linea;
 -(void)barcodeData:(NSString *)barcode type:(int)type {
     if(self.navigationController.visibleViewController == self){
         [self stopScan];
-        txtCarrierTracking.text= barcode;
+        currentTextField.text= barcode;
     }
     //    [self updateBattery];
 }
@@ -424,7 +474,12 @@ DTDevices *linea;
         selectOptionsController.entity = sender;
     } else if ([[segue identifier] isEqualToString:@"ScanPart"]) {
         EWHScanPartController *selectOptionsController = [segue destinationViewController];
-//        selectOptionsController.entity = sender;
+        //        selectOptionsController.entity = sender;
+    } else if ([[segue identifier] isEqualToString:@"EnterCustomAttrs"]) {
+        
+        EWHAddReceiptCustomAttibutesViewController *selectOptionsController = [segue destinationViewController];
+        selectOptionsController.visibleCustomAttributes = visibleCustomAttributes;
+    //        selectOptionsController.entity = sender;
     }
 }
 

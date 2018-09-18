@@ -10,7 +10,7 @@
 
 @implementation EWHAddReceiptItem
 
--(void)addReceiptItem:(NSInteger)warehouseId programId:(NSInteger)programId receiptId:(NSInteger)receiptId locationId:(NSInteger)locationId catalogId:(NSInteger)catalogId quantity:(NSInteger)quantity IsBulk:(BOOL)isBulk IsSerialized:(BOOL)IsSerialized itemScan:(NSString *)itemScan user:(EWHUser *)user inventoryTypeId:(NSInteger)inventoryTypeId customAttributes:(NSMutableArray *)customAttributes UOMs:(NSMutableArray *)UOMs
+-(void)addReceiptItem:(NSInteger)warehouseId programId:(NSInteger)programId receiptId:(NSInteger)receiptId locationId:(NSInteger)locationId catalogId:(NSInteger)catalogId quantity:(NSInteger)quantity IsBulk:(BOOL)isBulk IsSerialized:(BOOL)IsSerialized itemScan:(NSMutableArray *)itemScan user:(EWHUser *)user inventoryTypeId:(NSInteger)inventoryTypeId customAttributes:(NSMutableArray *)customAttributes UOMs:(NSMutableArray *)UOMs lineNumber:(NSString *)lineNumber lotNumber:(NSString *)lotNumber
 {
     __weak EWHRequest *sender = self;
     
@@ -34,9 +34,17 @@
         itemsArray = [itemsArray substringToIndex:[itemsArray length]-1];
     }
     
+    NSString *numbers = @"";
+    if (itemScan.count > 0) {
+    numbers = [[itemScan valueForKey:@"description"] componentsJoinedByString:@","];
+//    } else {
+//        numbers= nil;
+    }
+    
+    
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/AddItem"];
     request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d ,\"ProgramId\":%d,\"ReceiptId\":%d,\"LocationId\":%d,\"CatalogId\":%d,\"Quantity\":%d,\"IsBulk\":\"%@\",\"IsSerialized\":\"%@\",\"ItemScan\":\"\",\"InventoryTypeId\":\"%d\",\"CACList\":\%@,\"UOMList\":[%@]},\"userId\":%d}", warehouseId,programId,receiptId,locationId,catalogId, quantity, isBulk ? @"true" : @"false", IsSerialized ? @"true" : @"false",inventoryTypeId, CACListString,itemsArray, user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d ,\"ProgramId\":%d,\"ReceiptId\":%d,\"LocationId\":%d,\"CatalogId\":%d,\"Quantity\":%d,\"IsBulk\":\"%@\",\"IsSerialized\":\"%@\",\"ItemScan\":\"%@\",\"InventoryTypeId\":\"%d\",\"CACList\":\%@,\"UOMList\":[%@],\"LineNumber\":\"%@\",\"LotNumber\":\"%@\"},\"userId\":%d}", warehouseId,programId,receiptId,locationId,catalogId, quantity, isBulk ? @"true" : @"false", IsSerialized ? @"true" : @"false",numbers,inventoryTypeId, CACListString,itemsArray,lineNumber,lotNumber, user.UserId];
     
     EWHLog(@"%@", postData);
     

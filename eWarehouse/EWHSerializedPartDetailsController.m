@@ -123,7 +123,7 @@ NSMutableArray *numbers;
                     break;
                 case 2:
                     cellTitle = @"Quantity";
-                    cellText = [NSString stringWithFormat:@"%d", receiptDetails.Quantity];
+                    cellText = [NSString stringWithFormat:@"%ld", (long)receiptDetails.Quantity];
                     break;
 //                case 3:
 //                    cellTitle = @"Location";

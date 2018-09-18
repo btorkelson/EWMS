@@ -18,6 +18,7 @@ EWHRootViewController *rootController;
 @synthesize options;
 @synthesize entity;
 @synthesize searchResults;
+@synthesize inboundCustomAttribute;
 
 	EWHNewReceiptDataObject* theDataObject;
 - (EWHNewReceiptDataObject*) theAppDataObject;
@@ -117,6 +118,8 @@ EWHRootViewController *rootController;
             EWHShipMethod *shipmethod = [searchResults objectAtIndex:indexPath.row];
             
             cell.textLabel.text = shipmethod.Name;
+        } else {
+            cell.textLabel.text =[searchResults objectAtIndex:indexPath.row];
         }
     } else {
         // Get the object to display and set the value in the cell.
@@ -136,6 +139,8 @@ EWHRootViewController *rootController;
             EWHShipMethod *shipmethod = [options objectAtIndex:indexPath.row];
             
             cell.textLabel.text = shipmethod.Name;
+        } else {
+            cell.textLabel.text =[options objectAtIndex:indexPath.row];
         }
     }
     
@@ -161,6 +166,8 @@ EWHRootViewController *rootController;
             EWHShipMethod *shipmethod = [searchResults objectAtIndex:indexPath.row];
             
             theDataObject.shipmethod = shipmethod;
+        } else {
+            inboundCustomAttribute.Value=[searchResults objectAtIndex:indexPath.row];
         }
     }else{
         if ([entity  isEqual: @"Vendor"]) {
@@ -179,6 +186,8 @@ EWHRootViewController *rootController;
             EWHShipMethod *shipmethod = [options objectAtIndex:indexPath.row];
             
             theDataObject.shipmethod = shipmethod;
+        } else {
+            inboundCustomAttribute.Value=[options objectAtIndex:indexPath.row];
         }
     }
     
@@ -222,6 +231,9 @@ EWHRootViewController *rootController;
         //NSLog(hub);
         [request getShipMethodsByProgram:theDataObject.program.ProgramId withAuthHash:user.AuthHash];
         
+    } else {
+        
+        [rootController hideLoading];
     }
     
         
@@ -232,8 +244,15 @@ EWHRootViewController *rootController;
 
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
-    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Name beginswith[c] %@", searchText];
-    searchResults = [options filteredArrayUsingPredicate:resultPredicate];
+    if ([entity  isEqual: @"Value"]) {
+        
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", searchText];
+        searchResults = [options filteredArrayUsingPredicate:resultPredicate];
+    } else {
+        
+        NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Name beginswith[c] %@", searchText];
+        searchResults = [options filteredArrayUsingPredicate:resultPredicate];
+    }
     
 }
 

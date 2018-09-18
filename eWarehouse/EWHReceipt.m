@@ -38,6 +38,8 @@
 @synthesize InventoryTypeId;
 @synthesize PromptInventoryType;
 @synthesize ScanPartNumber;
+@synthesize CustomControlSettings;
+@synthesize InboundCustomAttributes;
 
 
 
@@ -75,7 +77,16 @@
         ShipMethodName = [dictionary objectForKey:@"ShipMethodName"];
         InventoryTypeId  = [[dictionary objectForKey:@"InventoryTypeId"] intValue];
         PromptInventoryType = [[dictionary objectForKey:@"PromptInventoryType"] boolValue];
-        ScanPartNumber  = [[dictionary objectForKey:@"ScanPartNumber"] intValue];    }
+        ScanPartNumber  = [[dictionary objectForKey:@"ScanPartNumber"] intValue];
+        CustomControlSettings = [dictionary objectForKey:@"CustomControlSettings"];
+        
+        NSMutableArray* inboundCAs = [[NSMutableArray alloc] init];
+        for (NSDictionary* element in [dictionary objectForKey:@"InboundCustomAttributes"]) {
+            EWHInboundCustomAttribute* ca = [[EWHInboundCustomAttribute alloc] initWithDictionary:element];
+            [inboundCAs addObject:ca];
+        }
+        InboundCustomAttributes = inboundCAs;
+    }
 return self;
     //return [super init];
 }

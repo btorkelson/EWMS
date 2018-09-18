@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "EWHUtils.h"
+#import "EWHCustomControl.h"
+#import "EWHInboundCustomAttribute.h"
 
 @interface EWHReceipt : NSObject {
     NSInteger ReceiptId;
@@ -40,6 +42,8 @@
     BOOL PromptInventoryType;
     NSString *Comments;
     NSInteger ScanPartNumber;
+    NSMutableArray* CustomControlSettings;
+    NSMutableArray* InboundCustomAttributes;
 }
 
 @property (assign, nonatomic) NSInteger ReceiptId;
@@ -72,6 +76,11 @@
 @property (nonatomic) BOOL PromptInventoryType;
 @property (nonatomic, retain) NSString *Comments;
 @property (assign, nonatomic) NSInteger ScanPartNumber;
+@property (nonatomic, retain) NSMutableArray* CustomControlSettings;
+@property (nonatomic, retain) NSMutableArray* InboundCustomAttributes;
+
+
 
 - (EWHReceipt *)initWithDictionary:(NSDictionary *)dictionary;
+
 @end

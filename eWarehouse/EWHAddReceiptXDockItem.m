@@ -10,7 +10,7 @@
 
 @implementation EWHAddReceiptXDockItem
 
--(void)addReceiptItemforXDock:(NSInteger)warehouseId programId:(NSInteger)programId receiptId:(NSInteger)receiptId locationId:(NSInteger)locationId catalogId:(NSInteger)catalogId quantity:(NSInteger)quantity IsBulk:(BOOL)isBulk customAttributes:(NSMutableArray *)customAttributes itemScan:(NSString *)itemScan destinationId:(NSInteger)destinationId inventoryTypeId:(NSInteger)inventoryTypeId shipMethodId:(NSInteger)shipMethodId UOMs:(NSMutableArray *)UOMs deliveryDate:(NSDate*)deliveryDate user:(EWHUser *)user
+-(void)addReceiptItemforXDock:(NSInteger)warehouseId programId:(NSInteger)programId receiptId:(NSInteger)receiptId locationId:(NSInteger)locationId catalogId:(NSInteger)catalogId quantity:(NSInteger)quantity IsBulk:(BOOL)isBulk customAttributes:(NSMutableArray *)customAttributes itemScan:(NSString *)itemScan destinationId:(NSInteger)destinationId inventoryTypeId:(NSInteger)inventoryTypeId shipMethodId:(NSInteger)shipMethodId UOMs:(NSMutableArray *)UOMs deliveryDate:(NSDate*)deliveryDate user:(EWHUser *)user lineNumber:(NSString *)lineNumber lotNumber:(NSString *)lotNumber
 {
     __weak EWHRequest *sender = self;
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/AddItemForXDock"];
@@ -41,7 +41,7 @@
 //    NSString *jsonDeliveryDate = [NSString stringWithFormat:@"/Date(%.0f000%@)/", [deliveryDate timeIntervalSince1970],[formatter stringFromDate:deliveryDate]];
 
     
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d ,\"ProgramId\":%d,\"ReceiptId\":%d,\"LocationId\":%d,\"CatalogId\":%d,\"Quantity\":%d,\"IsBulk\":\"%@\",\"InventoryTypeId\":\"%d\",\"CACList\":\%@,\"UOMList\":[%@]},\"destinationId\":%d,\"shipMethodId\":%d,\"userId\":%d,\"deliveryDate\":\"%@\"}", warehouseId,programId,receiptId,locationId,catalogId, quantity, isBulk ? @"true" : @"false",inventoryTypeId, CACListString,itemsArray, destinationId, shipMethodId, user.UserId, [formatter stringFromDate:deliveryDate]];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d ,\"ProgramId\":%d,\"ReceiptId\":%d,\"LocationId\":%d,\"CatalogId\":%d,\"Quantity\":%d,\"IsBulk\":\"%@\",\"InventoryTypeId\":\"%d\",\"CACList\":\%@,\"UOMList\":[%@]},\"destinationId\":%d,\"shipMethodId\":%d,\"userId\":%d,\"deliveryDate\":\"%@\",\"LineNumber\":\"%@\",\"LotNumber\":\"%@\"}", warehouseId,programId,receiptId,locationId,catalogId, quantity, isBulk ? @"true" : @"false",inventoryTypeId, CACListString,itemsArray, destinationId, shipMethodId, user.UserId, [formatter stringFromDate:deliveryDate],lineNumber,lotNumber];
     
     EWHLog(@"%@", postData);
     

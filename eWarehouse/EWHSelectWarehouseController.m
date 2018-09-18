@@ -58,6 +58,7 @@ EWHRootViewController *rootController;
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     // Get the object to display and set the value in the cell.
+    
     EWHWarehouse* warehouse = [warehouses objectAtIndex:indexPath.row];
     cell.textLabel.text = warehouse.Name;
     return cell;

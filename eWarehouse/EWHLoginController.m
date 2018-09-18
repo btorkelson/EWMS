@@ -18,11 +18,11 @@
 }
 
 EWHRootViewController *rootController;
+DTDevices *linea;
 
 BOOL isAuthenticated;
 BOOL keyboardVisible;
 CGPoint offset;
-DTDevices *linea;
 NSInteger logintries;
 
 //@synthesize rootController;

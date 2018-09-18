@@ -14,12 +14,15 @@
     NSString *LastName;
     NSString *AuthHash;
     NSString *Message;
+    BOOL EWAdmin;
 }
 @property (assign, nonatomic) NSInteger UserId;
 @property (nonatomic, retain) NSString *FirstName;
 @property (nonatomic, retain) NSString *LastName;
 @property (nonatomic, retain) NSString *AuthHash;
 @property (nonatomic, retain) NSString *Message;
+@property (nonatomic) BOOL EWAdmin;
+
 
 - (EWHUser *)initWithDictionary:(NSDictionary *)dictionary;
 @end

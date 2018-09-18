@@ -115,7 +115,7 @@ DTDevices *linea;
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
    EWHLocation *detail = [shipmentLocations objectAtIndex:indexPath.row];
 
-        [self performSegueWithIdentifier:@"SelectPart" sender:detail.Name];
+//        [self performSegueWithIdentifier:@"SelectPart" sender:detail.Name];
     
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
 //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle];

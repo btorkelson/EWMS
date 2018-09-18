@@ -15,6 +15,7 @@
 #import "EWHAddReceiptHeader.h"
 #import "EWHScanPartController.h"
 #import "DTDevices.h"
+#import "EWHAddReceiptCustomAttibutesViewController.h"
 
 
 @interface EWHCreateReceiptController : UITableViewController
@@ -36,9 +37,16 @@
     IBOutlet UILabel *lblDeliveryDate;
     IBOutlet UITableViewCell *clReceiptDate;
     IBOutlet UITableViewCell *clDeliveryDate;
+    IBOutlet UILabel *lblVendorName;
+    IBOutlet UILabel *lblCarrierName;
+    IBOutlet UILabel *lblShipMethodName;
+    IBOutlet UILabel *lblOriginName;
 }
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *dateTitleCell;
+@property (weak, nonatomic) UITextField *currentTextField;
 @property (nonatomic, assign, getter = isDateOpen) BOOL editingStartTime;
 @property (nonatomic, assign, getter = isDateOpen) BOOL editingStartTimeDelivery;
+@property (nonatomic, strong) NSArray *visibleCustomAttributes;
+
 @end

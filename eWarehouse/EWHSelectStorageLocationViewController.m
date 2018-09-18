@@ -22,6 +22,8 @@ EWHRootViewController *rootController;
 @synthesize cellSections;
 @synthesize catalog;
 
+DTDevices *linea;
+
 	EWHNewReceiptDataObject* theDataObject;
 - (EWHNewReceiptDataObject*) theAppDataObject;
 {
@@ -56,9 +58,18 @@ EWHRootViewController *rootController;
 -(void) viewDidAppear:(BOOL)animated
 {
     [self loadLocationList];
+    linea = [DTDevices sharedDevice];
+    [linea connect];
+    [linea addDelegate:self];
     
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [linea removeDelegate:self];
+    [linea disconnect];
+    linea = nil;
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -124,14 +135,68 @@ EWHRootViewController *rootController;
     if (theDataObject.program.IsReceiptToOrder) {
         [self performSegueWithIdentifier:@"SelectDestination" sender:location];
     } else {
-        
-        [self receiveItem:location.Id];
+        if (catalog.IsSerial) {
+            [self performSegueWithIdentifier:@"ScanSerialNumbers" sender:location];
+        } else {
+            [self performSegueWithIdentifier:@"ReceiptItemConfirm" sender:location];
+        }
         
     }
     
     
 }
 
+
+-(void) stopScan{
+    NSError *error = nil;
+    int scanMode;
+    
+    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
+        [linea stopScan:&error];
+    if(error != nil)
+        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+}
+
+-(void)barcodeData:(NSString *)barcode isotype:(NSString *)isotype {
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        [self validateScan:barcode];
+    }
+}
+
+-(void)barcodeData:(NSString *)barcode type:(int)type {
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        [self validateScan:barcode];
+    }
+}
+- (IBAction)scanPressed:(id)sender {
+    [self validateScan:@"1-111"];
+}
+
+-(void) validateScan: (NSString *)barcode{
+    //Z - remove in production
+    //    barcode = @"58668";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name == %@", barcode];
+    NSArray *matches = [locations filteredArrayUsingPredicate:predicate];
+    EWHLog(@"Matches count:%d", [matches count]);
+    if([matches count] > 0){
+        EWHLocation *location = [matches objectAtIndex:0];
+        if (theDataObject.program.IsReceiptToOrder) {
+            [self performSegueWithIdentifier:@"SelectDestination" sender:location];
+        } else {
+            if (catalog.IsSerial) {
+                [self performSegueWithIdentifier:@"ScanSerialNumbers" sender:location];
+            } else {
+                [self performSegueWithIdentifier:@"ReceiptItemConfirm" sender:location];
+            }
+            
+        }
+    }
+    else {
+        [rootController displayAlert:@"Incorrect Location" withTitle:@"Error"];
+    }
+}
 
 -(void) loadLocationList
 {
@@ -207,40 +272,6 @@ EWHRootViewController *rootController;
 
 
 
--(void) receiveItem:(NSInteger)location {
-    [rootController showLoading];
-    EWHUser *user = rootController.user;
-    
-	EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
-    if(user != nil){
-        EWHAddReceiptItem
-        *request = [[EWHAddReceiptItem alloc] initWithCallbacks:self callback:@selector(getReceiveItemRequestCallBack:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-        //NSLog(hub);
-        
-        [request addReceiptItem:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:location catalogId:catalog.CatalogId quantity:1 IsBulk:catalog.IsBulk IsSerialized:catalog.IsSerial itemScan:nil user:user inventoryTypeId:catalog.InventoryTypeId customAttributes:catalog.CustomAttributeCatalogs UOMs:catalog.UOMs];
-        
-        
-//        [request ad:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:_location.Id catalogId:_catalog.CatalogId quantity:1 IsBulk:_catalog.IsBulk itemScan:nil destinationId:destination shipMethodId:theDataObject.shipmethod.ShipMethodId user:user];
-    }
-}
-
-
--(void) getReceiveItemRequestCallBack: (EWHResponse*) results
-{
-    [rootController hideLoading];
-    //    destinations = results;
-//    [rootController displayAlert:results.Message withTitle:@"Result"];
-    [rootController popToViewController:rootController.selectItemforReceiptView animated:YES];
-    //    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
--(void) errorCallback: (NSError*) error
-{
-    [rootController hideLoading];
-    [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
-}
-
 -(void) accessDeniedCallback
 {
     [rootController hideLoading];
@@ -253,6 +284,18 @@ EWHRootViewController *rootController;
     if ([[segue identifier] isEqualToString:@"SelectDestination"]) {
         EWHSelectDestinationViewController *createReceiptController = [segue destinationViewController];
                 createReceiptController.catalog = catalog;
+        createReceiptController.location = sender;
+        //Z - remove in production
+        //        [self getDetails:scanItemController.receipt.ReceiptId];
+    } else if ([[segue identifier] isEqualToString:@"ReceiptItemConfirm"]) {
+        EWHSelectDestinationViewController *createReceiptController = [segue destinationViewController];
+        createReceiptController.catalog = catalog;
+        createReceiptController.location = sender;
+        //Z - remove in production
+        //        [self getDetails:scanItemController.receipt.ReceiptId];
+    } else if ([[segue identifier] isEqualToString:@"ScanSerialNumbers"]) {
+        EWHSelectDestinationViewController *createReceiptController = [segue destinationViewController];
+        createReceiptController.catalog = catalog;
         createReceiptController.location = sender;
         //Z - remove in production
         //        [self getDetails:scanItemController.receipt.ReceiptId];

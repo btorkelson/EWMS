@@ -79,22 +79,33 @@ EWHNewReceiptDataObject* theDataObject;
     NSInteger row = [pkUOMOption selectedRowInComponent:0];
     EWHUOM *uom = [UOMWeights objectAtIndex:(NSUInteger)row];
 //    double uomDecimal= [txtUOMWeight.text doubleValue];
-    uom.Value = [NSDecimalNumber decimalNumberWithString:txtUOMWeight.text];
-    NSMutableArray *items = [[NSMutableArray alloc] init];
-    [items addObject:uom];
-    catalog.UOMs = [items copy];
-    
-    if (theDataObject.PromptInventoryType) {
-        [self performSegueWithIdentifier:@"SelectInventoryType" sender:catalog];
-    } else {
-        catalog.InventoryTypeId = theDataObject.inventorytypeId;
-        if ([catalog.CustomAttributeCatalogs count]>0) {
-            [self performSegueWithIdentifier:@"GetCustomAttributeCatalog" sender:catalog];
+    NSMutableCharacterSet *digitsAndDots = [NSMutableCharacterSet decimalDigitCharacterSet];
+    [digitsAndDots addCharactersInString:@"."];
+    NSCharacterSet *notDigitsNorDots = [digitsAndDots invertedSet];
+//    if ([txtUOMWeight.text rangeOfCharacterFromSet:notDigitsNorDots].location == NSNotFound)
+//    {
+        uom.Value = [NSDecimalNumber decimalNumberWithString:txtUOMWeight.text];
+        
+        NSMutableArray *items = [[NSMutableArray alloc] init];
+        [items addObject:uom];
+        catalog.UOMs = [items copy];
+        
+        if (theDataObject.PromptInventoryType) {
+            [self performSegueWithIdentifier:@"SelectInventoryType" sender:catalog];
         } else {
-            
-            [self performSegueWithIdentifier:@"SelectLocation" sender:catalog];
+            catalog.InventoryTypeId = theDataObject.inventorytypeId;
+            if ([catalog.CustomAttributeCatalogs count]>0) {
+                [self performSegueWithIdentifier:@"GetCustomAttributeCatalog" sender:catalog];
+            } else {
+                
+                [self performSegueWithIdentifier:@"SelectLocation" sender:catalog];
+            }
         }
-    }
+//    } else {
+//        [rootController displayAlert:@"Value must be a digit" withTitle:@"Error"];
+//    }
+    
+    
     
 }
 

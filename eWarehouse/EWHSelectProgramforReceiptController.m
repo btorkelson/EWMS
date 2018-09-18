@@ -128,6 +128,8 @@ EWHNewReceiptDataObject* theDataObject;
 //        EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
     
     theDataObject.warehouse = warehouse;
+    theDataObject.CustomControlSettings=results.CustomControlSettings;
+    theDataObject.InboundCustomAttributes=results.InboundCustomAttributes;
     if (results.ProgramId > 0) {
         
         EWHCarrier* carrier = [EWHCarrier alloc];
@@ -155,6 +157,7 @@ EWHNewReceiptDataObject* theDataObject;
         theDataObject.inventorytypeId = results.InventoryTypeId;
         theDataObject.PromptInventoryType = results.PromptInventoryType;
         theDataObject.ScanPartNumber = results.ScanPartNumber;
+        theDataObject.ProjectSequenceNumber=results.ProjectSequenceNumber;
     } else {
         theDataObject.carrier = nil;
         theDataObject.vendor = nil;

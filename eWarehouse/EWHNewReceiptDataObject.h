@@ -40,5 +40,16 @@
 @property (nonatomic) BOOL PromptInventoryType;
 @property (nonatomic, retain) NSDate *DeliveryDateTime;
 @property (assign, nonatomic) NSInteger ScanPartNumber;
+@property (nonatomic, retain) NSMutableArray* CustomControlSettings;
+@property (nonatomic, retain) NSMutableArray* InboundCustomAttributes;
+@property (nonatomic, retain) NSString *ProjectSequenceNumber;
+@property (nonatomic, retain) NSDate *ReceivedDate;
+@property (nonatomic, retain) NSString *ProjectNumber;
+@property (nonatomic, retain) NSString *CarrierTrackingNumber;
+@property (nonatomic, retain) NSString *VendorInvoiceNumber;
+@property (nonatomic, retain) NSString *Comments;
+@property (nonatomic) BOOL isContainer;
+@property (assign, nonatomic) NSInteger ProjectId;
+
 
 @end

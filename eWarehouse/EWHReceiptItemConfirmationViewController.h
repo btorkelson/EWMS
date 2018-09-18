@@ -19,10 +19,13 @@
     IBOutlet UILabel *lblPartNumber;
     IBOutlet UITextField *txtQuantity;
     IBOutlet UIStepper *stQuantityStepper;
+    IBOutlet UITextField *txtLineNumber;
+    IBOutlet UITextField *txtLotNumber;
 }
 
 @property (nonatomic, strong) EWHCatalog *catalog;
 @property (nonatomic, strong) EWHLocation *location;
 @property (nonatomic, strong) EWHDestination *destination;
+@property (nonatomic, strong) NSMutableArray *SerialNumbers;
 
 @end

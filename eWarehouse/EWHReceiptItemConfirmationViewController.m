@@ -17,6 +17,7 @@
 @synthesize catalog;
 @synthesize location;
 @synthesize destination;
+@synthesize SerialNumbers;
 
 EWHRootViewController *rootController;
 
@@ -94,7 +95,14 @@ EWHNewReceiptDataObject* theDataObject;
 }
 
 - (IBAction)addItemPressed:(id)sender {
-    [self receiveItem:sender];
+    
+    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+    if (theDataObject.program.IsReceiptToOrder) {
+        [self receiveXDockItem:sender];
+    } else {
+        [self receiveItem:sender];
+    }
+    
 }
 
 -(IBAction)backgroundTap:(id)sender
@@ -113,9 +121,41 @@ EWHNewReceiptDataObject* theDataObject;
                 return 3;
             }
         case 1:
-            return 2;
+            return 4;
     }
 }
+
+-(void) receiveXDockItem:(id)sender {
+    [rootController showLoading];
+    EWHUser *user = rootController.user;
+    
+    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+    if(user != nil){
+        EWHAddReceiptXDockItem
+        *request = [[EWHAddReceiptXDockItem alloc] initWithCallbacks:self callback:@selector(getReceiveXDockItemRequestCallBack:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        //NSLog(hub);
+        
+        
+        [request addReceiptItemforXDock:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:location.Id catalogId:catalog.CatalogId quantity:[txtQuantity.text integerValue] IsBulk:catalog.IsBulk customAttributes:catalog.CustomAttributeCatalogs itemScan:nil destinationId:destination.DestinationId inventoryTypeId:catalog.InventoryTypeId shipMethodId:theDataObject.shipmethod.ShipMethodId UOMs:catalog.UOMs deliveryDate:theDataObject.DeliveryDateTime user:user lineNumber:txtLineNumber.text lotNumber:txtLotNumber.text];
+    }
+}
+
+
+-(void) getReceiveXDockItemRequestCallBack: (EWHResponse*) results
+{
+    [rootController hideLoading];
+    //    destinations = results;
+    //    [rootController displayAlert:results.Message withTitle:@"Result"];
+    
+    if (results.Processed == 1) {
+    [rootController popToViewController:rootController.selectItemforReceiptView animated:YES];
+    } else {
+        [rootController displayAlert:results.Message withTitle:@"Error"];
+    }
+    //    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 -(void) receiveItem:(id)sender {
     [rootController showLoading];
@@ -123,12 +163,14 @@ EWHNewReceiptDataObject* theDataObject;
     
     EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
     if(user != nil){
-        EWHAddReceiptXDockItem
-        *request = [[EWHAddReceiptXDockItem alloc] initWithCallbacks:self callback:@selector(getReceiveItemRequestCallBack:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        EWHAddReceiptItem
+        *request = [[EWHAddReceiptItem alloc] initWithCallbacks:self callback:@selector(getReceiveItemRequestCallBack:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
         //NSLog(hub);
         
+        [request addReceiptItem:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:location.Id catalogId:catalog.CatalogId quantity:[txtQuantity.text integerValue] IsBulk:catalog.IsBulk IsSerialized:catalog.IsSerial itemScan:SerialNumbers user:user inventoryTypeId:catalog.InventoryTypeId customAttributes:catalog.CustomAttributeCatalogs UOMs:catalog.UOMs lineNumber:txtLineNumber.text lotNumber:txtLotNumber.text];
         
-        [request addReceiptItemforXDock:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:location.Id catalogId:catalog.CatalogId quantity:[txtQuantity.text integerValue] IsBulk:catalog.IsBulk customAttributes:catalog.CustomAttributeCatalogs itemScan:nil destinationId:destination.DestinationId inventoryTypeId:catalog.InventoryTypeId shipMethodId:theDataObject.shipmethod.ShipMethodId UOMs:catalog.UOMs deliveryDate:theDataObject.DeliveryDateTime user:user];
+        
+        //        [request ad:theDataObject.warehouse.Id programId:theDataObject.program.ProgramId receiptId:theDataObject.ReceiptId locationId:_location.Id catalogId:_catalog.CatalogId quantity:1 IsBulk:_catalog.IsBulk itemScan:nil destinationId:destination shipMethodId:theDataObject.shipmethod.ShipMethodId user:user];
     }
 }
 
@@ -136,10 +178,22 @@ EWHNewReceiptDataObject* theDataObject;
 -(void) getReceiveItemRequestCallBack: (EWHResponse*) results
 {
     [rootController hideLoading];
+    if (results.Processed == 1) {
+        [rootController popToViewController:rootController.selectItemforReceiptView animated:YES];
+    } else {
+        [rootController displayAlert:results.Message withTitle:@"Error"];
+    }
     //    destinations = results;
     //    [rootController displayAlert:results.Message withTitle:@"Result"];
-    [rootController popToViewController:rootController.selectItemforReceiptView animated:YES];
+    
     //    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+-(void) errorCallback: (NSError*) error
+{
+    [rootController hideLoading];
+    [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
 }
 
 @end

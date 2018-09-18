@@ -13,8 +13,8 @@
 #import "EWHSelectWarehouseController.h"
 #import "DTDevices.h"
 
-@interface EWHLoginController : UIViewController <DTDeviceDelegate>{
-   
+@interface EWHLoginController : UIViewController <DTDeviceDelegate> {
+    
 }
 - (void) clearForm;
 

@@ -9,11 +9,12 @@
 #import "EWHRequest.h"
 #import "EWHReceipt.h"
 #import "EWHResponse.h"
+#import "EWHNewReceiptDataObject.h"
 
 @interface EWHAddReceiptHeader : EWHRequest
 {
 }
 
-- (void)addReceiptHeader:(EWHReceipt *)receipt user:(EWHUser *)user;
+- (void)addReceiptHeader:(EWHNewReceiptDataObject *)receipt user:(EWHUser *)user;
 
 @end

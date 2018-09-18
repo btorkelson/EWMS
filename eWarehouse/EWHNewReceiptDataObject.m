@@ -14,6 +14,7 @@
 @synthesize float1;
 @synthesize PromptInventoryType;
 @synthesize program;
+@synthesize InboundCustomAttributes;
 
 #pragma mark -
 #pragma mark -Memory management methods

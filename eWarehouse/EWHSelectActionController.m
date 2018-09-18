@@ -108,6 +108,9 @@ EWHRootViewController *rootController;
 {
     [self performSegueWithIdentifier:@"NewReceipt" sender:nil];
 }
+- (IBAction)transferPressed:(id)sender {
+     [self performSegueWithIdentifier:@"Transfer" sender:nil];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -127,6 +130,10 @@ EWHRootViewController *rootController;
     else if ([[segue identifier] isEqualToString:@"NewReceipt"]) {
         EWHSelectProgramforReceiptController *selectProgramController = [segue destinationViewController];
         selectProgramController.warehouse = warehouse;
+    }
+    else if ([[segue identifier] isEqualToString:@"Transfer"]) {
+        EWHTransferSelectProgram *selectTransferController = [segue destinationViewController];
+        selectTransferController.warehouse = warehouse;
     }
 }
 

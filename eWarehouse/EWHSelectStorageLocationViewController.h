@@ -13,6 +13,8 @@
 #import "EWHSelectDestinationViewController.h"
 #import "EWHAddReceiptItem.h"
 #import "EWHLocationsByType.h"
+#import "EWHReceiptItemConfirmationViewController.h"
+#import "EWHScanSerialNumbersViewController.h"
 
 @interface EWHSelectStorageLocationViewController : UITableViewController
 {

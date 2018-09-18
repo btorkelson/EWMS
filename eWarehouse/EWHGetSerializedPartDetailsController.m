@@ -18,6 +18,7 @@
 @synthesize warehouse;
 @synthesize location;
 @synthesize storagelocation;
+@synthesize txtSerialNumber;
 
 EWHRootViewController *rootController;
 DTDevices *linea;
@@ -127,7 +128,7 @@ NSMutableArray *numbers;
                     cellTitle = @"Shipment";
                     cellText = shipment.ShipmentNumber;
                     break;
-                case 2:
+                case 2:	
                     cellTitle = @"Received";
                     cellText = [EWHUtils.dateFormatter stringFromDate:shipment.DeliveryDate];
                     break;
@@ -250,6 +251,34 @@ NSMutableArray *numbers;
     }
     else
         [rootController displayAlert:@"Duplicate serial number" withTitle:@"Error"];
+}
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    CGPoint pointInTable = [textField.superview convertPoint:textField.frame.origin toView:self.tableView];
+    CGPoint contentOffset = self.tableView.contentOffset;
+    
+    contentOffset.y = (pointInTable.y - textField.inputAccessoryView.frame.size.height);
+    
+    NSLog(@"contentOffset is: %@", NSStringFromCGPoint(contentOffset));
+    [self.tableView setContentOffset:contentOffset animated:YES];
+    return YES;
+}
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    if ([textField.superview.superview isKindOfClass:[UITableViewCell class]])
+    {
+        CGPoint buttonPosition = [textField convertPoint:CGPointZero
+                                                  toView: self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:TRUE];
+    }
+    
+    return YES;
+}
+
+- (IBAction)addPressed:(id)sender {
+    [self addSerialNumber:txtSerialNumber.text];
+    txtSerialNumber.text=@"";
 }
 
 -(IBAction) nextPressed: (id) sender

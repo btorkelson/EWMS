@@ -10,7 +10,7 @@
 
 @implementation EWHAddReceiptHeader
 
--(void)addReceiptHeader:(EWHReceipt *)receipt user:(EWHUser *)user
+-(void)addReceiptHeader:(EWHNewReceiptDataObject *)receipt user:(EWHUser *)user
 {
     __weak EWHRequest *sender = self;
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/AddReceipt"];
@@ -20,7 +20,17 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss ZZZZZ"];
     
-    NSString *postData = [NSString stringWithFormat:@"{\"receipt\":{\"ReceiptId\":%d ,\"isContainer\":\"%@\",\"ProgramName\":\"%@\",\"WarehouseId\":%d,\"ProgramId\":%d,\"ProjectId\":%d,\"ProjectNumber\":\"%@\",\"ProjectSequenceNumber\":\"%@\",\"CarrierInfoId\":%d,\"CarrierId\":%d,\"CarrierTrackingNumber\":\"%@\",\"VendorInfoId\":%d,\"VendorId\":%d,\"OriginId\":%d,\"DestinationId\":%d,\"ShippingMethod\":%d,\"Comment\":\"%@\",\"ReceivedDate\":\"%@\"},{\"userId\":%d}}", receipt.ReceiptId, receipt.isContainer ? @"true" : @"false", receipt.ProgramName, receipt.WarehouseId, receipt.ProgramId, receipt.ProjectId, receipt.ProjectNumber, receipt.ProjectSequenceNumber, receipt.CarrierInfoId, receipt.CarrierId, receipt.CarrierTrackingNumber, receipt.VendorInfoId, receipt.VendorId, receipt.OriginId, receipt.DestinationId, receipt.ShippingMethod,  receipt.Comments, [formatter stringFromDate:receipt.ReceivedDate], user.UserId];
+    NSMutableArray<NSDictionary*> *jsonOffers = [NSMutableArray array];
+    for (EWHInboundCustomAttribute* ca in receipt.InboundCustomAttributes) {
+        [jsonOffers addObject:[ca toJSON]];
+    }
+    NSError *e = nil;
+    NSData * JSONData = [NSJSONSerialization dataWithJSONObject:jsonOffers options:kNilOptions error:&e];
+//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:receipt.InboundCustomAttributes options:NSJSONWritingPrettyPrinted error:&e];
+    NSString *jsonCustomAttributes = [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
+    
+//    NSString *postData = [NSString stringWithFormat:@"{\"receipt\":{\"ReceiptId\":%ld ,\"isContainer\":\"%@\",\"ProgramName\":\"%@\",\"WarehouseId\":%ld,\"ProgramId\":%ld,\"ProjectId\":%ld,\"ProjectNumber\":\"%@\",\"ProjectSequenceNumber\":\"%@\",\"CarrierInfoId\":null,\"CarrierId\":%ld,\"CarrierTrackingNumber\":\"%@\",\"VendorInfoId\":null,\"VendorId\":%ld,\"OriginId\":%ld,\"DestinationId\":%ld,\"ShippingMethod\":%ld,\"Comment\":\"%@\",\"ReceivedDate\":\"%@\"},{\"userId\":%ld}}", (long)receipt.ReceiptId, receipt.isContainer ? @"true" : @"false", receipt.program.Name, (long)receipt.warehouse.Id, (long)receipt.program.ProgramId, (long)receipt.ProjectId, receipt.ProjectNumber, receipt.ProjectSequenceNumber,  (long)receipt.carrier.CarrierId, receipt.CarrierTrackingNumber, (long)receipt.vendor.VendorId, (long)receipt.origin.OriginId, (long)receipt.DestinationId, (long)receipt.shipmethod.ShipMethodId,  receipt.Comments, [formatter stringFromDate:receipt.ReceivedDate], (long)user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"receipt\":{\"ReceiptId\":%ld ,\"isContainer\":\"%@\",\"ProgramName\":\"%@\",\"WarehouseId\":%ld,\"ProgramId\":%ld,\"ProjectId\":%ld,\"ProjectNumber\":\"%@\",\"ProjectSequenceNumber\":\"%@\",\"CarrierInfoId\":0,\"CarrierId\":%ld,\"CarrierTrackingNumber\":\"%@\",\"VendorInfoId\":0,\"VendorId\":%ld,\"OriginId\":%ld,\"DestinationId\":%ld,\"ShippingMethod\":%ld,\"Comment\":\"%@\",\"ReceivedDate\":\"%@\",\"InboundCustomAttributes\":%@},{\"userId\":%ld}}", (long)receipt.ReceiptId, receipt.isContainer ? @"true" : @"false", receipt.program.Name, (long)receipt.warehouse.Id, (long)receipt.program.ProgramId, (long)receipt.ProjectId, receipt.ProjectNumber, receipt.ProjectSequenceNumber,  (long)receipt.carrier.CarrierId, receipt.CarrierTrackingNumber, (long)receipt.vendor.VendorId, (long)receipt.origin.OriginId, (long)receipt.DestinationId, (long)receipt.shipmethod.ShipMethodId,  receipt.Comments, [formatter stringFromDate:receipt.ReceivedDate],jsonCustomAttributes, (long)user.UserId];
     
     EWHLog(@"%@", postData);
     

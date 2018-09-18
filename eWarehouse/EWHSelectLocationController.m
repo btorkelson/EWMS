@@ -107,7 +107,8 @@ EWHRootViewController *rootController;
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     EWHLocation *location = [locations objectAtIndex:indexPath.row];
-    if(shipmentDetail.IsScanned){
+    EWHUser *user = rootController.user;
+    if(shipmentDetail.IsScanned || user.EWAdmin){
         if(shipment.isContainer)
             [self performSegueWithIdentifier:@"ScanLocation" sender:location];
         else
@@ -117,6 +118,7 @@ EWHRootViewController *rootController;
                 [self performSegueWithIdentifier:@"GetPartData" sender:location];
     }
     else
+//        [self performSegueWithIdentifier:@"GetSerializedPartData" sender:location];
         [self performSegueWithIdentifier:@"ScanContainer" sender:location];
 }
 

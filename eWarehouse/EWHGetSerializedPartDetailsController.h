@@ -12,7 +12,7 @@
 #import "EWHShipment.h"
 #import "EWHShipmentDetail.h"
 
-@interface EWHGetSerializedPartDetailsController : UITableViewController <DTDeviceDelegate>
+@interface EWHGetSerializedPartDetailsController : UITableViewController <DTDeviceDelegate,UITextViewDelegate>
 {
     IBOutlet UILabel *scannerMsg;
     IBOutlet UIButton* btnScanSerialNumber;
@@ -23,5 +23,6 @@
 @property (nonatomic, strong) EWHWarehouse *warehouse;
 @property (nonatomic, strong) EWHLocation *location;
 @property (nonatomic, strong) NSString *storagelocation;
+@property (strong, nonatomic) IBOutlet UITextField *txtSerialNumber;
 
 @end

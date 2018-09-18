@@ -14,6 +14,7 @@
 @synthesize LastName;
 @synthesize AuthHash;
 @synthesize Message;
+@synthesize EWAdmin;
 
 - (EWHUser *)initWithDictionary:(NSDictionary *)dictionary {
     UserId = [[dictionary objectForKey:@"UserId"] intValue];
@@ -30,6 +31,9 @@
     id msg = [dictionary objectForKey:@"Message"];
     if(msg != [NSNull null]) Message = [[NSString alloc] initWithString:msg];
     
+    EWAdmin = [[dictionary objectForKey:@"EWAdmin"] boolValue];
+    return [super init];
+
     return [super init];
 }
 @end
