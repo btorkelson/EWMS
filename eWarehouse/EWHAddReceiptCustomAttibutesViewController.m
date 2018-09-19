@@ -128,6 +128,7 @@ EWHNewReceiptDataObject* theDataObject;
                 caTextField.tag=indexPath.row;
                 
                 caTextField.delegate=self;
+//            test from home
                 [cell.contentView addSubview:caTextField];
 //            }
             
