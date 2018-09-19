@@ -16,6 +16,8 @@
 #import "EWHGetOriginsByProgramWarehouse.h"
 #import "EWHGetShipMethodsByProgram.h"
 #import "EWHInboundCustomAttribute.h"
+#import "EWHAddReceiptCustomAttibutesViewController.h"
+
 
 
 @interface EWHReceiptOptionsViewController : UITableViewController
@@ -26,6 +28,9 @@
 @property (nonatomic, strong) NSMutableArray *options;
 @property (nonatomic, strong) NSString* entity;
 @property (nonatomic, strong) NSArray *searchResults;
+@property (nonatomic, strong) NSIndexPath *dropdownIndexPath;
 @property (nonatomic, strong) EWHInboundCustomAttribute *inboundCustomAttribute;
+
+
 
 @end

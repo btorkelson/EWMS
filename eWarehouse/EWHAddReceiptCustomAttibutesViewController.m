@@ -23,6 +23,9 @@ DTDevices *linea;
 
 @synthesize visibleCustomAttributes;
 @synthesize options;
+@synthesize dropdownIndexPath;
+@synthesize CATableView;
+
 
 EWHNewReceiptDataObject* theDataObject;
 - (EWHNewReceiptDataObject*) theAppDataObject;
@@ -42,26 +45,6 @@ EWHNewReceiptDataObject* theDataObject;
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:YES];
-//    [self.tableView reloadData];
-    
-    
-//    [self.tableView reloadRowsAtIndexPaths:@[3] withRowAnimation:UITableViewRowAnimationNone];
-//    int a = 1;
-//    for (EWHInboundCustomAttribute *ca in visibleCustomAttributes) {
-//
-//    if (ca.CustomControlType == 4) {
-//        NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:a-1 inSection:0];
-//        NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
-//        [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
-//    }
-//    a++;
-//
-//    }
-    
-}
 
 
 - (void)didReceiveMemoryWarning {
@@ -83,40 +66,35 @@ EWHNewReceiptDataObject* theDataObject;
     return [visibleCustomAttributes count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
     
-//    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
-//    EWHWarehouse* warehouse = [[EWHWarehouse alloc] initWithDictionary:elem÷ent];
+    [self.tableView reloadData];
+    
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
-        static NSString *CellIdentifier = @"Cell";
-  
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-//    if ([cell.contentView viewWithTag:1]) {
-//        UITextView *t = (UITextView *)[cell.contentView viewWithTag:1];
-        //This version will take an existing textview and just resize it
-        
-//    } else {
-  
-//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (ca.CustomControlType == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
         cell.tag=indexPath.row;
-    
-    
-        if (ca.CustomControlType == 1) {
+        
             cell.detailTextLabel.hidden=true;
             cell.textLabel.hidden=true;
+            
             UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-//            if ([self.tableView viewWithTag:indexPath.row]) {
-//
-//                caTextField.text=ca.Value;
-//            } else {
             
                 caTextField.adjustsFontSizeToFitWidth = YES;
                 caTextField.textColor = [UIColor blackColor];
-                
+        
                 caTextField.placeholder = ca.LabelCaption;
                 if (ca.ReadOnly) {
                     [caTextField setEnabled: NO];
@@ -128,41 +106,43 @@ EWHNewReceiptDataObject* theDataObject;
                 caTextField.tag=indexPath.row;
                 
                 caTextField.delegate=self;
-//            test from home
-                [cell.contentView addSubview:caTextField];
-//            }
             
-        } else if (ca.CustomControlType == 4) {
-            if ([ca.Value length]>0) {
-                cell.detailTextLabel.text=ca.Value;
-            } else {
-                //            cell.detailTextLabel.text=@"";
-            }
+//                [cell.contentView addSubview:caTextField];
+        
+        return cell;
+            
+            
+    } else if (ca.CustomControlType == 4) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DropDownCell"];
+        cell.tag=indexPath.row;
+        
             cell.detailTextLabel.text=ca.Value;
             cell.textLabel.text=ca.LabelCaption;
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        return cell;
             
-            
-        } else {
-            
-            cell.detailTextLabel.hidden=true;
-            cell.textLabel.hidden=true;
-            UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-            caTextField.adjustsFontSizeToFitWidth = YES;
-            caTextField.textColor = [UIColor blackColor];
-            
-            caTextField.placeholder = ca.LabelCaption;
-            [caTextField setEnabled: NO];
-            caTextField.text = ca.Value;
-            
-            caTextField.tag=indexPath.row;
-            caTextField.delegate=self;
-            [cell.contentView addSubview:caTextField];
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell.tag=indexPath.row;
+        
+//                cell.detailTextLabel.hidden=true;
+//                cell.textLabel.hidden=true;
+//                UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
+//                caTextField.adjustsFontSizeToFitWidth = YES;
+//                caTextField.textColor = [UIColor grayColor];
+//                
+//                caTextField.placeholder = ca.LabelCaption;
+//                [caTextField setEnabled: NO];
+//                caTextField.text = ca.Value;
+//                
+//                caTextField.tag=indexPath.row;
+//                caTextField.delegate=self;
+        //                [cell.contentView addSubview:caTextField];
+        return cell;
         }
-//    }
     
     
-    return cell;
+    
     
     
 }
@@ -174,16 +154,44 @@ EWHNewReceiptDataObject* theDataObject;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
+    EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
     if (ca.CustomControlType == 4) {
         NSArray *items = [ca.OptionListString componentsSeparatedByString:@","];
         options = items;
+        dropdownIndexPath = indexPath;
         [self performSegueWithIdentifier:@"SelectOptions" sender:ca];
+    } else if (ca.CustomControlType == 6) {
+        ca.Value=@"true";
     }
+
+    
+}
+
+
+- (void)switchChanged:(id)sender {
+    UISwitch *switchControl = sender;
+//    CGPoint switchPositionPoint = [sender convertPoint:CGPointZero toView:[self]];
+//    NSIndexPath *indexPath = [[self tableName] indexPathForRowAtPoint:switchPositionPoint];
+
+}
+
+
+-(void) updateDropDown:(NSIndexPath *)indexPath {
     
     
+//    NSArray* rowsToReload = [NSArray arrayWithObjects:indexPath, nil];
+//    [CATableView beginUpdates];
+//    [CATableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
+//    [CATableView endUpdates];
+    
+    
+//    NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:2 inSection:0];
+//    NSArray *indexPaths = [[NSArray alloc] initWithObjects:indexPath2, nil];
+//    [CATableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//    cell.detailTextLabel.text= @"test";
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
@@ -267,6 +275,7 @@ EWHNewReceiptDataObject* theDataObject;
         selectOptionsController.entity = @"Value";
         selectOptionsController.inboundCustomAttribute=sender;
         selectOptionsController.options= options;
+        selectOptionsController.dropdownIndexPath=dropdownIndexPath;
     } else if ([[segue identifier] isEqualToString:@"ScanPart"]) {
         EWHScanPartController *selectOptionsController = [segue destinationViewController];
         //        selectOptionsController.entity = sender;

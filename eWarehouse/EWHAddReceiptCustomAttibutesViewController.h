@@ -16,7 +16,10 @@
 @interface EWHAddReceiptCustomAttibutesViewController : UITableViewController
 
 
+@property (strong, nonatomic) IBOutlet UITableView *CATableView;
 @property (nonatomic, strong) NSArray *visibleCustomAttributes;
+@property (nonatomic, strong) NSIndexPath *dropdownIndexPath;
 @property (nonatomic, strong) NSMutableArray *options;
 
+-(void) updateDropDown:(NSIndexPath *)indexPath;
 @end

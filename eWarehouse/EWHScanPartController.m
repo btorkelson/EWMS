@@ -339,14 +339,14 @@ EWHNewReceiptDataObject* theDataObject;
 
 - (IBAction)finishedPressed:(id)sender {
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Print Labels?"
-                                                   message: @"Would you like to add labels for this receipt to the print queue?"
-                                                  delegate: self
-                                         cancelButtonTitle:@"Yes"
-                                         otherButtonTitles:@"No",nil];
-    
-    
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Print Labels?"
+//                                                   message: @"Would you like to add labels for this receipt to the print queue?"
+//                                                  delegate: self
+//                                         cancelButtonTitle:@"Yes"
+//                                         otherButtonTitles:@"No",nil];
+//    
+//    
+//    [alert show];
     
     
     

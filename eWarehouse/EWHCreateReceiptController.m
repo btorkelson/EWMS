@@ -178,7 +178,7 @@ DTDevices *linea;
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([txtComments.text isEqualToString:@"Comments"]) {
+    if ([txtComments.text isEqualToString:@"Comment"]) {
         textView.text = @"";
         textView.textColor = [UIColor blackColor]; //optional
     }
@@ -188,7 +188,7 @@ DTDevices *linea;
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     if ([textView.text isEqualToString:@""]) {
-        textView.text = @"Comments";
+        textView.text = @"Comment";
         textView.textColor = [UIColor lightGrayColor]; //optional
     }
     [textView resignFirstResponder];
@@ -365,7 +365,11 @@ DTDevices *linea;
 //        receipt.OriginId = theDataObject.origin.OriginId;
 //        receipt.ShippingMethod = theDataObject.shipmethod.ShipMethodId;
 //        receipt.DeliveryDateTime = [NSDate date];
-        theDataObject.Comments = txtComments.text;
+        if ([txtComments.text isEqualToString:@"Comment"]) {
+            theDataObject.Comments = @"";
+        } else {
+            theDataObject.Comments = txtComments.text;
+        }
         theDataObject.VendorInvoiceNumber=txtVendorInvoiceNumber.text;
     
 

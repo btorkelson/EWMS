@@ -14,11 +14,13 @@
 
 
 EWHRootViewController *rootController;
+
 @synthesize program;
 @synthesize options;
 @synthesize entity;
 @synthesize searchResults;
 @synthesize inboundCustomAttribute;
+@synthesize dropdownIndexPath;
 
 	EWHNewReceiptDataObject* theDataObject;
 - (EWHNewReceiptDataObject*) theAppDataObject;
@@ -149,6 +151,7 @@ EWHRootViewController *rootController;
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    EWHAddReceiptCustomAttibutesViewController *addreceipt = [[EWHAddReceiptCustomAttibutesViewController alloc] initWithNibName:nil bundle:nil];
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         if ([entity  isEqual: @"Vendor"]) {
             EWHVendor *vendor = [searchResults objectAtIndex:indexPath.row];
@@ -167,6 +170,7 @@ EWHRootViewController *rootController;
             
             theDataObject.shipmethod = shipmethod;
         } else {
+            [addreceipt updateDropDown:dropdownIndexPath];
             inboundCustomAttribute.Value=[searchResults objectAtIndex:indexPath.row];
         }
     }else{
@@ -188,6 +192,8 @@ EWHRootViewController *rootController;
             theDataObject.shipmethod = shipmethod;
         } else {
             inboundCustomAttribute.Value=[options objectAtIndex:indexPath.row];
+            NSArray* rowsToReload = [NSArray arrayWithObjects:dropdownIndexPath, nil];
+            [addreceipt updateDropDown:dropdownIndexPath];
         }
     }
     
