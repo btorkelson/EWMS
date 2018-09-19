@@ -46,18 +46,16 @@ EWHNewReceiptDataObject* theDataObject;
 {
     [super viewWillAppear:YES];
 //    [self.tableView reloadData];
+    
+    
+//    [self.tableView reloadRowsAtIndexPaths:@[3] withRowAnimation:UITableViewRowAnimationNone];
 //    int a = 1;
 //    for (EWHInboundCustomAttribute *ca in visibleCustomAttributes) {
-//        
+//
 //    if (ca.CustomControlType == 4) {
-//        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:a];
-//        NSArray *subviews = cell.subviews;
-//        for (UIView *subview in subviews) {
-//            if ([subview isKindOfClass:[UILabel class]] && subview.tag == 100) {
-//                UILabel *mylabel = (UILabel *)subview;
-//                //Update your lable here
-//            }
-//        }
+//        NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:a-1 inSection:0];
+//        NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+//        [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationNone];
 //    }
 //    a++;
 //
@@ -94,29 +92,44 @@ EWHNewReceiptDataObject* theDataObject;
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
         static NSString *CellIdentifier = @"Cell";
+  
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+//    if ([cell.contentView viewWithTag:1]) {
+//        UITextView *t = (UITextView *)[cell.contentView viewWithTag:1];
+        //This version will take an existing textview and just resize it
         
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    } else {
+  
+//        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         cell.tag=indexPath.row;
+    
     
         if (ca.CustomControlType == 1) {
             cell.detailTextLabel.hidden=true;
             cell.textLabel.hidden=true;
             UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-            caTextField.adjustsFontSizeToFitWidth = YES;
-            caTextField.textColor = [UIColor blackColor];
+//            if ([self.tableView viewWithTag:indexPath.row]) {
+//
+//                caTextField.text=ca.Value;
+//            } else {
             
-            caTextField.placeholder = ca.LabelCaption;
-            if (ca.ReadOnly) {
-                [caTextField setEnabled: NO];
-            } else {
-                [caTextField setEnabled: YES];
-            }
-            cell.textLabel.text=ca.Value;
-            caTextField.tag=indexPath.row;
-            
-            caTextField.delegate=self;
-            [cell.contentView addSubview:caTextField];
+                caTextField.adjustsFontSizeToFitWidth = YES;
+                caTextField.textColor = [UIColor blackColor];
+                
+                caTextField.placeholder = ca.LabelCaption;
+                if (ca.ReadOnly) {
+                    [caTextField setEnabled: NO];
+                } else {
+                    [caTextField setEnabled: YES];
+                }
+                caTextField.text=nil;
+                caTextField.text=ca.Value;
+                caTextField.tag=indexPath.row;
+                
+                caTextField.delegate=self;
+                [cell.contentView addSubview:caTextField];
+//            }
             
         } else if (ca.CustomControlType == 4) {
             if ([ca.Value length]>0) {
@@ -127,6 +140,8 @@ EWHNewReceiptDataObject* theDataObject;
             cell.detailTextLabel.text=ca.Value;
             cell.textLabel.text=ca.LabelCaption;
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
+            
         } else {
             
             cell.detailTextLabel.hidden=true;
@@ -143,23 +158,12 @@ EWHNewReceiptDataObject* theDataObject;
             caTextField.delegate=self;
             [cell.contentView addSubview:caTextField];
         }
-        return cell;
+//    }
     
     
+    return cell;
     
-//    cell.textLabel.text = ca.LabelCaption;
-    // Configure the cell...
     
-}
-
-- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPaths];
-    
-    if (ca.CustomControlType == 4) {
-        NSArray *items = [ca.OptionListString componentsSeparatedByString:@","];
-        options = items;
-        [self performSegueWithIdentifier:@"SelectOptions" sender:ca];
-    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -182,17 +186,16 @@ EWHNewReceiptDataObject* theDataObject;
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
+    
+//    [self.tableView reloadData];
+    
     [rootController showLoading];
     [self.view endEditing:YES];
-    
+
     int error =0;
     int a =1;
     for (EWHInboundCustomAttribute *ca in visibleCustomAttributes) {
-        
-//        UITableViewCell *cell =[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-//        
-//        UITextField *txtField =[cell viewWithTag:a-1];
-//        ca.Value=txtField.text;
+
         if (ca.Required && ca.Value.length==0) {
             [rootController hideLoading];
             [rootController displayAlert:ca.ErrorMessage withTitle:@"Error"];
@@ -200,21 +203,21 @@ EWHNewReceiptDataObject* theDataObject;
             break;
         }
     }
-    
-        
+
+
         EWHUser *user = rootController.user;
-        
+
     if (error==0) {
-        
+
         if(user != nil){
-            
-                
+
+
                 EWHAddReceiptHeader
                 *request = [[EWHAddReceiptHeader alloc] initWithCallbacks:self callback:@selector(addReceiptCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
                 //NSLog(hub);
-                
+
                 [request addReceiptHeader:theDataObject user:user];
-            
+
         }
     }
     

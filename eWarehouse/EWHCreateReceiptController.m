@@ -366,6 +366,7 @@ DTDevices *linea;
 //        receipt.ShippingMethod = theDataObject.shipmethod.ShipMethodId;
 //        receipt.DeliveryDateTime = [NSDate date];
         theDataObject.Comments = txtComments.text;
+        theDataObject.VendorInvoiceNumber=txtVendorInvoiceNumber.text;
     
 
         if(user != nil){
