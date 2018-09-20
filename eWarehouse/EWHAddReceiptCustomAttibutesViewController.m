@@ -82,19 +82,29 @@ EWHNewReceiptDataObject* theDataObject;
     
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
-    
+    UITableViewCell *cell;
     if (ca.CustomControlType == 1) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
-        cell.tag=indexPath.row;
+//        cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
+        EWHTextCell *textcell = (EWHTextCell *)[tableView dequeueReusableCellWithIdentifier:@"TextCell"];
         
-            cell.detailTextLabel.hidden=true;
-            cell.textLabel.hidden=true;
+        if (!textcell) {
+            [tableView registerNib:[UINib nibWithNibName:@"EWHTextCell" bundle:nil] forCellReuseIdentifier:@"TextCell"];
+            textcell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
+//            textcell = [[EWHTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TextCell"];
+            
+        }
+//        textcell.tag=indexPath.row;
+        
+            textcell.detailTextLabel.hidden=true;
+        textcell.textLabel.hidden=true;
+        textcell.txtLabel.text = @"hello";
+        
             
             UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-            
+
                 caTextField.adjustsFontSizeToFitWidth = YES;
                 caTextField.textColor = [UIColor blackColor];
-        
+
                 caTextField.placeholder = ca.LabelCaption;
                 if (ca.ReadOnly) {
                     [caTextField setEnabled: NO];
@@ -104,16 +114,16 @@ EWHNewReceiptDataObject* theDataObject;
                 caTextField.text=nil;
                 caTextField.text=ca.Value;
                 caTextField.tag=indexPath.row;
-                
+
                 caTextField.delegate=self;
-            
-//                [cell.contentView addSubview:caTextField];
-        
-        return cell;
+        textcell.tfCustomAttributeText=caTextField;
+        textcell.placeHolder=ca.LabelCaption;
+//        [textcell.contentView addSubview:caTextField];
+        cell = textcell;
             
             
     } else if (ca.CustomControlType == 4) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DropDownCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"DropDownCell"];
         cell.tag=indexPath.row;
         
             cell.detailTextLabel.text=ca.Value;
@@ -122,28 +132,29 @@ EWHNewReceiptDataObject* theDataObject;
         return cell;
             
     } else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         cell.tag=indexPath.row;
         
-//                cell.detailTextLabel.hidden=true;
-//                cell.textLabel.hidden=true;
-//                UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-//                caTextField.adjustsFontSizeToFitWidth = YES;
-//                caTextField.textColor = [UIColor grayColor];
-//                
-//                caTextField.placeholder = ca.LabelCaption;
-//                [caTextField setEnabled: NO];
-//                caTextField.text = ca.Value;
-//                
-//                caTextField.tag=indexPath.row;
-//                caTextField.delegate=self;
+                cell.detailTextLabel.hidden=true;
+                cell.textLabel.hidden=true;
+                UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
+                caTextField.adjustsFontSizeToFitWidth = YES;
+                caTextField.textColor = [UIColor grayColor];
+        
+                caTextField.placeholder = ca.LabelCaption;
+                [caTextField setEnabled: NO];
+                caTextField.text = ca.Value;
+        
+                caTextField.tag=indexPath.row;
+                caTextField.delegate=self;
         //                [cell.contentView addSubview:caTextField];
-        return cell;
+        
         }
     
     
     
     
+    return cell;
     
 }
 

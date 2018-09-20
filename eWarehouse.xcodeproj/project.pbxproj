@@ -109,6 +109,8 @@
 		6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */; };
 		6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */; };
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
+		ABC8D39421531E9400C7B4D1 /* EWHTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ABC8D39221531E9400C7B4D1 /* EWHTextCell.m */; };
+		ABC8D39521531E9400C7B4D1 /* EWHTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABC8D39321531E9400C7B4D1 /* EWHTextCell.xib */; };
 		D31D95D219ED89FB00B37466 /* EWHCustomAttributeCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */; };
 		D322DB1319F04E2800689F7F /* EWHGetInventoryTypesforProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1219F04E2800689F7F /* EWHGetInventoryTypesforProgram.m */; };
 		D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1519F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m */; };
@@ -363,6 +365,9 @@
 		6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayPartRequest.m; sourceTree = "<group>"; };
 		6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwaySerializedPartRequest.h; sourceTree = "<group>"; };
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
+		ABC8D39121531E9400C7B4D1 /* EWHTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHTextCell.h; sourceTree = "<group>"; };
+		ABC8D39221531E9400C7B4D1 /* EWHTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHTextCell.m; sourceTree = "<group>"; };
+		ABC8D39321531E9400C7B4D1 /* EWHTextCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EWHTextCell.xib; sourceTree = "<group>"; };
 		D31D95D019ED89FB00B37466 /* EWHCustomAttributeCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHCustomAttributeCatalog.h; sourceTree = "<group>"; };
 		D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHCustomAttributeCatalog.m; sourceTree = "<group>"; };
 		D322DB1119F04E2800689F7F /* EWHGetInventoryTypesforProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetInventoryTypesforProgram.h; sourceTree = "<group>"; };
@@ -894,6 +899,9 @@
 				D3BEA73E21483F9B003F1854 /* EWHCustomControl.m */,
 				D3BEA74B214B0169003F1854 /* EWHInboundCustomAttribute.h */,
 				D3BEA74C214B0169003F1854 /* EWHInboundCustomAttribute.m */,
+				ABC8D39121531E9400C7B4D1 /* EWHTextCell.h */,
+				ABC8D39221531E9400C7B4D1 /* EWHTextCell.m */,
+				ABC8D39321531E9400C7B4D1 /* EWHTextCell.xib */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1086,6 +1094,7 @@
 				6B9C214915B85436005CACD0 /* icon.png in Resources */,
 				6B9C214B15B854A6005CACD0 /* Default.png in Resources */,
 				6B9C214D15B854B4005CACD0 /* Default@2x.png in Resources */,
+				ABC8D39521531E9400C7B4D1 /* EWHTextCell.xib in Resources */,
 				6B97135B15EBB5160071BEE2 /* 0.png in Resources */,
 				D32F54671CE26E2F0051D7E1 /* icon@2x.png in Resources */,
 				6B97135C15EBB5160071BEE2 /* 25.png in Resources */,
@@ -1147,6 +1156,7 @@
 				D3C34D681ED89C2A0004746C /* EWHTransferSelectProgram.m in Sources */,
 				6BA7A95D15B8F24600953C6D /* EWHSelectWarehouseController.m in Sources */,
 				D381627B18A1539700BA59FA /* EWHOrigin.m in Sources */,
+				ABC8D39421531E9400C7B4D1 /* EWHTextCell.m in Sources */,
 				6B98480B15B9C27C00A1E2EB /* EWHRequest.m in Sources */,
 				6B98481115B9C4EC00A1E2EB /* EWHUser.m in Sources */,
 				D381628418A15CAB00BA59FA /* EWHGetShipMethodsByProgram.m in Sources */,
@@ -1330,7 +1340,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -1358,7 +1368,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

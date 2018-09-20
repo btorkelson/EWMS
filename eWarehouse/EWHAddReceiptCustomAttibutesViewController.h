@@ -12,6 +12,7 @@
 #import "EWHNewReceiptDataObject.h"
 #import "EWHInboundCustomAttribute.h"
 #import "EWHAppDelegateProtocal.h"
+#import "EWHTextCell.h"
 
 @interface EWHAddReceiptCustomAttibutesViewController : UITableViewController
 
