@@ -34,7 +34,7 @@
     LabelCaption = [dictionary objectForKey:@"LabelCaption"];
     OptionListString = [dictionary objectForKey:@"OptionListString"];
     CheckBoxDefaultValue = [[dictionary objectForKey:@"CheckBoxDefaultValue"] boolValue];
-    CheckBoxValue = [[dictionary objectForKey:@"CheckBoxValue"] boolValue];
+    CheckBoxValue = [[dictionary objectForKey:@"CheckBoxDefaultValue"] boolValue];
     ReadOnly = [[dictionary objectForKey:@"ReadOnly"] boolValue];
     Required = [[dictionary objectForKey:@"Required"] boolValue];
     Visible = [[dictionary objectForKey:@"Visible"] boolValue];

@@ -334,6 +334,7 @@ DTDevices *linea;
 
 - (IBAction)doneButtonPressed:(id)sender {
     [rootController showLoading];
+    NSString *error = nil;
     
     if (theDataObject.program.IsReceiptToOrder == YES && !(theDataObject.shipmethod.ShipMethodId)) {
     
@@ -371,9 +372,35 @@ DTDevices *linea;
             theDataObject.Comments = txtComments.text;
         }
         theDataObject.VendorInvoiceNumber=txtVendorInvoiceNumber.text;
-    
+        
+        
+        for (id element in theDataObject.CustomControlSettings) {
+            EWHCustomControl* control  = [[EWHCustomControl alloc] initWithDictionary:element];
+            if (control.Required) {
+                NSString * value = @"";
+                if ([control.CustomControlName  isEqual: @"txtProjectNumber"]) {
+                    value= txtProjectNumber.text;
+                } else if ([control.CustomControlName  isEqual: @"txtProjectSequenceNumber"]) {
+                    value= txtProjectSequence.text;
+                } else if ([control.CustomControlName  isEqual: @"cmbVendor"]) {
+                    value= lblVendor.text;
+                } else if ([control.CustomControlName  isEqual: @"cmbCarrier"]) {
+                    value= lblCarrier.text;
+                } else if ([control.CustomControlName  isEqual: @"txtVendorInvoiceNumber"]) {
+                    value= txtVendorInvoiceNumber.text;
+                } else if ([control.CustomControlName  isEqual: @"txtCarrierTrackingNumber"]) {
+                    value= txtCarrierTracking.text;
+                }
+                if ([value isEqual:@""]) {
+                    [rootController hideLoading];
+                    [rootController displayAlert:control.ErrorMessage withTitle:@"Error"];
+                    error = @"error";
+                    break;
+                }
+            }
+        }
 
-        if(user != nil){
+        if(user != nil && error == nil){
             
             NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"Visible == true"];
             visibleCustomAttributes = [theDataObject.InboundCustomAttributes filteredArrayUsingPredicate:resultPredicate];

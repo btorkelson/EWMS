@@ -83,44 +83,37 @@ EWHNewReceiptDataObject* theDataObject;
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
     UITableViewCell *cell;
-    if (ca.CustomControlType == 1) {
-//        cell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
-        EWHTextCell *textcell = (EWHTextCell *)[tableView dequeueReusableCellWithIdentifier:@"TextCell"];
+    if (ca.CustomControlType == 1 || ca.CustomControlType ==2 || ca.CustomControlType == 3) {
+        EWHCellforTextTableViewCell *textcell = (EWHCellforTextTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CellforText"];
         
         if (!textcell) {
-            [tableView registerNib:[UINib nibWithNibName:@"EWHTextCell" bundle:nil] forCellReuseIdentifier:@"TextCell"];
-            textcell = [tableView dequeueReusableCellWithIdentifier:@"TextCell"];
-//            textcell = [[EWHTextCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"TextCell"];
+            [tableView registerNib:[UINib nibWithNibName:@"EWHCellforTextTableViewCell" bundle:nil] forCellReuseIdentifier:@"CellforText"];
+            textcell = [tableView dequeueReusableCellWithIdentifier:@"CellforText"];
             
         }
-//        textcell.tag=indexPath.row;
         
             textcell.detailTextLabel.hidden=true;
-        textcell.textLabel.hidden=true;
-        textcell.txtLabel.text = @"hello";
+            textcell.textLabel.hidden=true;
+
+
+            UITextField *caTextField = (UITextField *)[textcell tfCustomAttributeText];
+            caTextField.adjustsFontSizeToFitWidth = YES;
+            caTextField.textColor = [UIColor blackColor];
+
+            caTextField.placeholder = ca.LabelCaption;
+            if (ca.ReadOnly) {
+                [caTextField setEnabled: NO];
+            } else {
+                [caTextField setEnabled: YES];
+            }
+            caTextField.text=nil;
+            caTextField.text=ca.Value;
+            caTextField.tag=indexPath.row;
+
+            caTextField.delegate=self;
+            textcell.tfCustomAttributeText=caTextField;
         
-            
-            UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-
-                caTextField.adjustsFontSizeToFitWidth = YES;
-                caTextField.textColor = [UIColor blackColor];
-
-                caTextField.placeholder = ca.LabelCaption;
-                if (ca.ReadOnly) {
-                    [caTextField setEnabled: NO];
-                } else {
-                    [caTextField setEnabled: YES];
-                }
-                caTextField.text=nil;
-                caTextField.text=ca.Value;
-                caTextField.tag=indexPath.row;
-
-                caTextField.delegate=self;
-        textcell.tfCustomAttributeText=caTextField;
-        textcell.placeHolder=ca.LabelCaption;
-//        [textcell.contentView addSubview:caTextField];
-        cell = textcell;
-            
+            cell = textcell;
             
     } else if (ca.CustomControlType == 4) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"DropDownCell"];
@@ -130,25 +123,67 @@ EWHNewReceiptDataObject* theDataObject;
             cell.textLabel.text=ca.LabelCaption;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         return cell;
+    } else if (ca.CustomControlType == 6) {
+        
+            EWHCellforCheckboxTableViewCell *checkboxcell = (EWHCellforCheckboxTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CellforCheckbox"];
             
+            if (!checkboxcell) {
+                [tableView registerNib:[UINib nibWithNibName:@"EWHCellforCheckboxTableViewCell" bundle:nil] forCellReuseIdentifier:@"CellforCheckbox"];
+                checkboxcell = [tableView dequeueReusableCellWithIdentifier:@"CellforCheckbox"];
+                
+            }
+            
+            checkboxcell.detailTextLabel.hidden=true;
+            checkboxcell.textLabel.hidden=true;
+            
+            
+            UISwitch *caSwitch = (UISwitch *)[checkboxcell swCustomAttributeSwitch];
+        
+        if ([ca.Value isEqual:@"1"]) {
+            caSwitch.on=true;
+        }
+        
+            checkboxcell.txtCellLabel.text = ca.LabelCaption;
+            if (ca.ReadOnly) {
+                [caSwitch setEnabled: NO];
+            } else {
+                [caSwitch setEnabled: YES];
+            }
+        caSwitch.tag = indexPath.row;
+        [caSwitch addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+
+            checkboxcell.tag=indexPath.row;
+        
+            
+            cell = checkboxcell;
+            
+    
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-        cell.tag=indexPath.row;
+        EWHCellforTextTableViewCell *textcell = (EWHCellforTextTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"CellforText"];
         
-                cell.detailTextLabel.hidden=true;
-                cell.textLabel.hidden=true;
-                UITextField *caTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 185, 30)];
-                caTextField.adjustsFontSizeToFitWidth = YES;
-                caTextField.textColor = [UIColor grayColor];
+        if (!textcell) {
+            [tableView registerNib:[UINib nibWithNibName:@"EWHCellforTextTableViewCell" bundle:nil] forCellReuseIdentifier:@"CellforText"];
+            textcell = [tableView dequeueReusableCellWithIdentifier:@"CellforText"];
+            
+        }
         
-                caTextField.placeholder = ca.LabelCaption;
-                [caTextField setEnabled: NO];
-                caTextField.text = ca.Value;
-        
-                caTextField.tag=indexPath.row;
-                caTextField.delegate=self;
-        //                [cell.contentView addSubview:caTextField];
-        
+            textcell.detailTextLabel.hidden=true;
+            textcell.textLabel.hidden=true;
+            UITextField *caTextField = (UITextField *)[textcell tfCustomAttributeText];
+
+            caTextField.adjustsFontSizeToFitWidth = YES;
+            caTextField.textColor = [UIColor grayColor];
+
+            caTextField.placeholder = ca.LabelCaption;
+            [caTextField setEnabled: NO];
+            caTextField.text = ca.Value;
+
+            caTextField.tag=indexPath.row;
+            caTextField.delegate=self;
+
+            textcell.tfCustomAttributeText=caTextField;
+
+            cell = textcell;
         }
     
     
@@ -158,13 +193,32 @@ EWHNewReceiptDataObject* theDataObject;
     
 }
 
+
+- (void)updateSwitchAtIndexPath:(UISwitch *)aswitch{
+    
+    EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:aswitch.tag];
+        if ([aswitch isOn]) {
+            ca.Value=@"1";
+        } else {
+//            [aswitch setOn:YES animated:YES];
+            ca.Value=@"0";
+        }
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:textField.tag];
     ca.Value=textField.text;
+    [textField resignFirstResponder];
     
 }
 
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return TRUE;
+}
+-
+(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     EWHInboundCustomAttribute *ca = [visibleCustomAttributes objectAtIndex:indexPath.row];
     
@@ -173,13 +227,25 @@ EWHNewReceiptDataObject* theDataObject;
         options = items;
         dropdownIndexPath = indexPath;
         [self performSegueWithIdentifier:@"SelectOptions" sender:ca];
-    } else if (ca.CustomControlType == 6) {
-        ca.Value=@"true";
     }
+//    else if (ca.CustomControlType == 6) {
+//        ca.Value=@"1";
+//    }
+    
 
     
 }
-
+//- (void)updateSwitchAtIndexPath:(NSIndexPath *)indexPath {
+//    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+//    UISwitch *switchView = (UISwitch *)cell.accessoryView;
+//    
+//    if ([switchView isOn]) {
+//        [switchView setOn:NO animated:YES];
+//    } else {
+//        [switchView setOn:YES animated:YES];
+//    }
+//    
+//}
 
 - (void)switchChanged:(id)sender {
     UISwitch *switchControl = sender;

@@ -12,7 +12,8 @@
 #import "EWHNewReceiptDataObject.h"
 #import "EWHInboundCustomAttribute.h"
 #import "EWHAppDelegateProtocal.h"
-#import "EWHTextCell.h"
+#import "EWHCellforTextTableViewCell.h"
+#import "EWHCellforCheckboxTableViewCell.h"
 
 @interface EWHAddReceiptCustomAttibutesViewController : UITableViewController
 

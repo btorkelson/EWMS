@@ -348,6 +348,8 @@ EWHNewReceiptDataObject* theDataObject;
 //    
 //    [alert show];
     
+    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+    
     
     
     [rootController popToViewController:rootController.selectActionView animated:YES];
