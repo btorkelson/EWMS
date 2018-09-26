@@ -95,7 +95,7 @@ EWHRootViewController *rootController;
 
 -(IBAction) cycleCountPressed: (id) sender
 {
-    [rootController displayAlert:@"Not Implemented" withTitle:@"Cycle Count"];
+    [self performSegueWithIdentifier:@"CycleCount" sender:nil];
 }
 
 
@@ -134,6 +134,10 @@ EWHRootViewController *rootController;
     else if ([[segue identifier] isEqualToString:@"Transfer"]) {
         EWHTransferSelectProgram *selectTransferController = [segue destinationViewController];
         selectTransferController.warehouse = warehouse;
+    }
+    else if ([[segue identifier] isEqualToString:@"CycleCount"]) {
+        EWHSelectCylceCountJobController *selectCycleCountController = [segue destinationViewController];
+        selectCycleCountController.warehouse = warehouse;
     }
 }
 

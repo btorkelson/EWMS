@@ -189,6 +189,133 @@
             </objects>
             <point key="canvasLocation" x="-1324" y="938"/>
         </scene>
+        <!--Select Cylce Count Job Controller-->
+        <scene sceneID="gpn-aa-Mb0">
+            <objects>
+                <tableViewController id="apA-cG-0bK" customClass="EWHSelectCylceCountJobController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="GD1-8p-aTv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="f6x-KJ-GdC" detailTextLabel="YF0-WG-yDl" style="IBUITableViewCellStyleSubtitle" id="QfP-eQ-zut">
+                                <rect key="frame" x="0.0" y="56" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QfP-eQ-zut" id="TBl-AI-jZj">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f6x-KJ-GdC">
+                                            <rect key="frame" x="15" y="4" width="34" height="21"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YF0-WG-yDl">
+                                            <rect key="frame" x="15" y="25" width="44" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="apA-cG-0bK" id="Y0H-jF-9X4"/>
+                            <outlet property="delegate" destination="apA-cG-0bK" id="Bqq-6t-oe8"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="mjD-ZH-dCM"/>
+                    <connections>
+                        <segue destination="0PG-GZ-M1D" kind="push" identifier="ViewCycleCountJobLocation" id="d2i-Wf-1QA"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5P-Y9-t9F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="90" y="-2222"/>
+        </scene>
+        <!--Select Cycle Count Location Controller-->
+        <scene sceneID="bwK-7V-H0m">
+            <objects>
+                <tableViewController id="0PG-GZ-M1D" customClass="EWHSelectCycleCountLocationController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="tX1-d1-Ih5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="gdw-4w-5QI" style="IBUITableViewCellStyleDefault" id="sHQ-n6-yZw">
+                                <rect key="frame" x="0.0" y="56" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sHQ-n6-yZw" id="9AP-uf-Ou1">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gdw-4w-5QI">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0PG-GZ-M1D" id="8Rf-V8-ktV"/>
+                            <outlet property="delegate" destination="0PG-GZ-M1D" id="ZMQ-8S-Pn6"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qbE-Pt-k9d"/>
+                    <connections>
+                        <segue destination="ssk-fB-afs" kind="push" identifier="ViewCycleCountJobLocationCatalog" id="wC3-Nm-n2u"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMm-5R-zjp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="599" y="-2222"/>
+        </scene>
+        <!--Select Cycle Count Location Catalog Controller-->
+        <scene sceneID="bT5-CV-4qp">
+            <objects>
+                <tableViewController id="ssk-fB-afs" customClass="EWHSelectCycleCountLocationCatalogController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="vOR-cW-duM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="MZQ-0U-A1o" style="IBUITableViewCellStyleDefault" id="VFE-ao-uu2">
+                                <rect key="frame" x="0.0" y="56" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VFE-ao-uu2" id="twk-w8-tIb">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MZQ-0U-A1o">
+                                            <rect key="frame" x="15" y="0.0" width="270" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ssk-fB-afs" id="l2n-2j-ZpF"/>
+                            <outlet property="delegate" destination="ssk-fB-afs" id="qGj-WH-zKs"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="IkK-lu-rFR"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muQ-ul-KtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="-2222"/>
+        </scene>
         <!--Programs-->
         <scene sceneID="KJC-9E-p9J">
             <objects>
@@ -711,17 +838,6 @@
                                     <action selector="lookupItemPressed:" destination="2wq-fF-fxP" eventType="touchUpInside" id="RdP-gX-oaG"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaP-Po-paD">
-                                <rect key="frame" x="63" y="489" width="195" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="Cycle Count">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="cycleCountPressed:" destination="2wq-fF-fxP" eventType="touchUpInside" id="48E-jc-r48"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IO-NP-0xn">
                                 <rect key="frame" x="62" y="239" width="195" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -755,6 +871,17 @@
                                     <action selector="transferPressed:" destination="2wq-fF-fxP" eventType="touchUpInside" id="MSm-Rq-H7F"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MaP-Po-paD">
+                                <rect key="frame" x="63" y="419" width="195" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="Cycle Count">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="cycleCountPressed:" destination="2wq-fF-fxP" eventType="touchUpInside" id="48E-jc-r48"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079015731812" green="0.90196079015731812" blue="0.90196079015731812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </scrollView>
@@ -772,6 +899,7 @@
                         <segue destination="2Cv-Ef-t5f" kind="push" identifier="NewReceipt" id="CIy-UA-17g"/>
                         <segue destination="TYE-Il-TXO" kind="push" identifier="lookup item" id="jgO-XV-4q6"/>
                         <segue destination="Bfp-j6-Xwq" kind="push" identifier="Transfer" id="MfA-15-kAZ"/>
+                        <segue destination="apA-cG-0bK" kind="push" identifier="CycleCount" id="lVr-an-NJd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FMc-37-6jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
