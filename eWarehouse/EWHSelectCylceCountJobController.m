@@ -83,6 +83,11 @@ EWHRootViewController *rootController;
     return [cyclecountJobs count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *title = NSLocalizedString(@"Cycle Count Jobs", @"Cycle Count Jobs");
+    return title;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";

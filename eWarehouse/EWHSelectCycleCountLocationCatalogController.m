@@ -19,6 +19,7 @@ EWHRootViewController *rootController;
 @synthesize warehouse;
 @synthesize cyclecountJob;
 @synthesize location;
+@synthesize cyclecountCatalogs;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,35 +40,39 @@ EWHRootViewController *rootController;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Incomplete implementation, return the number of sections
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return 0;
+    return [cyclecountCatalogs count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *title = NSLocalizedString(@"Parts", @"Parts");
+    return title;
+}
 - (void)viewDidAppear:(BOOL)animated{
-    rootController.locations = nil;
-    [self loadCycleCountLocations];
+    [self loadCycleCountLocationCatalogs];
 }
 
 #pragma mark - Table view data source
 
--(void) loadCycleCountLocations
+-(void) loadCycleCountLocationCatalogs
 {
     [rootController showLoading];
     EWHUser *user = rootController.user;
     if(user != nil){
-        EWHGetCycleCountJobDetails *request = [[EWHGetCycleCountJobDetails alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-        [request getCycleCountJobDetails:cyclecountJob.CycleCountJobId cyclecountJobTypeId:cyclecountJob.CycleCountJobTypeId withAuthHash:user.AuthHash];
+        EWHGetCycleCountJobDetailLocationCatalogs *request = [[EWHGetCycleCountJobDetailLocationCatalogs alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        [request getCycleCountJobDetailLocationCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id isNew:1 user:user];
     }
 }
 
 -(void) getJobListCallback: (NSMutableArray*) results
 {
     [rootController hideLoading];
-    cyclecountLocations = results;
+    cyclecountCatalogs = results;
     [self.tableView reloadData];
 }
 
@@ -84,16 +89,6 @@ EWHRootViewController *rootController;
     [rootController signOut];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Only one section.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Only one section, so return the number of items in the list.
-    return [cyclecountLocations count];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -101,15 +96,15 @@ EWHRootViewController *rootController;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Get the object to display and set the value in the cell.
-    EWHLocation *location = [cyclecountLocations objectAtIndex:indexPath.row];
+    EWHCatalog *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = location.Name;
+    cell.textLabel.text = catalog.ItemNumber;
     
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EWHLocation *location = [cyclecountLocations objectAtIndex:indexPath.row];
+    EWHCatalog *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
 }
 

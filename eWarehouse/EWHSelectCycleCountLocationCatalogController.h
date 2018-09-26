@@ -18,5 +18,6 @@
 @property (nonatomic, strong) EWHWarehouse *warehouse;
 @property (nonatomic, strong) EWHCycleCountJob *cyclecountJob;
 @property (nonatomic,strong) EWHLocation *location;
+@property (nonatomic, strong) NSMutableArray *cyclecountCatalogs;
 
 @end

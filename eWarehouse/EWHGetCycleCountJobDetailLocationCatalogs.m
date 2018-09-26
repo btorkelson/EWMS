@@ -34,14 +34,14 @@
             SBJsonParser* jsonParser = [[SBJsonParser alloc] init];
             NSError *e = nil;
             NSDictionary* dictionary = [jsonParser objectWithString:responseString error:&e];
-            NSMutableArray* locations = [[NSMutableArray alloc] init];
+            NSMutableArray* catalogs = [[NSMutableArray alloc] init];
             for (NSDictionary* element in [dictionary objectForKey:@"GetCycleCountJobDetailLocationCatalogsResult"]) {
-                EWHLocation* location = [[EWHLocation alloc] initWithDictionary:element];
-                [locations addObject:location];
+                EWHCatalog* catalog = [[EWHCatalog alloc] initWithDictionary:element];
+                [catalogs addObject:catalog];
             }
             if(self.caller && self.callback){
                 if([self.caller respondsToSelector:self.callback]){
-                    [self.caller performSelector:self.callback withObject:locations];
+                    [self.caller performSelector:self.callback withObject:catalogs];
                 }
             }
         }

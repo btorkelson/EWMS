@@ -81,6 +81,11 @@ EWHRootViewController *rootController;
     return [cyclecountLocations count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *title = NSLocalizedString(@"Locations", @"Locations");
+    return title;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
