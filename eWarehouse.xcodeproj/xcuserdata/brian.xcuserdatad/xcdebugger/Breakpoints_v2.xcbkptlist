@@ -90,7 +90,7 @@
                   moduleName = "eWarehouseApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Shared/EWMS/eWarehouse/eWarehouse/EWHCustomAttributeCatalog.h"
-                  timestampString = "559244733.571731"
+                  timestampString = "559685787.347819"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -105,7 +105,7 @@
                   moduleName = "eWarehouseApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Shared/EWMS/eWarehouse/eWarehouse/EWHCustomAttributeCatalog.h"
-                  timestampString = "559244733.573697"
+                  timestampString = "559685787.349703"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -1766,7 +1766,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eWarehouse/EWHGetCycleCountJobDetails.m"
@@ -1779,14 +1779,14 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__87-[EWHGetCycleCountJobDetails getCycleCountJobDetails:cyclecountJobTypeId:withAuthHash:]_block_invoke"
                   moduleName = "eWarehouseApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Shared/EWMS/eWarehouse/eWarehouse/EWHGetCycleCountJobDetails.m"
-                  timestampString = "559244733.655599"
+                  timestampString = "559684807.8329459"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -1794,14 +1794,14 @@
                   offsetFromSymbolStart = "545">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__87-[EWHGetCycleCountJobDetails getCycleCountJobDetails:cyclecountJobTypeId:withAuthHash:]_block_invoke"
                   moduleName = "eWarehouseApp"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Shared/EWMS/eWarehouse/eWarehouse/EWHGetCycleCountJobDetails.m"
-                  timestampString = "559244733.657405"
+                  timestampString = "559684807.834847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -1814,7 +1814,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eWarehouse/EWHGetCycleCountJobDetails.m"
@@ -1830,7 +1830,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "eWarehouse/EWHGetCycleCountJobDetails.m"
@@ -1840,6 +1840,22 @@
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "-getCycleCountJobDetails:cyclecountJobTypeId:withAuthHash:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "eWarehouse/EWHSelectCycleCountLocationCatalogController.m"
+            timestampString = "559685562.509729"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

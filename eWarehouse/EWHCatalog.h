@@ -31,6 +31,8 @@
 @property (nonatomic, retain) NSMutableArray *CustomAttributeCatalogs;
 @property (assign, nonatomic) NSInteger InventoryTypeId;
 @property (nonatomic, retain) NSMutableArray *UOMs;
+@property (nonatomic, retain) NSString *ProgramName;
+@property (nonatomic, retain) NSMutableArray *DetailsByStatus;
 
 - (EWHCatalog *)initWithDictionary:(NSDictionary *)dictionary;
 

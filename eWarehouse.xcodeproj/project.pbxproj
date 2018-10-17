@@ -1120,7 +1120,7 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					6B960D2215B712F000064CC0 = {
-						DevelopmentTeam = J53LBKD8MY;
+						DevelopmentTeam = SL7JK6JKLG;
 					};
 				};
 			};
@@ -1404,7 +1404,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J53LBKD8MY;
+				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1416,7 +1416,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWMSMobileApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1432,7 +1432,7 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = J53LBKD8MY;
+				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1444,7 +1444,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWMSMobileApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -99,13 +99,14 @@ EWHRootViewController *rootController;
     EWHCatalog *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
     
     cell.textLabel.text = catalog.ItemNumber;
+    cell.detailTextLabel.text = catalog.ProgramName;
     
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     EWHCatalog *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
+//    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
 }
 
 @end

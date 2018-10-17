@@ -19,6 +19,8 @@
 @synthesize CustomAttributeCatalogs;
 @synthesize InventoryTypeId;
 @synthesize UOMs;
+@synthesize ProgramName;
+@synthesize DetailsByStatus;
 
 //+ (Class)EWHUOM_class {
 //    return [EWHCatalog class];
@@ -36,6 +38,8 @@
     ProgramId = [[dictionary objectForKey:@"ProgramId"] intValue];
     CustomAttributeCatalogs = [dictionary objectForKey:@"CACList"];
     InventoryTypeId = [[dictionary objectForKey:@"InventoryTypeId"] intValue];
+    ProgramName = [dictionary objectForKey:@"ProgramName"];
+    DetailsByStatus = [dictionary objectForKey:@"DetailsByStatus"];
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     NSDictionary *uomList = ([dictionary objectForKey:@"UOMList"] != [NSNull null] ? [dictionary objectForKey:@"UOMList"] : nil);
