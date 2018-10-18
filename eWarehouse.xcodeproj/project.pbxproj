@@ -109,6 +109,8 @@
 		6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2B15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m */; };
 		6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */; };
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
+		AB0A693C217902D700DC1D5E /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693B217902D700DC1D5E /* AppIcon.xcassets */; };
+		AB0A693E21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */; };
 		D31D95D219ED89FB00B37466 /* EWHCustomAttributeCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */; };
 		D322DB1319F04E2800689F7F /* EWHGetInventoryTypesforProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1219F04E2800689F7F /* EWHGetInventoryTypesforProgram.m */; };
 		D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1519F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m */; };
@@ -374,6 +376,8 @@
 		6BF6FC2E15E827F20096521A /* EWHPutAwayPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwayPartRequest.m; sourceTree = "<group>"; };
 		6BF6FC3015E828A80096521A /* EWHPutAwaySerializedPartRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHPutAwaySerializedPartRequest.h; sourceTree = "<group>"; };
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
+		AB0A693B217902D700DC1D5E /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
+		AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EWMS_Logo_iPhone_big.png; sourceTree = "<group>"; };
 		D31D95D019ED89FB00B37466 /* EWHCustomAttributeCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHCustomAttributeCatalog.h; sourceTree = "<group>"; };
 		D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHCustomAttributeCatalog.m; sourceTree = "<group>"; };
 		D322DB1119F04E2800689F7F /* EWHGetInventoryTypesforProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetInventoryTypesforProgram.h; sourceTree = "<group>"; };
@@ -565,6 +569,7 @@
 		6B960D1815B712F000064CC0 = {
 			isa = PBXGroup;
 			children = (
+				AB0A693B217902D700DC1D5E /* AppIcon.xcassets */,
 				6B325571160E08F800125BC1 /* CoreData.framework */,
 				6BEC926815DD99C70071B9F7 /* ExternalAccessory.framework */,
 				6BEC926215DD91B20071B9F7 /* Linea */,
@@ -625,6 +630,7 @@
 				D32F54691CE272400051D7E1 /* icon.png */,
 				D32F54641CE26E2F0051D7E1 /* icon@2x.png */,
 				D32F54651CE26E2F0051D7E1 /* logo.png */,
+				AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */,
 				D345BDC616D7FA1C006B12B9 /* Settings.bundle */,
 				6B960D2F15B712F000064CC0 /* eWarehouse-Info.plist */,
 				6B960D3015B712F000064CC0 /* InfoPlist.strings */,
@@ -1161,8 +1167,10 @@
 				D3E5D93B2153E11E009AD155 /* EWHCellforTextTableViewCell.xib in Resources */,
 				6B97135E15EBB5160071BEE2 /* 75.png in Resources */,
 				6B97135F15EBB5160071BEE2 /* 100.png in Resources */,
+				AB0A693C217902D700DC1D5E /* AppIcon.xcassets in Resources */,
 				6B9A91B515ED662500F20EEF /* logo.png in Resources */,
 				6B9B1E7F15F8E1E0003A8236 /* icon@2x.png in Resources */,
+				AB0A693E21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png in Resources */,
 				D32F54681CE26E2F0051D7E1 /* logo.png in Resources */,
 				D32F546A1CE272400051D7E1 /* icon.png in Resources */,
 				6B3525481610D76A0092FDAD /* Default-568h@2x.png in Resources */,
@@ -1402,6 +1410,8 @@
 		6B960D4215B712F000064CC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = SL7JK6JKLG;
@@ -1430,6 +1440,8 @@
 		6B960D4315B712F000064CC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = SL7JK6JKLG;
