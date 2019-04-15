@@ -22,12 +22,16 @@
 @synthesize lblBulk;
 @synthesize txtQuantity;
 @synthesize stepper;
+@synthesize lblTotalQty;
 EWHRootViewController *rootController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateInterface];
     
+    UITapGestureRecognizer *viewBackgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTap:)];
+    viewBackgroundTap.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:viewBackgroundTap];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -38,6 +42,11 @@ EWHRootViewController *rootController;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(IBAction)backgroundTap:(id)sender
+{
+    [txtQuantity resignFirstResponder];
 }
 
 #pragma mark - Table view data source
@@ -56,11 +65,14 @@ EWHRootViewController *rootController;
 
 - (void)updateInterface
 {
-    lblPartNumber.text = catalog.ItemNumber;
+    lblPartNumber.text = catalog.PartNumber;
     lblDescription.text = catalog.Description;
     lblBulk.text = @"Bulk";
     
+    lblTotalQty.text = [NSString stringWithFormat:@"of %d", catalog.Qty];
+    
     [stepper setMinimumValue:1];
+    [stepper setMaximumValue:catalog.Qty];
 }
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender
@@ -86,11 +98,24 @@ EWHRootViewController *rootController;
         sender.text = [NSString stringWithFormat:@"%d", qty];
     }
     
+    if(qty > catalog.Qty) {
+        qty = catalog.Qty;
+        sender.text = [NSString stringWithFormat:@"%d", qty];
+    }
+    
     
     stepper.value = qty;
     [stepper setEnabled:YES];
 }
 - (IBAction)nextPressed:(id)sender {
+    int qty = [txtQuantity.text integerValue];
+    if(qty > catalog.Qty) {
+        qty = catalog.Qty;
+        txtQuantity.text = [NSString stringWithFormat:@"%d", qty];
+    }
+    
+    
+    stepper.value = qty;
     [self performSegueWithIdentifier:@"TransferNewLocation" sender:nil];
 }
 

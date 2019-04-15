@@ -23,6 +23,7 @@
 }
 @property (assign, nonatomic) NSInteger CatalogId;
 @property (nonatomic, retain) NSString *ItemNumber;
+@property (nonatomic, retain) NSString *PartNumber;
 @property (nonatomic, retain) NSString *Description;
 @property (assign, nonatomic) NSInteger UOMId;
 @property (nonatomic) BOOL IsBulk;
@@ -33,6 +34,11 @@
 @property (nonatomic, retain) NSMutableArray *UOMs;
 @property (nonatomic, retain) NSString *ProgramName;
 @property (nonatomic, retain) NSMutableArray *DetailsByStatus;
+@property (nonatomic, retain) NSString *InventoryTypeName;
+@property (nonatomic, retain) NSString *InventoryStatusName;
+@property (assign, nonatomic) NSInteger Qty;
+@property (assign, nonatomic) NSInteger LocationId;
+@property (assign, nonatomic) NSInteger InventoryStatusId;
 
 - (EWHCatalog *)initWithDictionary:(NSDictionary *)dictionary;
 

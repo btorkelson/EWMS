@@ -22,6 +22,8 @@ NSMutableArray *serials;
 @synthesize warehouse;
 @synthesize location;
 @synthesize catalog;
+@synthesize txtInputSerial;
+@synthesize viewSerialTextbox;
 //@synthesize lblPartNumber;
 //@synthesize lblDescription;
 //@synthesize lblBulk;
@@ -46,6 +48,12 @@ NSMutableArray *serials;
     //update display according to current linea state
     [self connectionState:linea.connstate];
     [self.tableView setEditing:YES];
+    
+    EWHUser *user = rootController.user;
+    if (user.EWAdmin) {
+    } else {
+        [viewSerialTextbox setHidden:YES];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -83,9 +91,10 @@ NSMutableArray *serials;
     return title;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
     switch (section) {
         case 0:
-            return 3;
+                return 3;
             break;
         case 1:
             return [serials count];
@@ -115,7 +124,7 @@ NSMutableArray *serials;
             switch (indexPath.row) {
                 case 0:
                     cellTitle=@"Part Number";
-                    cellText=catalog.ItemNumber;
+                    cellText=catalog.PartNumber;
                     break;
                 case 1:
                     cellTitle=@"Description";
@@ -204,7 +213,11 @@ NSMutableArray *serials;
 
 - (IBAction)nextPressed:(id)sender {
 //    [self addSerial:@"abcd"];
-    [self performSegueWithIdentifier:@"TransferNewLocation" sender:nil];
+    if ([serials count]==0) {
+        [rootController displayAlert:@"No serial numbers were scanned" withTitle:@"Error"];
+    } else {
+        [self performSegueWithIdentifier:@"TransferNewLocation" sender:nil];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -219,6 +232,37 @@ NSMutableArray *serials;
     }
 }
 
+- (IBAction)buttonAddClicked:(id)sender {
+    [self addSerial:txtInputSerial.text];
+    txtInputSerial.text=@"";
+    [self textFieldShouldBeginEditing:txtInputSerial];
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    CGPoint pointInTable = [textField.superview convertPoint:textField.frame.origin toView:self.tableView];
+    CGPoint contentOffset = self.tableView.contentOffset;
+    
+//    contentOffset.y = (textField.inputAccessoryView.frame.size.height - 100);
+    int w = textField.inputAccessoryView.frame.size.height;
+    contentOffset.y = (pointInTable.y - textField.inputAccessoryView.frame.size.height -250);
+    
+    NSLog(@"contentOffset is: %@", NSStringFromCGPoint(contentOffset));
+    [self.tableView setContentOffset:contentOffset animated:YES];
+    return YES;
+}
+-(BOOL) textFieldShouldReturn: (UITextField *) textField {
+    [textField resignFirstResponder];
+    if ([textField.superview.superview isKindOfClass:[UITableViewCell class]])
+    {
+        CGPoint buttonPosition = [textField convertPoint:CGPointZero
+                                                  toView: self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        
+        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:TRUE];
+    }
+    
+    return YES;
+}
 
 
 

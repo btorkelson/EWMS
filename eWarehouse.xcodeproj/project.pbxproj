@@ -175,6 +175,9 @@
 		D3C34D651ED890490004746C /* EWHMoveInventory.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C34D641ED890490004746C /* EWHMoveInventory.m */; };
 		D3C34D681ED89C2A0004746C /* EWHTransferSelectProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C34D671ED89C2A0004746C /* EWHTransferSelectProgram.m */; };
 		D3C34D6B1ED8A2560004746C /* EWHGetWarehouseProgramListAll.m in Sources */ = {isa = PBXBuildFile; fileRef = D3C34D6A1ED8A2560004746C /* EWHGetWarehouseProgramListAll.m */; };
+		D3CFC91F225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFC91E225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.m */; };
+		D3CFC922225FBD6400E72895 /* EWHTransferViewCatalogs.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFC921225FBD6400E72895 /* EWHTransferViewCatalogs.m */; };
+		D3CFC925225FD6A300E72895 /* EWHTableViewCellforTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = D3CFC924225FD6A300E72895 /* EWHTableViewCellforTransfer.m */; };
 		D3E5D93A2153E11E009AD155 /* EWHCellforTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5D9382153E11E009AD155 /* EWHCellforTextTableViewCell.m */; };
 		D3E5D93B2153E11E009AD155 /* EWHCellforTextTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3E5D9392153E11E009AD155 /* EWHCellforTextTableViewCell.xib */; };
 		D3E5D93F2153F005009AD155 /* EWHCellforCheckboxTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5D93D2153F005009AD155 /* EWHCellforCheckboxTableViewCell.m */; };
@@ -504,6 +507,12 @@
 		D3C34D671ED89C2A0004746C /* EWHTransferSelectProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHTransferSelectProgram.m; sourceTree = "<group>"; };
 		D3C34D691ED8A2560004746C /* EWHGetWarehouseProgramListAll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetWarehouseProgramListAll.h; sourceTree = "<group>"; };
 		D3C34D6A1ED8A2560004746C /* EWHGetWarehouseProgramListAll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetWarehouseProgramListAll.m; sourceTree = "<group>"; };
+		D3CFC91D225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetCatalogByItemNumberandLocationforMoving.h; sourceTree = "<group>"; };
+		D3CFC91E225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHGetCatalogByItemNumberandLocationforMoving.m; sourceTree = "<group>"; };
+		D3CFC920225FBD6400E72895 /* EWHTransferViewCatalogs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHTransferViewCatalogs.h; sourceTree = "<group>"; };
+		D3CFC921225FBD6400E72895 /* EWHTransferViewCatalogs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHTransferViewCatalogs.m; sourceTree = "<group>"; };
+		D3CFC923225FD6A300E72895 /* EWHTableViewCellforTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHTableViewCellforTransfer.h; sourceTree = "<group>"; };
+		D3CFC924225FD6A300E72895 /* EWHTableViewCellforTransfer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHTableViewCellforTransfer.m; sourceTree = "<group>"; };
 		D3E5D9372153E11E009AD155 /* EWHCellforTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHCellforTextTableViewCell.h; sourceTree = "<group>"; };
 		D3E5D9382153E11E009AD155 /* EWHCellforTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHCellforTextTableViewCell.m; sourceTree = "<group>"; };
 		D3E5D9392153E11E009AD155 /* EWHCellforTextTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EWHCellforTextTableViewCell.xib; sourceTree = "<group>"; };
@@ -1047,6 +1056,8 @@
 			children = (
 				D3C34D631ED890490004746C /* EWHMoveInventory.h */,
 				D3C34D641ED890490004746C /* EWHMoveInventory.m */,
+				D3CFC91D225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.h */,
+				D3CFC91E225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.m */,
 			);
 			name = Transfer;
 			sourceTree = "<group>";
@@ -1066,6 +1077,10 @@
 				D3C34D611ED88E680004746C /* EWHTransferScanNewLocation.m */,
 				D39502021EDDC917006F5986 /* EWHTransferSerials.h */,
 				D39502031EDDC917006F5986 /* EWHTransferSerials.m */,
+				D3CFC920225FBD6400E72895 /* EWHTransferViewCatalogs.h */,
+				D3CFC921225FBD6400E72895 /* EWHTransferViewCatalogs.m */,
+				D3CFC923225FD6A300E72895 /* EWHTableViewCellforTransfer.h */,
+				D3CFC924225FD6A300E72895 /* EWHTableViewCellforTransfer.m */,
 			);
 			name = Transfer;
 			sourceTree = "<group>";
@@ -1213,6 +1228,7 @@
 				D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */,
 				D381626618A010C500BA59FA /* EWHAppDataObject.m in Sources */,
 				D3E5D93A2153E11E009AD155 /* EWHCellforTextTableViewCell.m in Sources */,
+				D3CFC91F225F9E2E00E72895 /* EWHGetCatalogByItemNumberandLocationforMoving.m in Sources */,
 				6B9848D415B9EAE000A1E2EB /* SBJsonUTF8Stream.m in Sources */,
 				D3816257189AEABF00BA59FA /* EWHProgram.m in Sources */,
 				6B9848D615B9EAE000A1E2EB /* SBJsonWriter.m in Sources */,
@@ -1328,9 +1344,11 @@
 				D33A035917613AD500001F1D /* EWHShipmentDetailsControllerNEW.m in Sources */,
 				D322DB251A0401BE00689F7F /* EWHGetUOMWeightViewController.m in Sources */,
 				D381626918A03AAB00BA59FA /* EWHReceiptOptionsViewController.m in Sources */,
+				D3CFC922225FBD6400E72895 /* EWHTransferViewCatalogs.m in Sources */,
 				D3E5D94B21555813009AD155 /* EWHGetCycleCountJobs.m in Sources */,
 				D33A035C17677AAE00001F1D /* EWHPickShipmentScanLocationControllerNEW.m in Sources */,
 				D322DB1F1A03F92900689F7F /* EWHUOM.m in Sources */,
+				D3CFC925225FD6A300E72895 /* EWHTableViewCellforTransfer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

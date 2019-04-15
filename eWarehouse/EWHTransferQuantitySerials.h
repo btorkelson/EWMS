@@ -22,4 +22,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *lblBulk;
 @property (strong, nonatomic) IBOutlet EWHQuantityTextField *txtQuantity;
 @property (strong, nonatomic) IBOutlet UIStepper *stepper;
+@property (strong, nonatomic) IBOutlet UILabel *lblTotalQty;
 @end

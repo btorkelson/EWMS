@@ -12,6 +12,8 @@
 #import "EWHTransferSerials.h"
 #import "EWHProgram.h"
 #import "DTDevices.h"
+#import "EWHGetCatalogByItemNumberandLocationforMoving.h"
+#import "EWHTransferViewCatalogs.h"
 
 @interface EWHTransferScanPart : UIViewController
 

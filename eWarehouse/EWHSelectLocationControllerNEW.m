@@ -119,8 +119,12 @@ DTDevices *linea;
     
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
 //    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle];
-    cell.detailTextLabel.text = @"Please scan";
-//    [self validateScan:cell.textLabel.text];
+    
+    EWHUser *user = rootController.user;
+    if (user.EWAdmin) {
+                    [self validateScan:cell.textLabel.text];
+    } else {
+        cell.detailTextLabel.text = @"Please scan";    }
 }
 
 -(IBAction) refreshPressed: (id) sender

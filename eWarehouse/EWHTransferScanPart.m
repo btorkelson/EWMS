@@ -117,27 +117,35 @@ DTDevices *linea;
     //	EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
     if(user != nil){
         
-        EWHGetCatalogByItemNumber *request = [[EWHGetCatalogByItemNumber alloc] initWithCallbacks:self callback:@selector(validateCatalogCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        EWHGetCatalogByItemNumberandLocationforMoving *request = [[EWHGetCatalogByItemNumberandLocationforMoving alloc] initWithCallbacks:self callback:@selector(validateCatalogCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
         
-        [request getCatalogByItemNumber:program.ProgramId itemNumber:partNumber withAuthHash:user.AuthHash];
+//        [request getCatalogByItemNumber:program.ProgramId itemNumber:partNumber withAuthHash:user.AuthHash];
+        [request getCatalogByItemNumberandLocationforMoving:program.ProgramId warehouseId:warehouse.Id itemNumber:partNumber location:location withAuthHash:user.AuthHash];
     }
 }
 
--(void) validateCatalogCallback: (EWHCatalog*) catalog
+-(void) validateCatalogCallback: (NSMutableArray*) catalogs
 {
     [rootController hideLoading];
-    if (catalog.CatalogId != -1) {
-        if (catalog.IsBulk ==1 ) {
-            [self performSegueWithIdentifier:@"TransferQtySerials" sender:catalog];
-        } else {
-            [self performSegueWithIdentifier:@"TransferSerials" sender:catalog];
-        }
-        
-        
-        
+    if ([catalogs count]>0) {
+        EWHCatalog *catalog = [catalogs objectAtIndex:0];
+    
+                if (catalog.IsBulk ==1 ) {
+                    [self performSegueWithIdentifier:@"TransferViewCatalogs" sender:catalogs];
+                } else {
+                    [self performSegueWithIdentifier:@"TransferSerials" sender:catalog];
+                }
+
     } else {
-        [rootController displayAlert:@"Part Number not found" withTitle:@"Error"];
-    }
+            [rootController displayAlert:@"Part Number not found" withTitle:@"Error"];
+        }
+    
+    
+//    [self performSegueWithIdentifier:@"TransferViewCatalogs" sender:catalogs];
+    
+//    if (catalog.CatalogId != -1) {
+        
+    
     
 }
 
@@ -154,7 +162,13 @@ DTDevices *linea;
         selectReceiptController.location= location;
         selectReceiptController.catalog=sender;
         
-    }
+    } else if ([[segue identifier] isEqualToString:@"TransferViewCatalogs"]) {
+    EWHTransferViewCatalogs *selectReceiptController = [segue destinationViewController];
+    selectReceiptController.warehouse = warehouse;
+    selectReceiptController.location= location;
+    selectReceiptController.catalogs=sender;
+    
+}
 }
 
 

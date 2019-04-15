@@ -23,7 +23,7 @@
     
     NSString *numbers = [[serials valueForKey:@"description"] componentsJoinedByString:@","];
     
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"PartNumber\":\"%@\",\"CatalogId\":%ld,\"WarehouseId\":%ld,\"LocationName\":\"%@\",\"IsBulk\":\"%@\",\"Quantity\":%ld,\"Number\":\"%@\"},\"moveToLocationName\":\"%@\",\"userId\":%ld}", catalog.ItemNumber, (long)catalog.CatalogId, (long)warehouse.Id, location, catalog.IsBulk ? @"true" : @"false", (long)quantity, numbers, newlocation, (long)user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"PartNumber\":\"%@\",\"CatalogId\":%ld,\"WarehouseId\":%ld,\"LocationName\":\"%@\",\"IsBulk\":\"%@\",\"Quantity\":%ld,\"Number\":\"%@\",\"LocationId\":%ld,\"InventoryTypeId\":%ld,\"InventoryStatusId\":%ld},\"moveToLocationName\":\"%@\",\"userId\":%ld}", catalog.PartNumber, (long)catalog.CatalogId, (long)warehouse.Id, location, catalog.IsBulk ? @"true" : @"false", (long)quantity, numbers, (long)catalog.LocationId, catalog.InventoryTypeId, catalog.InventoryStatusId, newlocation, (long)user.UserId];
     
     EWHLog(@"%@", postData);
     

@@ -21,6 +21,12 @@
 @synthesize UOMs;
 @synthesize ProgramName;
 @synthesize DetailsByStatus;
+@synthesize InventoryTypeName;
+@synthesize InventoryStatusName;
+@synthesize Qty;
+@synthesize PartNumber;
+@synthesize LocationId;
+@synthesize InventoryStatusId;
 
 //+ (Class)EWHUOM_class {
 //    return [EWHCatalog class];
@@ -31,6 +37,7 @@
 - (EWHCatalog *)initWithDictionary:(NSDictionary *)dictionary {
     CatalogId = [[dictionary objectForKey:@"CatalogId"] intValue];
     ItemNumber = [dictionary objectForKey:@"ItemNumber"];
+    PartNumber = [dictionary objectForKey:@"PartNumber"];
     Description = [dictionary objectForKey:@"Description"];
     UOMId = [[dictionary objectForKey:@"UomId"] intValue];
     IsBulk = [[dictionary objectForKey:@"IsBulk"] boolValue];
@@ -40,6 +47,11 @@
     InventoryTypeId = [[dictionary objectForKey:@"InventoryTypeId"] intValue];
     ProgramName = [dictionary objectForKey:@"ProgramName"];
     DetailsByStatus = [dictionary objectForKey:@"DetailsByStatus"];
+    InventoryTypeName =[dictionary objectForKey:@"InventoryTypeName"];
+    InventoryStatusName =[dictionary objectForKey:@"InventoryStatusName"];
+    Qty = [[dictionary objectForKey:@"Quantity"] intValue];
+    LocationId = [[dictionary objectForKey:@"LocationId"] intValue];
+    InventoryStatusId = [[dictionary objectForKey:@"InventoryStatusId"] intValue];
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     NSDictionary *uomList = ([dictionary objectForKey:@"UOMList"] != [NSNull null] ? [dictionary objectForKey:@"UOMList"] : nil);
