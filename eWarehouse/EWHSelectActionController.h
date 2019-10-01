@@ -14,6 +14,7 @@
 #import "EWHSelectProgramforReceiptController.h"
 #import "EWHTransferSelectProgram.h"
 #import "EWHSelectCylceCountJobController.h"
+#import "EWHSelectSortJobController.h"
 
 @interface EWHSelectActionController : UIViewController
 {

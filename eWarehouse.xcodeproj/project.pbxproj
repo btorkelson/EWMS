@@ -111,6 +111,11 @@
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
 		AB0A693C217902D700DC1D5E /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693B217902D700DC1D5E /* AppIcon.xcassets */; };
 		AB0A693E21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */; };
+		ABE9D2A423170D3E001174BD /* EWHSelectSortJobController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */; };
+		ABE9D2A823170F80001174BD /* EWHGetSortJobsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A723170F80001174BD /* EWHGetSortJobsRequest.m */; };
+		ABE9D2AB231714E9001174BD /* EWHSortJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AA231714E9001174BD /* EWHSortJob.m */; };
+		ABE9D2AE23182D34001174BD /* EWHSortScanPartsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */; };
+		ABF20CB023183566000CC6C3 /* EWHAddSortJobDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */; };
 		D31D95D219ED89FB00B37466 /* EWHCustomAttributeCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */; };
 		D322DB1319F04E2800689F7F /* EWHGetInventoryTypesforProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1219F04E2800689F7F /* EWHGetInventoryTypesforProgram.m */; };
 		D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1519F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m */; };
@@ -381,6 +386,16 @@
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
 		AB0A693B217902D700DC1D5E /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EWMS_Logo_iPhone_big.png; sourceTree = "<group>"; };
+		ABE9D2A223170D3E001174BD /* EWHSelectSortJobController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSelectSortJobController.h; sourceTree = "<group>"; };
+		ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSelectSortJobController.m; sourceTree = "<group>"; };
+		ABE9D2A623170F80001174BD /* EWHGetSortJobsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetSortJobsRequest.h; sourceTree = "<group>"; };
+		ABE9D2A723170F80001174BD /* EWHGetSortJobsRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetSortJobsRequest.m; sourceTree = "<group>"; };
+		ABE9D2A9231714E9001174BD /* EWHSortJob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSortJob.h; sourceTree = "<group>"; };
+		ABE9D2AA231714E9001174BD /* EWHSortJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSortJob.m; sourceTree = "<group>"; };
+		ABE9D2AC23182D34001174BD /* EWHSortScanPartsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSortScanPartsController.h; sourceTree = "<group>"; };
+		ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSortScanPartsController.m; sourceTree = "<group>"; };
+		ABF20CAE23183566000CC6C3 /* EWHAddSortJobDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAddSortJobDetails.h; sourceTree = "<group>"; };
+		ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAddSortJobDetails.m; sourceTree = "<group>"; };
 		D31D95D019ED89FB00B37466 /* EWHCustomAttributeCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHCustomAttributeCatalog.h; sourceTree = "<group>"; };
 		D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHCustomAttributeCatalog.m; sourceTree = "<group>"; };
 		D322DB1119F04E2800689F7F /* EWHGetInventoryTypesforProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetInventoryTypesforProgram.h; sourceTree = "<group>"; };
@@ -761,6 +776,7 @@
 		6BB01F3E1608B7F50069213E /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				ABE9D2A523170F5A001174BD /* Sorting */,
 				6B98480915B9C27C00A1E2EB /* EWHRequest.h */,
 				6B98480A15B9C27C00A1E2EB /* EWHRequest.m */,
 				6B98480C15B9C47A00A1E2EB /* EWHLoginRequest.h */,
@@ -828,6 +844,7 @@
 		6BB01F411608B8E20069213E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				ABE9D2A123170D00001174BD /* Sorting */,
 				6B9C9FF615D49E7F001E1924 /* EWHRootViewController.h */,
 				6B9C9FF715D49E7F001E1924 /* EWHRootViewController.m */,
 				6B960D4615B7142200064CC0 /* EWHLoginController.h */,
@@ -950,6 +967,8 @@
 				D3E5D93E2153F005009AD155 /* EWHCellforCheckboxTableViewCell.xib */,
 				D3E5D94521555612009AD155 /* EWHCycleCountJob.h */,
 				D3E5D94621555612009AD155 /* EWHCycleCountJob.m */,
+				ABE9D2A9231714E9001174BD /* EWHSortJob.h */,
+				ABE9D2AA231714E9001174BD /* EWHSortJob.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -979,6 +998,28 @@
 				D340D1641CD936D500868DD0 /* DTDevices.h */,
 			);
 			name = Linea;
+			sourceTree = "<group>";
+		};
+		ABE9D2A123170D00001174BD /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				ABE9D2A223170D3E001174BD /* EWHSelectSortJobController.h */,
+				ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */,
+				ABE9D2AC23182D34001174BD /* EWHSortScanPartsController.h */,
+				ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */,
+			);
+			name = Sorting;
+			sourceTree = "<group>";
+		};
+		ABE9D2A523170F5A001174BD /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				ABE9D2A623170F80001174BD /* EWHGetSortJobsRequest.h */,
+				ABE9D2A723170F80001174BD /* EWHGetSortJobsRequest.m */,
+				ABF20CAE23183566000CC6C3 /* EWHAddSortJobDetails.h */,
+				ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */,
+			);
+			name = Sorting;
 			sourceTree = "<group>";
 		};
 		D381624D189ADBF400BA59FA /* NewReceipt */ = {
@@ -1141,7 +1182,8 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					6B960D2215B712F000064CC0 = {
-						DevelopmentTeam = SL7JK6JKLG;
+						DevelopmentTeam = J53LBKD8MY;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -1150,6 +1192,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 6B960D1815B712F000064CC0;
@@ -1270,6 +1313,7 @@
 				D325A0AC18A9876100770C25 /* EWHAddReceiptXDockItem.m in Sources */,
 				6B9E5D7E15E68F2E00065029 /* EWHReceiptDetail.m in Sources */,
 				6B9E5D8415E6B1E900065029 /* EWHGetReceiptDetailByPartNumberRequest.m in Sources */,
+				ABE9D2A423170D3E001174BD /* EWHSelectSortJobController.m in Sources */,
 				6BAA7A3C15E7EFAE001B66EB /* EWHPartDetailsController.m in Sources */,
 				D37DAAD21AA3A6F500E5F257 /* EWHGetCatalogByProgram.m in Sources */,
 				6BAA7A3F15E7EFDB001B66EB /* EWHSerializedPartDetailsController.m in Sources */,
@@ -1278,7 +1322,9 @@
 				6BF6FC2C15E8204D0096521A /* EWHGetReceiptDetailByContainerScanRequest.m in Sources */,
 				D381626F18A040A400BA59FA /* EWHGetVendorsByProgram.m in Sources */,
 				6BF6FC2F15E827F30096521A /* EWHPutAwayPartRequest.m in Sources */,
+				ABE9D2AE23182D34001174BD /* EWHSortScanPartsController.m in Sources */,
 				D3BEA74D214B0169003F1854 /* EWHInboundCustomAttribute.m in Sources */,
+				ABE9D2A823170F80001174BD /* EWHGetSortJobsRequest.m in Sources */,
 				6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */,
 				D3E5D954215987B1009AD155 /* EWHSelectCycleCountLocationCatalogController.m in Sources */,
 				6B9B1E8215F92E60003A8236 /* EWHResponse.m in Sources */,
@@ -1310,6 +1356,7 @@
 				D3B2B31B18C63976003AAFE6 /* EWHAddReceiptItem.m in Sources */,
 				6B9DF879160B9E2F00529769 /* EWHPickShipmentScanLocationController.m in Sources */,
 				6B9DF87C160BA51000529769 /* EWHPickContainerRequest.m in Sources */,
+				ABF20CB023183566000CC6C3 /* EWHAddSortJobDetails.m in Sources */,
 				6B9DF87F160BAC1700529769 /* EWHPickItemRequest.m in Sources */,
 				D381628718A2A0B800BA59FA /* EWHAddReceiptHeader.m in Sources */,
 				6B97A2FF160CD3FE00E2BC08 /* EWHGetPartDetailsController.m in Sources */,
@@ -1328,6 +1375,7 @@
 				6B35252C1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m in Sources */,
 				6B3525341610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m in Sources */,
 				6B3525371610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m in Sources */,
+				ABE9D2AB231714E9001174BD /* EWHSortJob.m in Sources */,
 				D325A0A618A980CD00770C25 /* EWHGetDestinationsByProgramWarehouse.m in Sources */,
 				D3C34D621ED88E680004746C /* EWHTransferScanNewLocation.m in Sources */,
 				6B35253A1610B7860092FDAD /* EWHLoadShipmentScanContainerController.m in Sources */,
@@ -1432,7 +1480,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SL7JK6JKLG;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J53LBKD8MY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1444,9 +1493,10 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppE;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 arm64";
@@ -1462,7 +1512,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = SL7JK6JKLG;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J53LBKD8MY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1474,9 +1525,10 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppE;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 arm64";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";

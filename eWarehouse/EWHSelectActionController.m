@@ -109,7 +109,10 @@ EWHRootViewController *rootController;
     [self performSegueWithIdentifier:@"NewReceipt" sender:nil];
 }
 - (IBAction)transferPressed:(id)sender {
-     [self performSegueWithIdentifier:@"Transfer" sender:nil];
+    [self performSegueWithIdentifier:@"Transfer" sender:nil];
+}
+- (IBAction)sortPressed:(id)sender {
+    [self performSegueWithIdentifier:@"Sort" sender:nil];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -137,6 +140,10 @@ EWHRootViewController *rootController;
     }
     else if ([[segue identifier] isEqualToString:@"CycleCount"]) {
         EWHSelectCylceCountJobController *selectCycleCountController = [segue destinationViewController];
+        selectCycleCountController.warehouse = warehouse;
+    }
+    else if ([[segue identifier] isEqualToString:@"Sort"]) {
+        EWHSelectSortJobController *selectCycleCountController = [segue destinationViewController];
         selectCycleCountController.warehouse = warehouse;
     }
 }
