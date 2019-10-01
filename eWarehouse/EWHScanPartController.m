@@ -339,16 +339,16 @@ EWHNewReceiptDataObject* theDataObject;
 
 - (IBAction)finishedPressed:(id)sender {
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Print Labels?"
-                                                   message: @"Would you like to add labels for this receipt to the print queue?"
-                                                  delegate: self
-                                         cancelButtonTitle:@"Yes"
-                                         otherButtonTitles:@"No",nil];
+//    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"Print Labels?"
+//                                                   message: @"Would you like to add labels for this receipt to the print queue?"
+//                                                  delegate: self
+//                                         cancelButtonTitle:@"Yes"
+//                                         otherButtonTitles:@"No",nil];
+//
+//
+//    [alert show];
     
-    
-    [alert show];
-    
-//    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+    EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
     
     
     
@@ -391,7 +391,7 @@ EWHNewReceiptDataObject* theDataObject;
     }
     else
     {
-        EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
+        
     }
     //    NSMutableArray* initChecklist;
 }
