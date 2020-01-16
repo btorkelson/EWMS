@@ -152,6 +152,7 @@ int totalQuantity;
                                         catalog.ItemNumber=barcode;
                                         catalog.IsBulk=1;
                                         catalog.ScannedSerials = [[NSMutableArray alloc] init];
+                                        catalog.ProgramName=@"";
                                         [cyclecountCatalogs addObject:catalog];
                                         [self performSegueWithIdentifier:@"CycleCountLocationBulk" sender:catalog];
                                     }];
@@ -232,8 +233,13 @@ int totalQuantity;
     }
 }
 - (IBAction)finishPressed:(id)sender {
-//    [self validateScan:@"asdasdf"];
-    [self sendCycleCountResults];
+    
+    if ([cyclecountCatalogs count]>=1){
+        [self sendCycleCountResults];
+    } else {
+        [self validateScan:@"asdasdf"];
+        
+    }
 }
 
 -(void) sendCycleCountResults
