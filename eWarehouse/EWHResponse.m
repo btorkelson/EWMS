@@ -20,6 +20,7 @@
     
     id msg = [dictionary objectForKey:@"Message"];
     if(msg != [NSNull null]) Message = [[NSString alloc] initWithString:msg];
+//    Message = [dictionary objectForKey:@"Message"];
     Number = [dictionary objectForKey:@"Number"];
     
     return [super init];

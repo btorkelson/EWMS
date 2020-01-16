@@ -9,6 +9,7 @@
 #import "EWHCatalog.h"
 
 @implementation EWHCatalog
+
 @synthesize CatalogId;
 @synthesize ItemNumber;
 @synthesize Description;
@@ -27,6 +28,7 @@
 @synthesize PartNumber;
 @synthesize LocationId;
 @synthesize InventoryStatusId;
+@synthesize QuantityScanned;
 
 //+ (Class)EWHUOM_class {
 //    return [EWHCatalog class];
@@ -50,6 +52,7 @@
     InventoryTypeName =[dictionary objectForKey:@"InventoryTypeName"];
     InventoryStatusName =[dictionary objectForKey:@"InventoryStatusName"];
     Qty = [[dictionary objectForKey:@"Quantity"] intValue];
+    QuantityScanned = [[dictionary objectForKey:@"QuantityScanned"] intValue];
     LocationId = [[dictionary objectForKey:@"LocationId"] intValue];
     InventoryStatusId = [[dictionary objectForKey:@"InventoryStatusId"] intValue];
     

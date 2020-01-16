@@ -39,6 +39,8 @@
 @property (assign, nonatomic) NSInteger Qty;
 @property (assign, nonatomic) NSInteger LocationId;
 @property (assign, nonatomic) NSInteger InventoryStatusId;
+@property (assign, nonatomic) NSInteger QuantityScanned;
+@property (nonatomic, retain) NSMutableArray *ScannedSerials;
 
 - (EWHCatalog *)initWithDictionary:(NSDictionary *)dictionary;
 

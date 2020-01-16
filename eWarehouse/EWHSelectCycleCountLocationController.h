@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "EWHRootViewController.h"
 #import "EWHCycleCountJob.h"
-#import "EWHLocation.h"
+#import "EWHCycleCountJobDetail.h"
 #import "EWHGetCycleCountJobDetails.h"
 #import "EWHSelectCycleCountLocationCatalogController.h"
+#import "DTDevices.h"
 
 @interface EWHSelectCycleCountLocationController : UITableViewController
 

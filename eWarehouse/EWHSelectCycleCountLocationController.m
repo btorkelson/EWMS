@@ -13,6 +13,8 @@
 @end
 
 EWHRootViewController *rootController;
+DTDevices *linea;
+
 @implementation EWHSelectCycleCountLocationController
 
 @synthesize warehouse;
@@ -35,8 +37,80 @@ EWHRootViewController *rootController;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    linea=[DTDevices sharedDevice];
+    [linea connect];
+    [linea addDelegate:self];
+    //update display according to current linea state
+    [self connectionState:linea.connstate];
     rootController.locations = nil;
     [self loadCycleCountLocations];
+}
+
+-(void)connectionState:(int)state {
+    switch (state) {
+        case CONN_DISCONNECTED:
+        case CONN_CONNECTING:
+            //[btnScanUserName setHidden:true];
+            //[scannerMsg setHidden:false];
+            //[voltageLabel setHidden:true];
+            //[battery setHidden:true];
+            break;
+        case CONN_CONNECTED:
+            //[btnScanUserName setHidden:false];
+            //[scannerMsg setHidden:true];
+            //[self updateBattery];
+            ////Z - remove in production
+            ////            [linea setScanBeep:false volume:0 beepData:nil length:0];
+            break;
+    }
+}
+
+
+-(void) stopScan{
+    NSError *error = nil;
+    int scanMode;
+    
+    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
+        [linea stopScan:&error];
+    if(error != nil)
+        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+}
+
+
+-(void)barcodeData:(NSString *)barcode isotype:(NSString *)isotype
+{
+    
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        
+//        txtNewLocation.text = barcode;
+        [self validateScan:barcode];
+    }
+}
+
+-(void)barcodeData:(NSString *)barcode type:(int)type {
+    
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        
+//        txtNewLocation.text = barcode;
+        [self validateScan:barcode];
+    }
+}
+
+-(void) validateScan: (NSString *)barcode{
+    //Z - remove in production
+    //barcode = @"176761";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Value == %@", barcode];
+    NSArray *matches = [cyclecountLocations filteredArrayUsingPredicate:predicate];
+    EWHLog(@"Matches count:%d", [matches count]);
+    if([matches count] > 0){
+        EWHCycleCountJobDetail *location = [matches objectAtIndex:0];
+        [self performSegueWithIdentifier:@"ViewCycleCountJobLocationCatalog" sender:location];
+    }
+    else {
+        [rootController displayAlert:@"Incorrect location" withTitle:@"Cycle Count"];
+    }
 }
 
 #pragma mark - Table view data source
@@ -93,15 +167,15 @@ EWHRootViewController *rootController;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Get the object to display and set the value in the cell.
-    EWHLocation *location = [cyclecountLocations objectAtIndex:indexPath.row];
+    EWHCycleCountJobDetail *location = [cyclecountLocations objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = location.Name;
+    cell.textLabel.text = location.Value;
     
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EWHLocation *location = [cyclecountLocations objectAtIndex:indexPath.row];
+    EWHCycleCountJobDetail *location = [cyclecountLocations objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"ViewCycleCountJobLocationCatalog" sender:location];
 }
 

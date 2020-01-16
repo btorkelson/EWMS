@@ -36,7 +36,7 @@
             NSDictionary* dictionary = [jsonParser objectWithString:responseString error:&e];
             NSMutableArray* locations = [[NSMutableArray alloc] init];
             for (NSDictionary* element in [dictionary objectForKey:@"GetCycleCountJobDetailsResult"]) {
-                EWHLocation* location = [[EWHLocation alloc] initWithDictionary:element];
+                EWHCycleCountJobDetail* location = [[EWHCycleCountJobDetail alloc] initWithDictionary:element];
                 [locations addObject:location];
             }
             if(self.caller && self.callback){

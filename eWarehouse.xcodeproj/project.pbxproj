@@ -116,6 +116,12 @@
 		ABE9D2AB231714E9001174BD /* EWHSortJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AA231714E9001174BD /* EWHSortJob.m */; };
 		ABE9D2AE23182D34001174BD /* EWHSortScanPartsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */; };
 		ABF20CB023183566000CC6C3 /* EWHAddSortJobDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */; };
+		ABFEABA023CD066B00D32A04 /* EWHCycleCountLocationBulkController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */; };
+		ABFEABA323CE194800D32A04 /* EWHCycleCountLocationSerialController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */; };
+		ABFEABA623CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABA523CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m */; };
+		ABFEABA923CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABA823CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.m */; };
+		ABFEABAC23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABAB23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m */; };
+		ABFEABAF23CE692700D32A04 /* EWHCycleCountJobDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABAE23CE692700D32A04 /* EWHCycleCountJobDetail.m */; };
 		D31D95D219ED89FB00B37466 /* EWHCustomAttributeCatalog.m in Sources */ = {isa = PBXBuildFile; fileRef = D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */; };
 		D322DB1319F04E2800689F7F /* EWHGetInventoryTypesforProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1219F04E2800689F7F /* EWHGetInventoryTypesforProgram.m */; };
 		D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D322DB1519F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m */; };
@@ -396,6 +402,18 @@
 		ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSortScanPartsController.m; sourceTree = "<group>"; };
 		ABF20CAE23183566000CC6C3 /* EWHAddSortJobDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAddSortJobDetails.h; sourceTree = "<group>"; };
 		ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAddSortJobDetails.m; sourceTree = "<group>"; };
+		ABFEAB9E23CD066B00D32A04 /* EWHCycleCountLocationBulkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountLocationBulkController.h; sourceTree = "<group>"; };
+		ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountLocationBulkController.m; sourceTree = "<group>"; };
+		ABFEABA123CE194800D32A04 /* EWHCycleCountLocationSerialController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountLocationSerialController.h; sourceTree = "<group>"; };
+		ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountLocationSerialController.m; sourceTree = "<group>"; };
+		ABFEABA423CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHProcessCycleCountDetailByLocation.h; sourceTree = "<group>"; };
+		ABFEABA523CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHProcessCycleCountDetailByLocation.m; sourceTree = "<group>"; };
+		ABFEABA723CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountCatalogbyLocation.h; sourceTree = "<group>"; };
+		ABFEABA823CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountCatalogbyLocation.m; sourceTree = "<group>"; };
+		ABFEABAA23CE592900D32A04 /* EWHFinichCycleCountJobDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHFinichCycleCountJobDetail.h; sourceTree = "<group>"; };
+		ABFEABAB23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHFinichCycleCountJobDetail.m; sourceTree = "<group>"; };
+		ABFEABAD23CE692700D32A04 /* EWHCycleCountJobDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountJobDetail.h; sourceTree = "<group>"; };
+		ABFEABAE23CE692700D32A04 /* EWHCycleCountJobDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountJobDetail.m; sourceTree = "<group>"; };
 		D31D95D019ED89FB00B37466 /* EWHCustomAttributeCatalog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHCustomAttributeCatalog.h; sourceTree = "<group>"; };
 		D31D95D119ED89FB00B37466 /* EWHCustomAttributeCatalog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHCustomAttributeCatalog.m; sourceTree = "<group>"; };
 		D322DB1119F04E2800689F7F /* EWHGetInventoryTypesforProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EWHGetInventoryTypesforProgram.h; sourceTree = "<group>"; };
@@ -844,7 +862,6 @@
 		6BB01F411608B8E20069213E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				ABE9D2A123170D00001174BD /* Sorting */,
 				6B9C9FF615D49E7F001E1924 /* EWHRootViewController.h */,
 				6B9C9FF715D49E7F001E1924 /* EWHRootViewController.m */,
 				6B960D4615B7142200064CC0 /* EWHLoginController.h */,
@@ -853,6 +870,7 @@
 				6BA7A95C15B8F24600953C6D /* EWHSelectWarehouseController.m */,
 				6BA0320515DC0A55008A7095 /* EWHSelectActionController.h */,
 				6BA0320615DC0A6A008A7095 /* EWHSelectActionController.m */,
+				ABE9D2A123170D00001174BD /* Sorting */,
 				D381624D189ADBF400BA59FA /* NewReceipt */,
 				6BB01F421608B8ED0069213E /* PutAway */,
 				6BB01F431608B9210069213E /* PickShipment */,
@@ -967,8 +985,12 @@
 				D3E5D93E2153F005009AD155 /* EWHCellforCheckboxTableViewCell.xib */,
 				D3E5D94521555612009AD155 /* EWHCycleCountJob.h */,
 				D3E5D94621555612009AD155 /* EWHCycleCountJob.m */,
+				ABFEABAD23CE692700D32A04 /* EWHCycleCountJobDetail.h */,
+				ABFEABAE23CE692700D32A04 /* EWHCycleCountJobDetail.m */,
 				ABE9D2A9231714E9001174BD /* EWHSortJob.h */,
 				ABE9D2AA231714E9001174BD /* EWHSortJob.m */,
+				ABFEABA723CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.h */,
+				ABFEABA823CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -1135,6 +1157,10 @@
 				D3E5D94D21555DFD009AD155 /* EWHSelectCycleCountLocationController.m */,
 				D3E5D952215987B1009AD155 /* EWHSelectCycleCountLocationCatalogController.h */,
 				D3E5D953215987B1009AD155 /* EWHSelectCycleCountLocationCatalogController.m */,
+				ABFEAB9E23CD066B00D32A04 /* EWHCycleCountLocationBulkController.h */,
+				ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */,
+				ABFEABA123CE194800D32A04 /* EWHCycleCountLocationSerialController.h */,
+				ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */,
 			);
 			name = CycleCount;
 			sourceTree = "<group>";
@@ -1148,6 +1174,10 @@
 				D3E5D95021556292009AD155 /* EWHGetCycleCountJobDetails.m */,
 				D3E5D9552159890D009AD155 /* EWHGetCycleCountJobDetailLocationCatalogs.h */,
 				D3E5D9562159890D009AD155 /* EWHGetCycleCountJobDetailLocationCatalogs.m */,
+				ABFEABA423CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.h */,
+				ABFEABA523CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m */,
+				ABFEABAA23CE592900D32A04 /* EWHFinichCycleCountJobDetail.h */,
+				ABFEABAB23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m */,
 			);
 			name = CycleCount;
 			sourceTree = "<group>";
@@ -1182,7 +1212,7 @@
 				LastUpgradeCheck = 0430;
 				TargetAttributes = {
 					6B960D2215B712F000064CC0 = {
-						DevelopmentTeam = J53LBKD8MY;
+						DevelopmentTeam = SL7JK6JKLG;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1248,6 +1278,7 @@
 				6B98490115B9F51400A1E2EB /* ASIAuthenticationDialog.m in Sources */,
 				D3E5D95121556292009AD155 /* EWHGetCycleCountJobDetails.m in Sources */,
 				6B98490415B9F51400A1E2EB /* ASIDataCompressor.m in Sources */,
+				ABFEABA923CE314D00D32A04 /* EWHCycleCountCatalogbyLocation.m in Sources */,
 				D3E5D93F2153F005009AD155 /* EWHCellforCheckboxTableViewCell.m in Sources */,
 				6B98490615B9F51400A1E2EB /* ASIDataDecompressor.m in Sources */,
 				6B98490815B9F51400A1E2EB /* ASIDownloadCache.m in Sources */,
@@ -1259,6 +1290,7 @@
 				6B9848BF15B9EAE000A1E2EB /* NSObject+SBJson.m in Sources */,
 				6B9848C215B9EAE000A1E2EB /* SBJsonParser.m in Sources */,
 				6B9848C415B9EAE000A1E2EB /* SBJsonStreamParser.m in Sources */,
+				ABFEABA323CE194800D32A04 /* EWHCycleCountLocationSerialController.m in Sources */,
 				6B9848C615B9EAE000A1E2EB /* SBJsonStreamParserAccumulator.m in Sources */,
 				D31D95D219ED89FB00B37466 /* EWHCustomAttributeCatalog.m in Sources */,
 				D381625A189C43BF00BA59FA /* EWHCreateReceiptController.m in Sources */,
@@ -1266,6 +1298,7 @@
 				6B9848CA15B9EAE000A1E2EB /* SBJsonStreamParserState.m in Sources */,
 				6B9848CC15B9EAE000A1E2EB /* SBJsonStreamWriter.m in Sources */,
 				6B9848CE15B9EAE000A1E2EB /* SBJsonStreamWriterAccumulator.m in Sources */,
+				ABFEABA023CD066B00D32A04 /* EWHCycleCountLocationBulkController.m in Sources */,
 				6B9848D015B9EAE000A1E2EB /* SBJsonStreamWriterState.m in Sources */,
 				6B9848D215B9EAE000A1E2EB /* SBJsonTokeniser.m in Sources */,
 				D322DB1619F04E4F00689F7F /* EWHSelectInventoryTypeViewController.m in Sources */,
@@ -1295,6 +1328,7 @@
 				6B96712715BE4A7B0081B46F /* EWHGetUserWarehouseListRequest.m in Sources */,
 				6B96712A15BE4BD40081B46F /* EWHWarehouse.m in Sources */,
 				6B9C9FF815D49E7F001E1924 /* EWHRootViewController.m in Sources */,
+				ABFEABAF23CE692700D32A04 /* EWHCycleCountJobDetail.m in Sources */,
 				D37DCC58191ABCB000D4890B /* EWHDestinationsByType.m in Sources */,
 				6BA0320715DC0A6A008A7095 /* EWHSelectActionController.m in Sources */,
 				D34EA7C81B0A6FE000ACE218 /* EWHScanSerialNumbersViewController.m in Sources */,
@@ -1314,6 +1348,7 @@
 				6B9E5D7E15E68F2E00065029 /* EWHReceiptDetail.m in Sources */,
 				6B9E5D8415E6B1E900065029 /* EWHGetReceiptDetailByPartNumberRequest.m in Sources */,
 				ABE9D2A423170D3E001174BD /* EWHSelectSortJobController.m in Sources */,
+				ABFEABA623CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m in Sources */,
 				6BAA7A3C15E7EFAE001B66EB /* EWHPartDetailsController.m in Sources */,
 				D37DAAD21AA3A6F500E5F257 /* EWHGetCatalogByProgram.m in Sources */,
 				6BAA7A3F15E7EFDB001B66EB /* EWHSerializedPartDetailsController.m in Sources */,
@@ -1333,6 +1368,7 @@
 				6B9B1E8515F94208003A8236 /* EWHQuantityTextField.m in Sources */,
 				6B9F859116021FA800547AE2 /* EWHGetShipmentsForPickingRequest.m in Sources */,
 				6B9F85941602223300547AE2 /* EWHSelectShipmentController.m in Sources */,
+				ABFEABAC23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m in Sources */,
 				D381628A18A2CD2400BA59FA /* EWHGetSavedReceipt.m in Sources */,
 				D381627518A08E7A00BA59FA /* EWHCarrier.m in Sources */,
 				D381626318A00F9100BA59FA /* EWHNewReceiptDataObject.m in Sources */,
@@ -1481,7 +1517,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J53LBKD8MY;
+				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1493,7 +1529,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1513,7 +1549,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = J53LBKD8MY;
+				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1525,7 +1561,7 @@
 					"$(SDKROOT)/usr/lib/system",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppE;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

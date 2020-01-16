@@ -8,7 +8,7 @@
 
 #import "EWHRequest.h"
 #import "EWHUser.h"
-#import "EWHCatalog.h"
+#import "EWHCycleCountCatalogbyLocation.h"
 
 @interface EWHGetCycleCountJobDetailLocationCatalogs : EWHRequest
 
