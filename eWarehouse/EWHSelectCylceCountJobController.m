@@ -106,7 +106,12 @@ EWHRootViewController *rootController;
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     EWHCycleCountJob *job = [cyclecountJobs objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:job];
+    if (job.CycleCountJobTypeId==1) {
+        [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:job];
+    } else if (job.CycleCountJobTypeId==2) {
+        [self performSegueWithIdentifier:@"ViewCycleCountJobCatalog" sender:job];
+    }
+    
 }
 
 
@@ -114,6 +119,10 @@ EWHRootViewController *rootController;
     
     if ([[segue identifier] isEqualToString:@"ViewCycleCountJobLocation"]) {
         EWHSelectCycleCountLocationController *selectController = [segue destinationViewController];
+        selectController.warehouse=warehouse;
+        selectController.cyclecountJob=sender;
+    } else if ([[segue identifier] isEqualToString:@"ViewCycleCountJobCatalog"]) {
+        EWHCycleCountCatalogLocationController *selectController = [segue destinationViewController];
         selectController.warehouse=warehouse;
         selectController.cyclecountJob=sender;
     }

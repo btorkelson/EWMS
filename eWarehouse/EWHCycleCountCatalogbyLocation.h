@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (assign, nonatomic) NSInteger QuantityOnHand;
 @property (nonatomic, retain) NSMutableArray *ScannedSerials;
 @property (assign, nonatomic) NSInteger LocationId;
+@property (nonatomic, retain) NSString *LocationName;
 @property (assign, nonatomic) NSInteger CycleCountJobId;
 @property (assign, nonatomic) NSInteger CycleCountJobDetailId;
 @property (nonatomic) BOOL IsBulk;

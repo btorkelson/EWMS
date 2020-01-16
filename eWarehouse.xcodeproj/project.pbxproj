@@ -115,6 +115,9 @@
 		ABE9D2A823170F80001174BD /* EWHGetSortJobsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A723170F80001174BD /* EWHGetSortJobsRequest.m */; };
 		ABE9D2AB231714E9001174BD /* EWHSortJob.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AA231714E9001174BD /* EWHSortJob.m */; };
 		ABE9D2AE23182D34001174BD /* EWHSortScanPartsController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */; };
+		ABF0CD0523D0EBE7009877A0 /* EWHCycleCountCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0423D0EBE7009877A0 /* EWHCycleCountCatalogController.m */; };
+		ABF0CD0823D0F152009877A0 /* EWHCycleCountCatalogLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0723D0F152009877A0 /* EWHCycleCountCatalogLocationController.m */; };
+		ABF0CD0B23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0A23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m */; };
 		ABF20CB023183566000CC6C3 /* EWHAddSortJobDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */; };
 		ABFEABA023CD066B00D32A04 /* EWHCycleCountLocationBulkController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */; };
 		ABFEABA323CE194800D32A04 /* EWHCycleCountLocationSerialController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */; };
@@ -400,6 +403,12 @@
 		ABE9D2AA231714E9001174BD /* EWHSortJob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSortJob.m; sourceTree = "<group>"; };
 		ABE9D2AC23182D34001174BD /* EWHSortScanPartsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSortScanPartsController.h; sourceTree = "<group>"; };
 		ABE9D2AD23182D34001174BD /* EWHSortScanPartsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSortScanPartsController.m; sourceTree = "<group>"; };
+		ABF0CD0323D0EBE7009877A0 /* EWHCycleCountCatalogController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountCatalogController.h; sourceTree = "<group>"; };
+		ABF0CD0423D0EBE7009877A0 /* EWHCycleCountCatalogController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountCatalogController.m; sourceTree = "<group>"; };
+		ABF0CD0623D0F152009877A0 /* EWHCycleCountCatalogLocationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountCatalogLocationController.h; sourceTree = "<group>"; };
+		ABF0CD0723D0F152009877A0 /* EWHCycleCountCatalogLocationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountCatalogLocationController.m; sourceTree = "<group>"; };
+		ABF0CD0923D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetCycleCountJobDetailCatalogLocations.h; sourceTree = "<group>"; };
+		ABF0CD0A23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetCycleCountJobDetailCatalogLocations.m; sourceTree = "<group>"; };
 		ABF20CAE23183566000CC6C3 /* EWHAddSortJobDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAddSortJobDetails.h; sourceTree = "<group>"; };
 		ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAddSortJobDetails.m; sourceTree = "<group>"; };
 		ABFEAB9E23CD066B00D32A04 /* EWHCycleCountLocationBulkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountLocationBulkController.h; sourceTree = "<group>"; };
@@ -1161,6 +1170,10 @@
 				ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */,
 				ABFEABA123CE194800D32A04 /* EWHCycleCountLocationSerialController.h */,
 				ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */,
+				ABF0CD0323D0EBE7009877A0 /* EWHCycleCountCatalogController.h */,
+				ABF0CD0423D0EBE7009877A0 /* EWHCycleCountCatalogController.m */,
+				ABF0CD0623D0F152009877A0 /* EWHCycleCountCatalogLocationController.h */,
+				ABF0CD0723D0F152009877A0 /* EWHCycleCountCatalogLocationController.m */,
 			);
 			name = CycleCount;
 			sourceTree = "<group>";
@@ -1178,6 +1191,8 @@
 				ABFEABA523CE278600D32A04 /* EWHProcessCycleCountDetailByLocation.m */,
 				ABFEABAA23CE592900D32A04 /* EWHFinichCycleCountJobDetail.h */,
 				ABFEABAB23CE592900D32A04 /* EWHFinichCycleCountJobDetail.m */,
+				ABF0CD0923D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.h */,
+				ABF0CD0A23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m */,
 			);
 			name = CycleCount;
 			sourceTree = "<group>";
@@ -1274,6 +1289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF0CD0B23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m in Sources */,
 				D3C34D651ED890490004746C /* EWHMoveInventory.m in Sources */,
 				6B98490115B9F51400A1E2EB /* ASIAuthenticationDialog.m in Sources */,
 				D3E5D95121556292009AD155 /* EWHGetCycleCountJobDetails.m in Sources */,
@@ -1378,12 +1394,14 @@
 				D34AB20919ED9AF600658A7F /* EWHGetCustomAttributeCatalogViewController.m in Sources */,
 				D3E5D94E21555DFD009AD155 /* EWHSelectCycleCountLocationController.m in Sources */,
 				D325A0A318A97FC200770C25 /* EWHSelectDestinationViewController.m in Sources */,
+				ABF0CD0823D0F152009877A0 /* EWHCycleCountCatalogLocationController.m in Sources */,
 				6BB01F4D1608C3AA0069213E /* EWHShipmentDetail.m in Sources */,
 				6BB01F501608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m in Sources */,
 				D3E5D94721555612009AD155 /* EWHCycleCountJob.m in Sources */,
 				6BB01F531608D79D0069213E /* EWHSelectLocationController.m in Sources */,
 				D3C34D541ED7633C0004746C /* EWHTransferScanLocation.m in Sources */,
 				D3C34D6B1ED8A2560004746C /* EWHGetWarehouseProgramListAll.m in Sources */,
+				ABF0CD0523D0EBE7009877A0 /* EWHCycleCountCatalogController.m in Sources */,
 				D3E5D9572159890D009AD155 /* EWHGetCycleCountJobDetailLocationCatalogs.m in Sources */,
 				D381627E18A154CF00BA59FA /* EWHGetOriginsByProgramWarehouse.m in Sources */,
 				6BB01F561608D90D0069213E /* EWHLocation.m in Sources */,

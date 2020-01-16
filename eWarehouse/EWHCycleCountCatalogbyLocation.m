@@ -21,12 +21,14 @@
 @synthesize CycleCountJobDetailId;
 @synthesize IsBulk;
 @synthesize IsSerial;
+@synthesize LocationName;
 
 - (EWHCycleCountCatalogbyLocation *)initWithDictionary:(NSDictionary *)dictionary {
     CatalogId = [[dictionary objectForKey:@"CatalogId"] intValue];
     ItemNumber = [dictionary objectForKey:@"ItemNumber"];
     ProgramId = [[dictionary objectForKey:@"ProgramId"] intValue];
     ProgramName = [dictionary objectForKey:@"ProgramName"];
+    LocationName = [dictionary objectForKey:@"LocationName"];
     QuantityScanned = [[dictionary objectForKey:@"QuantityScanned"] intValue];
     QuantityOnHand = [[dictionary objectForKey:@"QuantityOnHand"] intValue];
     LocationId = [[dictionary objectForKey:@"LocationId"] intValue];
@@ -46,6 +48,7 @@
              @"ItemNumber": self.ItemNumber,
              @"ProgramId": @(self.ProgramId),
              @"ProgramName": self.ProgramName,
+             @"LocationName": self.LocationName,
              @"QuantityScanned": @(self.QuantityScanned),
              @"QuantityOnHand": @(self.QuantityOnHand),
              @"LocationId": @(self.LocationId),

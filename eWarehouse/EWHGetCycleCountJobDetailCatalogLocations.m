@@ -1,38 +1,20 @@
 //
-//  EWHProcessCycleCountDetailByLocation.m
+//  EWHGetCycleCountJobDetailCatalogLocations.m
 //  eWarehouse
 //
-//  Created by Brian Torkelson on 1/14/20.
+//  Created by Brian Torkelson on 1/16/20.
 //
 
-#import "EWHProcessCycleCountDetailByLocation.h"
+#import "EWHGetCycleCountJobDetailCatalogLocations.h"
 
-@implementation EWHProcessCycleCountDetailByLocation
+@implementation EWHGetCycleCountJobDetailCatalogLocations
 
--(void)processCycleCountDetailByLocation:(NSMutableArray *)details user:(EWHUser *)user
+-(void)getCycleCountJobDetailCatalogLocations:(NSInteger)cyclecountJobId catalogId:(NSInteger)catalogId user:(EWHUser *)user
 {
     __weak EWHRequest *sender = self;
-    NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/ProcessCycleCountDetail"];
+    NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/GetCycleCountJobDetailByCatalog"];
     request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    
-    
-//    NSString *numbers = [[serials valueForKey:@"description"] componentsJoinedByString:@","];
-    NSError *e = nil;
-    
-    NSMutableArray<NSDictionary*> *jsonOffers = [NSMutableArray array];
-    for (EWHCycleCountCatalogbyLocation* ca in details) {
-        [jsonOffers addObject:[ca toJSON]];
-    }
-    NSData * JSONData = [NSJSONSerialization dataWithJSONObject:jsonOffers options:kNilOptions error:&e];
-    //    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:receipt.InboundCustomAttributes options:NSJSONWritingPrettyPrinted error:&e];
-    NSString *jsonString = [[NSString alloc] initWithData:JSONData encoding:NSUTF8StringEncoding];
-    
-    
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:details options:NSJSONWritingPrettyPrinted error:nil];
-//    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    
-    NSString *postData = [NSString stringWithFormat:@"{\"details\":%@,\"userId\":%ld}", jsonString, (long)user.UserId];
-    EWHLog(@"%@", postData);
+    NSString *postData = [NSString stringWithFormat:@"{\"cyclecountJobId\":\"%ld\",\"catalogId\":\"%ld\"}", (long)cyclecountJobId, (long)catalogId];
     
     [request setRequestMethod:@"POST"];
     [request appendPostData:[postData dataUsingEncoding:NSUTF8StringEncoding]];
@@ -51,10 +33,14 @@
             SBJsonParser* jsonParser = [[SBJsonParser alloc] init];
             NSError *e = nil;
             NSDictionary* dictionary = [jsonParser objectWithString:responseString error:&e];
-            EWHResponse* response = [[EWHResponse alloc]initWithDictionary:dictionary];
+            NSMutableArray* catalogs = [[NSMutableArray alloc] init];
+            for (NSDictionary* element in [dictionary objectForKey:@"GetCycleCountJobDetailByCatalogResult"]) {
+                EWHCycleCountCatalogbyLocation * catalog = [[EWHCycleCountCatalogbyLocation alloc] initWithDictionary:element];
+                [catalogs addObject:catalog];
+            }
             if(self.caller && self.callback){
                 if([self.caller respondsToSelector:self.callback]){
-                    [self.caller performSelector:self.callback withObject:response];
+                    [self.caller performSelector:self.callback withObject:catalogs];
                 }
             }
         }
@@ -88,6 +74,5 @@
     
     [request startAsynchronous];
 }
-
 
 @end

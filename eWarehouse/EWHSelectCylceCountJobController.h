@@ -11,6 +11,7 @@
 #import "EWHCycleCountJob.h"
 #import "EWHGetCycleCountJobs.h"
 #import "EWHSelectCycleCountLocationController.h"
+#import "EWHCycleCountCatalogLocationController.h"
 
 @interface EWHSelectCylceCountJobController : UITableViewController
 

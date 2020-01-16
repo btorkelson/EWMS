@@ -1,33 +1,32 @@
 //
-//  EWHSelectCycleCountLocationCatalogController.m
+//  EWHCycleCountCatalogLocationController.m
 //  eWarehouse
 //
-//  Created by Brian Torkelson on 9/24/18.
-//
+//  Created by Brian Torkelson on 1/16/20.
 //
 
-#import "EWHSelectCycleCountLocationCatalogController.h"
+#import "EWHCycleCountCatalogLocationController.h"
 
-@interface EWHSelectCycleCountLocationCatalogController ()
+@interface EWHCycleCountCatalogLocationController ()
 
 @end
 
 EWHRootViewController *rootController;
 DTDevices *linea;
 
-@implementation EWHSelectCycleCountLocationCatalogController
+@implementation EWHCycleCountCatalogLocationController
 
 @synthesize warehouse;
 @synthesize cyclecountJob;
-@synthesize location;
-@synthesize cyclecountCatalogs;
+@synthesize catalog;
+@synthesize cyclecountLocations;
 
 int totalQuantity;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     totalQuantity = 0;
-    [self loadCycleCountLocationCatalogs];
+    [self loadCycleCountCatalogLocations];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -50,12 +49,12 @@ int totalQuantity;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete implementation, return the number of rows
-    return [cyclecountCatalogs count];
+    return [cyclecountLocations count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     
-    NSString *title = NSLocalizedString(@"Parts", @"Parts");
+    NSString *title = NSLocalizedString(@"Locations", @"Locations");
     return title;
 }
 - (void)viewDidAppear:(BOOL)animated{
@@ -124,8 +123,8 @@ int totalQuantity;
 -(void) validateScan: (NSString *)barcode{
     //Z - remove in production
     //barcode = @"176761";
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ItemNumber == %@", barcode];
-    NSArray *matches = [cyclecountCatalogs filteredArrayUsingPredicate:predicate];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"LocationName == %@", barcode];
+    NSArray *matches = [cyclecountLocations filteredArrayUsingPredicate:predicate];
     EWHLog(@"Matches count:%d", [matches count]);
     if([matches count] > 0){
         EWHCycleCountCatalogbyLocation *catalog = [matches objectAtIndex:0];
@@ -136,63 +135,27 @@ int totalQuantity;
         }
     }
     else {
-//        [rootController displayAlert:@"Incorrect Part Number" withTitle:@"Cycle Count"];
-        UIAlertController * alert = [UIAlertController
-                                     alertControllerWithTitle:@"Cycle Count Part"
-                                     message:@"Part Number not found. Do you want to add this part to this cycle count in this location?"
-                                     preferredStyle:UIAlertControllerStyleAlert];
-        
-        
-        
-        UIAlertAction* yesButton = [UIAlertAction
-                                    actionWithTitle:@"Yes"
-                                    style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction * action) {
-                                        EWHCycleCountCatalogbyLocation *catalog = [[EWHCycleCountCatalogbyLocation alloc] init];
-                                        catalog.ItemNumber=barcode;
-                                        catalog.IsBulk=1;
-                                        catalog.ScannedSerials = [[NSMutableArray alloc] init];
-                                        catalog.ProgramName=@"";
-                                        catalog.CycleCountJobId=cyclecountJob.CycleCountJobId;
-                                        catalog.CycleCountJobDetailId=location.CycleCountJobDetailId;
-                                        catalog.LocationId=location.Id;
-                                        catalog.LocationName=location.Value;
-                                        [cyclecountCatalogs addObject:catalog];
-                                        [self performSegueWithIdentifier:@"CycleCountLocationBulk" sender:catalog];
-                                    }];
-        
-        UIAlertAction* noButton = [UIAlertAction
-                                   actionWithTitle:@"No"
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction * action) {
-                                       //Handle no, thanks button
-                                   }];
-        
-        [alert addAction:yesButton];
-        [alert addAction:noButton];
-        
-        [self presentViewController:alert animated:YES completion:nil];
-        
+                [rootController displayAlert:@"Incorrect Location" withTitle:@"Cycle Count"];
         
     }
 }
 
 #pragma mark - Table view data source
 
--(void) loadCycleCountLocationCatalogs
+-(void) loadCycleCountCatalogLocations
 {
     [rootController showLoading];
     EWHUser *user = rootController.user;
     if(user != nil){
-        EWHGetCycleCountJobDetailLocationCatalogs *request = [[EWHGetCycleCountJobDetailLocationCatalogs alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-        [request getCycleCountJobDetailLocationCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id isNew:1 user:user];
+        EWHGetCycleCountJobDetailCatalogLocations *request = [[EWHGetCycleCountJobDetailCatalogLocations alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        [request getCycleCountJobDetailCatalogLocations:cyclecountJob.CycleCountJobId catalogId:catalog.Id user:user];
     }
 }
 
 -(void) getJobListCallback: (NSMutableArray*) results
 {
     [rootController hideLoading];
-    cyclecountCatalogs = results;
+    cyclecountLocations = results;
     [self.tableView reloadData];
 }
 
@@ -215,11 +178,11 @@ int totalQuantity;
     EWHTableViewCellforTransfer *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Get the object to display and set the value in the cell.
-    EWHCycleCountCatalogbyLocation *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
+    EWHCycleCountCatalogbyLocation *catalog = [cyclecountLocations objectAtIndex:indexPath.row];
     
     cell.lblQty.text=[NSString stringWithFormat:@"%li",(long)catalog.QuantityScanned];
     cell.lblStatus.text=catalog.ProgramName;
-    cell.lblInventoryType.text=catalog.ItemNumber;
+    cell.lblInventoryType.text=catalog.LocationName;
     //    txtInventoryType = catalog.InventoryTypeName;
     //    cell.detailTextLabel.text = catalog.InventoryStatusName;
     
@@ -228,8 +191,8 @@ int totalQuantity;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EWHCycleCountCatalogbyLocation *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
-//    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
+    EWHCycleCountCatalogbyLocation *catalog = [cyclecountLocations objectAtIndex:indexPath.row];
+    //    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
     if (catalog.IsBulk==1) {
         [self performSegueWithIdentifier:@"CycleCountLocationBulk" sender:catalog];
     } else {
@@ -238,12 +201,12 @@ int totalQuantity;
 }
 - (IBAction)finishPressed:(id)sender {
     
-//    if ([cyclecountCatalogs count]>=1){
-        [self sendCycleCountResults];
-//    } else {
-//        [self validateScan:@"asdasdf"];
-//
-//    }
+    //    if ([cyclecountCatalogs count]>=1){
+    [self sendCycleCountResults];
+    //    } else {
+    //        [self validateScan:@"asdasdf"];
+    //
+    //    }
 }
 
 -(void) sendCycleCountResults
@@ -252,9 +215,9 @@ int totalQuantity;
     EWHUser *user = rootController.user;
     if (totalQuantity== 0) {
         UIAlertController * alert2 = [UIAlertController
-                                     alertControllerWithTitle:@"Confirm"
-                                     message:@"Is this location empty?"
-                                     preferredStyle:UIAlertControllerStyleAlert];
+                                      alertControllerWithTitle:@"Confirm"
+                                      message:@"Please confirm there are 0 in inventory"
+                                      preferredStyle:UIAlertControllerStyleAlert];
         
         
         
@@ -283,8 +246,8 @@ int totalQuantity;
         
         if(user != nil){
             EWHProcessCycleCountDetailByLocation *request = [[EWHProcessCycleCountDetailByLocation alloc] initWithCallbacks:self callback:@selector(getSendCycleCountResultsCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-            [request processCycleCountDetailByLocation:cyclecountCatalogs user:user];
-        } 
+            [request processCycleCountDetailByLocation:cyclecountLocations user:user];
+        }
         
     }
 }
@@ -293,20 +256,20 @@ int totalQuantity;
 
 -(void) getSendCycleCountResultsCallback: (NSMutableArray*) results
 {
-//    [rootController hideLoading];
-//    [self.navigationController popViewControllerAnimated:YES];
+    //    [rootController hideLoading];
+    //    [self.navigationController popViewControllerAnimated:YES];
     [self finishCycleCountDetail];
 }
 
 -(void) finishCycleCountDetail
 {
-//    [rootController showLoading];
+    //    [rootController showLoading];
     EWHUser *user = rootController.user;
-        if(user != nil){
-            EWHFinichCycleCountJobDetail *request = [[EWHFinichCycleCountJobDetail alloc] initWithCallbacks:self callback:@selector(finishCycleCountDetailCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-//            EWHCycleCountCatalogbyLocation *catalog = [cyclecountCatalogs objectAtIndex:0];
-            [request finishCycleCountJobDetail:location.CycleCountJobDetailId cycleCountJobId:cyclecountJob.CycleCountJobId user:user];
-        }
+    if(user != nil){
+        EWHFinichCycleCountJobDetail *request = [[EWHFinichCycleCountJobDetail alloc] initWithCallbacks:self callback:@selector(finishCycleCountDetailCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        //            EWHCycleCountCatalogbyLocation *catalog = [cyclecountCatalogs objectAtIndex:0];
+        [request finishCycleCountJobDetail:catalog.CycleCountJobDetailId cycleCountJobId:cyclecountJob.CycleCountJobId user:user];
+    }
     
 }
 -(void) finishCycleCountDetailCallback: (NSMutableArray*) results
@@ -321,11 +284,11 @@ int totalQuantity;
     
     if ([[segue identifier] isEqualToString:@"CycleCountLocationBulk"]) {
         EWHCycleCountLocationBulkController *selectReceiptController = [segue destinationViewController];
-        selectReceiptController.location= location;
+        selectReceiptController.location= catalog;
         selectReceiptController.catalog=sender;
     } else if ([[segue identifier] isEqualToString:@"CycleCountLocationSerial"]) {
         EWHCycleCountLocationSerialController *selectReceiptController = [segue destinationViewController];
-        selectReceiptController.location= location;
+        selectReceiptController.location= catalog;
         selectReceiptController.catalog=sender;
     }
     
