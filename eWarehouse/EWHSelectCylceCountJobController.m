@@ -110,7 +110,10 @@ EWHRootViewController *rootController;
         [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:job];
     } else if (job.CycleCountJobTypeId==2) {
         [self performSegueWithIdentifier:@"ViewCycleCountJobCatalog" sender:job];
+    } else if (job.CycleCountJobTypeId==3) {
+        [self performSegueWithIdentifier:@"ViewCycleCountJobCatalog" sender:job];
     }
+}
     
 }
 
