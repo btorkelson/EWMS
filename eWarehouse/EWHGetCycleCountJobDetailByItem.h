@@ -1,0 +1,15 @@
+//
+//  EWHGetCycleCountJobDetailByItem.h
+//  eWarehouse
+//
+//  Created by Brian Torkelson on 1/17/20.
+//
+
+#import "EWHRequest.h"
+#import "EWHUser.h"
+#import "EWHCycleCountCatalogbyLocation.h"
+
+@interface EWHGetCycleCountJobDetailByItem : EWHRequest
+
+- (void)getCycleCountJobDetailItemCatalogs:(NSInteger)cyclecountJobId itemId:(NSInteger)itemId user:(EWHUser *)user;
+@end

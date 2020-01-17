@@ -184,8 +184,14 @@ int totalQuantity;
     [rootController showLoading];
     EWHUser *user = rootController.user;
     if(user != nil){
-        EWHGetCycleCountJobDetailLocationCatalogs *request = [[EWHGetCycleCountJobDetailLocationCatalogs alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-        [request getCycleCountJobDetailLocationCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id isNew:1 user:user];
+        if (cyclecountJob.CycleCountJobTypeId==1) {
+            EWHGetCycleCountJobDetailLocationCatalogs *request = [[EWHGetCycleCountJobDetailLocationCatalogs alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+            [request getCycleCountJobDetailLocationCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id isNew:1 user:user];
+        } else if (cyclecountJob.CycleCountJobTypeId==3) {
+            EWHGetCycleCountJobDetailByItem *request = [[EWHGetCycleCountJobDetailByItem alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+            [request getCycleCountJobDetailItemCatalogs:cyclecountJob.CycleCountJobId itemId:location.Id user:user];
+        }
+        
     }
 }
 

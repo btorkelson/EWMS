@@ -111,10 +111,10 @@ EWHRootViewController *rootController;
     } else if (job.CycleCountJobTypeId==2) {
         [self performSegueWithIdentifier:@"ViewCycleCountJobCatalog" sender:job];
     } else if (job.CycleCountJobTypeId==3) {
-        [self performSegueWithIdentifier:@"ViewCycleCountJobCatalog" sender:job];
+        [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:job];
     }
-}
-    
+
+
 }
 
 
@@ -126,6 +126,10 @@ EWHRootViewController *rootController;
         selectController.cyclecountJob=sender;
     } else if ([[segue identifier] isEqualToString:@"ViewCycleCountJobCatalog"]) {
         EWHCycleCountCatalogLocationController *selectController = [segue destinationViewController];
+        selectController.warehouse=warehouse;
+        selectController.cyclecountJob=sender;
+    } else if ([[segue identifier] isEqualToString:@"ViewCycleCountJobItem"]) {
+        EWHCycleCountCatalogController *selectController = [segue destinationViewController];
         selectController.warehouse=warehouse;
         selectController.cyclecountJob=sender;
     }

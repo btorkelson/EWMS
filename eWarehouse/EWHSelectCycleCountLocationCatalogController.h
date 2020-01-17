@@ -18,6 +18,7 @@
 #import "EWHProcessCycleCountDetailByLocation.h"
 #import "EWHFinichCycleCountJobDetail.h"
 #import "DTDevices.h"
+#import "EWHGetCycleCountJobDetailByItem.h"
 
 @interface EWHSelectCycleCountLocationCatalogController : UITableViewController
 
