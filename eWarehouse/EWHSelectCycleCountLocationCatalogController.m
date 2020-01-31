@@ -236,13 +236,23 @@ int totalQuantity;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    EWHTableViewCellforTransfer * cell = [tableView cellForRowAtIndexPath:indexPath];
+    EWHUser *user = rootController.user;
     EWHCycleCountCatalogbyLocation *catalog = [cyclecountCatalogs objectAtIndex:indexPath.row];
-//    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
-    if (catalog.IsBulk==1) {
-        [self performSegueWithIdentifier:@"CycleCountLocationBulk" sender:catalog];
+    if (user.EWAdmin) {
+        //    [self performSegueWithIdentifier:@"ViewCycleCountJobLocation" sender:location];
+        if (catalog.IsBulk==1) {
+            [self performSegueWithIdentifier:@"CycleCountLocationBulk" sender:catalog];
+        } else {
+            [self performSegueWithIdentifier:@"CycleCountLocationSerial" sender:catalog];
+        }
     } else {
-        [self performSegueWithIdentifier:@"CycleCountLocationSerial" sender:catalog];
+        cell.lblQty.text=[NSString stringWithFormat:@"Please scan %li",(long)catalog.QuantityScanned];
+        
     }
+    
+    
 }
 - (IBAction)finishPressed:(id)sender {
     

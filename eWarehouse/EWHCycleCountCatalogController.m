@@ -174,8 +174,18 @@ DTDevices *linea;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    EWHCycleCountJobDetail *location = [cyclecountCatalogs objectAtIndex:indexPath.row];
-    [self performSegueWithIdentifier:@"ViewCycleCountJobCatalogLocation" sender:location];
+    
+//    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+//    EWHUser *user = rootController.user;
+//    if (user.EWAdmin==3) {
+    
+        EWHCycleCountJobDetail *location = [cyclecountCatalogs objectAtIndex:indexPath.row];
+        [self performSegueWithIdentifier:@"ViewCycleCountJobCatalogLocation" sender:location];
+    
+//    } else {
+//        cell.detailTextLabel.text = @"Please scan";
+//
+//    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
