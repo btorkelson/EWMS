@@ -276,6 +276,7 @@ int totalQuantity;
 {
     [rootController hideLoading];
     [rootController displayAlert:@"Success" withTitle:@"Complete"];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

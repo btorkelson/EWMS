@@ -9,12 +9,12 @@
 
 @implementation EWHGetCycleCountJobDetailByItem
 
--(void)getCycleCountJobDetailItemCatalogs:(NSInteger)cyclecountJobId itemId:(NSInteger)itemId user:(EWHUser *)user
+-(void)getCycleCountJobDetailItemCatalogs:(NSInteger)cyclecountJobId locationId:(NSInteger)locationId user:(EWHUser *)user
 {
     __weak EWHRequest *sender = self;
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/GetCycleCountJobDetailByItem"];
     request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *postData = [NSString stringWithFormat:@"{\"cyclecountJobId\":\"%ld\",\"itemId\":\"%ld\"}", (long)cyclecountJobId, (long)itemId];
+    NSString *postData = [NSString stringWithFormat:@"{\"cyclecountJobId\":\"%ld\",\"locationId\":\"%ld\"}", (long)cyclecountJobId, (long)locationId];
     
     [request setRequestMethod:@"POST"];
     [request appendPostData:[postData dataUsingEncoding:NSUTF8StringEncoding]];

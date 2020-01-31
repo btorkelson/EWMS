@@ -69,6 +69,8 @@ int totalQuantity;
     [self.tableView reloadData];
 }
 
+
+
 -(void)connectionState:(int)state {
     switch (state) {
         case CONN_DISCONNECTED:
@@ -189,9 +191,9 @@ int totalQuantity;
             [request getCycleCountJobDetailLocationCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id isNew:1 user:user];
         } else if (cyclecountJob.CycleCountJobTypeId==3) {
             EWHGetCycleCountJobDetailByItem *request = [[EWHGetCycleCountJobDetailByItem alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
-            [request getCycleCountJobDetailItemCatalogs:cyclecountJob.CycleCountJobId itemId:location.Id user:user];
+            [request getCycleCountJobDetailItemCatalogs:cyclecountJob.CycleCountJobId locationId:location.Id user:user];
         }
-        
+        	
     }
 }
 
@@ -319,6 +321,7 @@ int totalQuantity;
 {
     [rootController hideLoading];
     [rootController displayAlert:@"Success" withTitle:@"Complete"];
+    [cyclecountCatalogs removeAllObjects];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

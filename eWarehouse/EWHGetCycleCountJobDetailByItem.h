@@ -11,5 +11,5 @@
 
 @interface EWHGetCycleCountJobDetailByItem : EWHRequest
 
-- (void)getCycleCountJobDetailItemCatalogs:(NSInteger)cyclecountJobId itemId:(NSInteger)itemId user:(EWHUser *)user;
+- (void)getCycleCountJobDetailItemCatalogs:(NSInteger)cyclecountJobId locationId:(NSInteger)locationId user:(EWHUser *)user;
 @end
