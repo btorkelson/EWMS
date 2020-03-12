@@ -257,11 +257,13 @@ int totalQuantity;
 - (IBAction)finishPressed:(id)sender {
     
 //    if ([cyclecountCatalogs count]>=1){
-        [self sendCycleCountResults];
 //    } else {
 //        [self validateScan:@"asdasdf"];
 //
 //    }
+    self.navigationItem.rightBarButtonItem.enabled=false;
+    [self sendCycleCountResults];
+    
 }
 
 -(void) sendCycleCountResults
@@ -280,14 +282,20 @@ int totalQuantity;
                                     actionWithTitle:@"Yes"
                                     style:UIAlertActionStyleDefault
                                     handler:^(UIAlertAction * action) {
-                                        [self finishCycleCountDetail];
+                                        if(user != nil){
+                                            EWHProcessCycleCountDetailByLocation *request = [[EWHProcessCycleCountDetailByLocation alloc] initWithCallbacks:self callback:@selector(getSendCycleCountResultsCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+                                            [request processCycleCountDetailByLocation:cyclecountCatalogs user:user];
+                                        }
+//                                        [self finishCycleCountDetail];
                                     }];
         
         UIAlertAction* noButton = [UIAlertAction
                                    actionWithTitle:@"No"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction * action) {
+                                       
                                        [rootController hideLoading];
+                                       self.navigationItem.rightBarButtonItem.enabled=TRUE;
                                    }];
         
         [alert2 addAction:yesButton];
@@ -311,6 +319,7 @@ int totalQuantity;
 
 -(void) getSendCycleCountResultsCallback: (NSMutableArray*) results
 {
+//        [rootController showLoading];
 //    [rootController hideLoading];
 //    [self.navigationController popViewControllerAnimated:YES];
     [self finishCycleCountDetail];

@@ -119,6 +119,7 @@
 		ABF0CD0523D0EBE7009877A0 /* EWHCycleCountCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0423D0EBE7009877A0 /* EWHCycleCountCatalogController.m */; };
 		ABF0CD0823D0F152009877A0 /* EWHCycleCountCatalogLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0723D0F152009877A0 /* EWHCycleCountCatalogLocationController.m */; };
 		ABF0CD0B23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0CD0A23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m */; };
+		ABF0CD0D23F34D8D009877A0 /* ewmsHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF0CD0C23F34D8D009877A0 /* ewmsHorizontal.png */; };
 		ABF20CB023183566000CC6C3 /* EWHAddSortJobDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */; };
 		ABFEABA023CD066B00D32A04 /* EWHCycleCountLocationBulkController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEAB9F23CD066B00D32A04 /* EWHCycleCountLocationBulkController.m */; };
 		ABFEABA323CE194800D32A04 /* EWHCycleCountLocationSerialController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFEABA223CE194800D32A04 /* EWHCycleCountLocationSerialController.m */; };
@@ -412,6 +413,7 @@
 		ABF0CD0723D0F152009877A0 /* EWHCycleCountCatalogLocationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCycleCountCatalogLocationController.m; sourceTree = "<group>"; };
 		ABF0CD0923D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetCycleCountJobDetailCatalogLocations.h; sourceTree = "<group>"; };
 		ABF0CD0A23D0F334009877A0 /* EWHGetCycleCountJobDetailCatalogLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetCycleCountJobDetailCatalogLocations.m; sourceTree = "<group>"; };
+		ABF0CD0C23F34D8D009877A0 /* ewmsHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ewmsHorizontal.png; sourceTree = "<group>"; };
 		ABF20CAE23183566000CC6C3 /* EWHAddSortJobDetails.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAddSortJobDetails.h; sourceTree = "<group>"; };
 		ABF20CAF23183566000CC6C3 /* EWHAddSortJobDetails.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAddSortJobDetails.m; sourceTree = "<group>"; };
 		ABFEAB9E23CD066B00D32A04 /* EWHCycleCountLocationBulkController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCycleCountLocationBulkController.h; sourceTree = "<group>"; };
@@ -785,6 +787,7 @@
 		6B9C214215B84DEC005CACD0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABF0CD0C23F34D8D009877A0 /* ewmsHorizontal.png */,
 				6B9C214A15B854A6005CACD0 /* Default.png */,
 				6B9C214C15B854B4005CACD0 /* Default@2x.png */,
 				6B3525471610D7690092FDAD /* Default-568h@2x.png */,
@@ -1282,6 +1285,7 @@
 				D32F54681CE26E2F0051D7E1 /* logo.png in Resources */,
 				D32F546A1CE272400051D7E1 /* icon.png in Resources */,
 				6B3525481610D76A0092FDAD /* Default-568h@2x.png in Resources */,
+				ABF0CD0D23F34D8D009877A0 /* ewmsHorizontal.png in Resources */,
 				6B9695911613501700C35494 /* Localizable.strings in Resources */,
 				D345BDC716D7FA1C006B12B9 /* Settings.bundle in Resources */,
 			);

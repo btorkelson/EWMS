@@ -213,6 +213,7 @@ int totalQuantity;
 - (IBAction)finishPressed:(id)sender {
     
     //    if ([cyclecountCatalogs count]>=1){
+    self.navigationItem.rightBarButtonItem.enabled=false;
     [self sendCycleCountResults];
     //    } else {
     //        [self validateScan:@"asdasdf"];
@@ -243,6 +244,7 @@ int totalQuantity;
                                    actionWithTitle:@"No"
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction * action) {
+                                       self.navigationItem.rightBarButtonItem.enabled=TRUE;
                                        [rootController hideLoading];
                                    }];
         
