@@ -171,7 +171,7 @@ DTDevices *linea;
     }
 }
 - (IBAction)scanPressed:(id)sender {
-    [self validateScan:@"1-111"];
+    [self validateScan:sender];
 }
 
 -(void) validateScan: (NSString *)barcode{

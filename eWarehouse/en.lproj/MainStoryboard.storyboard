@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Tad-ah-Cd9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Tad-ah-Cd9">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -906,13 +907,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" misplaced="YES" text="Quantity" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmi-lc-B0p">
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" misplaced="YES" text="Quantity" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lmi-lc-B0p">
                                                     <rect key="frame" x="10" y="16" width="84" height="15"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <color key="textColor" red="0.32156862749999998" green="0.40000000000000002" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </label>
-                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fea-Nn-zSh">
+                                                <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" continuous="NO" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fea-Nn-zSh">
                                                     <rect key="frame" x="194" y="7.5" width="94" height="29"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="94" id="bgw-yX-p8T"/>
@@ -921,7 +922,7 @@
                                                         <action selector="stepperValueChanged:" destination="jzv-0q-w52" eventType="valueChanged" id="WbI-99-pnV"/>
                                                     </connections>
                                                 </stepper>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZU-p1-3Gs" customClass="EWHQuantityTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZU-p1-3Gs" customClass="EWHQuantityTextField">
                                                     <rect key="frame" x="102" y="6" width="44" height="31"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="49" id="ePM-tW-3fC"/>
@@ -935,7 +936,7 @@
                                                         <outlet property="delegate" destination="jzv-0q-w52" id="1Z8-wQ-fu9"/>
                                                     </connections>
                                                 </textField>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="of 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-jM-ESH">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="of 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-jM-ESH">
                                                     <rect key="frame" x="149" y="11" width="35" height="21.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="oHs-nV-f8e"/>
@@ -4476,7 +4477,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="we2-rj-qix">
-                                                    <rect key="frame" x="137" y="10.5" width="144" height="21"/>
+                                                    <rect key="frame" x="137" y="10" width="144" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="144" id="WjQ-C1-YsN"/>
                                                     </constraints>
@@ -4540,7 +4541,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="123-DF-LCk">
-                                                    <rect key="frame" x="137" y="11" width="144" height="21"/>
+                                                    <rect key="frame" x="137" y="10.5" width="144" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="144" id="Z0z-3o-Tsr"/>
                                                     </constraints>
@@ -4619,7 +4620,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="psl-XZ-Nic">
-                                                    <rect key="frame" x="137" y="10.5" width="144" height="21"/>
+                                                    <rect key="frame" x="137" y="10" width="144" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="144" id="raC-5W-Kgx"/>
                                                     </constraints>
@@ -6065,14 +6066,14 @@
     <resources>
         <image name="0.png" width="200" height="52"/>
         <image name="ewmsHorizontal.png" width="285" height="60"/>
-        <image name="logo.png" width="122.87999725341797" height="122.87999725341797"/>
+        <image name="logo.png" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0yC-QJ-1uZ"/>
         <segue reference="X70-vR-YAF"/>
-        <segue reference="3rX-z2-Lf3"/>
+        <segue reference="zBc-Z9-LcT"/>
         <segue reference="cbm-iM-a4T"/>
-        <segue reference="I1R-mK-PTQ"/>
+        <segue reference="f4M-4x-h5B"/>
         <segue reference="EEH-pd-1Vw"/>
         <segue reference="3It-HH-ehy"/>
         <segue reference="7u9-WO-GHR"/>
