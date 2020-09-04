@@ -11,6 +11,7 @@
 #import "EWHCatalog.h"
 #import "EWHMoveInventory.h"
 #import "DTDevices.h"
+#import "EWHTransferScanPart.h"
 
 @interface EWHTransferScanNewLocation : UIViewController
 

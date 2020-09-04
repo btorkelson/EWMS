@@ -22,6 +22,7 @@
 }
 - (IBAction)signOut:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UILabel *lblVersion;
 @property (nonatomic, strong) EWHWarehouse *warehouse;
 
 @end

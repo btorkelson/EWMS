@@ -49,7 +49,7 @@ EWHRootViewController *rootController;
     lblProgramName.text = shipment.ProgramName;
     lblShipmentNumber.text = shipment.ShipmentNumber;
     lblReceivedDate.text = [EWHUtils.dateFormatter stringFromDate:shipment.DeliveryDate];
-    lblShipmentDetailNumber.text = shipmentDetail.Number;
+    lblShipmentDetailNumber.text = shipmentDetail.PartNumber;
     lblQuantity.text = [NSString stringWithFormat:@"of %d", shipmentDetail.Quantity];
     [stepper setMinimumValue:1];
     [stepper setMaximumValue:shipmentDetail.Quantity];

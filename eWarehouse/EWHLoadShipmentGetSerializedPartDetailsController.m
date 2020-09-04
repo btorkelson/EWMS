@@ -17,6 +17,7 @@
 @synthesize shipmentDetail;
 @synthesize warehouse;
 @synthesize location;
+@synthesize btnLoad;
 
 EWHRootViewController *rootController;
 DTDevices *linea;
@@ -253,6 +254,7 @@ NSMutableArray *numbers;
 
 -(IBAction) loadPressed: (id) sender
 {
+    btnLoad.enabled=false;
     NSString *serialNumbers = [[numbers valueForKey:@"description"] componentsJoinedByString:@","]; 
     //Z - remove for distribution
 //    switch (shipment.ShipmentId) {
@@ -280,9 +282,11 @@ NSMutableArray *numbers;
     [rootController hideLoading];
     [rootController displayAlert:result.Message withTitle:@"Load Shipment"];
     if(result.Processed){
-        [self getShipmentDetails:shipmentDetail.ShipmentId];
+//        [self getShipmentDetails:shipmentDetail.ShipmentId];
+        [rootController popToViewController:rootController.shipmentDetailsView animated:YES];
     }
     else {
+        btnLoad.enabled=true;
         [self.navigationItem.rightBarButtonItem setEnabled:true];
     }
 }

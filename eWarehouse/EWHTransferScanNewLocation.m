@@ -130,7 +130,9 @@ DTDevices *linea;
     
         
         [rootController displayAlert:result.Message withTitle:@"Success"];
-        [rootController popToViewController:rootController.selectActionView animated:YES];
+        __weak EWHTransferScanPart * weakSelf = rootController.transferScanPartView;
+        weakSelf.txtPartNumber.text = @"";
+        [rootController popToViewController:weakSelf animated:YES];
     } else {
         [rootController displayAlert:result.Message withTitle:@"Error"];
     }

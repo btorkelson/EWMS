@@ -20,9 +20,10 @@
 @synthesize quantity;
 @synthesize serialNumbers;
 @synthesize storagelocation;
+@synthesize btnPick;
 
 EWHRootViewController *rootController;
-DTDevices *linea;
+//DTDevices *linea;
 NSString *location;
 
 - (void)viewDidLoad {
@@ -32,18 +33,19 @@ NSString *location;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    linea=[DTDevices sharedDevice];
-	[linea connect];
-	[linea addDelegate:self];
+//    linea=[DTDevices sharedDevice];
+//	[linea connect];
+//	[linea addDelegate:self];
 	//update display according to current linea state
-	[self connectionState:linea.connstate];
+//	[self connectionState:linea.connstate];
+    [battery setHidden:true];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-	[linea removeDelegate:self];
-    [linea disconnect];
-    linea = nil;
+//	[linea removeDelegate:self];
+//    [linea disconnect];
+//    linea = nil;
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -159,28 +161,18 @@ NSString *location;
     return cell;
 }
 
--(IBAction)scanLocationDown:(id)sender;
-{
-	NSError *error = nil;
-	[linea startScan:&error];
-    if(error != nil)
-        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
-}
 
--(IBAction)scanLocationUp:(id)sender;
-{
-    [self stopScan];
-}
 
--(void) stopScan{
-    NSError *error = nil;
-    int scanMode;
-    
-    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
-        [linea stopScan:&error];
-    if(error != nil)
-        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
-}
+
+//-(void) stopScan{
+//    NSError *error = nil;
+//    int scanMode;
+//
+//    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
+//        [linea stopScan:&error];
+//    if(error != nil)
+//        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+//}
 
 -(void)connectionState:(int)state {
 	switch (state) {
@@ -194,7 +186,7 @@ NSString *location;
 		case CONN_CONNECTED:
             [btnScanLocation setHidden:false];
             [scannerMsg setHidden:true];
-            [self updateBattery];
+//            [self updateBattery];
             //Z - remove in production
 //            [linea setScanBeep:false volume:0 beepData:nil length:0];
 			break;
@@ -207,7 +199,7 @@ NSString *location;
 //        [self stopScan];
         [self pickShipment];
     }
-    [self updateBattery];
+//    [self updateBattery];
 }
 
 -(void)barcodeData:(NSString *)barcode type:(int)type {
@@ -215,43 +207,17 @@ NSString *location;
 //        [self stopScan];
         [self pickShipment];
     }
-    [self updateBattery];
+//    [self updateBattery];
 }
 
--(void)updateBattery
-{
-    NSError *error=nil;
-    
-    int percent;
-    float voltage;
-    
-	if([linea getBatteryCapacity:&percent voltage:&voltage error:&error])
-    {
-//        [voltageLabel setText:[NSString stringWithFormat:@"%d%%,%.1fv",percent,voltage]];
-        [voltageLabel setText:[NSString stringWithFormat:@"%d%%",percent]];
-      [battery setHidden:FALSE];
-        [voltageLabel setHidden:FALSE];
-        if(percent<0.1)
-            [battery setImage:[UIImage imageNamed:@"0.png"]];
-        else if(percent<40)
-            [battery setImage:[UIImage imageNamed:@"25.png"]];
-        else if(percent<60)
-            [battery setImage:[UIImage imageNamed:@"50.png"]];
-        else if(percent<80)
-            [battery setImage:[UIImage imageNamed:@"75.png"]];
-        else
-            [battery setImage:[UIImage imageNamed:@"100.png"]];
-    }else
-    {
-        [battery setHidden:TRUE];
-        [voltageLabel setHidden:TRUE];
-    }
-}
+
 
 -(void) pickShipment
 {
     //Z - remove for distribution
 //    barcode = shipmentDetail.LocationName;
+    
+    btnPick.enabled=false;
     if(shipmentDetail.IsSerialized
        || [shipmentDetail.LocationName isEqualToString:storagelocation]){
         if(shipment.isContainer)
@@ -264,6 +230,7 @@ NSString *location;
     }
     else{
         [rootController displayAlert:@"Invalid location" withTitle:@"Pick Shipment"];
+        btnPick.enabled=true;
     }
 }
 
@@ -302,7 +269,11 @@ NSString *location;
     [rootController hideLoading];
     [rootController displayAlert:result.Message withTitle:@"Pick Shipment"];
     if(result.Processed){
-        [self getShipmentDetails:shipmentDetail.ShipmentId];
+        
+        [rootController popToViewController:rootController.shipmentLocationsView animated:YES];
+//        [self getShipmentDetails:shipmentDetail.ShipmentId];
+    } else {
+        btnPick.enabled=true;
     }
 }
 
@@ -326,6 +297,8 @@ NSString *location;
 {
     [rootController hideLoading];
     [rootController displayAlert:error.localizedDescription withTitle:@"Pick Shipment"];
+    
+    btnPick.enabled=true;
 }
 
 -(void) errorGetShipmentDetailsCallback: (NSError*) error

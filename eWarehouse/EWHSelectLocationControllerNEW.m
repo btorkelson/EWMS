@@ -57,6 +57,7 @@ DTDevices *linea;
 -(void) loadLocationDetails
 {
     [rootController showLoading];
+        
     EWHUser *user = rootController.user;
     if(user != nil){
         EWHGetLocationsforPickingRequestNEW *request = [[EWHGetLocationsforPickingRequestNEW alloc] initWithCallbacks:self callback:@selector(getLocationCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
@@ -68,7 +69,11 @@ DTDevices *linea;
 {
     [rootController hideLoading];
     shipmentLocations = results;
-    [self.tableView reloadData];
+    if ([shipmentLocations count] >0) {
+        [self.tableView reloadData];
+    } else {
+        [rootController popToViewController:rootController.selectShipmentView animated:YES];
+    }
 }
 
 -(void) errorCallback: (NSError*) error

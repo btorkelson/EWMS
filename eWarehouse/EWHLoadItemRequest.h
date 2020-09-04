@@ -10,6 +10,7 @@
 #import "EWHShipmentDetail.h"
 #import "EWHLocation.h"
 #import "EWHResponse.h"
+#import "AFNetworking.h"
 
 @interface EWHLoadItemRequest : EWHRequest
 {

@@ -30,6 +30,7 @@ DTDevices *linea;
     [linea addDelegate:self];
     //update display according to current linea state
     [self connectionState:linea.connstate];
+
 }
 
 

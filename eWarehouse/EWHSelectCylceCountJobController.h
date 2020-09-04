@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EWHRootViewController.h"
 #import "EWHCycleCountJob.h"
 #import "EWHGetCycleCountJobs.h"
 #import "EWHSelectCycleCountLocationController.h"

@@ -21,4 +21,5 @@
 @property (nonatomic, strong) EWHProgram *program;
 @property (nonatomic, strong) NSString *location;
 @property (strong, nonatomic) IBOutlet UITextField *txtPartNumber;
+//@property (nonatomic,strong) void ( ^ appearBlock )();
 @end

@@ -14,12 +14,14 @@
 }
 
 @synthesize warehouse;
+@synthesize lblVersion;
 
 EWHRootViewController *rootController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    lblVersion.text = [NSString stringWithFormat:@"Version %@",  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+       
     rootController = (EWHRootViewController *)self.navigationController;
     rootController.selectActionView = self;
     [rootController navigationItem].hidesBackButton = NO;

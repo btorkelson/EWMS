@@ -16,6 +16,7 @@
     IBOutlet UIButton* btnSignIn;
     IBOutlet UIButton *btnScanUserName;
 }
+@synthesize lblVersion;
 
 EWHRootViewController *rootController;
 DTDevices *linea;
@@ -29,6 +30,8 @@ NSInteger logintries;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    lblVersion.text = [NSString stringWithFormat:@"Version %@",  [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    
     
     rootController = (EWHRootViewController *)self.navigationController;
     rootController.loginView = self;

@@ -24,7 +24,8 @@ DTDevices *linea;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    rootController = (EWHRootViewController *)self.navigationController;
+    rootController.transferScanPartView = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -35,6 +36,7 @@ DTDevices *linea;
     [linea addDelegate:self];
     //update display according to current linea state
     [self connectionState:linea.connstate];
+//    txtPartNumber.text = @"";
 }
 
 

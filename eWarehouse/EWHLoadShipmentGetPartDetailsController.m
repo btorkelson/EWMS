@@ -17,6 +17,7 @@
 @synthesize shipmentDetail;
 @synthesize warehouse;
 @synthesize location;
+@synthesize btnLoad;
 
 EWHRootViewController *rootController;
 
@@ -48,7 +49,7 @@ EWHRootViewController *rootController;
     lblProgramName.text = shipment.ProgramName;
     lblShipmentNumber.text = shipment.ShipmentNumber;
     lblReceivedDate.text = [EWHUtils.dateFormatter stringFromDate:shipment.DeliveryDate];
-    lblShipmentDetailNumber.text = shipmentDetail.Number;
+    lblShipmentDetailNumber.text = shipmentDetail.PartNumber;
     lblQuantity.text = [NSString stringWithFormat:@"of %d", shipmentDetail.Quantity];
     [stepper setMinimumValue:1];
     [stepper setMaximumValue:shipmentDetail.Quantity];
@@ -89,11 +90,13 @@ EWHRootViewController *rootController;
 
 -(IBAction) loadPressed: (id) sender
 {
+    btnLoad.enabled=false;
     int quantity = [txtQuantity.text intValue];
     if(shipmentDetail.Quantity == quantity)
         [self loadPart:quantity];
     else
         [rootController displayAlert:@"You must load the entire quantity for this item" withTitle:@"Error"];
+        btnLoad.enabled=true;
 }
 
 -(void) loadPart:(int)quantity
@@ -112,9 +115,11 @@ EWHRootViewController *rootController;
     [rootController hideLoading];
     [rootController displayAlert:result.Message withTitle:@"Load Shipment"];
     if(result.Processed){
-        [self getShipmentDetails:shipmentDetail.ShipmentId];
+//        [[self getShipmentDetails:shipmentDetail.ShipmentId];
+        [rootController popToViewController:rootController.shipmentDetailsView animated:YES];
     }
     else {
+        btnLoad.enabled=true;
         [self.navigationItem.rightBarButtonItem setEnabled:true];
     }
 }

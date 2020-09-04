@@ -22,6 +22,7 @@
 //-(void) getWarehouseListCallback: (NSMutableArray*) warehouses;
 //-(void) errorCallback: (NSError*) error;
 //-(void) accessDeniedCallback;
+@property (strong, nonatomic) IBOutlet UILabel *lblVersion;
 
 //@property (nonatomic, strong) EWHRootViewController *rootController;
 @end

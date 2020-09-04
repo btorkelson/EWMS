@@ -69,7 +69,11 @@ DTDevices *linea;
 {
     [rootController hideLoading];
     shipmentDetails = results;
-    [self.tableView reloadData];
+    if ([shipmentDetails count]>0) {
+        [self.tableView reloadData];
+    }else{
+        [rootController popToViewController:rootController.selectShipmentView animated:YES];
+    }
 }
 
 -(void) errorCallback: (NSError*) error

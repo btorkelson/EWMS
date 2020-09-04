@@ -19,6 +19,7 @@
     IBOutlet UIButton* btnScanSerialNumber;
 }
 
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btnLoad;
 @property (nonatomic, strong) EWHShipment *shipment;
 @property (nonatomic, strong) EWHShipmentDetail *shipmentDetail;
 @property (nonatomic, strong) EWHWarehouse *warehouse;

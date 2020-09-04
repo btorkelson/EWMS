@@ -38,5 +38,6 @@
 @property (nonatomic, strong) UITableViewController *shipmentDetailsView;
 @property (nonatomic, strong) UITableViewController *shipmentLocationsView;
 @property (nonatomic, strong) UITableViewController *selectActionView;
+@property (nonatomic, strong) UITableViewController *transferScanPartView;
 
 @end
