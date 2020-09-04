@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHLocation.h"
 
-@interface EWHGetLocationsforPickingRequestNEW : EWHRequest
+@interface EWHGetLocationsforPickingRequestNEW : EWHRequestAF
 
 
 - (void)getLocationsForPickingRequestNEW:(NSInteger)shipmentId withAuthHash:(NSString *)authHash;

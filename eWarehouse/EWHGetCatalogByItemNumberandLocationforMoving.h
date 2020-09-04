@@ -6,11 +6,11 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHCatalog.h"
 
 
-@interface EWHGetCatalogByItemNumberandLocationforMoving : EWHRequest
+@interface EWHGetCatalogByItemNumberandLocationforMoving : EWHRequestAF
 
 - (void)getCatalogByItemNumberandLocationforMoving:(NSInteger)programId warehouseId:(NSInteger)warehouseId itemNumber:(NSString *)itemnumber location:(NSString *)location withAuthHash:(NSString *)authHash;
 @end

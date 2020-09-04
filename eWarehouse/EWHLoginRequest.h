@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 
-@interface EWHLoginRequest : EWHRequest
+@interface EWHLoginRequest : EWHRequestAF
 {
 
 }

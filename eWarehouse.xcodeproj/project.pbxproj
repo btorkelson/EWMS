@@ -111,6 +111,7 @@
 		AB0A693C217902D700DC1D5E /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693B217902D700DC1D5E /* AppIcon.xcassets */; };
 		AB0A693E21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */; };
 		AB804B7B250197B3008353EB /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F54611CE2529E0051D7E1 /* libdtdev.a */; };
+		AB804B7E25029364008353EB /* EWHRequestAF.m in Sources */ = {isa = PBXBuildFile; fileRef = AB804B7D25029364008353EB /* EWHRequestAF.m */; };
 		AB860EDE23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB860EDD23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m */; };
 		ABDE33BF2501872100D79256 /* libdtdev.a in Sources */ = {isa = PBXBuildFile; fileRef = D32F54611CE2529E0051D7E1 /* libdtdev.a */; };
 		ABE9D2A423170D3E001174BD /* EWHSelectSortJobController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */; };
@@ -401,6 +402,8 @@
 		AB804B75250194C6008353EB /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB804B77250194F9008353EB /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB804B79250194F9008353EB /* libPods-eWarehouse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-eWarehouse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB804B7C25029364008353EB /* EWHRequestAF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHRequestAF.h; sourceTree = "<group>"; };
+		AB804B7D25029364008353EB /* EWHRequestAF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHRequestAF.m; sourceTree = "<group>"; };
 		AB860EDC23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetCycleCountJobDetailByItem.h; sourceTree = "<group>"; };
 		AB860EDD23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetCycleCountJobDetailByItem.m; sourceTree = "<group>"; };
 		ABE9D2A223170D3E001174BD /* EWHSelectSortJobController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSelectSortJobController.h; sourceTree = "<group>"; };
@@ -829,9 +832,10 @@
 		6BB01F3E1608B7F50069213E /* Requests */ = {
 			isa = PBXGroup;
 			children = (
-				ABE9D2A523170F5A001174BD /* Sorting */,
 				6B98480915B9C27C00A1E2EB /* EWHRequest.h */,
 				6B98480A15B9C27C00A1E2EB /* EWHRequest.m */,
+				AB804B7C25029364008353EB /* EWHRequestAF.h */,
+				AB804B7D25029364008353EB /* EWHRequestAF.m */,
 				6B98480C15B9C47A00A1E2EB /* EWHLoginRequest.h */,
 				6B98480D15B9C47A00A1E2EB /* EWHLoginRequest.m */,
 				6B96712415BE4A5C0081B46F /* EWHGetUserWarehouseListRequest.h */,
@@ -840,10 +844,11 @@
 				6B9E5D7315E66E0400065029 /* EWHIsWarehouseLocationValidRequest.m */,
 				D3C34D691ED8A2560004746C /* EWHGetWarehouseProgramListAll.h */,
 				D3C34D6A1ED8A2560004746C /* EWHGetWarehouseProgramListAll.m */,
-				D3816251189AE2E600BA59FA /* NewReceipt */,
-				6BB01F3F1608B8050069213E /* PutAway */,
-				6BB01F401608B8A00069213E /* PickShipment */,
 				6B9C03F81610AE5D00C9AD0B /* LoadShipment */,
+				6BB01F401608B8A00069213E /* PickShipment */,
+				6BB01F3F1608B8050069213E /* PutAway */,
+				D3816251189AE2E600BA59FA /* NewReceipt */,
+				ABE9D2A523170F5A001174BD /* Sorting */,
 				D3C34D4C1ED75A660004746C /* Transfer */,
 				D3E5D948215557DA009AD155 /* CycleCount */,
 			);
@@ -1450,6 +1455,7 @@
 				AB860EDE23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m in Sources */,
 				ABF0CD0823D0F152009877A0 /* EWHCycleCountCatalogLocationController.m in Sources */,
 				6BB01F4D1608C3AA0069213E /* EWHShipmentDetail.m in Sources */,
+				AB804B7E25029364008353EB /* EWHRequestAF.m in Sources */,
 				6BB01F501608C7050069213E /* EWHGetShipmentDetailsForPickingRequest.m in Sources */,
 				D3E5D94721555612009AD155 /* EWHCycleCountJob.m in Sources */,
 				6BB01F531608D79D0069213E /* EWHSelectLocationController.m in Sources */,

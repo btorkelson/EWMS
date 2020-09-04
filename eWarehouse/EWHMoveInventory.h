@@ -6,12 +6,12 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHWarehouse.h"
 #import "EWHCatalog.h"
 #import "EWHResponse.h"
 
-@interface EWHMoveInventory : EWHRequest
+@interface EWHMoveInventory : EWHRequestAF
 {
 }
 

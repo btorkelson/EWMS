@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHShipmentDetail.h"
 #import "EWHLocation.h"
 #import "EWHResponse.h"
 
-@interface EWHPickContainerRequest : EWHRequest
+@interface EWHPickContainerRequest : EWHRequestAF
 {
 }
 

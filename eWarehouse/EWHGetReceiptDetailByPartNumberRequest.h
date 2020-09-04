@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHReceiptDetail.h"
 
-@interface EWHGetReceiptDetailByPartNumberRequest : EWHRequest
+@interface EWHGetReceiptDetailByPartNumberRequest : EWHRequestAF
 {
 }
 

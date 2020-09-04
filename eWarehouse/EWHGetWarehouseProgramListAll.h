@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHProgram.h"
 
-@interface EWHGetWarehouseProgramListAll : EWHRequest
+@interface EWHGetWarehouseProgramListAll : EWHRequestAF
 
 - (void)getWarehouseProgramList:(NSInteger)warehouseId withAuthHash:(NSString *)authHash;
 

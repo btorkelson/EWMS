@@ -33,7 +33,7 @@
                                     <action selector="signIn:" destination="GSc-FW-Yzs" eventType="touchUpInside" id="dPD-eI-b1B"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZR-pD-1zb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="brian@ewms.com" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZR-pD-1zb">
                                 <rect key="frame" x="73" y="231" width="174" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="8aU-L0-TNO"/>
@@ -44,7 +44,7 @@
                                     <outlet property="delegate" destination="GSc-FW-Yzs" id="g6p-f0-Wdj"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-jG-BI2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="flybye5" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YCv-jG-BI2">
                                 <rect key="frame" x="73" y="279" width="174" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="xjQ-gv-XTS"/>

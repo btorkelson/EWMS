@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHShipmentDetail.h"
 
-@interface EWHGetShipmentDetailsforPickingRequestNEW : EWHRequest
+@interface EWHGetShipmentDetailsforPickingRequestNEW : EWHRequestAF
 {
 }
 

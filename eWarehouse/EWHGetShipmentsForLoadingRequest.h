@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHShipment.h"
 
-@interface EWHGetShipmentsForLoadingRequest : EWHRequest
+@interface EWHGetShipmentsForLoadingRequest : EWHRequestAF
 {
 }
 

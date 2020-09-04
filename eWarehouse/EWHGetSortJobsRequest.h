@@ -5,12 +5,12 @@
 //  Created by Brian Torkelson on 8/28/19.
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHSortJob.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface EWHGetSortJobsRequest : EWHRequest
+@interface EWHGetSortJobsRequest : EWHRequestAF
 
 - (void)getSortJobsRequest:(NSInteger)warehouseId withAuthHash:(NSString *)authHash;
 @end
