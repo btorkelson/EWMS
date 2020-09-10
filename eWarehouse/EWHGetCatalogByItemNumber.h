@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHCatalog.h"
 
-@interface EWHGetCatalogByItemNumber : EWHRequest
+@interface EWHGetCatalogByItemNumber : EWHRequestAF
 {
 }
 

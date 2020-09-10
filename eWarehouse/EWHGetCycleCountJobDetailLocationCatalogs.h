@@ -6,11 +6,11 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHUser.h"
 #import "EWHCycleCountCatalogbyLocation.h"
 
-@interface EWHGetCycleCountJobDetailLocationCatalogs : EWHRequest
+@interface EWHGetCycleCountJobDetailLocationCatalogs : EWHRequestAF
 
 - (void)getCycleCountJobDetailLocationCatalogs:(NSInteger)cyclecountJobId locationId:(NSInteger)locationId isNew:(BOOL)isNew user:(EWHUser *)user;
 @end

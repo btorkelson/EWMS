@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHOrigin.h"
 
-@interface EWHGetOriginsByProgramWarehouse : EWHRequest
+@interface EWHGetOriginsByProgramWarehouse : EWHRequestAF
 
 - (void)getOriginsByProgramWarehouse:(NSInteger)programId warehouseid:(NSInteger)warehouseId withAuthHash:(NSString *)authHash;
 

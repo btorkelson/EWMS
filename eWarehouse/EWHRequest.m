@@ -16,7 +16,7 @@
 @synthesize urlCTL;
 @synthesize urlEWMS;
 @synthesize defaultURL;
-@synthesize request;
+//@synthesize request;
 @synthesize error;
 @synthesize caller;
 @synthesize callback;

@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHCycleCountJob.h"
 
-@interface EWHGetCycleCountJobs : EWHRequest
+@interface EWHGetCycleCountJobs : EWHRequestAF
 
 
 - (void)getCycleCountJobs:(NSInteger)warehouseId withAuthHash:(NSString *)authHash;

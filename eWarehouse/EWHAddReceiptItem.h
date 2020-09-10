@@ -6,12 +6,12 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHReceiptDetail.h"
 #import "EWHResponse.h"
 #import "EWHUOM.h"
 
-@interface EWHAddReceiptItem : EWHRequest
+@interface EWHAddReceiptItem : EWHRequestAF
 {
 }
 

@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHShipMethod.h"
 
-@interface EWHGetShipMethodsByProgram : EWHRequest
+@interface EWHGetShipMethodsByProgram : EWHRequestAF
 
 - (void)getShipMethodsByProgram:(NSInteger)programId withAuthHash:(NSString *)authHash;
 

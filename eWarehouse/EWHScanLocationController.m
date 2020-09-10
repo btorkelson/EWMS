@@ -45,6 +45,7 @@ NSString *location;
 	[linea addDelegate:self];
 	//update display according to current linea state
 	[self connectionState:linea.connstate];
+    
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -278,13 +279,19 @@ NSString *location;
     [rootController showLoading];
     EWHUser *user = rootController.user;
     if(user != nil){
-        EWHIsWarehouseLocationValidRequest *request = [[EWHIsWarehouseLocationValidRequest alloc] initWithCallbacks:self callback:@selector(isWarehouseLocationValidCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+//        EWHIsWarehouseLocationValidRequest *request = [[EWHIsWarehouseLocationValidRequest alloc] initWithCallbacks:self callback:@selector(isWarehouseLocationValidCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
         //Z - remove for distribution
 //        barcode = @"Storage";
 //        barcode = @"D82";
 //        barcode = @"B81";
         location = barcode;
-        [request isWarehouseLocationValid:warehouse.Id locationName:barcode withAuthHash:user.AuthHash];
+        if(receipt.isContainer)
+            [self putAwayContainerItem];
+        else if(receiptDetails.IsSerialized)
+            [self putAwaySerializedItem];
+        else
+            [self putAwayItem];
+//        [request isWarehouseLocationValid:warehouse.Id locationName:barcode withAuthHash:user.AuthHash];
     }
 }
 

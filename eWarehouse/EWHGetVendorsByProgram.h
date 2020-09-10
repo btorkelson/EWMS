@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHVendor.h"
 
-@interface EWHGetVendorsByProgram : EWHRequest
+@interface EWHGetVendorsByProgram : EWHRequestAF
 
 
 - (void)getGetVendorsByProgram:(NSInteger)programId withAuthHash:(NSString *)authHash;

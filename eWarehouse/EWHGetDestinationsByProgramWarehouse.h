@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHDestination.h"
 
-@interface EWHGetDestinationsByProgramWarehouse : EWHRequest
+@interface EWHGetDestinationsByProgramWarehouse : EWHRequestAF
 {
 }
 

@@ -30,15 +30,18 @@
     [securityPolicy setValidatesDomainName:NO];
     
     manager.securityPolicy = securityPolicy;
-    [manager POST:url parameters:params progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:url parameters:params headers:nil progress:nil  success:^(NSURLSessionDataTask *  task, id  responseObject) {
 //    NSError *e = nil;
 //
-//        NSDictionary* dictionary = (NSDictionary*) responseObject;
-        
-         BOOL isValid = true; //is this even used?
+//        BOOL *isValid = [[responseObject objectForKey:@"success"] boolValue];
+        NSLog(@"Response: %@",responseObject);
+//        NSNumber *val = responseObject;
+//        BOOL isValid = [val boolValue];
+//         BOOL isValid = responseObject; //is this even used?
                    if(self.caller && self.callback){
                        if([self.caller respondsToSelector:self.callback]){
-                           [self.caller performSelector:self.callback withObject:[NSNumber numberWithBool:isValid]];
+                           [self.caller performSelector:self.callback withObject:[NSNumber numberWithBool:1]];
                        }
                    }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

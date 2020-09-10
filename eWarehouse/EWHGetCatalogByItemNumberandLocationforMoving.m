@@ -30,7 +30,7 @@
         [securityPolicy setValidatesDomainName:NO];
         
         manager.securityPolicy = securityPolicy;
-        [manager POST:url parameters:params progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager POST:url parameters:params headers:nil progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     //    NSError *e = nil;
             NSMutableArray* catalogs = [[NSMutableArray alloc] init];
             NSDictionary* dictionary = (NSDictionary*) responseObject;

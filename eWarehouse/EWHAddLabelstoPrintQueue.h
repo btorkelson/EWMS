@@ -7,9 +7,9 @@
 //
 
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 
-@interface EWHAddLabelstoPrintQueue : EWHRequest
+@interface EWHAddLabelstoPrintQueue : EWHRequestAF
 
 - (void)AddLabelPrintQueue:(NSInteger)receiptId itemId:(NSInteger)itemId user:(EWHUser *)user;
 

@@ -29,9 +29,9 @@
     [securityPolicy setValidatesDomainName:NO];
     
     manager.securityPolicy = securityPolicy;
-    [manager POST:url parameters:params progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:url parameters:params headers:nil progress:nil  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 //                    SBJsonParser* jsonParser = [[SBJsonParser alloc] init];
-        NSError *e = nil;
+//        NSError *e = nil;
         
         NSDictionary* dictionary = (NSDictionary*) responseObject;
         

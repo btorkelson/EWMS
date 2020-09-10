@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHReceipt.h"
 
-@interface EWHGetSavedReceipt : EWHRequest
+@interface EWHGetSavedReceipt : EWHRequestAF
 {
 }
 

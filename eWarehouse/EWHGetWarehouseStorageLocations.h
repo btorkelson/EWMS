@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHLocation.h"
 
-@interface EWHGetWarehouseStorageLocations : EWHRequest
+@interface EWHGetWarehouseStorageLocations : EWHRequestAF
 {
 }
 

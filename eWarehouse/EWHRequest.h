@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ASIHTTPRequest.h"
+//#import "ASIHTTPRequest.h"
 #import "SBJson.h"
 #import "EWHUser.h"
 
 @interface EWHRequest : NSObject 
 {
     NSString *baseURL;
-    ASIHTTPRequest *request;
+//    ASIHTTPRequest *request;
     NSError *error;
     id caller;
     SEL callback;
@@ -26,7 +26,7 @@
 @property (nonatomic,retain) NSString *urlCTL;
 @property (nonatomic,retain) NSString *urlEWMS;
 @property (nonatomic,retain) NSString *defaultURL;
-@property (nonatomic,retain) ASIHTTPRequest *request;
+//@property (nonatomic,retain) ASIHTTPRequest *request;
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic, retain) id caller;
 @property (nonatomic) SEL callback;

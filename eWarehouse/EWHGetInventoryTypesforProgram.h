@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHInventoryType.h"
 
-@interface EWHGetInventoryTypesforProgram : EWHRequest
+@interface EWHGetInventoryTypesforProgram : EWHRequestAF
 
 - (void)getInventoryTypesforProgram:(NSInteger)programId withAuthHash:(NSString *)authHash;
 

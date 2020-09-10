@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHProgram.h"
 
-@interface EWHGetProgramsforReceipt : EWHRequest
+@interface EWHGetProgramsforReceipt : EWHRequestAF
 {
     
     

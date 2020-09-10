@@ -6,10 +6,10 @@
 //
 //
 
-#import "EWHRequest.h"
+#import "EWHRequestAF.h"
 #import "EWHCarrier.h"
 
-@interface EWHGetCarriersByProgram : EWHRequest
+@interface EWHGetCarriersByProgram : EWHRequestAF
 
 - (void)getCarriersByProgram:(NSInteger)programId withAuthHash:(NSString *)authHash;
 
