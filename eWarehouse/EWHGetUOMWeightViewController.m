@@ -118,9 +118,9 @@ EWHNewReceiptDataObject* theDataObject;
         //        [self getDetails:scanItemController.receipt.ReceiptId];
     } else if ([[segue identifier] isEqualToString:@"GetCustomAttributeCatalog"]) {
         
-        EWHGetCustomAttributeCatalogViewController *getCACscontroller = [segue destinationViewController];
+        EWHAddCatalogCustomAttributesViewController *getCACscontroller = [segue destinationViewController];
         getCACscontroller.catalog = sender;
-        getCACscontroller.CAindex = 0;
+        //getCACscontroller.CAindex = 0;
     }else if ([[segue identifier] isEqualToString:@"SelectInventoryType"]) {
         
         EWHSelectInventoryTypeViewController *getITscontroller = [segue destinationViewController];

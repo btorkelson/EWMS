@@ -16,6 +16,8 @@
 @synthesize Editable;
 @synthesize Required;
 @synthesize ErrorMessage;
+@synthesize CustomControlType;
+@synthesize OptionListString;
 
 - (EWHCustomAttributeCatalog *)initWithDictionary:(NSDictionary *)dictionary {
     CustomAttributeCatalogId = [[dictionary objectForKey:@"CustomAttributeCatalogId"] intValue];
@@ -24,6 +26,8 @@
     Editable = [[dictionary objectForKey:@"Editable"] boolValue];
     Required = [[dictionary objectForKey:@"Required"] boolValue];
     ErrorMessage = [dictionary objectForKey:@"ErrorMessage"];
+    CustomControlType = [[dictionary objectForKey:@"CustomControlType"] intValue];
+    OptionListString = [dictionary objectForKey:@"OptionListString"];
     return [super init];
 }
 

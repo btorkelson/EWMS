@@ -17,6 +17,7 @@
 #import "EWHSelectInventoryTypeViewController.h"
 #import "EWHGetUOMWeightViewController.h"
 #import "EWHGetCatalogByProgram.h"
+#import "EWHAddCatalogCustomAttributesViewController.h"
 
 
 @interface EWHScanPartController : UITableViewController <DTDeviceDelegate>

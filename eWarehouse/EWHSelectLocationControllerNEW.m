@@ -129,7 +129,8 @@ DTDevices *linea;
     if (user.EWAdmin) {
                     [self validateScan:cell.textLabel.text];
     } else {
-        cell.detailTextLabel.text = @"Please scan";    }
+        cell.detailTextLabel.text = @"Please scan";
+    }
 }
 
 -(IBAction) refreshPressed: (id) sender

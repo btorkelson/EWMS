@@ -45,7 +45,7 @@
     IsBulk = [[dictionary objectForKey:@"IsBulk"] boolValue];
     IsSerial = [[dictionary objectForKey:@"IsSerial"] boolValue];
     ProgramId = [[dictionary objectForKey:@"ProgramId"] intValue];
-    CustomAttributeCatalogs = [dictionary objectForKey:@"CACList"];
+    //CustomAttributeCatalogs = [dictionary objectForKey:@"CACList"];
     InventoryTypeId = [[dictionary objectForKey:@"InventoryTypeId"] intValue];
     ProgramName = [dictionary objectForKey:@"ProgramName"];
     DetailsByStatus = [dictionary objectForKey:@"DetailsByStatus"];
@@ -63,9 +63,19 @@
         EWHUOM *uom = [[EWHUOM alloc] initWithDictionary:dict];
         [items addObject:uom];
     }
-//    self.items = [items copy];
-    
+
     UOMs = [items copy];
+
+    NSMutableArray *CAs = [[NSMutableArray alloc] init];
+    NSDictionary *CAList = ([dictionary objectForKey:@"CACList"] != [NSNull null] ? [dictionary objectForKey:@"CACList"] : nil);
+//    uomList = [dictionary objectForKey:@"UOMList"];
+    for (NSDictionary *dict in CAList) {
+        EWHCustomAttributeCatalog *CA = [[EWHCustomAttributeCatalog alloc] initWithDictionary:dict];
+        [CAs addObject:CA];
+    }
+//    self.items = [items copy];
+    CustomAttributeCatalogs = [CAs copy];
+    
     return [super init];
 }
 

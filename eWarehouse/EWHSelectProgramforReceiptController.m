@@ -158,6 +158,7 @@ EWHNewReceiptDataObject* theDataObject;
         theDataObject.PromptInventoryType = results.PromptInventoryType;
         theDataObject.ScanPartNumber = results.ScanPartNumber;
         theDataObject.ProjectSequenceNumber=results.ProjectSequenceNumber;
+        theDataObject.ScanLocation = results.ScanLocation;
     } else {
         theDataObject.carrier = nil;
         theDataObject.vendor = nil;

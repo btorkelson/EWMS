@@ -42,14 +42,14 @@ bool isScannerConnected;
     //update display according to current linea state
     [self connectionState:linea.connstate];
     
-    if (CAindex ==0 || CAindex==1) {
-        customAttribute = [[EWHCustomAttributeCatalog alloc] initWithDictionary:[catalog.CustomAttributeCatalogs objectAtIndex:CAindex]];
+    //if (CAindex ==0 || CAindex==1) {
+        customAttribute = [catalog.CustomAttributeCatalogs objectAtIndex:CAindex];
 
         lblCustomAttributeName.text = customAttribute.Name;
         txtCustomAttributeValue.text = customAttribute.Value;
-    } else {
-        [rootController displayAlert:@"Unknown Error" withTitle:@"Error"];
-    }
+    //} else {
+        //[rootController displayAlert:@"Unknown Error" withTitle:@"Error"];
+    //}
     
 }
 
@@ -120,9 +120,11 @@ bool isScannerConnected;
         whatever=1;
     } else {
         customAttribute.Value = txtCustomAttributeValue.text;
-//        [catalog.CustomAttributeCatalogs
-//        [catalog.CustomAttributeCatalogs replaceObjectAtIndex:CAindex withObject:customAttribute];
+        
+        
+        
         [[catalog.CustomAttributeCatalogs objectAtIndex:CAindex] setValue:txtCustomAttributeValue.text forKey:@"Value"];
+        
         
         if ([catalog.CustomAttributeCatalogs count]>CAindex+1) {
         

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EWHUOM.h"
+#import "EWHCustomAttributeCatalog.h"
 
 @interface EWHCatalog : NSObject {
     NSInteger CatalogId;

@@ -15,6 +15,8 @@
     BOOL Editable;
     BOOL Required;
     NSString *ErrorMessage;
+    NSInteger CustomControlType;
+    NSString *OptionListString;
 }
 
 @property (assign, nonatomic) NSInteger CustomAttributeCatalogId;
@@ -23,6 +25,8 @@
 @property (nonatomic) BOOL Editable;
 @property (nonatomic) BOOL Required;
 @property (nonatomic, retain) NSString *ErrorMessage;
+@property (assign, nonatomic) NSInteger CustomControlType;
+@property (nonatomic, retain) NSString *OptionListString;
 
 - (EWHCustomAttributeCatalog *)initWithDictionary:(NSDictionary *)dictionary;
 

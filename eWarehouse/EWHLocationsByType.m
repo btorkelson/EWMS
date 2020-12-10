@@ -10,4 +10,7 @@
 
 @implementation EWHLocationsByType
 
+@synthesize LocationType;
+@synthesize Locations;
+
 @end

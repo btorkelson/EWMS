@@ -50,6 +50,7 @@
 @property (nonatomic, retain) NSString *Comments;
 @property (nonatomic) BOOL isContainer;
 @property (assign, nonatomic) NSInteger ProjectId;
+@property (assign, nonatomic) NSInteger ScanLocation;
 
 
 @end

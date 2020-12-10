@@ -44,6 +44,7 @@
     NSInteger ScanPartNumber;
     NSMutableArray* CustomControlSettings;
     NSMutableArray* InboundCustomAttributes;
+    NSInteger ScanLocation;
 }
 
 @property (assign, nonatomic) NSInteger ReceiptId;
@@ -78,6 +79,7 @@
 @property (assign, nonatomic) NSInteger ScanPartNumber;
 @property (nonatomic, retain) NSMutableArray* CustomControlSettings;
 @property (nonatomic, retain) NSMutableArray* InboundCustomAttributes;
+@property (assign, nonatomic) NSInteger ScanLocation;
 
 
 

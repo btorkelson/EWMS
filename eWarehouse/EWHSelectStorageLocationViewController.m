@@ -122,6 +122,7 @@ DTDevices *linea;
     EWHLocationsByType *locationByType = [cellSections objectAtIndex:indexPath.section];
     EWHLocation * location = [locationByType.Locations objectAtIndex:indexPath.row];
     cell.textLabel.text = location.Name;
+    cell.detailTextLabel.text = @"";
     
     return cell;
 }
@@ -132,16 +133,33 @@ DTDevices *linea;
     EWHLocationsByType *locationByType = [cellSections objectAtIndex:indexPath.section];
     EWHLocation *location = [locationByType.Locations objectAtIndex:indexPath.row];
     
-    if (theDataObject.program.IsReceiptToOrder) {
-        [self performSegueWithIdentifier:@"SelectDestination" sender:location];
-    } else {
-        if (catalog.IsSerial) {
-            [self performSegueWithIdentifier:@"ScanSerialNumbers" sender:location];
+    UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    EWHUser *user = rootController.user;
+    if (theDataObject.ScanLocation) {
+        if (user.EWAdmin) {
+            [self validateScan:cell.textLabel.text];
+            
+            
+            
         } else {
-            [self performSegueWithIdentifier:@"ReceiptItemConfirm" sender:location];
+            cell.detailTextLabel.text = @"Please scan";
         }
+    } else {
+        [self validateScan:cell.textLabel.text];
+        
+//        if (theDataObject.program.IsReceiptToOrder) {
+//            [self performSegueWithIdentifier:@"SelectDestination" sender:location];
+//        } else {
+//            if (catalog.IsSerial) {
+//                [self performSegueWithIdentifier:@"ScanSerialNumbers" sender:location];
+//            } else {
+//                [self performSegueWithIdentifier:@"ReceiptItemConfirm" sender:location];
+//            }
+//
+//        }
         
     }
+
     
     
 }
@@ -173,13 +191,17 @@ DTDevices *linea;
 - (IBAction)scanPressed:(id)sender {
     [self validateScan:sender];
 }
+- (IBAction)itemPressed:(id)sender {
+    [self validateScan:@"A311"];
+}
 
 -(void) validateScan: (NSString *)barcode{
     //Z - remove in production
     //    barcode = @"58668";
+    //NSMutableArray* messages = cellSections;
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"Name == %@", barcode];
     NSArray *matches = [locations filteredArrayUsingPredicate:predicate];
-    EWHLog(@"Matches count:%d", [matches count]);
+    //EWHLog(@"Matches count:%d", [matches count]);
     if([matches count] > 0){
         EWHLocation *location = [matches objectAtIndex:0];
         if (theDataObject.program.IsReceiptToOrder) {
@@ -208,8 +230,16 @@ DTDevices *linea;
     if (theDataObject.warehouse.binLocations.count > 0) {
         
         [rootController hideLoading];
-        cellSections = [NSMutableArray array];
+        locations = [NSMutableArray array];
         cellSections = theDataObject.warehouse.binLocations;
+         for (NSUInteger i = 0; i < [cellSections count]; i++) {
+             //EWHLocation* location = [[EWHLocation alloc] objectAtIndex:i];
+             EWHLocationsByType *locationbytype = [cellSections objectAtIndex:i];
+             //NSMutableArray * savedLocations = [cellSections objectatindex:i];
+             //EWHLocation *location = [cellSections objectAtIndex:i];
+             [locations addObjectsFromArray:locationbytype.Locations];
+         }
+        
         
         [self.tableView reloadData];
     } else {

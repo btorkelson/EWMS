@@ -10,6 +10,7 @@
 #import "EWHReceiptDetail.h"
 #import "EWHResponse.h"
 #import "EWHUOM.h"
+#import "EWHCustomAttributeCatalog.h"
 
 @interface EWHAddReceiptItem : EWHRequestAF
 {

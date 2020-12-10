@@ -14,11 +14,22 @@
 {
 //    __weak EWHRequest *sender = self;
     
-    NSData *caData = [NSJSONSerialization dataWithJSONObject:customAttributes options:NSJSONWritingPrettyPrinted error:nil];
-    NSString *CACListString = [[NSString alloc] initWithData:caData encoding:NSUTF8StringEncoding];
+    //NSData *caData = [NSJSONSerialization dataWithJSONObject:customAttributes options:NSJSONWritingPrettyPrinted error:nil];
+    //NSString *CACListString = [[NSString alloc] initWithData:caData encoding:NSUTF8StringEncoding];
     //    NSData *caData2 = [NSJSONSerialization dataWithJSONObject:UOMs options:NSJSONWritingPrettyPrinted error:nil];
     //    NSString *UOMListString = [[NSString alloc] initWithData:caData2 encoding:NSUTF8StringEncoding];
-    
+    NSString *CAArray = @"";
+    for (int i=0; i<[customAttributes count]; i++)
+    {
+        EWHCustomAttributeCatalog *CA = [customAttributes objectAtIndex:i];
+        
+        NSString *formatItem = [NSString stringWithFormat:@"{\"CustomAttributeCatalogId\":%d,\"Value\":\"%@\",\"Name\":\"%@\"},",CA.CustomAttributeCatalogId,CA.Value,CA.Name];
+        
+        CAArray = [CAArray stringByAppendingString:formatItem];
+    }
+    if (CAArray.length>0) {
+        CAArray = [CAArray substringToIndex:[CAArray length]-1];
+    }
     
     NSString *itemsArray = @"";
     for (int i=0; i<[UOMs count]; i++)
@@ -44,7 +55,7 @@
     
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/AddItem"];
 //    request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%ld ,\"ProgramId\":%ld,\"ReceiptId\":%ld,\"LocationId\":%ld,\"CatalogId\":%ld,\"Quantity\":%ld,\"IsBulk\":\"%@\",\"IsSerialized\":\"%@\",\"ItemScan\":\"%@\",\"InventoryTypeId\":\"%ld\",\"CACList\":\%@,\"UOMList\":[%@],\"LineNumber\":\"%@\",\"LotNumber\":\"%@\"},\"userId\":%ld}", (long)warehouseId,(long)programId,(long)receiptId,(long)locationId,(long)catalogId, (long)quantity, isBulk ? @"true" : @"false", IsSerialized ? @"true" : @"false",numbers,(long)inventoryTypeId, CACListString,itemsArray,lineNumber,lotNumber, (long)user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%ld ,\"ProgramId\":%ld,\"ReceiptId\":%ld,\"LocationId\":%ld,\"CatalogId\":%ld,\"Quantity\":%ld,\"IsBulk\":\"%@\",\"IsSerialized\":\"%@\",\"ItemScan\":\"%@\",\"InventoryTypeId\":\"%ld\",\"CACList\":[%@],\"UOMList\":[%@],\"LineNumber\":\"%@\",\"LotNumber\":\"%@\"},\"userId\":%ld}", (long)warehouseId,(long)programId,(long)receiptId,(long)locationId,(long)catalogId, (long)quantity, isBulk ? @"true" : @"false", IsSerialized ? @"true" : @"false",numbers,(long)inventoryTypeId, CAArray,itemsArray,lineNumber,lotNumber, (long)user.UserId];
     
     EWHLog(@"%@", postData);
         NSData *data = [postData dataUsingEncoding:NSUTF8StringEncoding];

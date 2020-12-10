@@ -40,6 +40,7 @@
 @synthesize ScanPartNumber;
 @synthesize CustomControlSettings;
 @synthesize InboundCustomAttributes;
+@synthesize ScanLocation;
 
 
 
@@ -79,6 +80,7 @@
         PromptInventoryType = [[dictionary objectForKey:@"PromptInventoryType"] boolValue];
         ScanPartNumber  = [[dictionary objectForKey:@"ScanPartNumber"] intValue];
         CustomControlSettings = [dictionary objectForKey:@"CustomControlSettings"];
+        ScanLocation  = [[dictionary objectForKey:@"ScanLocation"] intValue];
         
         NSMutableArray* inboundCAs = [[NSMutableArray alloc] init];
         for (NSDictionary* element in [dictionary objectForKey:@"InboundCustomAttributes"]) {

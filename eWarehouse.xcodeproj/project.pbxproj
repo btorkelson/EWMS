@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		68521CD534F92D56CA5F7CAB /* libPods-eWarehouse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB804B79250194F9008353EB /* libPods-eWarehouse.a */; };
 		6B325572160E08F800125BC1 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B325571160E08F800125BC1 /* CoreData.framework */; };
 		6B35252C1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B35252B1610B0CC0092FDAD /* EWHLoadSerializedItemRequest.m */; };
 		6B3525341610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B3525331610B6A30092FDAD /* EWHLoadShipmentGetSerializedPartDetailsController.m */; };
@@ -102,9 +101,12 @@
 		6BF6FC3215E828B60096521A /* EWHPutAwaySerializedPartRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */; };
 		AB0A693C217902D700DC1D5E /* AppIcon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693B217902D700DC1D5E /* AppIcon.xcassets */; };
 		AB0A693E21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */; };
-		AB804B7B250197B3008353EB /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F54611CE2529E0051D7E1 /* libdtdev.a */; };
+		AB7F0DAB25829A6900BBB8C4 /* EWHCellforTextLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7F0DAA25829A6800BBB8C4 /* EWHCellforTextLabelTableViewCell.xib */; };
+		AB7F0DAF25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7F0DAE25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m */; };
 		AB804B7E25029364008353EB /* EWHRequestAF.m in Sources */ = {isa = PBXBuildFile; fileRef = AB804B7D25029364008353EB /* EWHRequestAF.m */; };
 		AB860EDE23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB860EDD23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m */; };
+		ABA5C681257EEC3100FD3401 /* libdtdev.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D32F54611CE2529E0051D7E1 /* libdtdev.a */; };
+		ABA5C692258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABA5C691258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.m */; };
 		ABDE33BF2501872100D79256 /* libdtdev.a in Sources */ = {isa = PBXBuildFile; fileRef = D32F54611CE2529E0051D7E1 /* libdtdev.a */; };
 		ABE9D2A423170D3E001174BD /* EWHSelectSortJobController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */; };
 		ABE9D2A823170F80001174BD /* EWHGetSortJobsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE9D2A723170F80001174BD /* EWHGetSortJobsRequest.m */; };
@@ -196,7 +198,6 @@
 		D3E5D95121556292009AD155 /* EWHGetCycleCountJobDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5D95021556292009AD155 /* EWHGetCycleCountJobDetails.m */; };
 		D3E5D954215987B1009AD155 /* EWHSelectCycleCountLocationCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5D953215987B1009AD155 /* EWHSelectCycleCountLocationCatalogController.m */; };
 		D3E5D9572159890D009AD155 /* EWHGetCycleCountJobDetailLocationCatalogs.m in Sources */ = {isa = PBXBuildFile; fileRef = D3E5D9562159890D009AD155 /* EWHGetCycleCountJobDetailLocationCatalogs.m */; };
-		D78627AFDB6E760615B1DF43 /* libPods-eWarehouse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DA8B2E22868BD36B559EB52 /* libPods-eWarehouse.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -368,7 +369,12 @@
 		6BF6FC3115E828B60096521A /* EWHPutAwaySerializedPartRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EWHPutAwaySerializedPartRequest.m; sourceTree = "<group>"; };
 		AB0A693B217902D700DC1D5E /* AppIcon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = AppIcon.xcassets; sourceTree = "<group>"; };
 		AB0A693D21790C9500DC1D5E /* EWMS_Logo_iPhone_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EWMS_Logo_iPhone_big.png; sourceTree = "<group>"; };
+		AB43AE8C257EE30900079910 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB43AE8F257EE32B00079910 /* libPods-eWarehouse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-eWarehouse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4A80CF24C8B4D500957FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		AB7F0DAA25829A6800BBB8C4 /* EWHCellforTextLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EWHCellforTextLabelTableViewCell.xib; sourceTree = "<group>"; };
+		AB7F0DAD25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHCellforTextLabelTableViewCell.h; sourceTree = "<group>"; };
+		AB7F0DAE25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHCellforTextLabelTableViewCell.m; sourceTree = "<group>"; };
 		AB804B75250194C6008353EB /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB804B77250194F9008353EB /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB804B79250194F9008353EB /* libPods-eWarehouse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-eWarehouse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,6 +382,8 @@
 		AB804B7D25029364008353EB /* EWHRequestAF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHRequestAF.m; sourceTree = "<group>"; };
 		AB860EDC23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetCycleCountJobDetailByItem.h; sourceTree = "<group>"; };
 		AB860EDD23D2207A006C86EA /* EWHGetCycleCountJobDetailByItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetCycleCountJobDetailByItem.m; sourceTree = "<group>"; };
+		ABA5C690258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHAddCatalogCustomAttributesViewController.h; sourceTree = "<group>"; };
+		ABA5C691258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHAddCatalogCustomAttributesViewController.m; sourceTree = "<group>"; };
 		ABE9D2A223170D3E001174BD /* EWHSelectSortJobController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHSelectSortJobController.h; sourceTree = "<group>"; };
 		ABE9D2A323170D3E001174BD /* EWHSelectSortJobController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHSelectSortJobController.m; sourceTree = "<group>"; };
 		ABE9D2A623170F80001174BD /* EWHGetSortJobsRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHGetSortJobsRequest.h; sourceTree = "<group>"; };
@@ -565,7 +573,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB804B7B250197B3008353EB /* libdtdev.a in Frameworks */,
+				ABA5C681257EEC3100FD3401 /* libdtdev.a in Frameworks */,
 				D32F54551CE1061B0051D7E1 /* libz.tbd in Frameworks */,
 				6B325572160E08F800125BC1 /* CoreData.framework in Frameworks */,
 				6BEC926915DD99C70071B9F7 /* ExternalAccessory.framework in Frameworks */,
@@ -575,8 +583,6 @@
 				6B98491515B9F55600A1E2EB /* CFNetwork.framework in Frameworks */,
 				6B960D2815B712F000064CC0 /* UIKit.framework in Frameworks */,
 				6B960D2A15B712F000064CC0 /* Foundation.framework in Frameworks */,
-				D78627AFDB6E760615B1DF43 /* libPods-eWarehouse.a in Frameworks */,
-				68521CD534F92D56CA5F7CAB /* libPods-eWarehouse.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +646,8 @@
 		6B960D2615B712F000064CC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AB43AE8F257EE32B00079910 /* libPods-eWarehouse.a */,
+				AB43AE8C257EE30900079910 /* libAFNetworking.a */,
 				AB804B77250194F9008353EB /* libAFNetworking.a */,
 				AB804B79250194F9008353EB /* libPods-eWarehouse.a */,
 				AB804B75250194C6008353EB /* libAFNetworking.a */,
@@ -950,12 +958,15 @@
 				D3BEA73E21483F9B003F1854 /* EWHCustomControl.m */,
 				D3BEA74B214B0169003F1854 /* EWHInboundCustomAttribute.h */,
 				D3BEA74C214B0169003F1854 /* EWHInboundCustomAttribute.m */,
+				D3E5D9392153E11E009AD155 /* EWHCellforTextTableViewCell.xib */,
 				D3E5D9372153E11E009AD155 /* EWHCellforTextTableViewCell.h */,
 				D3E5D9382153E11E009AD155 /* EWHCellforTextTableViewCell.m */,
-				D3E5D9392153E11E009AD155 /* EWHCellforTextTableViewCell.xib */,
+				AB7F0DAA25829A6800BBB8C4 /* EWHCellforTextLabelTableViewCell.xib */,
+				AB7F0DAD25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.h */,
+				AB7F0DAE25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m */,
+				D3E5D93E2153F005009AD155 /* EWHCellforCheckboxTableViewCell.xib */,
 				D3E5D93C2153F005009AD155 /* EWHCellforCheckboxTableViewCell.h */,
 				D3E5D93D2153F005009AD155 /* EWHCellforCheckboxTableViewCell.m */,
-				D3E5D93E2153F005009AD155 /* EWHCellforCheckboxTableViewCell.xib */,
 				D3E5D94521555612009AD155 /* EWHCycleCountJob.h */,
 				D3E5D94621555612009AD155 /* EWHCycleCountJob.m */,
 				ABFEABAD23CE692700D32A04 /* EWHCycleCountJobDetail.h */,
@@ -1046,6 +1057,8 @@
 				D34EA7C71B0A6FE000ACE218 /* EWHScanSerialNumbersViewController.m */,
 				D3BEA748214AFD96003F1854 /* EWHAddReceiptCustomAttibutesViewController.h */,
 				D3BEA749214AFD96003F1854 /* EWHAddReceiptCustomAttibutesViewController.m */,
+				ABA5C690258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.h */,
+				ABA5C691258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.m */,
 			);
 			name = NewReceipt;
 			sourceTree = "<group>";
@@ -1191,10 +1204,10 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EWH;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1220;
 				TargetAttributes = {
 					6B960D2215B712F000064CC0 = {
-						DevelopmentTeam = SL7JK6JKLG;
+						DevelopmentTeam = J53LBKD8MY;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1233,6 +1246,7 @@
 				D32F54671CE26E2F0051D7E1 /* icon@2x.png in Resources */,
 				D3E5D9402153F005009AD155 /* EWHCellforCheckboxTableViewCell.xib in Resources */,
 				6B97135C15EBB5160071BEE2 /* 25.png in Resources */,
+				AB7F0DAB25829A6900BBB8C4 /* EWHCellforTextLabelTableViewCell.xib in Resources */,
 				6B97135D15EBB5160071BEE2 /* 50.png in Resources */,
 				D3E5D93B2153E11E009AD155 /* EWHCellforTextTableViewCell.xib in Resources */,
 				6B97135E15EBB5160071BEE2 /* 75.png in Resources */,
@@ -1415,6 +1429,7 @@
 				6B3525371610B7570092FDAD /* EWHLoadShipmentGetPartDetailsController.m in Sources */,
 				ABE9D2AB231714E9001174BD /* EWHSortJob.m in Sources */,
 				D325A0A618A980CD00770C25 /* EWHGetDestinationsByProgramWarehouse.m in Sources */,
+				ABA5C692258120D300FD3401 /* EWHAddCatalogCustomAttributesViewController.m in Sources */,
 				D3C34D621ED88E680004746C /* EWHTransferScanNewLocation.m in Sources */,
 				6B35253A1610B7860092FDAD /* EWHLoadShipmentScanContainerController.m in Sources */,
 				6B35253D1610B7BB0092FDAD /* EWHLoadShipmentSelectLocationController.m in Sources */,
@@ -1430,6 +1445,7 @@
 				D33A035917613AD500001F1D /* EWHShipmentDetailsControllerNEW.m in Sources */,
 				D322DB251A0401BE00689F7F /* EWHGetUOMWeightViewController.m in Sources */,
 				D381626918A03AAB00BA59FA /* EWHReceiptOptionsViewController.m in Sources */,
+				AB7F0DAF25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m in Sources */,
 				D3CFC922225FBD6400E72895 /* EWHTransferViewCatalogs.m in Sources */,
 				D3E5D94B21555813009AD155 /* EWHGetCycleCountJobs.m in Sources */,
 				D33A035C17677AAE00001F1D /* EWHPickShipmentScanLocationControllerNEW.m in Sources */,
@@ -1463,7 +1479,7 @@
 		6B960D3F15B712F000064CC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1508,6 +1524,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = eWMS;
 				PROVISIONING_PROFILE = "40816A1F-3C0A-4D98-890F-E53A389505EE";
 				SDKROOT = iphoneos;
 			};
@@ -1516,7 +1533,7 @@
 		6B960D4015B712F000064CC0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1553,6 +1570,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = eWMS;
 				PROVISIONING_PROFILE = "40816A1F-3C0A-4D98-890F-E53A389505EE";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1568,7 +1586,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SL7JK6JKLG;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J53LBKD8MY;
+				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1577,15 +1597,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 11.0;
+				MARKETING_VERSION = 11.3;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppENT;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1600,7 +1621,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SL7JK6JKLG;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J53LBKD8MY;
+				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "eWarehouse/eWarehouse-Prefix.pch";
 				INFOPLIST_FILE = "eWarehouse/eWarehouse-Info.plist";
@@ -1609,15 +1632,15 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 11.0;
+				MARKETING_VERSION = 11.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseAppENT;
 				PRODUCT_NAME = eWarehouseApp;
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
-				VALID_ARCHS = "armv7 arm64";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};

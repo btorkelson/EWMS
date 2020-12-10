@@ -8,6 +8,7 @@
 
 #import "EWHRequestAF.h"
 #import "EWHCatalog.h"
+#import "EWHCustomAttributeCatalog.h"
 
 @interface EWHGetCatalogByItemNumber : EWHRequestAF
 {
