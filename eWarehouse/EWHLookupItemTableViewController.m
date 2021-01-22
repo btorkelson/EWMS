@@ -12,7 +12,14 @@
 
 @end
 
+EWHRootViewController *rootController;
+
 @implementation EWHLookupItemTableViewController
+
+@synthesize warehouse;
+@synthesize PartNumber;
+@synthesize SerialNumber;
+@synthesize ItemArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self getItems];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -53,67 +62,68 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 9;
+    return [ItemArray count];
 }
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) getItems
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    [rootController showLoading];
+    EWHUser *user = rootController.user;
+    if(user != nil){
+        EWHGetItemLocationSummarybyPart *request = [[EWHGetItemLocationSummarybyPart alloc] initWithCallbacks:self callback:@selector(getJobListCallback:) errorCallback:@selector(errorCallback:) accessDeniedCallback:@selector(accessDeniedCallback)];
+        [request getItemLocationSummarybyPart:warehouse.Id partNumber:PartNumber serial:SerialNumber withAuthHash:user.AuthHash];
+    }
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *CellIdentifier = @"Cell";
     
-    // Configure the cell...
+    EWHTableViewCellforTransfer *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    // Get the object to display and set the value in the cell.
+    EWHItemDetail *item = [ItemArray objectAtIndex:indexPath.row];
+    
+    cell.lblQty.text=[NSString stringWithFormat:@"%li",(long)item.Quantity];
+    cell.lblStatus.text=[NSString stringWithFormat:@"%@ - %@", item.ItemNumber, item.ItemScan];
+    cell.lblInventoryType.text=[NSString stringWithFormat:@"%@ - %@", item.LocationName, item.InventoryStatusName];
+    //    txtInventoryType = catalog.InventoryTypeName;
+    //    cell.detailTextLabel.text = catalog.InventoryStatusName;
+    
+    //totalQuantity = totalQuantity+(int)catalog.QuantityScanned;
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    NSString *title = NSLocalizedString(@"INVENTORY", @"INVENTORY");
+    return title;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) getJobListCallback: (NSMutableArray*) results
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    [rootController hideLoading];
+    ItemArray = results;
+    if ([ItemArray count]==0) {
+        [rootController displayAlert:@"No inventory found" withTitle:@"Item Search"];
+    }
+    [self.tableView reloadData];
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+-(void) errorCallback: (NSError*) error
 {
+    [rootController hideLoading];
+    [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
 }
-*/
+- (IBAction)donePressed:(id)sender {
+    [rootController popToViewController:rootController.selectActionView animated:YES];
+}
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) accessDeniedCallback
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    [rootController hideLoading];
+    [rootController displayAlert:@"Session has timed out. Please sign in." withTitle:@"Session"];
+    [rootController signOut];
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

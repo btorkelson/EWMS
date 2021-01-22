@@ -27,5 +27,6 @@
 @property (nonatomic, strong) EWHLocation *location;
 @property (nonatomic, strong) EWHDestination *destination;
 @property (nonatomic, strong) NSMutableArray *SerialNumbers;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *btnAddItem;
 
 @end

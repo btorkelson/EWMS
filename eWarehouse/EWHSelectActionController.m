@@ -116,6 +116,9 @@ EWHRootViewController *rootController;
 - (IBAction)sortPressed:(id)sender {
     [self performSegueWithIdentifier:@"Sort" sender:nil];
 }
+- (IBAction)newItemPressed:(id)sender {
+    [self performSegueWithIdentifier:@"AddItemtoReceipt" sender:nil];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -147,6 +150,14 @@ EWHRootViewController *rootController;
     else if ([[segue identifier] isEqualToString:@"Sort"]) {
         EWHSelectSortJobController *selectCycleCountController = [segue destinationViewController];
         selectCycleCountController.warehouse = warehouse;
+    }
+    else if ([[segue identifier] isEqualToString:@"lookup item"]) {
+        EWHSelectSortJobController *selectCycleCountController = [segue destinationViewController];
+        selectCycleCountController.warehouse = warehouse;
+    }
+    else if ([[segue identifier] isEqualToString:@"AddItemtoReceipt"]) {
+        EWHSelectProgramforReceiptController *selectProgramController = [segue destinationViewController];
+        selectProgramController.warehouse = warehouse;
     }
 }
 

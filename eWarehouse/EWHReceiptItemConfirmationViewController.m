@@ -18,6 +18,8 @@
 @synthesize location;
 @synthesize destination;
 @synthesize SerialNumbers;
+@synthesize btnAddItem;
+
 
 EWHRootViewController *rootController;
 
@@ -95,7 +97,8 @@ EWHNewReceiptDataObject* theDataObject;
 }
 
 - (IBAction)addItemPressed:(id)sender {
-    
+    btnAddItem.enabled = false;
+    [rootController showLoading];
     EWHNewReceiptDataObject* theDataObject = [self theAppDataObject];
     if (theDataObject.program.IsReceiptToOrder) {
         [self receiveXDockItem:sender];
@@ -193,6 +196,7 @@ EWHNewReceiptDataObject* theDataObject;
 -(void) errorCallback: (NSError*) error
 {
     [rootController hideLoading];
+    btnAddItem.enabled = true;
     [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
 }
 
