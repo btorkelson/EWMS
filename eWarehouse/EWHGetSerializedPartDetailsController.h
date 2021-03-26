@@ -11,6 +11,7 @@
 #import "EWHRootViewController.h"
 #import "EWHShipment.h"
 #import "EWHShipmentDetail.h"
+#import "EWHScanLotNumberController.h"
 
 @interface EWHGetSerializedPartDetailsController : UITableViewController <DTDeviceDelegate,UITextViewDelegate>
 {

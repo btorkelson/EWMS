@@ -22,6 +22,8 @@
 
 
 EWHRootViewController *rootController;
+DTDevices *linea;
+bool isScannerConnected;
 
 EWHNewReceiptDataObject* theDataObject;
 
@@ -55,15 +57,58 @@ EWHNewReceiptDataObject* theDataObject;
     lblDestination.text = destination.Name;
     lblPartNumber.text = catalog.ItemNumber;
     
+    linea=[DTDevices sharedDevice];
+    [linea connect];
+    [linea addDelegate:self];
+    //update display according to current linea state
+    [self connectionState:linea.connstate];
     
 }
+    
+    
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [linea removeDelegate:self];
+    [linea disconnect];
+    linea = nil;
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(void) stopScan{
+    NSError *error = nil;
+    int scanMode;
+    
+    if([linea getScanMode:&scanMode error:&error] && scanMode!=MODE_MOTION_DETECT)
+        [linea stopScan:&error];
+    if(error != nil)
+        [rootController displayAlert:error.localizedDescription withTitle:@"Error"];
+}
+
+-(void)connectionState:(int)state {
+    switch (state) {
+        case CONN_DISCONNECTED:
+        case CONN_CONNECTING:
+            //            [btnScanSerialNumber setHidden:true];
+            //            [scannerMsg setHidden:false];
+            isScannerConnected = NO;
+            break;
+        case CONN_CONNECTED:
+            //            if(numbers.count < receiptDetails.Quantity){
+            //                [btnScanSerialNumber setHidden:false];
+            //            }
+            //            [scannerMsg setHidden:true];
+            isScannerConnected = YES;
+            //Z - remove in production
+            //            [linea setScanBeep:false volume:1 beepData:nil length:1];
+            break;
+    }
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -96,6 +141,21 @@ EWHNewReceiptDataObject* theDataObject;
     [stQuantityStepper setEnabled:YES];
 }
 
+-(void)barcodeData:(NSString *)barcode isotype:(NSString *)isotype {
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        txtLotNumber.text=barcode;
+    }
+}
+
+-(void)barcodeData:(NSString *)barcode type:(int)type {
+    if(self.navigationController.visibleViewController == self){
+        [self stopScan];
+        txtLotNumber.text=barcode;
+        
+    }
+}
+
 - (IBAction)addItemPressed:(id)sender {
     btnAddItem.enabled = false;
     [rootController showLoading];
@@ -111,6 +171,8 @@ EWHNewReceiptDataObject* theDataObject;
 -(IBAction)backgroundTap:(id)sender
 {
     [txtQuantity resignFirstResponder];
+    [txtLotNumber resignFirstResponder];
+    [txtLineNumber resignFirstResponder];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

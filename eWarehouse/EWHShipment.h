@@ -17,6 +17,7 @@
     NSString *ProgramName;
     BOOL isContainer;
     NSString *Message;
+    BOOL isValidateLotNumber;
 }
 
 @property (assign, nonatomic) NSInteger ShipmentId;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) NSString *ProgramName;
 @property (nonatomic) BOOL isContainer;
 @property (nonatomic, retain) NSString *Message;
+@property (nonatomic) BOOL isValidateLotNumber;
 
 - (EWHShipment *)initWithDictionary:(NSDictionary *)dictionary;
 @end

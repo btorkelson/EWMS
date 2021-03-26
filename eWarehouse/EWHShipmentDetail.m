@@ -20,6 +20,7 @@
 @synthesize LocationName;
 @synthesize Type;
 @synthesize IsScanned;
+@synthesize LotNumber;
 
 - (EWHShipmentDetail *)initWithDictionary:(NSDictionary *)dictionary {
     ShipmentId = [[dictionary objectForKey:@"ShipmentId"] intValue];
@@ -32,6 +33,7 @@
     LocationName = [[NSString alloc] initWithString:[dictionary objectForKey:@"LocationName"]];
     Type = [[NSString alloc] initWithString:[dictionary objectForKey:@"Type"]];
     IsScanned = NO;
+    LotNumber = [[NSString alloc] initWithString:[dictionary objectForKey:@"LotNumber"]];
     return [super init];
 }
 @end

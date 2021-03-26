@@ -15,7 +15,7 @@
 //    __weak EWHRequest *sender = self;
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/PickItem"];
 //    request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d,\"ShipmentId\":%d,\"LocationName\":\"%@\",\"LocationId\":%d,\"Number\":\"%@\",\"PartNumber\":\"%@\",\"Quantity\":\"%d\"},\"userId\":\"%d\"}", warehouseId, shipmentDetail.ShipmentId, shipmentDetail.LocationName, location.Id, shipmentDetail.Number, shipmentDetail.PartNumber, quantity, user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%d,\"ShipmentId\":%d,\"LocationName\":\"%@\",\"LocationId\":%d,\"Number\":\"%@\",\"PartNumber\":\"%@\",\"LotNumber\":\"%@\",\"Quantity\":\"%d\"},\"userId\":\"%d\"}", warehouseId, shipmentDetail.ShipmentId, shipmentDetail.LocationName, location.Id, shipmentDetail.Number, shipmentDetail.PartNumber,shipmentDetail.LotNumber, quantity, user.UserId];
     
     NSData *data = [postData dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *params = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];

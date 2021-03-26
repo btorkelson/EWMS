@@ -108,7 +108,12 @@ DTDevices *linea;
     EWHShipmentDetail *shipmentDetail = [shipmentDetails objectAtIndex:indexPath.row];
     
     cell.textLabel.text = shipment.isContainer? shipmentDetail.Number : shipmentDetail.PartNumber;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", shipmentDetail.Type, shipmentDetail.LocationName];
+    if (shipment.isValidateLotNumber) {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@ LotNo: %@", shipmentDetail.Type, shipmentDetail.LocationName, shipmentDetail.LotNumber];
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", shipmentDetail.Type, shipmentDetail.LocationName];
+    }
+    
     
     return cell;
 }
@@ -116,11 +121,22 @@ DTDevices *linea;
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     EWHShipmentDetail *detail = [shipmentDetails objectAtIndex:indexPath.row];
     detail.IsScanned = NO;
-    if(location == nil)
-        [self performSegueWithIdentifier:@"SelectLocation" sender:detail];
-    else
-        [self performSegueWithIdentifier:@"ScanContainer" sender:detail];
-    
+//    if(shipment.isValidateLotNumber){
+//        [self performSegueWithIdentifier:@"ScanLotNumber" sender:detail];
+//    } else {
+        if(location == nil)
+            [self performSegueWithIdentifier:@"SelectLocation" sender:detail];
+        else
+            if(shipment.isContainer)
+                [self performSegueWithIdentifier:@"ScanLocation" sender:detail];
+            else {
+                if(detail.IsSerialized)
+                    [self performSegueWithIdentifier:@"GetSerializedPartData" sender:detail];
+                else
+                    [self performSegueWithIdentifier:@"GetPartData" sender:detail];
+                
+            }
+//    }
 }
 
 -(IBAction) refreshPressed: (id) sender
@@ -179,9 +195,14 @@ DTDevices *linea;
     if([matches count] > 0){
         EWHShipmentDetail *detail = [matches objectAtIndex:0];
         detail.IsScanned = YES;
-        if(location == nil)
-            [self performSegueWithIdentifier:@"SelectLocation" sender:detail];
-        else {
+        
+//        if(shipment.isValidateLotNumber){
+//            [self performSegueWithIdentifier:@"ScanLotNumber" sender:detail];
+//        } else {
+                if(location == nil)
+                    [self performSegueWithIdentifier:@"SelectLocation" sender:detail];
+                else {
+               
             if(detail.IsScanned){
                 if(shipment.isContainer)
                     [self performSegueWithIdentifier:@"ScanLocation" sender:detail];
@@ -195,7 +216,8 @@ DTDevices *linea;
             }
             else
                 [self performSegueWithIdentifier:@"ScanContainer" sender:detail];
-        }
+            }
+//        }
     }
     else {
         if(shipment.isContainer)
@@ -245,6 +267,14 @@ DTDevices *linea;
         getSerializedPartDataController.location = location;
         getSerializedPartDataController.storagelocation = storagelocation;
     }
+//    else if([[segue identifier] isEqualToString:@"ScanLotNumber"]) {
+//        EWHScanLotNumberController *scanLotNumber = [segue destinationViewController];
+//        scanLotNumber.shipmentDetail = sender;
+//        scanLotNumber.shipment = shipment;
+//        scanLotNumber.warehouse = warehouse;
+//        scanLotNumber.location = location;
+//        scanLotNumber.storagelocation = storagelocation;
+//    }
 }
 
 @end

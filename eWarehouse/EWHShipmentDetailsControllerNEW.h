@@ -17,6 +17,7 @@
 #import "EWHPickShipmentScanLocationController.h"
 #import "EWHGetPartDetailsController.h"
 #import "EWHGetSerializedPartDetailsController.h"
+//#import "EWHScanLotNumberController.h"
 
 @interface EWHShipmentDetailsControllerNEW : UITableViewController <DTDeviceDelegate>
 

@@ -265,7 +265,7 @@ DTDevices *linea;
     }
     else if([[segue identifier] isEqualToString:@"GetSerializedPartData"]) {
         EWHGetSerializedPartDetailsController *getSerializedPartDataController = [segue destinationViewController];
-        getSerializedPartDataController.shipmentDetail = sender;
+        getSerializedPartDataController.storagelocation = sender;
         getSerializedPartDataController.shipment = shipment;
         getSerializedPartDataController.warehouse = warehouse;
         getSerializedPartDataController.location = location;

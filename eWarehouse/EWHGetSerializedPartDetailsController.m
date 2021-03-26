@@ -283,7 +283,12 @@ NSMutableArray *numbers;
 
 -(IBAction) nextPressed: (id) sender
 {
-    [self performSegueWithIdentifier:@"ScanLocation" sender:nil];
+    if (shipment.isValidateLotNumber) {
+        [self performSegueWithIdentifier:@"ScanLotNumber" sender:nil];
+    } else {
+        [self performSegueWithIdentifier:@"ScanLocation" sender:nil];
+    }
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -295,14 +300,14 @@ NSMutableArray *numbers;
         scanLocationController.location = location;
         scanLocationController.storagelocation = storagelocation;
         scanLocationController.serialNumbers =[[numbers valueForKey:@"description"] componentsJoinedByString:@","];
-        //Z - remove for distribution
-//        switch (shipment.ShipmentId) {
-//            case 349930: case 349931:
-//                scanLocationController.serialNumbers = @"sc1,sc2";
-//                break;
-//            default:
-//                break;
-//        }
+    }    else if([[segue identifier] isEqualToString:@"ScanLotNumber"]) {
+        EWHScanLotNumberController *scanLotNumber = [segue destinationViewController];
+        scanLotNumber.shipmentDetail = shipmentDetail;
+        scanLotNumber.shipment = shipment;
+        scanLotNumber.warehouse = warehouse;
+        scanLotNumber.location = location;
+        scanLotNumber.storagelocation = storagelocation;
+        scanLotNumber.serialNumbers =[[numbers valueForKey:@"description"] componentsJoinedByString:@","];
     }
 }
 

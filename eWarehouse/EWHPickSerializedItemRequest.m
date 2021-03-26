@@ -16,7 +16,7 @@
 //    __weak EWHRequest *sender = self;
     NSString *url = [NSString stringWithFormat:@"%@%@", super.baseURL, @"/PickItem"];
 //    request = [ASIHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%ld,\"ShipmentId\":%ld,\"LocationName\":\"%@\",\"LocationId\":%ld,\"PartNumber\":\"%@\",\"Quantity\":\"1\",\"Number\":\"%@\",\"IsSerialized\":true},\"userId\":\"%ld\"}", (long)warehouseId, (long)shipmentDetail.ShipmentId, locationName, (long)location.Id, shipmentDetail.PartNumber, serialNumbers, (long)user.UserId];
+    NSString *postData = [NSString stringWithFormat:@"{\"item\":{\"WarehouseId\":%ld,\"ShipmentId\":%ld,\"LocationName\":\"%@\",\"LocationId\":%ld,\"PartNumber\":\"%@\",\"LotNumber\":\"%@\",\"Quantity\":\"1\",\"Number\":\"%@\",\"IsSerialized\":true},\"userId\":\"%ld\"}", (long)warehouseId, (long)shipmentDetail.ShipmentId, locationName, (long)location.Id, shipmentDetail.PartNumber,shipmentDetail.LotNumber, serialNumbers, (long)user.UserId];
     
     EWHLog(@"PickItem: %@", postData);
     NSData *data = [postData dataUsingEncoding:NSUTF8StringEncoding];

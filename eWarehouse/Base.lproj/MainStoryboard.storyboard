@@ -3284,7 +3284,7 @@
             <objects>
                 <viewController title="Shipment Details" id="GTh-d2-uil" customClass="EWHShipmentDetailsControllerNEW" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="hpk-qq-VeG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -3342,7 +3342,7 @@
             <objects>
                 <viewController title="Select Location" id="Y3b-z3-RWj" customClass="EWHSelectLocationController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Hra-ZQ-80t">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -3385,14 +3385,67 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b4c-gs-ybb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5886" y="2145"/>
+            <point key="canvasLocation" x="6334" y="2427"/>
+        </scene>
+        <!--Scan Lot Number-->
+        <scene sceneID="nqe-IK-6HP">
+            <objects>
+                <tableViewController title="Scan Lot Number" id="2Pf-WP-yI4" customClass="EWHScanLotNumberController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="eqx-N1-j2b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Lot Number" id="rMa-x1-82n">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="auO-YS-LCV">
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="auO-YS-LCV" id="kAO-oJ-fih">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Please scan Lot Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bNc-8F-ClK">
+                                                    <rect key="frame" x="16" y="4" width="288" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="2Pf-WP-yI4" id="GzH-xk-cxq"/>
+                            <outlet property="delegate" destination="2Pf-WP-yI4" id="Ick-jV-qKL"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="Ua1-c5-iGx">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="RbD-2I-asq">
+                            <connections>
+                                <action selector="nextPressed:" destination="2Pf-WP-yI4" id="rPk-4M-mfG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="txtLotNumber" destination="bNc-8F-ClK" id="y5U-gv-B6Y"/>
+                        <segue destination="jQR-ye-5y3" kind="push" identifier="ScanLocation" id="6p3-6O-E7w"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X8I-u8-Mcx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="8904" y="2743"/>
         </scene>
         <!--Container-->
         <scene sceneID="Fpk-Rp-rGy">
             <objects>
                 <viewController title="Container" id="f1A-tf-7HN" customClass="EWHScanContainerController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="XBH-1I-Glv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="UQ8-i2-xpJ">
@@ -3514,7 +3567,7 @@
             <objects>
                 <viewController title="Pick Item" id="jQR-ye-5y3" customClass="EWHPickShipmentScanLocationController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Km6-Ie-G65">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -3570,7 +3623,7 @@
             <objects>
                 <tableViewController title="Part" id="RwK-Rg-isf" customClass="EWHGetPartDetailsController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="FPy-gp-Dlx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -3801,6 +3854,7 @@
                         <outlet property="stepper" destination="2yo-lt-JSd" id="bx0-q6-tAI"/>
                         <outlet property="txtQuantity" destination="1nU-IB-DFe" id="JR0-f3-bgZ"/>
                         <segue destination="jQR-ye-5y3" kind="push" identifier="ScanLocation" id="157-tu-NS7"/>
+                        <segue destination="2Pf-WP-yI4" kind="push" identifier="ScanLotNumber" id="DA3-ua-Kw7"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IKi-18-0pW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3812,7 +3866,7 @@
             <objects>
                 <viewController title="Part" id="lMN-iv-KKw" customClass="EWHGetSerializedPartDetailsController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QFd-xf-cRO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="0Yz-dX-wOv">
@@ -3913,11 +3967,12 @@
                         <outlet property="scannerMsg" destination="Zad-PC-3EQ" id="ppz-ko-YdT"/>
                         <outlet property="txtSerialNumber" destination="DLa-Gi-egu" id="fjN-hR-x5e"/>
                         <segue destination="jQR-ye-5y3" kind="push" identifier="ScanLocation" id="j7P-VK-Zx3"/>
+                        <segue destination="2Pf-WP-yI4" kind="push" identifier="ScanLotNumber" id="xDh-8j-JnJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMY-PJ-F7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9293" y="3019"/>
+            <point key="canvasLocation" x="8934" y="3512"/>
         </scene>
         <!--Scan Location-->
         <scene sceneID="xHm-RS-dY6">
@@ -5093,7 +5148,7 @@
                                                     <rect key="frame" x="115" y="8" width="197" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="2d3-oD-lcL" id="lfD-Pw-tEJ"/>
                                                     </connections>
@@ -5119,7 +5174,7 @@
                                                     <rect key="frame" x="115" y="8" width="197" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="2d3-oD-lcL" id="oOL-J1-vnj"/>
                                                     </connections>
@@ -6032,11 +6087,12 @@
         <segue reference="ckP-01-C0E"/>
         <segue reference="EEH-pd-1Vw"/>
         <segue reference="Z2R-vT-Ma5"/>
-        <segue reference="155-jG-jxI"/>
+        <segue reference="Koq-VZ-vv1"/>
         <segue reference="xU7-QN-Omb"/>
-        <segue reference="157-tu-NS7"/>
-        <segue reference="Iz1-xY-oE9"/>
-        <segue reference="HfE-80-iz9"/>
+        <segue reference="rJq-bX-o9j"/>
+        <segue reference="jvB-gu-WM0"/>
+        <segue reference="xDh-8j-JnJ"/>
+        <segue reference="Ig2-TT-Qt7"/>
         <segue reference="iAH-sg-ahs"/>
         <segue reference="9xP-jE-V2h"/>
         <segue reference="P2A-aE-qaa"/>

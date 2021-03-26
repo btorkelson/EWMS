@@ -104,6 +104,7 @@
 		AB19306F258BFF0500164AAD /* EWHLookupItemScanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB19306E258BFF0500164AAD /* EWHLookupItemScanTableViewController.m */; };
 		AB193074258C03D600164AAD /* EWHGetItemLocationSummarybyPart.m in Sources */ = {isa = PBXBuildFile; fileRef = AB193073258C03D600164AAD /* EWHGetItemLocationSummarybyPart.m */; };
 		AB193078258C0CE800164AAD /* EWHItemDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = AB193077258C0CE800164AAD /* EWHItemDetail.m */; };
+		AB3DA91125ED78E4005E072A /* EWHScanLotNumberController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB3DA91025ED78E3005E072A /* EWHScanLotNumberController.m */; };
 		AB7F0DAB25829A6900BBB8C4 /* EWHCellforTextLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB7F0DAA25829A6800BBB8C4 /* EWHCellforTextLabelTableViewCell.xib */; };
 		AB7F0DAF25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB7F0DAE25829AF800BBB8C4 /* EWHCellforTextLabelTableViewCell.m */; };
 		AB804B7E25029364008353EB /* EWHRequestAF.m in Sources */ = {isa = PBXBuildFile; fileRef = AB804B7D25029364008353EB /* EWHRequestAF.m */; };
@@ -380,6 +381,8 @@
 		AB193073258C03D600164AAD /* EWHGetItemLocationSummarybyPart.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHGetItemLocationSummarybyPart.m; sourceTree = "<group>"; };
 		AB193076258C0CE800164AAD /* EWHItemDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHItemDetail.h; sourceTree = "<group>"; };
 		AB193077258C0CE800164AAD /* EWHItemDetail.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHItemDetail.m; sourceTree = "<group>"; };
+		AB3DA90F25ED78E3005E072A /* EWHScanLotNumberController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EWHScanLotNumberController.h; sourceTree = "<group>"; };
+		AB3DA91025ED78E3005E072A /* EWHScanLotNumberController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWHScanLotNumberController.m; sourceTree = "<group>"; };
 		AB43AE8C257EE30900079910 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43AE8F257EE32B00079910 /* libPods-eWarehouse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-eWarehouse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4A80CF24C8B4D500957FB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
@@ -917,6 +920,8 @@
 				6B9DF878160B9E2F00529769 /* EWHPickShipmentScanLocationController.m */,
 				D33A035A17677AAE00001F1D /* EWHPickShipmentScanLocationControllerNEW.h */,
 				D33A035B17677AAE00001F1D /* EWHPickShipmentScanLocationControllerNEW.m */,
+				AB3DA90F25ED78E3005E072A /* EWHScanLotNumberController.h */,
+				AB3DA91025ED78E3005E072A /* EWHScanLotNumberController.m */,
 			);
 			name = PickShipment;
 			sourceTree = "<group>";
@@ -1342,6 +1347,7 @@
 				D3E5D93F2153F005009AD155 /* EWHCellforCheckboxTableViewCell.m in Sources */,
 				D3E5D944215553CF009AD155 /* EWHSelectCylceCountJobController.m in Sources */,
 				6B9848BF15B9EAE000A1E2EB /* NSObject+SBJson.m in Sources */,
+				AB3DA91125ED78E4005E072A /* EWHScanLotNumberController.m in Sources */,
 				6B9848C215B9EAE000A1E2EB /* SBJsonParser.m in Sources */,
 				6B9848C415B9EAE000A1E2EB /* SBJsonStreamParser.m in Sources */,
 				ABFEABA323CE194800D32A04 /* EWHCycleCountLocationSerialController.m in Sources */,
@@ -1632,7 +1638,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1643,7 +1649,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 12.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;
@@ -1667,7 +1673,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SL7JK6JKLG;
 				EXCLUDED_ARCHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1678,7 +1684,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				MARKETING_VERSION = 12.0;
+				MARKETING_VERSION = 12.2;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ewms.eWarehouseApp;

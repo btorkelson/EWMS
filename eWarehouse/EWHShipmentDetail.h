@@ -20,6 +20,7 @@
     NSString *LocationName;
     NSString *Type;
     BOOL IsScanned;
+    NSString *LotNumber;
 }
 
 @property (assign, nonatomic) NSInteger ShipmentId;
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) NSString *LocationName;
 @property (nonatomic, retain) NSString *Type;
 @property (nonatomic) BOOL IsScanned;
+@property (nonatomic, retain) NSString *LotNumber;
 
 - (EWHShipmentDetail *)initWithDictionary:(NSDictionary *)dictionary;
 @end

@@ -91,7 +91,11 @@ EWHRootViewController *rootController;
 -(IBAction) nextPressed: (id) sender
 {
     if(shipmentDetail.Quantity == [txtQuantity.text intValue])
-        [self performSegueWithIdentifier:@"ScanLocation" sender:nil];
+        if (shipment.isValidateLotNumber) {
+            [self performSegueWithIdentifier:@"ScanLotNumber" sender:nil];
+        } else {
+            [self performSegueWithIdentifier:@"ScanLocation" sender:nil];
+        }
     else
         [rootController displayAlert:@"You must pick the entire quantity for this item" withTitle:@"Error"];
 }
@@ -106,6 +110,15 @@ EWHRootViewController *rootController;
         scanLocationController.quantity = [txtQuantity.text integerValue];
         scanLocationController.storagelocation = storagelocation;
     }
+        else if([[segue identifier] isEqualToString:@"ScanLotNumber"]) {
+            EWHScanLotNumberController *scanLotNumber = [segue destinationViewController];
+            scanLotNumber.shipmentDetail = shipmentDetail;
+            scanLotNumber.shipment = shipment;
+            scanLotNumber.warehouse = warehouse;
+            scanLotNumber.location = location;
+            scanLotNumber.storagelocation = storagelocation;
+            scanLotNumber.quantity = [txtQuantity.text integerValue];
+        }
 }
 
 @end
